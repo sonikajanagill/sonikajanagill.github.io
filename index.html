@@ -5,91 +5,259 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sonika Janagill - AI Engineer & Technical Leader</title>
     <meta name="description" content="AI Engineer, Data Engineer, Machine Learning Engineer, and Technical Leader specializing in Vertex AI, MLOps, and enterprise AI transformation.">
+
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Sonika Janagill">
+    <meta name="keywords" content="AI Engineer, Machine Learning, Vertex AI, MLOps, GCP, Cloud Architecture, Technical Leadership, Data Engineering, LangChain, OpenAI">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sonikajanagill.com/">
+    <meta property="og:title" content="Sonika Janagill - AI Engineer & Technical Leader">
+    <meta property="og:description" content="AI Engineer, Data Engineer, and Technical Leader specializing in Vertex AI, MLOps, and enterprise AI transformation. AWS AI Hackathon Winner 2025.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sonikajanagill.com/">
+    <meta property="twitter:title" content="Sonika Janagill - AI Engineer & Technical Leader">
+    <meta property="twitter:description" content="AI Engineer, Data Engineer, and Technical Leader specializing in Vertex AI, MLOps, and enterprise AI transformation. AWS AI Hackathon Winner 2025.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
+            background: #f9f9f9;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .header {
             text-align: center;
             margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
         }
         .hero h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
+            color: #1a1a1a;
         }
         .hero p {
             font-size: 1.2em;
             color: #666;
         }
+        .tagline {
+            font-style: italic;
+            color: #0066cc;
+        }
         .section {
             margin: 40px 0;
+        }
+        .section h2 {
+            color: #1a1a1a;
+            border-bottom: 3px solid #0066cc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
         .links {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin: 30px 0;
         }
         .links a {
             background: #0066cc;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             text-decoration: none;
             border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
         .links a:hover {
             background: #0052a3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .links a:focus {
+            outline: 2px solid #0066cc;
+            outline-offset: 2px;
+        }
+        .achievement {
+            margin: 10px 0;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .skill-category {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #0066cc;
+        }
+        .skill-category h3 {
+            margin-top: 0;
+            color: #0066cc;
+            font-size: 1.1em;
+        }
+        .project-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0066cc;
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #1a1a1a;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sonika Janagill",
+      "url": "https://sonikajanagill.com",
+      "jobTitle": "AI Engineer & Technical Leader",
+      "description": "AI Engineer, Data Engineer, Machine Learning Engineer, and Technical Leader specializing in Vertex AI, MLOps, and enterprise AI transformation",
+      "sameAs": [
+        "https://linkedin.com/in/sonikaj",
+        "https://github.com/sonikajanagill"
+      ],
+      "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Vertex AI", "MLOps", "Cloud Architecture", "GCP", "AWS", "Azure", "LangChain", "OpenAI"],
+      "award": "AWS AI Hackathon Winner 2025"
+    }
+    </script>
 </head>
 <body>
-    <div class="header">
-        <div class="hero">
-            <h1>Sonika Janagill</h1>
-            <p>AI Engineer & Technical Leader</p>
-            <p>Building the future of enterprise AI, one transformation at a time</p>
-        </div>
-    </div>
+    <div class="container">
+        <header class="header">
+            <div class="hero">
+                <h1>Sonika Janagill</h1>
+                <p>AI Engineer & Technical Leader</p>
+                <p class="tagline">Building the future of enterprise AI, one transformation at a time</p>
+            </div>
+        </header>
 
-    <div class="section">
-        <h2>About</h2>
-        <p>With 19 years of experience spanning Java development, cloud architecture, and AI engineering, I help enterprise teams transform traditional systems into AI-powered solutions. Currently serving as Engineering Advocate at VML and Data Engineer at Satalia.</p>
-        
-        <p><strong>Recent Achievements:</strong></p>
-        <ul>
-            <li>🏆 AWS AI Hackathon Winner (January 2025)</li>
-            <li>🎓 GCP Professional ML Engineer Certified</li>
-            <li>👥 AI Guild Global Leadership</li>
-            <li>🎤 Speaking on AI in SDLC, RAG, and AI Agents</li>
-        </ul>
-    </div>
+        <main>
+            <section class="section" aria-labelledby="about-heading">
+                <h2 id="about-heading">About</h2>
+                <p>With 19 years of experience spanning Java development, cloud architecture, and AI engineering, I help enterprise teams transform traditional systems into AI-powered solutions. Currently serving as Engineering Advocate at VML and Data Engineer at Satalia.</p>
 
-    <div class="section">
-        <h2>Expertise</h2>
-        <ul>
-            <li>Enterprise AI/ML Implementation</li>
-            <li>Vertex AI & MLOps</li>
-            <li>Cloud Architecture (GCP, AWS, Azure)</li>
-            <li>Technical Leadership & Team Transformation</li>
-            <li>LangChain, OpenAI, Vector Databases</li>
-        </ul>
-    </div>
+                <p><strong>Recent Achievements:</strong></p>
+                <ul>
+                    <li class="achievement">🏆 AWS AI Hackathon Winner (January 2025)</li>
+                    <li class="achievement">🎓 GCP Professional ML Engineer Certified</li>
+                    <li class="achievement">👥 AI Guild Global Leadership</li>
+                    <li class="achievement">🎤 Speaking on AI in SDLC, RAG, and AI Agents</li>
+                </ul>
+            </section>
 
-    <div class="section">
-        <div class="links">
-            <a href="mailto:sonika.janagill@gmail.com">Contact</a>
-            <a href="https://linkedin.com/in/sonikaj">LinkedIn</a>
-            <a href="https://github.com/sonikajanagill">GitHub</a>
-        </div>
-    </div>
+            <section class="section" aria-labelledby="expertise-heading">
+                <h2 id="expertise-heading">Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>AI & Machine Learning</h3>
+                        <ul>
+                            <li>Vertex AI & MLOps</li>
+                            <li>LangChain & OpenAI</li>
+                            <li>RAG Systems</li>
+                            <li>AI Agents</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Cloud & Architecture</h3>
+                        <ul>
+                            <li>GCP, AWS, Azure</li>
+                            <li>Cloud Architecture</li>
+                            <li>Data Engineering</li>
+                            <li>Vector Databases</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Leadership</h3>
+                        <ul>
+                            <li>Technical Leadership</li>
+                            <li>Team Transformation</li>
+                            <li>Engineering Advocacy</li>
+                            <li>Speaking & Mentoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-    <div class="section">
-        <p><em>Currently pursuing Google Developer Expert status in AI/ML. This site will evolve as I share more insights about enterprise AI transformation and technical leadership.</em></p>
+            <section class="section" aria-labelledby="projects-heading">
+                <h2 id="projects-heading">Featured Projects</h2>
+                <div class="project-card">
+                    <h3>AWS AI Hackathon Winner</h3>
+                    <p>Developed an innovative AI solution that won the AWS AI Hackathon in January 2025. Demonstrated expertise in cutting-edge AI/ML technologies and rapid prototyping.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Enterprise AI Transformation</h3>
+                    <p>Led multiple enterprise teams in transforming traditional systems into AI-powered solutions, leveraging Vertex AI, MLOps, and modern cloud architecture patterns.</p>
+                </div>
+                <div class="project-card">
+                    <h3>AI Guild Global Leadership</h3>
+                    <p>Contributing to the global AI community through leadership, knowledge sharing, and advancing best practices in enterprise AI implementation.</p>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="contact-heading">
+                <h2 id="contact-heading">Connect</h2>
+                <div class="links">
+                    <a href="mailto:sonika.janagill@gmail.com" aria-label="Send email to Sonika Janagill">Contact</a>
+                    <a href="https://linkedin.com/in/sonikaj" target="_blank" rel="noopener noreferrer" aria-label="Visit Sonika's LinkedIn profile">LinkedIn</a>
+                    <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer" aria-label="Visit Sonika's GitHub profile">GitHub</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <p><em>Currently pursuing Google Developer Expert status in AI/ML. This site will evolve as I share more insights about enterprise AI transformation and technical leadership.</em></p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
