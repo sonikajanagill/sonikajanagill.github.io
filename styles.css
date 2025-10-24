@@ -1,13 +1,19 @@
 /* ===========================
+   Google Fonts Import
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@400;700&display=swap');
+
+/* ===========================
    CSS Variables & Theme Colors
    =========================== */
 
 :root {
     /* Light Mode Colors */
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
-    --secondary: #64748b;
-    --accent: #3b82f6;
+    --primary: #8b5cf6;
+    --primary-hover: #a78bfa;
+    --secondary: #06b6d4;
+    --accent: #ec4899;
 
     --bg-main: #ffffff;
     --bg-secondary: #f8fafc;
@@ -21,6 +27,7 @@
 
     --border: #e2e8f0;
     --shadow: rgba(15, 23, 42, 0.08);
+    --glow: rgba(139, 92, 246, 0.2);
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -37,26 +44,31 @@
 
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Fonts */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-serif: 'Merriweather', serif;
 }
 
 [data-theme="dark"] {
-    --primary: #3b82f6;
-    --primary-hover: #60a5fa;
-    --secondary: #94a3b8;
-    --accent: #60a5fa;
+    --primary: #a78bfa;
+    --primary-hover: #c4b5fd;
+    --secondary: #06b6d4;
+    --accent: #ec4899;
 
-    --bg-main: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-card: #1e293b;
-    --bg-code: #334155;
+    --bg-main: #0a0e27;
+    --bg-secondary: #0f1729;
+    --bg-card: #1a1f3a;
+    --bg-code: #2d3748;
 
     --text-primary: #f1f5f9;
     --text-secondary: #cbd5e1;
     --text-tertiary: #94a3b8;
-    --text-inverse: #0f172a;
+    --text-inverse: #0a0e27;
 
-    --border: #334155;
-    --shadow: rgba(0, 0, 0, 0.3);
+    --border: #2d3748;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --glow: rgba(167, 139, 250, 0.3);
 }
 
 /* ===========================
@@ -74,12 +86,21 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-    line-height: 1.5;
+    font-family: var(--font-sans);
+    line-height: 1.6;
     color: var(--text-primary);
     background: var(--bg-secondary);
     transition: background-color 0.3s ease, color 0.3s ease;
     font-size: 16px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 /* ===========================
@@ -127,10 +148,11 @@ nav {
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: var(--transition);
     font-size: 0.95rem;
     position: relative;
+    letter-spacing: -0.01em;
 }
 
 .nav-links a::after {
@@ -176,7 +198,7 @@ nav {
    =========================== */
 
 .hero-section {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    background: linear-gradient(135deg, #0a0e27 0%, #1a0f3a 30%, #2d1b4e 60%, #1a1f3a 100%);
     color: white;
     padding: 5rem 2rem;
     text-align: center;
@@ -185,7 +207,7 @@ nav {
 }
 
 [data-theme="light"] .hero-section {
-    background: linear-gradient(135deg, #64748b 0%, #475569 50%, #334155 100%);
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 30%, #fce7f3 60%, #f0f4f8 100%);
 }
 
 .hero-section::before {
@@ -215,14 +237,16 @@ nav {
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
 }
 
 .hero-section .subtitle {
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
-    font-weight: 600;
+    font-weight: 500;
     opacity: 0.95;
+    letter-spacing: -0.01em;
 }
 
 .hero-section .tagline {
@@ -248,33 +272,37 @@ nav {
     padding: 0.875rem 2rem;
     border-radius: var(--radius-md);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: var(--transition);
     font-size: 1rem;
     display: inline-block;
     border: none;
     cursor: pointer;
+    letter-spacing: -0.01em;
 }
 
 .btn-primary {
-    background: white;
-    color: var(--primary);
+    background: var(--primary);
+    color: white;
+    border: 2px solid var(--primary);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px var(--glow), 0 10px 25px rgba(0, 0, 0, 0.15);
+    background: var(--primary-hover);
 }
 
 .btn-secondary {
     background: transparent;
     color: white;
-    border: 2px solid white;
+    border: 2px solid var(--secondary);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(6, 182, 212, 0.1);
     transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
 }
 
 /* ===========================
@@ -294,10 +322,11 @@ nav {
 
 .section-title {
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
     letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .section-subtitle {
@@ -305,6 +334,8 @@ nav {
     color: var(--text-secondary);
     margin-bottom: 2rem;
     max-width: 700px;
+    font-weight: 500;
+    line-height: 1.6;
 }
 
 /* ===========================
@@ -328,8 +359,9 @@ nav {
 .about-content p {
     color: var(--text-secondary);
     font-size: 1.125rem;
-    line-height: 1.6;
+    line-height: 1.8;
     margin-bottom: var(--spacing-md);
+    font-weight: 400;
 }
 
 .about-content p:last-child {
@@ -359,8 +391,8 @@ nav {
 
 .achievement-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px var(--shadow);
-    border-left-color: var(--primary-hover);
+    box-shadow: 0 0 20px var(--glow), 0 12px 24px var(--shadow);
+    border-left-color: var(--accent);
 }
 
 .achievement-card .icon {
@@ -371,9 +403,10 @@ nav {
 
 .achievement-card h3 {
     font-size: 1.125rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
 }
 
 .achievement-card p {
@@ -403,14 +436,16 @@ nav {
 
 .skill-category:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px var(--shadow);
+    box-shadow: 0 0 20px var(--glow), 0 12px 24px var(--shadow);
+    border-color: var(--primary);
 }
 
 .skill-category h3 {
     font-size: 1.375rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary);
     margin-bottom: var(--spacing-md);
+    letter-spacing: -0.01em;
 }
 
 .skill-category ul {
@@ -423,6 +458,7 @@ nav {
     position: relative;
     padding-left: 1.5rem;
     transition: var(--transition);
+    font-weight: 500;
 }
 
 .skill-category li::before {
@@ -460,21 +496,23 @@ nav {
 
 .project-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 32px var(--shadow);
-    border-top-color: var(--primary-hover);
+    box-shadow: 0 0 25px var(--glow), 0 16px 32px var(--shadow);
+    border-top-color: var(--accent);
 }
 
 .project-card h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 1rem;
+    letter-spacing: -0.01em;
 }
 
 .project-card p {
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.8;
     margin: 0;
+    font-weight: 400;
 }
 
 /* ===========================
@@ -498,7 +536,8 @@ nav {
 
 .blog-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 32px var(--shadow);
+    box-shadow: 0 0 25px var(--glow), 0 16px 32px var(--shadow);
+    border-color: var(--primary);
 }
 
 .blog-card-header {
@@ -525,13 +564,15 @@ nav {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    box-shadow: 0 0 10px var(--glow);
 }
 
 .blog-card h3 {
     font-size: 1.375rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     line-height: 1.4;
+    letter-spacing: -0.01em;
 }
 
 .blog-card-body {
@@ -540,19 +581,21 @@ nav {
 
 .blog-card p {
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.8;
     margin-bottom: var(--spacing-md);
+    font-weight: 400;
 }
 
 .read-more {
     color: var(--primary);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.95rem;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     transition: var(--transition);
+    letter-spacing: -0.01em;
 }
 
 .read-more:hover {

@@ -28,6 +28,16 @@
     <link rel="icon" type="image/png" href="https://media.licdn.com/dms/image/v2/C4D03AQF9u58bYXTaig/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1583571169528?e=1762992000&v=beta&t=AHEaT9o6DrtPs10P-ILSQv-v5wmhGUtOaidzGFuzDnk">
     <link rel="apple-touch-icon" href="https://media.licdn.com/dms/image/v2/C4D03AQF9u58bYXTaig/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1583571169528?e=1762992000&v=beta&t=AHEaT9o6DrtPs10P-ILSQv-v5wmhGUtOaidzGFuzDnk">
 
+    <!-- Google Analytics Placeholder -->
+    <!-- Replace 'G-XXXXXXXXXX' with your actual Google Analytics ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
     <!-- Structured Data (JSON-LD) -->
@@ -187,87 +197,105 @@
             <p class="section-subtitle">Thoughts on AI, MLOps, and enterprise transformation</p>
 
             <div class="blog-grid">
-                <article class="blog-card">
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <meta itemprop="datePublished" content="2025-01-15">
+                    <meta itemprop="dateModified" content="2025-01-15">
+                    <meta itemprop="author" content="Sonika Janagill">
                     <div class="blog-card-header">
                         <div class="blog-meta">
                             <span class="blog-tag">AI/ML</span>
                             <span>January 2025</span>
                         </div>
-                        <h3>Building Production-Ready RAG Systems</h3>
+                        <h3 itemprop="headline">Building Production-Ready RAG Systems</h3>
                     </div>
                     <div class="blog-card-body">
-                        <p>A comprehensive guide to implementing Retrieval-Augmented Generation systems in enterprise environments, covering vector databases, embedding strategies, and deployment best practices.</p>
-                        <a href="blogs/building-production-ready-rag-systems/" class="read-more">Read more →</a>
+                        <p itemprop="description">A comprehensive guide to implementing Retrieval-Augmented Generation systems in enterprise environments, covering vector databases, embedding strategies, and deployment best practices.</p>
+                        <a href="blogs/building-production-ready-rag-systems/" class="read-more" itemprop="url">Read more →</a>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <meta itemprop="datePublished" content="2024-12-15">
+                    <meta itemprop="dateModified" content="2024-12-15">
+                    <meta itemprop="author" content="Sonika Janagill">
                     <div class="blog-card-header">
                         <div class="blog-meta">
                             <span class="blog-tag">MLOps</span>
                             <span>December 2024</span>
                         </div>
-                        <h3>MLOps on Vertex AI: Best Practices</h3>
+                        <h3 itemprop="headline">MLOps on Vertex AI: Best Practices</h3>
                     </div>
                     <div class="blog-card-body">
-                        <p>Lessons learned from implementing MLOps pipelines on Google Cloud's Vertex AI platform. Explore automated training, model versioning, and deployment strategies for production ML systems.</p>
-                        <a href="blogs/mlops-vertex-ai-best-practices/" class="read-more">Read more →</a>
+                        <p itemprop="description">Lessons learned from implementing MLOps pipelines on Google Cloud's Vertex AI platform. Explore automated training, model versioning, and deployment strategies for production ML systems.</p>
+                        <a href="blogs/mlops-vertex-ai-best-practices/" class="read-more" itemprop="url">Read more →</a>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <meta itemprop="datePublished" content="2024-11-15">
+                    <meta itemprop="dateModified" content="2024-11-15">
+                    <meta itemprop="author" content="Sonika Janagill">
                     <div class="blog-card-header">
                         <div class="blog-meta">
                             <span class="blog-tag">Leadership</span>
                             <span>November 2024</span>
                         </div>
-                        <h3>Leading AI Transformation in Enterprise Teams</h3>
+                        <h3 itemprop="headline">Leading AI Transformation in Enterprise Teams</h3>
                     </div>
                     <div class="blog-card-body">
-                        <p>Strategic approaches to introducing AI capabilities into traditional software teams. Addressing cultural challenges, skill development, and organizational change management.</p>
-                        <a href="blogs/leading-ai-transformation-enterprise-teams/" class="read-more">Read more →</a>
+                        <p itemprop="description">Strategic approaches to introducing AI capabilities into traditional software teams. Addressing cultural challenges, skill development, and organizational change management.</p>
+                        <a href="blogs/leading-ai-transformation-enterprise-teams/" class="read-more" itemprop="url">Read more →</a>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <meta itemprop="datePublished" content="2024-10-15">
+                    <meta itemprop="dateModified" content="2024-10-15">
+                    <meta itemprop="author" content="Sonika Janagill">
                     <div class="blog-card-header">
                         <div class="blog-meta">
                             <span class="blog-tag">Technical</span>
                             <span>October 2024</span>
                         </div>
-                        <h3>AI Agents in Software Development Lifecycle</h3>
+                        <h3 itemprop="headline">AI Agents in Software Development Lifecycle</h3>
                     </div>
                     <div class="blog-card-body">
-                        <p>Exploring how AI agents are transforming the SDLC, from code generation to automated testing and deployment. Real-world use cases and implementation patterns.</p>
-                        <a href="#" class="read-more">Read more →</a>
+                        <p itemprop="description">Exploring how AI agents are transforming the SDLC, from code generation to automated testing and deployment. Real-world use cases and implementation patterns.</p>
+                        <a href="#" class="read-more" itemprop="url">Read more →</a>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <meta itemprop="datePublished" content="2024-09-15">
+                    <meta itemprop="dateModified" content="2024-09-15">
+                    <meta itemprop="author" content="Sonika Janagill">
                     <div class="blog-card-header">
                         <div class="blog-meta">
                             <span class="blog-tag">Cloud</span>
                             <span>September 2024</span>
                         </div>
-                        <h3>Multi-Cloud AI Architecture Patterns</h3>
+                        <h3 itemprop="headline">Multi-Cloud AI Architecture Patterns</h3>
                     </div>
                     <div class="blog-card-body">
-                        <p>Designing flexible AI solutions that work across GCP, AWS, and Azure. Understanding trade-offs, vendor-specific features, and portability considerations.</p>
-                        <a href="#" class="read-more">Read more →</a>
+                        <p itemprop="description">Designing flexible AI solutions that work across GCP, AWS, and Azure. Understanding trade-offs, vendor-specific features, and portability considerations.</p>
+                        <a href="#" class="read-more" itemprop="url">Read more →</a>
                     </div>
                 </article>
 
-                <article class="blog-card">
+                <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <meta itemprop="datePublished" content="2024-08-15">
+                    <meta itemprop="dateModified" content="2024-08-15">
+                    <meta itemprop="author" content="Sonika Janagill">
                     <div class="blog-card-header">
                         <div class="blog-meta">
                             <span class="blog-tag">LangChain</span>
                             <span>August 2024</span>
                         </div>
-                        <h3>Advanced LangChain Techniques</h3>
+                        <h3 itemprop="headline">Advanced LangChain Techniques</h3>
                     </div>
                     <div class="blog-card-body">
-                        <p>Deep dive into LangChain's advanced features: custom chains, memory management, agent orchestration, and integration with enterprise systems.</p>
-                        <a href="#" class="read-more">Read more →</a>
+                        <p itemprop="description">Deep dive into LangChain's advanced features: custom chains, memory management, agent orchestration, and integration with enterprise systems.</p>
+                        <a href="#" class="read-more" itemprop="url">Read more →</a>
                     </div>
                 </article>
             </div>
