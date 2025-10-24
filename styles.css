@@ -24,11 +24,11 @@
 
     /* Spacing */
     --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-2xl: 4rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
 
     /* Border Radius */
     --radius-sm: 0.5rem;
@@ -75,7 +75,7 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--text-primary);
     background: var(--bg-secondary);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -207,10 +207,23 @@ nav {
     z-index: 1;
 }
 
+.hero-image {
+    margin-bottom: 1.5rem;
+}
+
+.hero-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
 .hero-section h1 {
     font-size: 3.5rem;
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.02em;
 }
 
@@ -284,14 +297,14 @@ nav {
 }
 
 .section {
-    margin-bottom: var(--spacing-2xl);
-    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-md) 0;
 }
 
 .section-title {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--text-primary);
     letter-spacing: -0.02em;
 }
@@ -299,7 +312,7 @@ nav {
 .section-subtitle {
     font-size: 1.125rem;
     color: var(--text-secondary);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     max-width: 700px;
 }
 
@@ -324,7 +337,7 @@ nav {
 .about-content p {
     color: var(--text-secondary);
     font-size: 1.125rem;
-    line-height: 1.8;
+    line-height: 1.6;
     margin-bottom: var(--spacing-md);
 }
 
@@ -469,7 +482,7 @@ nav {
 
 .project-card p {
     color: var(--text-secondary);
-    line-height: 1.8;
+    line-height: 1.6;
     margin: 0;
 }
 
@@ -536,7 +549,7 @@ nav {
 
 .blog-card p {
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.6;
     margin-bottom: var(--spacing-md);
 }
 
