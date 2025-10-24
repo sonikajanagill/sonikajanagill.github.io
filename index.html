@@ -24,129 +24,475 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #3b82f6;
+            --secondary-color: #0f172a;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 900px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background: #f9f9f9;
-        }
-        .container {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        .hero h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-        }
-        .hero p {
-            font-size: 1.2em;
-            color: #666;
-        }
-        .tagline {
-            font-style: italic;
-            color: #0066cc;
-        }
-        .section {
-            margin: 40px 0;
-        }
-        .section h2 {
-            color: #1a1a1a;
-            border-bottom: 3px solid #0066cc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .links {
+            padding: 1rem 2rem;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 30px 0;
+            justify-content: space-between;
+            align-items: center;
         }
-        .links a {
-            background: #0066cc;
-            color: white;
-            padding: 12px 24px;
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
             text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.95;
             font-weight: 500;
         }
-        .links a:hover {
-            background: #0052a3;
+
+        .hero-section .tagline {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-lg);
         }
-        .links a:focus {
-            outline: 2px solid #0066cc;
-            outline-offset: 2px;
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
         }
-        .achievement {
-            margin: 10px 0;
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .achievement-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .achievement-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
+
         .skill-category {
-            background: #f5f5f5;
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 4px solid #0066cc;
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
         }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
         .skill-category h3 {
-            margin-top: 0;
-            color: #0066cc;
-            font-size: 1.1em;
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
         }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.625rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-category li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
         .project-card {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #0066cc;
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-color);
         }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
         .project-card h3 {
-            margin-top: 0;
-            color: #1a1a1a;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
         }
+
+        .project-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .blog-card-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        .blog-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .blog-card h3 {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card-body {
+            padding: 2rem;
+        }
+
+        .blog-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
         footer {
-            text-align: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid #f0f0f0;
-            color: #666;
-            font-size: 0.9em;
+            background: var(--secondary-color);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
         }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
             .container {
-                padding: 20px;
+                padding: 2rem 1.5rem;
             }
-            .hero h1 {
-                font-size: 2em;
+
+            .hero-section {
+                padding: 3rem 1.5rem;
             }
-            .hero p {
-                font-size: 1em;
-            }
+
+            .projects-grid,
+            .blog-grid,
             .skills-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                font-size: 0.85rem;
+                gap: 0.75rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -169,95 +515,253 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="hero">
-                <h1>Sonika Janagill</h1>
-                <p>AI Engineer & Technical Leader</p>
-                <p class="tagline">Building the future of enterprise AI, one transformation at a time</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Sonika Janagill</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Sonika Janagill</h1>
+            <p class="subtitle">AI Engineer & Technical Leader</p>
+            <p class="tagline">Building the future of enterprise AI, one transformation at a time</p>
+            <div class="hero-links">
+                <a href="mailto:sonika.janagill@gmail.com" class="btn btn-primary">Get in Touch</a>
+                <a href="https://linkedin.com/in/sonikaj" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+                <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <main>
-            <section class="section" aria-labelledby="about-heading">
-                <h2 id="about-heading">About</h2>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section id="about" class="section" aria-labelledby="about-heading">
+            <h2 class="section-title" id="about-heading">About Me</h2>
+            <p class="section-subtitle">Transforming enterprise systems with AI/ML innovation</p>
+
+            <div class="about-content">
                 <p>With 19 years of experience spanning Java development, cloud architecture, and AI engineering, I help enterprise teams transform traditional systems into AI-powered solutions. Currently serving as Engineering Advocate at VML and Data Engineer at Satalia.</p>
+                <p>My passion lies in bridging the gap between cutting-edge AI technology and practical business applications, ensuring teams can leverage the full potential of modern machine learning platforms.</p>
+            </div>
 
-                <p><strong>Recent Achievements:</strong></p>
-                <ul>
-                    <li class="achievement">🏆 AWS AI Hackathon Winner (January 2025)</li>
-                    <li class="achievement">🎓 GCP Professional ML Engineer Certified</li>
-                    <li class="achievement">👥 AI Guild Global Leadership</li>
-                    <li class="achievement">🎤 Speaking on AI in SDLC, RAG, and AI Agents</li>
-                </ul>
-            </section>
-
-            <section class="section" aria-labelledby="expertise-heading">
-                <h2 id="expertise-heading">Expertise</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>AI & Machine Learning</h3>
-                        <ul>
-                            <li>Vertex AI & MLOps</li>
-                            <li>LangChain & OpenAI</li>
-                            <li>RAG Systems</li>
-                            <li>AI Agents</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Cloud & Architecture</h3>
-                        <ul>
-                            <li>GCP, AWS, Azure</li>
-                            <li>Cloud Architecture</li>
-                            <li>Data Engineering</li>
-                            <li>Vector Databases</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Leadership</h3>
-                        <ul>
-                            <li>Technical Leadership</li>
-                            <li>Team Transformation</li>
-                            <li>Engineering Advocacy</li>
-                            <li>Speaking & Mentoring</li>
-                        </ul>
-                    </div>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <div class="icon">🏆</div>
+                    <h3>AWS AI Hackathon Winner</h3>
+                    <p>January 2025 - Innovative AI solution</p>
                 </div>
-            </section>
+                <div class="achievement-card">
+                    <div class="icon">🎓</div>
+                    <h3>GCP Professional ML Engineer</h3>
+                    <p>Certified cloud ML architect</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="icon">👥</div>
+                    <h3>AI Guild Global Leadership</h3>
+                    <p>Leading AI community initiatives</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="icon">🎤</div>
+                    <h3>Conference Speaker</h3>
+                    <p>AI in SDLC, RAG, and AI Agents</p>
+                </div>
+            </div>
+        </section>
 
-            <section class="section" aria-labelledby="projects-heading">
-                <h2 id="projects-heading">Featured Projects</h2>
+        <!-- Expertise Section -->
+        <section id="expertise" class="section" aria-labelledby="expertise-heading">
+            <h2 class="section-title" id="expertise-heading">Expertise</h2>
+            <p class="section-subtitle">Specialized skills in AI/ML, cloud architecture, and technical leadership</p>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>AI & Machine Learning</h3>
+                    <ul>
+                        <li>Vertex AI & MLOps</li>
+                        <li>LangChain & OpenAI</li>
+                        <li>RAG Systems</li>
+                        <li>AI Agents & Automation</li>
+                        <li>Model Deployment</li>
+                        <li>ML Pipeline Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud & Architecture</h3>
+                    <ul>
+                        <li>GCP, AWS, Azure</li>
+                        <li>Cloud Architecture</li>
+                        <li>Data Engineering</li>
+                        <li>Vector Databases</li>
+                        <li>Microservices</li>
+                        <li>DevOps & CI/CD</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Leadership & Advocacy</h3>
+                    <ul>
+                        <li>Technical Leadership</li>
+                        <li>Team Transformation</li>
+                        <li>Engineering Advocacy</li>
+                        <li>Speaking & Mentoring</li>
+                        <li>Strategy & Planning</li>
+                        <li>Cross-team Collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section" aria-labelledby="projects-heading">
+            <h2 class="section-title" id="projects-heading">Featured Projects</h2>
+            <p class="section-subtitle">Key achievements and impactful initiatives</p>
+
+            <div class="projects-grid">
                 <div class="project-card">
                     <h3>AWS AI Hackathon Winner</h3>
-                    <p>Developed an innovative AI solution that won the AWS AI Hackathon in January 2025. Demonstrated expertise in cutting-edge AI/ML technologies and rapid prototyping.</p>
+                    <p>Developed an innovative AI solution that won the AWS AI Hackathon in January 2025. Demonstrated expertise in cutting-edge AI/ML technologies and rapid prototyping, delivering a production-ready solution within tight time constraints.</p>
                 </div>
                 <div class="project-card">
                     <h3>Enterprise AI Transformation</h3>
-                    <p>Led multiple enterprise teams in transforming traditional systems into AI-powered solutions, leveraging Vertex AI, MLOps, and modern cloud architecture patterns.</p>
+                    <p>Led multiple enterprise teams in transforming traditional systems into AI-powered solutions, leveraging Vertex AI, MLOps, and modern cloud architecture patterns. Achieved significant improvements in efficiency and business outcomes.</p>
                 </div>
                 <div class="project-card">
                     <h3>AI Guild Global Leadership</h3>
-                    <p>Contributing to the global AI community through leadership, knowledge sharing, and advancing best practices in enterprise AI implementation.</p>
+                    <p>Contributing to the global AI community through leadership, knowledge sharing, and advancing best practices in enterprise AI implementation. Organizing workshops, talks, and mentoring programs.</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="section" aria-labelledby="contact-heading">
-                <h2 id="contact-heading">Connect</h2>
-                <div class="links">
-                    <a href="mailto:sonika.janagill@gmail.com" aria-label="Send email to Sonika Janagill">Contact</a>
-                    <a href="https://linkedin.com/in/sonikaj" target="_blank" rel="noopener noreferrer" aria-label="Visit Sonika's LinkedIn profile">LinkedIn</a>
-                    <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer" aria-label="Visit Sonika's GitHub profile">GitHub</a>
+        <!-- Blog Section -->
+        <section id="blog" class="section" aria-labelledby="blog-heading">
+            <h2 class="section-title" id="blog-heading">Latest Insights</h2>
+            <p class="section-subtitle">Thoughts on AI, MLOps, and enterprise transformation</p>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-meta">
+                            <span class="blog-tag">AI/ML</span>
+                            <span>January 2025</span>
+                        </div>
+                        <h3>Building Production-Ready RAG Systems</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>A comprehensive guide to implementing Retrieval-Augmented Generation systems in enterprise environments, covering vector databases, embedding strategies, and deployment best practices.</p>
+                        <a href="#" class="read-more">Read more →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-meta">
+                            <span class="blog-tag">MLOps</span>
+                            <span>December 2024</span>
+                        </div>
+                        <h3>MLOps on Vertex AI: Best Practices</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>Lessons learned from implementing MLOps pipelines on Google Cloud's Vertex AI platform. Explore automated training, model versioning, and deployment strategies for production ML systems.</p>
+                        <a href="#" class="read-more">Read more →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-meta">
+                            <span class="blog-tag">Leadership</span>
+                            <span>November 2024</span>
+                        </div>
+                        <h3>Leading AI Transformation in Enterprise Teams</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>Strategic approaches to introducing AI capabilities into traditional software teams. Addressing cultural challenges, skill development, and organizational change management.</p>
+                        <a href="#" class="read-more">Read more →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-meta">
+                            <span class="blog-tag">Technical</span>
+                            <span>October 2024</span>
+                        </div>
+                        <h3>AI Agents in Software Development Lifecycle</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>Exploring how AI agents are transforming the SDLC, from code generation to automated testing and deployment. Real-world use cases and implementation patterns.</p>
+                        <a href="#" class="read-more">Read more →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-meta">
+                            <span class="blog-tag">Cloud</span>
+                            <span>September 2024</span>
+                        </div>
+                        <h3>Multi-Cloud AI Architecture Patterns</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>Designing flexible AI solutions that work across GCP, AWS, and Azure. Understanding trade-offs, vendor-specific features, and portability considerations.</p>
+                        <a href="#" class="read-more">Read more →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <div class="blog-meta">
+                            <span class="blog-tag">LangChain</span>
+                            <span>August 2024</span>
+                        </div>
+                        <h3>Advanced LangChain Techniques</h3>
+                    </div>
+                    <div class="blog-card-body">
+                        <p>Deep dive into LangChain's advanced features: custom chains, memory management, agent orchestration, and integration with enterprise systems.</p>
+                        <a href="#" class="read-more">Read more →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section" aria-labelledby="contact-heading">
+            <h2 class="section-title" id="contact-heading">Let's Connect</h2>
+            <p class="section-subtitle">Interested in AI transformation, speaking opportunities, or collaboration? Let's talk!</p>
+
+            <div class="about-content" style="text-align: center;">
+                <p>Currently pursuing Google Developer Expert status in AI/ML. Always open to discussing enterprise AI transformation, technical leadership, and cutting-edge ML technologies.</p>
+                <div class="hero-links" style="margin-top: 2rem;">
+                    <a href="mailto:sonika.janagill@gmail.com" class="btn btn-primary" aria-label="Send email to Sonika Janagill">Email Me</a>
+                    <a href="https://linkedin.com/in/sonikaj" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Visit Sonika's LinkedIn profile">LinkedIn</a>
+                    <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="Visit Sonika's GitHub profile">GitHub</a>
                 </div>
-            </section>
-
-            <section class="section">
-                <p><em>Currently pursuing Google Developer Expert status in AI/ML. This site will evolve as I share more insights about enterprise AI transformation and technical leadership.</em></p>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
-        </footer>
+            </div>
+        </section>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#projects">Projects</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>&copy; 2025 Sonika Janagill. All rights reserved. Built with care using static HTML & CSS.</p>
+        </div>
+    </footer>
 </body>
 </html>
