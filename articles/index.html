@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Sonika Janagill</title>
+    <meta name="description" content="Articles on AI, MLOps, and enterprise transformation by Sonika Janagill.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://media.licdn.com/dms/image/v2/C4D03AQF9u58bYXTaig/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1583571169528?e=1762992000&v=beta&t=AHEaT9o6DrtPs10P-ILSQv-v5wmhGUtOaidzGFuzDnk">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../articles-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../" class="nav-logo">Sonika Janagill</a>
+            <ul class="nav-links">
+                <li><a href="../#about">About</a></li>
+                <li><a href="../#expertise">Expertise</a></li>
+                <li><a href="../#projects">Projects</a></li>
+                <li><a href="./">Articles</a></li>
+                <li><a href="../#contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">DARK</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Articles Header -->
+    <header class="articles-header">
+        <div class="articles-header-content">
+            <h1>Articles</h1>
+            <p>Insights on AI, MLOps, and enterprise transformation</p>
+        </div>
+    </header>
+
+    <!-- Hashtag Filter -->
+    <section class="articles-filter-section">
+        <div class="container">
+            <div class="hashtag-filter">
+                <button class="hashtag-btn active" data-tag="all">All Articles</button>
+                <button class="hashtag-btn" data-tag="AI/ML">#AI/ML</button>
+                <button class="hashtag-btn" data-tag="MLOps">#MLOps</button>
+                <button class="hashtag-btn" data-tag="Leadership">#Leadership</button>
+                <button class="hashtag-btn" data-tag="Technical">#Technical</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Articles will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../#about">About</a>
+                <a href="../#expertise">Expertise</a>
+                <a href="../#projects">Projects</a>
+                <a href="./">Articles</a>
+                <a href="../#contact">Contact</a>
+            </div>
+            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.querySelector('.theme-icon');
+
+        function updateIcon() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            themeIcon.textContent = currentTheme === 'dark' ? 'LIGHT' : 'DARK';
+        }
+
+        updateIcon();
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon();
+        });
+    </script>
+
+    <!-- Articles Data and Filter Script -->
+    <script>
+        const articles = [
+            {
+                id: 1,
+                title: 'Building Production-Ready RAG Systems',
+                date: 'January 15, 2025',
+                tag: 'AI/ML',
+                description: 'A comprehensive guide to implementing Retrieval-Augmented Generation systems in enterprise environments, covering vector databases, embedding strategies, and deployment best practices.',
+                url: '../blogs/building-production-ready-rag-systems/',
+                image: '../ComposerVsVertexAI.png'
+            },
+            {
+                id: 2,
+                title: 'MLOps on Vertex AI: Best Practices',
+                date: 'December 28, 2024',
+                tag: 'MLOps',
+                description: 'Lessons learned from implementing MLOps pipelines on Google Cloud\'s Vertex AI platform. Understanding pipeline architecture, model registry, and deployment strategies.',
+                url: '../blogs/mlops-vertex-ai-best-practices/',
+                image: '../Hackathons.jpg'
+            },
+            {
+                id: 3,
+                title: 'Leading AI Transformation in Enterprise Teams',
+                date: 'November 20, 2024',
+                tag: 'Leadership',
+                description: 'Strategic approaches to introducing AI capabilities into traditional software teams. Addressing cultural challenges, skill development, and organizational change management.',
+                url: '../blogs/leading-ai-transformation-enterprise-teams/',
+                image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="250"%3E%3Crect fill="%23333" width="400" height="250"/%3E%3Ctext x="50%" y="50%" font-size="24" fill="%23999" text-anchor="middle" dominant-baseline="middle"%3EAI Leadership%3C/text%3E%3C/svg%3E'
+            }
+        ];
+
+        function renderArticles(filteredArticles) {
+            const grid = document.getElementById('articlesGrid');
+            grid.innerHTML = '';
+
+            if (filteredArticles.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-secondary);">No articles found with this tag.</p>';
+                return;
+            }
+
+            filteredArticles.forEach(article => {
+                const card = document.createElement('article');
+                card.className = 'article-card';
+                card.innerHTML = `
+                    <div class="article-image">
+                        <img src="${article.image}" alt="${article.title}">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-tag">#${article.tag}</span>
+                            <span class="article-date">${article.date}</span>
+                        </div>
+                        <h3>${article.title}</h3>
+                        <p>${article.description}</p>
+                        <a href="${article.url}" class="read-more">Read Article →</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.hashtag-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter articles
+                const tag = btn.dataset.tag;
+                const filtered = tag === 'all' 
+                    ? articles 
+                    : articles.filter(a => a.tag === tag);
+                
+                renderArticles(filtered);
+            });
+        });
+
+        // Initial render
+        renderArticles(articles);
+    </script>
+</body>
+</html>
