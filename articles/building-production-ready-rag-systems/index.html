@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Production-Ready RAG Systems - Sonika Janagill</title>
+    <meta name="description" content="A comprehensive guide to implementing Retrieval-Augmented Generation systems in enterprise environments.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://media.licdn.com/dms/image/v2/C4D03AQF9u58bYXTaig/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1583571169528?e=1762992000&v=beta&t=AHEaT9o6DrtPs10P-ILSQv-v5wmhGUtOaidzGFuzDnk">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../blog-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../../" class="nav-logo">Sonika Janagill</a>
+            <ul class="nav-links">
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../articles/">Articles</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">DARK</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Post Header -->
+    <header class="blog-post-header">
+        <h1>Building Production-Ready RAG Systems</h1>
+        <div class="blog-post-meta">
+            <span class="blog-tag">AI/ML</span>
+            <span>January 15, 2025</span>
+            <span>10 min read</span>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post-content">
+        <a href="../" class="back-to-blogs">← Back to Blog</a>
+
+        <p>Retrieval-Augmented Generation (RAG) has become the go-to architecture for building AI applications that need to access specific knowledge bases. But moving from a prototype to a production system requires careful consideration of several key factors.</p>
+
+        <h2>Understanding RAG Architecture</h2>
+
+        <p>RAG combines the power of large language models with external knowledge retrieval. Instead of relying solely on the model's training data, RAG systems retrieve relevant information from a knowledge base and use it to generate more accurate, up-to-date responses.</p>
+
+        <h3>The Three Core Components</h3>
+
+        <ol>
+            <li><strong>Document Processing Pipeline</strong> - Ingesting, chunking, and embedding your knowledge base</li>
+            <li><strong>Vector Store</strong> - Efficiently storing and retrieving embeddings</li>
+            <li><strong>Generation Layer</strong> - Combining retrieved context with LLM capabilities</li>
+        </ol>
+
+        <h2>Choosing Your Vector Database</h2>
+
+        <p>The vector database is the heart of your RAG system. In enterprise environments, I've worked with several options:</p>
+
+        <ul>
+            <li><strong>Pinecone</strong> - Great for getting started, fully managed, but can get expensive at scale</li>
+            <li><strong>Weaviate</strong> - Excellent for complex filtering and hybrid search scenarios</li>
+            <li><strong>Vertex AI Vector Search</strong> - Seamless integration with GCP ecosystem, good for enterprise deployments</li>
+            <li><strong>pgvector</strong> - Cost-effective if you already have PostgreSQL infrastructure</li>
+        </ul>
+
+        <h2>Embedding Strategies That Actually Work</h2>
+
+        <p>One of the biggest challenges in production RAG systems is getting the embedding strategy right. Here's what I've learned:</p>
+
+        <h3>Chunking Strategy</h3>
+
+        <p>Don't just split by character count. Consider:</p>
+
+        <ul>
+            <li>Semantic boundaries (paragraphs, sections)</li>
+            <li>Chunk overlap (I typically use 10-20% overlap)</li>
+            <li>Metadata preservation (source, date, author)</li>
+            <li>Chunk size optimization (test 256, 512, 1024 tokens for your use case)</li>
+        </ul>
+
+        <h3>Embedding Models</h3>
+
+        <p>The choice of embedding model significantly impacts retrieval quality:</p>
+
+        <ul>
+            <li><strong>OpenAI text-embedding-ada-002</strong> - Solid general-purpose choice</li>
+            <li><strong>Vertex AI Text Embeddings</strong> - Good performance, especially for GCP-native deployments</li>
+            <li><strong>Custom fine-tuned models</strong> - Worth considering if you have domain-specific content</li>
+        </ul>
+
+        <h2>Query Optimization Techniques</h2>
+
+        <p>Raw user queries rarely work optimally for retrieval. Here are production-tested techniques:</p>
+
+        <ol>
+            <li><strong>Query Expansion</strong> - Use the LLM to generate multiple search variations</li>
+            <li><strong>Hypothetical Document Embeddings (HyDE)</strong> - Generate hypothetical answers and search for those</li>
+            <li><strong>Metadata Filtering</strong> - Narrow search space using structured filters</li>
+            <li><strong>Reranking</strong> - Use a cross-encoder to rerank retrieved results</li>
+        </ol>
+
+        <h2>Monitoring and Evaluation</h2>
+
+        <p>You can't improve what you don't measure. Essential metrics for production RAG systems:</p>
+
+        <ul>
+            <li><strong>Retrieval Metrics</strong> - Precision@K, Recall@K, MRR</li>
+            <li><strong>Generation Quality</strong> - BLEU, ROUGE, or better yet, LLM-as-judge</li>
+            <li><strong>Latency</strong> - P50, P95, P99 for both retrieval and generation</li>
+            <li><strong>User Feedback</strong> - Thumbs up/down, explicit corrections</li>
+        </ul>
+
+        <h2>Cost Optimization</h2>
+
+        <p>RAG systems can get expensive fast. Here's how to keep costs under control:</p>
+
+        <ul>
+            <li>Cache frequently accessed embeddings</li>
+            <li>Batch embedding operations when possible</li>
+            <li>Use cheaper models for initial retrieval, expensive ones for final generation</li>
+            <li>Implement semantic caching for similar queries</li>
+            <li>Consider hybrid search (keyword + vector) to reduce vector database load</li>
+        </ul>
+
+        <h2>Common Pitfalls to Avoid</h2>
+
+        <p>After building several production RAG systems, here are the mistakes I see most often:</p>
+
+        <ol>
+            <li><strong>Ignoring data quality</strong> - Garbage in, garbage out. Clean your knowledge base.</li>
+            <li><strong>One-size-fits-all chunking</strong> - Different document types need different strategies</li>
+            <li><strong>No feedback loop</strong> - Implement ways to learn from user interactions</li>
+            <li><strong>Overlooking security</strong> - Ensure proper access controls on retrieved documents</li>
+            <li><strong>Neglecting refresh strategy</strong> - Stale data = poor user experience</li>
+        </ol>
+
+        <h2>Conclusion</h2>
+
+        <p>Building production-ready RAG systems is about more than just connecting an LLM to a vector database. It requires thoughtful design of the entire pipeline, from document processing to query optimization to monitoring.</p>
+
+        <p>Start simple, measure everything, and iterate based on real user feedback. The architecture that works for one use case might not work for another - stay flexible and keep learning.</p>
+
+        <p><em>Have questions about implementing RAG in your organization? Feel free to reach out on <a href="https://linkedin.com/in/sonikaj" target="_blank" style="color: var(--primary);">LinkedIn</a>.</em></p>
+
+        <a href="../" class="back-to-blogs">← Back to Blog</a>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="../../#about">About</a>
+                <a href="../../#expertise">Expertise</a>
+                <a href="../../#projects">Projects</a>
+                <a href="../">Blog</a>
+                <a href="../../#contact">Contact</a>
+            </div>
+            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+        const theme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.querySelector('.theme-icon');
+
+        function updateIcon() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        updateIcon();
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon();
+        });
+    </script>
+</body>
+</html>
