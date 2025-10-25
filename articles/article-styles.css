@@ -104,9 +104,26 @@
 }
 
 .blog-content table th { 
-    background: var(--bg-secondary); 
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, color-mix(in srgb, var(--bg-secondary) 80%, var(--primary) 20%) 100%);
     font-weight: 700; 
     color: var(--text-primary); 
+    padding: 1rem 0.75rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.blog-content table td {
+    vertical-align: middle;
+}
+
+.blog-content table tr:nth-child(even) {
+    background: color-mix(in srgb, var(--bg-secondary) 40%, transparent);
+}
+
+.blog-content table tr:hover {
+    background: color-mix(in srgb, var(--bg-secondary) 60%, transparent);
+    transition: var(--transition);
 }
 
 /* ===========================

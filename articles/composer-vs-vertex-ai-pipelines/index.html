@@ -44,16 +44,17 @@
             <div class="blog-meta">
                 <span>Sonika Janagill</span>
                 <span>October 2025</span>
-                <span>20 min read</span>
+                <span>11 min read</span>
             </div>
         </div>
     </header>
 
-    <div style="width: 100%; max-width: 100%; height: 400px; overflow: hidden; background: var(--bg-secondary);">
-        <img src="../../img/ComposerVsVertexAIBanner.png" alt="The native Vertex AI Pipelines visualizer automatically creates this execution graph, showing the conditional deployment workflow. Note how model evaluation determines which path executes - only models with accuracy > 0.85 proceed to endpoint creation and deployment." style="width: 100%; height: 100%; object-fit: cover;">
+    <div style="margin: 2rem 0; text-align: center;">
+        <img src="../../img/ComposerVsVertexAI.png" alt="The native Vertex AI Pipelines visualizer automatically creates this execution graph, showing the conditional deployment workflow. Note how model evaluation determines which path executes - only models with accuracy > 0.85 proceed to endpoint creation and deployment." style="max-width: 50%; height: auto; border-radius: var(--radius-lg);">
     </div>
 
     <main class="blog-content">
+        <p style="text-align: center;">Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
         <p><strong>Your team just got budget approval for MLOps infrastructure. The architect suggests Cloud Composer for large-scale data ingestion supporting your new Gemini model fine-tuning pipeline. The ML engineers want Vertex AI Pipelines for experiment tracking and model evaluation. The data engineers are confused. Sound familiar?</strong></p>
 
         <p>This internal debate is one of the most common and critical crossroads in building a modern ML platform on Google Cloud. The stakes are high. The wrong choice can lead to six months of technical debt, frustrated teams, and a platform that fights your workflow instead of enabling it. The right choice, however, lays the foundation for a scalable, maintainable ML system for years to come.</p>
@@ -183,32 +184,39 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
             </div>
         </div>
         <pre><code class="language-python">@component(base_image="gcr.io/your-project/ml-base:latest")
-def train_model(dataset_path: str, model_output_path: str, project_id: str, hyperparameters: dict) -> tuple[str, float]:
-    """Train ML model with Vertex AI experiment tracking"""
-    from google.cloud import aiplatform
-    
-    aiplatform.init(project=project_id, location="us-central1")
-    
-    with aiplatform.start_run(run="training-run") as run:
-        model = train_with_vertex_ai(dataset_path, hyperparameters)
-        accuracy = evaluate_model(model)
-        
-        run.log_metrics({"accuracy": accuracy, "loss": model.loss})
-        run.log_params(hyperparameters)
-        
-        model_resource = aiplatform.Model.upload(
-            display_name="ml-model",
-            artifact_uri=model_output_path,
-            serving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/tf2-cpu.2-12:latest"
-        )
-        
-    return model_resource.resource_name, accuracy</code></pre>
-
+        def train_model(dataset_path: str, model_output_path: str, project_id: str, hyperparameters: dict) -> tuple[str, float]:
+            """Train ML model with Vertex AI experiment tracking"""
+            from google.cloud import aiplatform
+            
+            aiplatform.init(project=project_id, location="us-central1")
+            
+            with aiplatform.start_run(run="training-run") as run:
+                model = train_with_vertex_ai(dataset_path, hyperparameters)
+                accuracy = evaluate_model(model)
+                
+                run.log_metrics({"accuracy": accuracy, "loss": model.loss})
+                run.log_params(hyperparameters)
+                
+                model_resource = aiplatform.Model.upload(
+                    display_name="ml-model",
+                    artifact_uri=model_output_path,
+                    serving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/tf2-cpu.2-12:latest"
+                )
+                
+            return model_resource.resource_name, accuracy
+        </code></pre>
         <div class="key-concept">
             <strong>🔑 KEY CONCEPT 1: Reusable Components</strong>
             <p>The <code>@component</code> decorator creates a containerized, reusable pipeline step with explicit input/output typing. This enables team collaboration, reusability across pipelines, and component versioning.</p>
         </div>
-
+        <pre><code class="language-python">@component(base_image="gcr.io/your-project/ml-base:latest")
+        # Built-in Vertex AI evaluation component
+        eval_task = ModelEvaluationOp(
+            project=project,
+            model=train_task.outputs["model_resource_name"],
+            target_field_name="target",
+            prediction_type="classification"
+        )</code></pre>
         <div class="key-concept">
             <strong>🔑 KEY CONCEPT 2: Native Vertex AI Integration</strong>
             <p>Built-in Vertex AI components deliver zero-config evaluation, managed infrastructure, experiment integration, and production readiness with built-in model governance.</p>
@@ -246,23 +254,23 @@ def train_model(dataset_path: str, model_output_path: str, project_id: str, hype
             </tr>
             <tr>
                 <td>Data Engineering</td>
-                <td>✅ Airflow familiarity</td>
-                <td>❌ New concepts</td>
+                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Airflow familiarity</td>
+                <td><span class="icon-wrapper icon-bad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span> New concepts</td>
             </tr>
             <tr>
                 <td>ML Engineering</td>
-                <td>❌ Limited ML features</td>
-                <td>✅ Native Vertex AI</td>
+                <td><span class="icon-wrapper icon-bad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span> Limited ML features</td>
+                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Native Vertex AI</td>
             </tr>
             <tr>
                 <td>Infrastructure</td>
-                <td>✅ Managed</td>
-                <td>✅ Managed (no K8s)</td>
+                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Managed</td>
+                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Managed (no K8s)</td>
             </tr>
             <tr>
                 <td>Gen AI/LLMs</td>
-                <td>❌ Manual setup</td>
-                <td>✅ Native Gemini integration</td>
+                <td><span class="icon-wrapper icon-bad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span> Manual setup</td>
+                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Native Gemini integration</td>
             </tr>
         </table>
 
