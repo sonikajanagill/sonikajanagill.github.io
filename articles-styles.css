@@ -58,29 +58,6 @@
     align-items: center;
 }
 
-.hashtag-btn {
-    padding: 0.5rem 1.25rem;
-    background: transparent;
-    border: 2px solid var(--border);
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 50px;
-    transition: var(--transition);
-    letter-spacing: 0.5px;
-}
-
-.hashtag-btn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.hashtag-btn.active {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-}
 
 @media (max-width: 768px) {
     .hashtag-filter {
@@ -157,15 +134,6 @@
     font-size: 0.85rem;
 }
 
-.article-tag {
-    background: var(--primary);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
 
 .article-date {
     color: var(--text-tertiary);

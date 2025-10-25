@@ -1,0 +1,288 @@
+/* ===========================
+   Reusable Article Styles
+   =========================== */
+
+/* Highlight.js Theme - Atom One Dark */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css');
+
+.blog-header { 
+    background: var(--bg-main); 
+    color: var(--text-primary); 
+    padding: 3rem 2rem; 
+    text-align: center; 
+    border-bottom: 1px solid var(--border); 
+}
+
+.blog-header h1 { 
+    font-size: 1.25rem; 
+    font-weight: 600; 
+    margin-bottom: 0.5rem; 
+    letter-spacing: -0.01em; 
+}
+
+.blog-subtitle {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.blog-meta { 
+    display: flex; 
+    justify-content: center; 
+    gap: 2rem; 
+    font-size: 0.95rem; 
+    color: var(--text-secondary); 
+    flex-wrap: wrap; 
+}
+
+.blog-content { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 3rem 2rem; 
+}
+
+.blog-content h2 { 
+    font-size: 1.75rem; 
+    font-weight: 700; 
+    margin-top: 2.5rem; 
+    margin-bottom: 1rem; 
+    color: var(--text-primary); 
+}
+
+.blog-content h3 { 
+    font-size: 1.375rem; 
+    font-weight: 700; 
+    margin-top: 1.75rem; 
+    margin-bottom: 0.75rem; 
+    color: var(--text-primary); 
+}
+
+.blog-content p { 
+    font-size: 1rem; 
+    line-height: 1.8; 
+    color: var(--text-secondary); 
+    margin-bottom: 1.5rem; 
+}
+
+.blog-content ul, .blog-content ol { 
+    margin-left: 2rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.blog-content li { 
+    font-size: 1rem; 
+    line-height: 1.8; 
+    color: var(--text-secondary); 
+    margin-bottom: 0.75rem; 
+}
+
+.blog-content a { 
+    color: var(--primary); 
+    text-decoration: none; 
+    font-weight: 600; 
+    transition: var(--transition); 
+}
+
+.blog-content a:hover { 
+    color: var(--primary-hover); 
+    text-decoration: underline; 
+}
+
+.blog-content table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin: 1.5rem 0; 
+    font-size: 0.95rem; 
+}
+
+.blog-content table th, .blog-content table td { 
+    border: 1px solid var(--border); 
+    padding: 0.75rem; 
+    text-align: left; 
+}
+
+.blog-content table th { 
+    background: var(--bg-secondary); 
+    font-weight: 700; 
+    color: var(--text-primary); 
+}
+
+/* ===========================
+   Code Block Styles
+   =========================== */
+
+.blog-content pre { 
+    background: color-mix(in srgb, var(--bg-secondary) 30%, transparent); 
+    padding: 1.5rem; 
+    border-radius: var(--radius-lg); 
+    overflow-x: auto; 
+    margin: 1.5rem 0; 
+    border: 1px solid var(--border); 
+    font-size: 0.85rem; 
+    position: relative; 
+}
+
+.blog-content code { 
+    background: transparent; 
+    padding: 0.2rem 0.4rem; 
+    border-radius: 3px; 
+    font-family: 'Courier New', monospace; 
+    font-size: 0.9rem; 
+    color: var(--primary); 
+}
+
+.blog-content pre code { 
+    background: none; 
+    padding: 0; 
+    color: var(--text-secondary); 
+}
+
+.code-block-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 1rem; 
+    font-size: 0.85rem; 
+}
+
+.code-block-header span { 
+    color: var(--text-tertiary); 
+    font-weight: 600; 
+}
+
+.code-block-actions { 
+    display: flex; 
+    gap: 0.75rem; 
+}
+
+.code-btn { 
+    background: transparent; 
+    color: var(--primary); 
+    border: 1.5px solid var(--primary); 
+    padding: 0.4rem 0.8rem; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 0.8rem; 
+    font-weight: 600; 
+    transition: var(--transition); 
+    box-shadow: 0 0 8px rgba(255, 68, 68, 0.2);
+}
+
+.code-btn:hover { 
+    background: rgba(255, 68, 68, 0.05);
+    box-shadow: 0 0 12px rgba(255, 68, 68, 0.4);
+}
+
+.code-btn.copied { 
+    background: transparent;
+    color: #10b981;
+    border-color: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
+}
+
+.code-btn a { 
+    color: inherit; 
+    text-decoration: none; 
+    display: flex; 
+    align-items: center; 
+    gap: 0.3rem; 
+}
+
+.code-btn a:hover { 
+    color: inherit; 
+}
+
+/* ===========================
+   Key Concept Boxes
+   =========================== */
+
+.key-concept { 
+    background: var(--bg-secondary); 
+    border-left: 4px solid var(--primary); 
+    padding: 1rem 1.5rem; 
+    margin: 1.5rem 0; 
+    border-radius: 4px; 
+}
+
+.back-link { 
+    display: inline-block; 
+    margin-bottom: 2rem; 
+    color: var(--primary); 
+    text-decoration: none; 
+    font-weight: 600; 
+}
+
+.blog-content strong { 
+    color: var(--text-primary); 
+    font-weight: 700; 
+}
+
+/* ===========================
+   Icon Styling
+   =========================== */
+
+.icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    gap: 0.5rem;
+    margin-right: 0.25rem;
+}
+
+.icon-bad svg {
+    color: #ff4444;
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-width: 2.5;
+    flex-shrink: 0;
+}
+
+.icon-good svg {
+    color: #00d084;
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-width: 2.5;
+    flex-shrink: 0;
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+
+@media (max-width: 768px) {
+    .blog-header h1 { 
+        font-size: 1.75rem; 
+    }
+    
+    .blog-content { 
+        padding: 2rem 1.5rem; 
+    }
+    
+    .blog-content h2 { 
+        font-size: 1.5rem; 
+    }
+    
+    .blog-content h3 { 
+        font-size: 1.125rem; 
+    }
+    
+    .blog-content p, .blog-content li { 
+        font-size: 0.95rem; 
+    }
+    
+    .code-block-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .code-block-actions {
+        width: 100%;
+    }
+    
+    .code-btn {
+        flex: 1;
+    }
+}

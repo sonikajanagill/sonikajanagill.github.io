@@ -12,6 +12,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../articles-styles.css">
+    
+    <!-- Shared Articles Data -->
+    <script src="../articles-data.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -95,35 +98,12 @@
 
     <!-- Articles Data and Filter Script -->
     <script>
-        const articles = [
-            {
-                id: 1,
-                title: 'Building Production-Ready RAG Systems',
-                date: 'January 15, 2025',
-                tag: 'AI/ML',
-                description: 'A comprehensive guide to implementing Retrieval-Augmented Generation systems in enterprise environments, covering vector databases, embedding strategies, and deployment best practices.',
-                url: '../blogs/building-production-ready-rag-systems/',
-                image: '../ComposerVsVertexAI.png'
-            },
-            {
-                id: 2,
-                title: 'MLOps on Vertex AI: Best Practices',
-                date: 'December 28, 2024',
-                tag: 'MLOps',
-                description: 'Lessons learned from implementing MLOps pipelines on Google Cloud\'s Vertex AI platform. Understanding pipeline architecture, model registry, and deployment strategies.',
-                url: '../blogs/mlops-vertex-ai-best-practices/',
-                image: '../Hackathons.jpg'
-            },
-            {
-                id: 3,
-                title: 'Leading AI Transformation in Enterprise Teams',
-                date: 'November 20, 2024',
-                tag: 'Leadership',
-                description: 'Strategic approaches to introducing AI capabilities into traditional software teams. Addressing cultural challenges, skill development, and organizational change management.',
-                url: '../blogs/leading-ai-transformation-enterprise-teams/',
-                image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="250"%3E%3Crect fill="%23333" width="400" height="250"/%3E%3Ctext x="50%" y="50%" font-size="24" fill="%23999" text-anchor="middle" dominant-baseline="middle"%3EAI Leadership%3C/text%3E%3C/svg%3E'
-            }
-        ];
+        // Adjust URLs for articles page (add ../ prefix for relative paths)
+        const articles = articlesData.map(article => ({
+            ...article,
+            url: '../' + article.url,
+            image: '../' + article.image
+        }));
 
         function renderArticles(filteredArticles) {
             const grid = document.getElementById('articlesGrid');

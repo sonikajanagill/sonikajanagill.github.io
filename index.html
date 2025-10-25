@@ -39,6 +39,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Shared Articles Data -->
+    <script src="articles-data.js"></script>
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -78,28 +81,15 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section 
     <section class="hero-section">
         <div class="hero-content">
             <h1>Sonika Janagill</h1>
             <p class="subtitle">Lead AI Engineer & Engineering Advocate</p>
             <p class="tagline">Transforming Enterprise Innovation Through Cloud-Native AI Solutions</p>
-
-            <!-- Credly Badges -->
-            <div class="credly-badges">
-                <a href="https://www.credly.com/badges/your-gcp-architect-badge" target="_blank" rel="noopener noreferrer" aria-label="GCP Professional Cloud Architect">
-                    <img src="https://images.credly.com/size/340x340/images/be4c4e1c-d7a5-4ab2-8c9f-7d1e4a42c3f3/image.png" alt="GCP Professional Cloud Architect" title="GCP Professional Cloud Architect">
-                </a>
-                <a href="https://www.credly.com/badges/your-ml-engineer-badge" target="_blank" rel="noopener noreferrer" aria-label="GCP Professional Machine Learning Engineer">
-                    <img src="https://images.credly.com/size/340x340/images/1c0d66e9-b4e5-4c57-a5f1-b2e7a2c7d5f5/image.png" alt="GCP Professional ML Engineer" title="GCP Professional Machine Learning Engineer">
-                </a>
-                <a href="https://www.credly.com/badges/your-recent-achievement" target="_blank" rel="noopener noreferrer" aria-label="AWS AI Hackathon Winner">
-                    <img src="https://images.credly.com/size/340x340/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png" alt="AWS AI Hackathon Winner" title="AWS AI Hackathon Winner 2025">
-                </a>
-            </div>
         </div>
     </section>
-
+    -->
     <!-- Main Content -->
     <div class="container">
         <!-- Featured Articles Section -->
@@ -107,51 +97,8 @@
             <h2 class="section-title" id="articles-heading">Latest Articles</h2>
             <p class="section-subtitle">Thoughts on AI, MLOps, and enterprise transformation</p>
 
-            <div class="blog-grid">
-                <!-- Blog Post 1 -->
-                <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-meta">
-                            <span class="blog-tag">AI/ML</span>
-                            <span>January 2025</span>
-                        </div>
-                        <h3>Building Production-Ready RAG Systems</h3>
-                    </div>
-                    <div class="blog-card-body">
-                        <p>A comprehensive guide to implementing Retrieval-Augmented Generation systems in enterprise environments, covering vector databases, embedding strategies, and deployment best practices.</p>
-                        <a href="blogs/building-production-ready-rag-systems/" class="read-more">Read more →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 2 -->
-                <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-meta">
-                            <span class="blog-tag">MLOps</span>
-                            <span>December 2024</span>
-                        </div>
-                        <h3>MLOps on Vertex AI: Best Practices</h3>
-                    </div>
-                    <div class="blog-card-body">
-                        <p>Lessons learned from implementing MLOps pipelines on Google Cloud's Vertex AI platform. Understanding pipeline architecture, model registry, and deployment strategies.</p>
-                        <a href="blogs/mlops-vertex-ai-best-practices/" class="read-more">Read more →</a>
-                    </div>
-                </article>
-
-                <!-- Blog Post 3 -->
-                <article class="blog-card">
-                    <div class="blog-card-header">
-                        <div class="blog-meta">
-                            <span class="blog-tag">Leadership</span>
-                            <span>November 2024</span>
-                        </div>
-                        <h3>Leading AI Transformation in Enterprise Teams</h3>
-                    </div>
-                    <div class="blog-card-body">
-                        <p>Strategic approaches to introducing AI capabilities into traditional software teams. Addressing cultural challenges, skill development, and organizational change management.</p>
-                        <a href="blogs/leading-ai-transformation-enterprise-teams/" class="read-more">Read more →</a>
-                    </div>
-                </article>
+            <div class="articles-grid" id="homepageArticlesGrid">
+                <!-- Articles will be populated by JavaScript -->
             </div>
 
             <div style="text-align: center; padding: 2rem 0;">
@@ -159,7 +106,7 @@
             </div>
         </section>
 
-        <!-- Brief About Section -->
+        <!-- Brief About Section 
         <section id="brief-about" class="section brief-about" aria-labelledby="brief-about-heading">
             <h2 class="section-title" id="brief-about-heading">About</h2>
             <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary); max-width: 800px;">
@@ -168,11 +115,11 @@
             <div style="margin-top: 1.5rem;">
                 <a href="about.html" class="btn btn-secondary">Learn More About Me →</a>
             </div>
-        </section>
+        </section>-->
 
         <!-- Connect Section -->
         <section id="connect" class="section" aria-labelledby="connect-heading">
-            <h2 class="section-title" id="connect-heading">Connect & Follow</h2>
+            <h2 class="section-title" id="connect-heading">Elsewhere</h2>
             <div class="social-links">
                 <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <span>GITHUB</span>
@@ -230,6 +177,41 @@
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateIcon();
+        });
+    </script>
+
+    <!-- Articles Rendering Script -->
+    <script>
+        function renderArticles(articlesToRender) {
+            const grid = document.getElementById('homepageArticlesGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+
+            articlesToRender.forEach(article => {
+                const card = document.createElement('article');
+                card.className = 'article-card';
+                card.innerHTML = `
+                    <div class="article-image">
+                        <img src="${article.image}" alt="${article.title}">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-tag">${article.tag}</span>
+                            <span class="article-date">${article.date}</span>
+                        </div>
+                        <h3>${article.title}</h3>
+                        <p>${article.description}</p>
+                        <a href="${article.url}" class="read-more">Read more →</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Render articles on page load using shared data
+        document.addEventListener('DOMContentLoaded', () => {
+            renderArticles(articlesData);
         });
     </script>
 </body>
