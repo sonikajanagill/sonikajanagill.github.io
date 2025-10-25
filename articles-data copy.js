@@ -16,7 +16,7 @@ const articlesData = [
         tag: 'Technology',
         description: 'Explore how hackathons accelerate AI learning and skill development. Learn from my 2025 hackathon journey including AWS AI Hackathon win and insights on building real-world AI solutions.',
         url: 'articles/why-hackathons-fast-track-ai-mastery/',
-        image: 'img/hackathons.jpg'
+        image: 'img/hackathons.png'
     },
     {
         id: 3,
