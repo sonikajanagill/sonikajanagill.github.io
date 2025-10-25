@@ -3,12 +3,23 @@
    =========================== */
 
 .blog-post-header {
-    background: linear-gradient(135deg, #0a0e27 0%, #1a0f3a 30%, #2d1b4e 60%, #1a1f3a 100%);
+    background: #000000;
     color: white;
     padding: 3rem 2rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+
+[data-theme="light"] .blog-post-header {
+    background: #ffffff;
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .blog-post-header {
+        padding: 2rem 1.5rem;
+    }
 }
 
 .blog-post-header::before {
@@ -28,12 +39,18 @@
 }
 
 .blog-post-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     font-weight: 800;
     margin-bottom: 1rem;
     letter-spacing: -0.02em;
     position: relative;
     z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .blog-post-header h1 {
+        font-size: 1.75rem;
+    }
 }
 
 .blog-post-meta {
@@ -48,65 +65,105 @@
 }
 
 .blog-post-content {
-    max-width: 800px;
+    max-width: 680px;
     margin: 0 auto;
-    padding: var(--spacing-2xl) var(--spacing-lg);
+    padding: 3rem 2rem;
+    font-family: var(--font-serif), Georgia, serif;
 }
 
 .blog-post-content h2 {
-    font-size: 2rem;
+    font-size: 1.875rem;
     font-weight: 700;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
     color: var(--text-primary);
+    font-family: var(--font-sans);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .blog-post-content h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
     color: var(--text-primary);
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
 }
 
 .blog-post-content p {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
     color: var(--text-secondary);
+    letter-spacing: 0.3px;
 }
 
 .blog-post-content ul, .blog-post-content ol {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
     color: var(--text-secondary);
-    padding-left: 2rem;
+    padding-left: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .blog-post-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .blog-post-content h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .blog-post-content h3 {
+        font-size: 1.25rem;
+        margin-top: 1.75rem;
+    }
+
+    .blog-post-content p,
+    .blog-post-content ul,
+    .blog-post-content ol {
+        font-size: 0.95rem;
+    }
+
+    .blog-post-content ul,
+    .blog-post-content ol {
+        padding-left: 1.75rem;
+    }
 }
 
 .blog-post-content li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.3px;
 }
 
 .blog-post-content code {
     background: var(--bg-code);
-    padding: 0.2rem 0.5rem;
+    padding: 0.3rem 0.6rem;
     border-radius: 4px;
     font-family: 'Courier New', monospace;
     font-size: 0.95em;
+    color: var(--primary);
 }
 
 .blog-post-content pre {
     background: var(--bg-code);
-    padding: 1.5rem;
+    padding: 1.75rem;
     border-radius: var(--radius-md);
     overflow-x: auto;
-    margin-bottom: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid var(--primary);
+    line-height: 1.6;
 }
 
 .blog-post-content pre code {
     background: none;
     padding: 0;
+    color: var(--text-primary);
 }
 
 .back-to-blogs {
@@ -117,9 +174,42 @@
     text-decoration: none;
     font-weight: 600;
     margin-bottom: 2rem;
+    margin-top: 3rem;
     transition: var(--transition);
+    font-size: 1rem;
 }
 
 .back-to-blogs:hover {
     gap: 0.75rem;
+    color: var(--primary-hover);
+}
+
+/* ===========================
+   Blog Post Footer / Author Section
+   =========================== */
+
+.blog-post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border);
+    text-align: center;
+}
+
+.blog-post-footer p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.blog-post-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.blog-post-footer a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
 }
