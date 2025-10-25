@@ -317,6 +317,40 @@ nav {
     margin-top: 2rem;
 }
 
+/* Credly Badges */
+.credly-badges {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.credly-badges a {
+    display: block;
+    transition: var(--transition);
+}
+
+.credly-badges img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: var(--transition);
+}
+
+.credly-badges a:hover img {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 24px var(--shadow), 0 0 20px var(--glow);
+}
+
+@media (max-width: 768px) {
+    .credly-badges img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
 /* ===========================
    Buttons
    =========================== */
@@ -348,14 +382,15 @@ nav {
 
 .btn-secondary {
     background: transparent;
-    color: white;
-    border: 2px solid var(--secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--border);
 }
 
 .btn-secondary:hover {
-    background: rgba(6, 182, 212, 0.1);
+    background: var(--bg-card);
+    border-color: var(--primary);
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+    box-shadow: 0 0 15px var(--glow);
 }
 
 /* ===========================
