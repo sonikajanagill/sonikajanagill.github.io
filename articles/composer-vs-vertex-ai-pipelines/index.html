@@ -49,12 +49,12 @@
         </div>
     </header>
 
-    <div style="margin: 2rem 0; text-align: center;">
-        <img src="../../img/ComposerVsVertexAI.png" alt="The native Vertex AI Pipelines visualizer automatically creates this execution graph, showing the conditional deployment workflow. Note how model evaluation determines which path executes - only models with accuracy > 0.85 proceed to endpoint creation and deployment." style="max-width: 50%; height: auto; border-radius: var(--radius-lg);">
+    <div style="margin: 0.5rem 0; text-align: center;">
+        <img src="../../img/ComposerVsVertexAI.png" alt="The native Vertex AI Pipelines visualizer automatically creates this execution graph, showing the conditional deployment workflow. Note how model evaluation determines which path executes - only models with accuracy > 0.85 proceed to endpoint creation and deployment." style="max-width: 40%; height: auto; border-radius: var(--radius-lg);">
+        <p style="text-align: center;">Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
     </div>
 
     <main class="blog-content">
-        <p style="text-align: center;">Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
         <p><strong>Your team just got budget approval for MLOps infrastructure. The architect suggests Cloud Composer for large-scale data ingestion supporting your new Gemini model fine-tuning pipeline. The ML engineers want Vertex AI Pipelines for experiment tracking and model evaluation. The data engineers are confused. Sound familiar?</strong></p>
 
         <p>This internal debate is one of the most common and critical crossroads in building a modern ML platform on Google Cloud. The stakes are high. The wrong choice can lead to six months of technical debt, frustrated teams, and a platform that fights your workflow instead of enabling it. The right choice, however, lays the foundation for a scalable, maintainable ML system for years to come.</p>
@@ -112,7 +112,7 @@
             <span>Python - Composer DAG</span>
             <div class="code-block-actions">
                 <button class="code-btn" onclick="copyCode(this)">📋 Copy</button>
-                <button class="code-btn"><a href="https://github.com" target="_blank" rel="noopener noreferrer">🔗 GitHub</a></button>
+                <button class="code-btn"><a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines" target="_blank" rel="noopener noreferrer">🔗 GitHub</a></button>
             </div>
         </div>
         <pre><code class="language-python"># Composer DAG structure for enterprise ML
@@ -168,7 +168,7 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
         </ol>
 
         <div class="key-concept">
-            <strong>🔑 KEY CONCEPT: Kubeflow Pipelines (KFP) Fully Managed</strong>
+            <strong>KEY CONCEPT: Kubeflow Pipelines (KFP) Fully Managed</strong>
             <p>It's crucial to understand that Vertex AI Pipelines is <strong>Kubeflow Pipelines (KFP) fully managed by Google</strong>. You get the full power and flexibility of KFP for defining complex ML workflows, with all the Kubernetes operational overhead completely abstracted away.</p>
         </div>
 
@@ -180,7 +180,7 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
             <span>Python - Vertex AI Pipeline Component</span>
             <div class="code-block-actions">
                 <button class="code-btn" onclick="copyCode(this)">📋 Copy</button>
-                <button class="code-btn"><a href="https://github.com" target="_blank" rel="noopener noreferrer">🔗 GitHub</a></button>
+                <button class="code-btn"><a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines" target="_blank" rel="noopener noreferrer">🔗 GitHub</a></button>
             </div>
         </div>
         <pre><code class="language-python">@component(base_image="gcr.io/your-project/ml-base:latest")
@@ -206,8 +206,15 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
             return model_resource.resource_name, accuracy
         </code></pre>
         <div class="key-concept">
-            <strong>🔑 KEY CONCEPT 1: Reusable Components</strong>
+            <strong>KEY CONCEPT 1: Reusable Components</strong>
             <p>The <code>@component</code> decorator creates a containerized, reusable pipeline step with explicit input/output typing. This enables team collaboration, reusability across pipelines, and component versioning.</p>
+        </div>
+        <div class="code-block-header">
+            <span>Python - Vertex AI Pipeline Component</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">📋 Copy</button>
+                <button class="code-btn"><a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines" target="_blank" rel="noopener noreferrer">🔗 GitHub</a></button>
+            </div>
         </div>
         <pre><code class="language-python">@component(base_image="gcr.io/your-project/ml-base:latest")
         # Built-in Vertex AI evaluation component
@@ -218,7 +225,7 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
             prediction_type="classification"
         )</code></pre>
         <div class="key-concept">
-            <strong>🔑 KEY CONCEPT 2: Native Vertex AI Integration</strong>
+            <strong>KEY CONCEPT 2: Native Vertex AI Integration</strong>
             <p>Built-in Vertex AI components deliver zero-config evaluation, managed infrastructure, experiment integration, and production readiness with built-in model governance.</p>
         </div>
 
@@ -470,7 +477,7 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
 
         
         <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-tertiary); font-size: 0.9rem;">   
-            Also published on <a href="https://medium.com/@sonika.janagill/architecture-decisions-cloud-composer-vs-vertex-ai-pipelines-for-mlops" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
+            Also published on <a href="https://medium.com/@sonika.janagill/73dcb8a39577?source=friends_link&sk=4eb8a75138dcd212a783a7b1d4935334" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
         </p>
     </main>
 
