@@ -55,11 +55,11 @@
     </div>
 
     <main class="blog-content">
-        <p><strong>Your team just got budget approval for MLOps infrastructure. The architect suggests Cloud Composer for large-scale data ingestion supporting your new Gemini model fine-tuning pipeline. The ML engineers want Vertex AI Pipelines for experiment tracking and model evaluation. The data engineers are confused. Sound familiar?</strong></p>
+        <p><strong>Your team just got budget approval for MLOps infrastructure. The architect recommends Cloud Composer for large-scale data ingestion to support your new Gemini model fine-tuning pipeline. The ML engineers want Vertex AI Pipelines for experiment tracking and model evaluation. The data engineers are confused. Sound familiar?</strong></p>
 
         <p>This internal debate is one of the most common and critical crossroads in building a modern ML platform on Google Cloud. The stakes are high. The wrong choice can lead to six months of technical debt, frustrated teams, and a platform that fights your workflow instead of enabling it. The right choice, however, lays the foundation for a scalable, maintainable ML system for years to come.</p>
 
-        <p>Too often, this decision is made based on team familiarity or feature-list buzzwords, not a clear-eyed assessment of actual needs. This article provides a practical decision framework that prioritizes team skills, data complexity, and long-term budget—helping you move beyond the hype to an architecture that truly fits.</p>
+        <p>Too often, this decision is made based on team familiarity or feature-list buzzwords, not a clear-eyed assessment of actual needs. This article provides a practical decision framework that prioritises team skills, data complexity, and long-term budget—helping you move beyond the hype to an architecture that truly fits.</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
@@ -475,9 +475,26 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
 
         <p><strong>Coming Next</strong>: "Multi-Cloud Data Access: Workload Identity Federation Patterns" - diving deep into enterprise security architecture for MLOps.</p>
 
-        
-        <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-tertiary); font-size: 0.9rem;">   
-            Also published on <a href="https://medium.com/@sonika.janagill/73dcb8a39577?source=friends_link&sk=4eb8a75138dcd212a783a7b1d4935334" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
+        <div class="article-share">
+            <p class="share-title">Share this article:</p>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/&text=Architecture%20Decisions:%20Cloud%20Composer%20vs%20Vertex%20AI%20Pipelines%20-%20A%20practical%20decision%20framework%20by%20@sonikajanagill" target="_blank" rel="noopener noreferrer" class="share-btn">
+                    <img src="../../img/x-icon.png" alt="X">
+                    X
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/" target="_blank" rel="noopener noreferrer" class="share-btn">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                    LinkedIn
+                </a>
+                <button onclick="copyShareLink(this)" class="share-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    Copy Link
+                </button>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--text-tertiary); font-size: 0.9rem;">   
+            Also published on <a href="https://medium.com/@sonika.janagill/cloud-composer-vs-vertex-ai-pipelines-73dcb8a39577?source=friends_link&sk=4eb8a75138dcd212a783a7b1d4935334" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
         </p>
     </main>
 
@@ -488,6 +505,21 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
     </footer>
 
     <script>
+        // Copy share link to clipboard
+        function copyShareLink(button) {
+            const url = 'https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/';
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy link:', err);
+                alert('Failed to copy link');
+            });
+        }
+
         // Check for saved theme preference or default to dark mode
         const theme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', theme);

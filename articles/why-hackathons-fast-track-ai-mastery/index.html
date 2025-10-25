@@ -25,129 +25,7 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles.css">
-    <style>
-        .blog-header {
-            background: var(--bg-main);
-            color: var(--text-primary);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .blog-header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            flex-wrap: wrap;
-        }
-
-        .blog-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .blog-content h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            letter-spacing: -0.01em;
-        }
-
-        .blog-content h3 {
-            font-size: 1.375rem;
-            font-weight: 700;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-primary);
-        }
-
-        .blog-content p {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-content ul {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-content li {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .blog-content a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .blog-content a:hover {
-            color: var(--primary-hover);
-            text-decoration: underline;
-        }
-
-        .blog-image {
-            width: 100%;
-            max-width: 100%;
-            margin: 2rem 0;
-            border-radius: var(--radius-lg);
-            box-shadow: 0 4px 12px var(--shadow);
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .back-link:hover {
-            gap: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .blog-header h1 {
-                font-size: 1.75rem;
-            }
-
-            .blog-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .blog-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .blog-content h3 {
-                font-size: 1.125rem;
-            }
-
-            .blog-content p,
-            .blog-content li {
-                font-size: 0.95rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../article-styles.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -232,7 +110,25 @@
 
         <p>Hackathons have been my key to staying ahead in AI, offering a unique blend of learning and impact that traditional methods can't match. They're perfect for testing ideas, refining skills, and growing professionally.</p>
 
-        <p style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-tertiary); font-size: 0.9rem;">
+        <div class="article-share">
+            <p class="share-title">Share this article:</p>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/why-hackathons-fast-track-ai-mastery&text=Why%20Hackathons%20Are%20Your%20Fast-Track%20to%20AI%20Mastery%20by%20@sonikajanagill" target="_blank" rel="noopener noreferrer" class="share-btn">
+                    <img src="../../img/x-icon.png" alt="X">
+                    X
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/why-hackathons-fast-track-ai-mastery" target="_blank" rel="noopener noreferrer" class="share-btn">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                    LinkedIn
+                </a>
+                <button onclick="copyShareLink(this)" class="share-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    Copy Link
+                </button>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--text-tertiary); font-size: 0.9rem;">
             Originally published on <a href="https://medium.com/@sonika.janagill/why-hackathons-are-your-fast-track-to-ai-mastery-3e9b130804a8" target="_blank" rel="noopener noreferrer">Medium</a>
         </p>
     </main>
@@ -246,6 +142,21 @@
 
     <!-- Dark Mode Toggle Script -->
     <script>
+        // Copy share link to clipboard
+        function copyShareLink(button) {
+            const url = 'https://sonikajanagill.com/articles/why-hackathons-fast-track-ai-mastery/';
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy link:', err);
+                alert('Failed to copy link');
+            });
+        }
+
         const theme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
 

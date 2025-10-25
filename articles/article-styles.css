@@ -265,6 +265,62 @@
 }
 
 /* ===========================
+   Share Section
+   =========================== */
+
+.article-share {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.share-title {
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-primary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.share-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.share-btn svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+.share-btn img {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+/* ===========================
    Responsive Design
    =========================== */
 
