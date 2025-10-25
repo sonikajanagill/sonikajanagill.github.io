@@ -1,15 +1,6 @@
 # Robots.txt for sonikajanagill.com
 User-agent: *
 Allow: /
-Allow: /blogs/
-Allow: /public/
-
-# Disallow admin and private areas (if any)
-Disallow: /admin/
-Disallow: /private/
 
 # Sitemap location
 Sitemap: https://sonikajanagill.com/sitemap.xml
-
-# Crawl delay (optional - allows crawlers to pace requests)
-Crawl-delay: 1

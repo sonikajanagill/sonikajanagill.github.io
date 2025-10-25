@@ -2,56 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://sonikajanagill.com/</loc>
-        <lastmod>2025-01-24</lastmod>
+        <lastmod>2025-10-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://sonikajanagill.com/#about</loc>
-        <lastmod>2025-01-24</lastmod>
+        <loc>https://sonikajanagill.com/about.html</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sonikajanagill.com/contact.html</loc>
+        <lastmod>2025-10-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://sonikajanagill.com/#expertise</loc>
-        <lastmod>2025-01-24</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://sonikajanagill.com/#projects</loc>
-        <lastmod>2025-01-24</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://sonikajanagill.com/#blog</loc>
-        <lastmod>2025-01-24</lastmod>
+        <loc>https://sonikajanagill.com/articles/</loc>
+        <lastmod>2025-10-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://sonikajanagill.com/blogs/building-production-ready-rag-systems/</loc>
+        <loc>https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/</loc>
+        <lastmod>2025-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sonikajanagill.com/articles/why-hackathons-fast-track-ai-mastery/</loc>
+        <lastmod>2025-07-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://sonikajanagill.com/articles/building-production-ready-rag-systems/</loc>
         <lastmod>2025-01-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://sonikajanagill.com/blogs/mlops-vertex-ai-best-practices/</loc>
+        <loc>https://sonikajanagill.com/articles/mlops-vertex-ai-best-practices/</loc>
         <lastmod>2024-12-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://sonikajanagill.com/blogs/leading-ai-transformation-enterprise-teams/</loc>
+        <loc>https://sonikajanagill.com/articles/leading-ai-transformation-enterprise-teams/</loc>
         <lastmod>2024-11-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://sonikajanagill.com/#contact</loc>
-        <lastmod>2025-01-24</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
     </url>
 </urlset>
