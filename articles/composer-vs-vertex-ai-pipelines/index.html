@@ -26,12 +26,20 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="/" class="nav-logo">Sonika Janagill</a>
+            <a href="/" class="nav-logo">
+                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+            </a>
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
                 <li><a href="/about.html">About</a></li>
                 <li><a href="/articles/">Articles</a></li>
-                <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><span class="theme-icon">DARK</span></button></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -61,38 +69,72 @@
 
         <p>Too often, this decision is made based on team familiarity or feature-list buzzwords, not a clear-eyed assessment of actual needs. This article provides a practical decision framework that prioritises team skills, data complexity, and long-term budget—helping you move beyond the hype to an architecture that truly fits.</p>
 
+        <div class="key-concept">
+            <p><b>Companion Resources:</b> Full working examples and Terraform configurations available at <a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines">github.com/sonikajanagill/composer-vs-vertex-ai-pipelines</a></p>
+        </div>
+
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>Section 1: The Real Enterprise Dilemma</h2>
+        <h2>The Real Enterprise Dilemma</h2>
 
         <p>Choosing between Cloud Composer and Vertex AI Pipelines is about more than just picking a tool; it's a fundamental decision that will shape your engineering culture, team dynamics, and operational efficiency.</p>
 
         <h3>Why This Decision Matters</h3>
 
-        <p>The tool you select becomes the backbone of your data and ML operations. Cloud Composer, as a managed Apache Airflow service, brings a powerful, general-purpose workflow orchestration paradigm. Vertex AI Pipelines, a fully managed Kubeflow Pipelines (KFP) service, offers a native, ML-centric environment. This choice dictates how your teams collaborate. A misstep here isn't a simple "rip and replace"; migration costs can be 10x the initial setup, involving not just technology but retraining teams and re-architecting processes. Ultimately, a tool that isn't adopted by the team is worthless, making developer experience and skill-set alignment more critical than raw feature completeness.</p>
+        <p>The tool you select becomes the backbone of your data and ML operations. Cloud Composer, as a managed Apache Airflow service, brings powerful, general-purpose workflow orchestration. Vertex AI Pipelines, a fully managed Kubeflow Pipelines (KFP) service, offers a native, ML-centric environment.</p>
+
+        <p><b>Migration costs can be 10x the initial setup</b>, involving not just technology but retraining teams and re-architecting processes. Developer experience and skill-set alignment prove more critical than raw feature completeness.</p>
 
         <h3>Common Decision Patterns (Good and Bad)</h3>
 
-        <p><span class="icon-wrapper icon-bad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span><strong>"We Know Airflow, So Let's Use Composer"</strong>: This comfort-first approach ignores the specific needs of ML workflows. You might end up building complex experiment tracking and model versioning from scratch, reinventing the wheel that Vertex AI Pipelines already provides.</p>
+        <p>✘ <strong>Comfort-First</strong>: "We know Airflow, so Composer" ignores ML-specific needs, leading to custom experiment tracking development.</p>
+        <p>✘ <strong>Feature-First</strong>: "ML team wants Vertex AI" backfires when most work involves complex data engineering outside the Vertex AI ecosystem.</p>
+        <p>✔ <strong>Requirements-First</strong>: Match tool capabilities to actual workflow complexity—data plumbing vs. ML experimentation.</p>
 
-        <p><span class="icon-wrapper icon-bad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span><strong>"The ML Team Wants Vertex AI Pipelines, So Let's Use It"</strong>: While well-intentioned, this can backfire if the majority of the workflow involves complex, non-ML data engineering. Forcing data engineers to contort ML-centric tools for broad data integration can be inefficient.</p>
+        <h3><a href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs">Generative AI integration on Vertex AI</a></h3>
 
-        <p><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span><strong>The Good Pattern</strong>: Match tool capabilities to actual workflow requirements. This involves a dispassionate analysis of where the true complexity lies in your end-to-end process—is it in the data preparation and integration, or in the ML experimentation and model management?</p>
+        <p>The landscape has evolved dramatically with the rise of large language models:</p>
 
-        <h3>What Most Articles Miss</h3>
+        <table>
+            <tr>
+                <th>Capability</th>
+                <th>Cloud Composer</th>
+                <th>Vertex AI Pipelines</th>
+            </tr>
+            <tr>
+                <td><strong>Gemini Integration</strong></td>
+                <td>Custom operators required</td>
+                <td>✔ Native Gemini components</td>
+            </tr>
+            <tr>
+                <td><strong>RAG Pipelines</strong></td>
+                <td>Manual implementation</td>
+                <td>✔ Pre-built RAG components</td>
+            </tr>
+            <tr>
+                <td><strong>Vector Embeddings</strong></td>
+                <td>External orchestration</td>
+                <td>✔ Built-in Vertex AI Vector Search</td>
+            </tr>
+            <tr>
+                <td><strong>LLM Fine-tuning</strong></td>
+                <td>Custom workflow design</td>
+                <td>✔ Integrated tuning pipelines</td>
+            </tr>
+            <tr>
+                <td><strong>Multi-modal AI</strong></td>
+                <td>Complex DAG orchestration</td>
+                <td>✔ Native multi-modal support</td>
+            </tr>
+        </table>
 
-        <p>Many comparisons stop at a feature checklist. The real differentiators lie deeper:</p>
-
-        <ul>
-            <li><strong>Service Boundary Considerations</strong>: Where does the pipeline's responsibility end and other services' begin? Composer excels at choreographing across many different services (BigQuery, Cloud Storage, external APIs), while Vertex AI Pipelines is optimized for a deep, cohesive integration within the Vertex AI ecosystem.</li>
-            <li><strong>Team Skill Matrix Impact</strong>: The learning curve for a team of data engineers proficient in SQL and Bash is very different from that of ML engineers living in Python and Jupyter notebooks.</li>
-            <li><strong>Long-term Maintenance Reality</strong>: A "managed" service doesn't mean zero maintenance. Composer requires DAG and dependency management, while Vertex AI Pipelines requires component and pipeline definition upkeep.</li>
-            <li><strong>Integration Complexity</strong>: Consider how the tool fits with your existing CI/CD, monitoring, and security frameworks.</li>
-        </ul>
+        <div class="key-concept">
+            <p><b>Key Insight:</b> For teams building LLM applications in 2025, Vertex AI Pipelines offers significant architectural advantages through native integration with Gemini, Vector Search, and Foundation Models.</p>
+        </div>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>Section 2: Composer's Sweet Spot - Macro Pipeline Domain</h2>
+        <h2>Composer's Sweet Spot - Macro Pipeline Domain</h2>
 
         <p>Cloud Composer is your go-to choice for <strong>macro-orchestration</strong>—managing complex, multi-system workflows where ML is just one part of a larger business process.</p>
 
@@ -116,29 +158,32 @@
             </div>
         </div>
         <pre><code class="language-python"># Composer DAG structure for enterprise ML
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
+from airflow.providers.google.cloud.operators.vertex_ai.custom_job import CreateCustomTrainingJobOperator
+
 dag = DAG('enterprise_ml_pipeline', schedule_interval='@weekly')
 
-# Data extraction from multiple sources
-extract_sales = BashOperator(task_id='extract_sales_data', bash_command='...', dag=dag)
-extract_marketing = GCSToPostgresOperator(task_id='extract_marketing', ...)
+# Data extraction and validation pipeline
+extract_sources = BashOperator(task_id='extract_multi_source_data', 
+                            bash_command='gsutil -m cp gs://data-lake/* gs://staging/', dag=dag)
+validate_data = PythonOperator(task_id='validate_data_quality', 
+                            python_callable=validate_schema_and_quality, dag=dag)
 
-# Data quality and governance
-data_validation = PythonOperator(task_id='validate_data_quality', python_callable=validate_data, dag=dag)
-compliance_check = EmailOperator(task_id='notify_compliance_team', ...)
-
-# ML workflow trigger using Vertex AI integration
+# Trigger specialized ML pipeline
 trigger_vertex_training = CreateCustomTrainingJobOperator(
     task_id='start_vertex_ai_pipeline',
     staging_bucket='gs://your-bucket/staging',
     display_name='ml-training-pipeline',
-    container_uri='gcr.io/your-project/ml-trainer:latest',
-    machine_type='n1-standard-4',
+    container_uri='us-docker.pkg.dev/your-project/ml-trainer:latest',  # Updated to Artifact Registry
+    machine_type='e2-standard-4',  # Updated machine type
     replica_count=1,
     dag=dag
 )
 
 # Define task dependencies
-extract_sales >> extract_marketing >> data_validation >> compliance_check >> trigger_vertex_training</code></pre>
+extract_sources >> validate_data >> trigger_vertex_training</code></pre>
 
         <h3>Cost & Complexity Reality</h3>
 
@@ -261,23 +306,23 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
             </tr>
             <tr>
                 <td>Data Engineering</td>
-                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Airflow familiarity</td>
-                <td><span class="icon-wrapper icon-bad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span> New concepts</td>
+                <td>✔ Airflow familiarity</td>
+                <td>✘ New concepts</td>
             </tr>
             <tr>
                 <td>ML Engineering</td>
-                <td><span class="icon-wrapper icon-bad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span> Limited ML features</td>
-                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Native Vertex AI</td>
+                <td>✘ Limited ML features</td>
+                <td>✔ Native Vertex AI</td>
             </tr>
             <tr>
                 <td>Infrastructure</td>
-                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Managed</td>
-                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Managed (no K8s)</td>
+                <td>✔ Managed</td>
+                <td>✔ Managed (no K8s)</td>
             </tr>
             <tr>
                 <td>Gen AI/LLMs</td>
-                <td><span class="icon-wrapper icon-bad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></span> Manual setup</td>
-                <td><span class="icon-wrapper icon-good"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Native Gemini integration</td>
+                <td>✘ Manual setup</td>
+                <td>✔ Native Gemini integration</td>
             </tr>
         </table>
 
@@ -525,15 +570,6 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
         document.documentElement.setAttribute('data-theme', theme);
 
         const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.querySelector('.theme-icon');
-
-        // Update icon based on current theme
-        function updateIcon() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            themeIcon.textContent = currentTheme === 'dark' ? 'LIGHT' : 'DARK';
-        }
-
-        updateIcon();
 
         // Toggle theme
         themeToggle.addEventListener('click', () => {
@@ -542,7 +578,6 @@ extract_sales >> extract_marketing >> data_validation >> compliance_check >> tri
 
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            updateIcon();
         });
     </script>
     <script src="../article-utils.js"></script>

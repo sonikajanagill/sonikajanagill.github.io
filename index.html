@@ -73,14 +73,18 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="nav-logo">Sonika Janagill</a>
+            <a href="/" class="nav-logo">
+                <img src="img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+            </a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="articles/">Articles</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="theme-icon">DARK</span>
+                        <img src="img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
                     </button>
                 </li>
             </ul>
@@ -108,16 +112,16 @@
         <section id="connect" class="section" aria-labelledby="connect-heading">
             <h2 class="section-title" id="connect-heading">Let's Connect</h2>
             <div class="social-links">
-                <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <span>GITHUB</span>
-                    <span class="arrow">↗</span>
-                </a>
                 <a href="https://linkedin.com/in/sonikaj" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <span>LINKEDIN</span>
                     <span class="arrow">↗</span>
                 </a>
                 <a href="https://medium.com/@sonika.janagill" target="_blank" rel="noopener noreferrer" aria-label="Medium">
                     <span>MEDIUM</span>
+                    <span class="arrow">↗</span>
+                </a>
+                <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <span>GITHUB</span>
                     <span class="arrow">↗</span>
                 </a>
                 <a href="https://www.credly.com/users/sonika-janagill" target="_blank" rel="noopener noreferrer" aria-label="Credly">
@@ -146,15 +150,6 @@
         document.documentElement.setAttribute('data-theme', theme);
 
         const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.querySelector('.theme-icon');
-
-        // Update icon based on current theme
-        function updateIcon() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            themeIcon.textContent = currentTheme === 'dark' ? 'LIGHT' : 'DARK';
-        }
-
-        updateIcon();
 
         // Toggle theme
         themeToggle.addEventListener('click', () => {
@@ -163,7 +158,6 @@
 
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            updateIcon();
         });
     </script>
 
@@ -178,18 +172,24 @@
             articlesToRender.forEach(article => {
                 const card = document.createElement('article');
                 card.className = 'article-card';
+                // Handle both single tag (legacy) and multiple tags
+                const tags = Array.isArray(article.tags) ? article.tags : [article.tag];
+                const tagsHTML = tags.map(tag => `<span class="article-tag">#${tag}</span>`).join('');
                 card.innerHTML = `
                     <div class="article-image">
                         <img src="${article.image}" alt="${article.title}">
+                        <span class="article-date">${article.date}</span>
                     </div>
                     <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-tag">${article.tag}</span>
-                            <span class="article-date">${article.date}</span>
-                        </div>
                         <h3>${article.title}</h3>
+                        <div class="article-meta">
+                            ${tagsHTML}
+                        </div>
                         <p>${article.description}</p>
-                        <a href="${article.url}" class="read-more">Read more →</a>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <a href="${article.url}" class="read-more">Read more →</a>
+                            <span style="font-size: 0.8rem; color: var(--text-tertiary);">${article.readTime || ''}</span>
+                        </div>
                     </div>
                 `;
                 grid.appendChild(card);

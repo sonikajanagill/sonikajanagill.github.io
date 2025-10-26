@@ -127,15 +127,44 @@ nav {
 }
 
 .nav-logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
     transition: var(--transition);
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
-.nav-logo:hover {
-    color: var(--primary);
+.nav-logo img {
+    max-height: 30px;
+    max-width: 30px;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+/* Default: Dark mode - show dark logo, hide light logo */
+.nav-logo .logo-light {
+    display: none !important;
+}
+
+.nav-logo .logo-dark {
+    display: inline-block !important;
+}
+
+/* Light mode - show light logo, hide dark logo */
+[data-theme="light"] .nav-logo .logo-dark {
+    display: none !important;
+}
+
+[data-theme="light"] .nav-logo .logo-light {
+    display: inline-block !important;
+}
+
+.nav-logo:hover img {
+    opacity: 0.8;
 }
 
 .nav-links {
@@ -146,7 +175,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--text-secondary);
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
@@ -179,10 +208,10 @@ nav {
     background: transparent;
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 0.5rem 0.75rem;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     transition: var(--transition);
     font-size: 0.75rem;
@@ -193,7 +222,35 @@ nav {
 
 .theme-toggle:hover {
     border-color: var(--primary);
-    color: var(--primary);
+}
+
+/* Theme icon images */
+.theme-icon {
+    width: 45px;
+    height: 20px;
+    object-fit: cover;
+    transition: var(--transition);
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* Default: Dark mode - show moon, hide sun */
+.theme-icon-light {
+    display: none !important;
+}
+
+.theme-icon-dark {
+    display: inline-block !important;
+}
+
+/* Light mode - show sun, hide moon */
+[data-theme="light"] .theme-icon-dark {
+    display: none !important;
+}
+
+[data-theme="light"] .theme-icon-light {
+    display: inline-block !important;
 }
 
 .hashtag-btn {
@@ -724,6 +781,7 @@ nav {
     height: 200px;
     overflow: hidden;
     background: var(--bg-secondary);
+    position: relative;
 }
 
 .article-image img {
@@ -750,22 +808,30 @@ nav {
     align-items: center;
     margin-bottom: 1rem;
     font-size: 0.85rem;
-}
-
-.article-tag {
-    background: transparent !important;
-    color: var(--primary) !important;
-    border: 1.5px solid var(--primary) !important;
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 0 8px rgba(255, 68, 68, 0.2) !important;
+    flex-wrap: nowrap;
 }
 
 .article-date {
-    color: var(--text-tertiary);
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    white-space: nowrap;
+    color: var(--text-inverse);
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    display: none;
+}
+
+/* Uncomment below to show article dates */
+/* .article-date {
+    display: block !important;
+} */
+
+.article-tag {
+    color: var(--primary);
     font-weight: 500;
 }
 
@@ -989,12 +1055,11 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 0;
-    padding-left: 0;
-    color: var(--text-primary);
+    padding: 0.5rem 0;
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     letter-spacing: 0.5px;
     transition: var(--transition);
 }
@@ -1005,20 +1070,16 @@ footer {
 }
 
 .social-links a .arrow {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: var(--transition);
-    margin-left: -0.5rem;
-    opacity: 0;
+    margin-left: 0.5rem;
+    opacity: 1;
+    color: var(--text-primary);
+    transform: translate(0, 0);
 }
 
 .social-links a:hover .arrow {
-    transform: translate(0, 0);
-    margin-left: 0;
-    opacity: 1;
-}
-
-[data-theme="dark"] .social-links a {
-    color: var(--text-primary);
+    transform: translate(4px, 0);
 }
 
 [data-theme="dark"] .social-links a:hover {

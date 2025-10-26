@@ -26,14 +26,18 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="../" class="nav-logo">Sonika Janagill</a>
+            <a href="../" class="nav-logo">
+                <img src="../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+            </a>
             <ul class="nav-links">
                 <li><a href="../about.html">About</a></li>
                 <li><a href="./">Articles</a></li>
                 <li><a href="../contact.html">Contact</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="theme-icon">DARK</span>
+                        <img src="../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
                     </button>
                 </li>
             </ul>
@@ -56,7 +60,7 @@
                 <button class="hashtag-btn" data-tag="AI/ML">#AI/ML</button>
                 <button class="hashtag-btn" data-tag="MLOps">#MLOps</button>
                 <button class="hashtag-btn" data-tag="Leadership">#Leadership</button>
-                <button class="hashtag-btn" data-tag="Technical">#Technical</button>
+                <button class="hashtag-btn" data-tag="Technology">#Technology</button>
             </div>
         </div>
     </section>
@@ -83,14 +87,6 @@
         document.documentElement.setAttribute('data-theme', theme);
 
         const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.querySelector('.theme-icon');
-
-        function updateIcon() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            themeIcon.textContent = currentTheme === 'dark' ? 'LIGHT' : 'DARK';
-        }
-
-        updateIcon();
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -98,7 +94,6 @@
 
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            updateIcon();
         });
     </script>
 
@@ -123,18 +118,24 @@
             filteredArticles.forEach(article => {
                 const card = document.createElement('article');
                 card.className = 'article-card';
+                // Handle both single tag (legacy) and multiple tags
+                const tags = Array.isArray(article.tags) ? article.tags : [article.tag];
+                const tagsHTML = tags.map(tag => `<span class="article-tag">#${tag}</span>`).join('');
                 card.innerHTML = `
                     <div class="article-image">
                         <img src="${article.image}" alt="${article.title}">
+                        <span class="article-date">${article.date}</span>
                     </div>
                     <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-tag">#${article.tag}</span>
-                            <span class="article-date">${article.date}</span>
-                        </div>
                         <h3>${article.title}</h3>
+                        <div class="article-meta">
+                            ${tagsHTML}
+                        </div>
                         <p>${article.description}</p>
-                        <a href="${article.url}" class="read-more">Read Article →</a>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <a href="${article.url}" class="read-more">Read Article →</a>
+                            <span style="font-size: 0.8rem; color: var(--text-tertiary);">${article.readTime || ''}</span>
+                        </div>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -153,14 +154,29 @@
                 const tag = btn.dataset.tag;
                 const filtered = tag === 'all' 
                     ? articles 
-                    : articles.filter(a => a.tag === tag);
+                    : articles.filter(a => {
+                        const tags = Array.isArray(a.tags) ? a.tags : [a.tag];
+                        return tags.includes(tag);
+                    });
                 
                 renderArticles(filtered);
             });
         });
 
-        // Initial render
-        renderArticles(articles);
+        // Check for tag query parameter and auto-filter if present
+        const urlParams = new URLSearchParams(window.location.search);
+        const tagParam = urlParams.get('tag');
+        
+        if (tagParam) {
+            // Find and click the corresponding filter button
+            const targetBtn = Array.from(filterButtons).find(btn => btn.dataset.tag === tagParam);
+            if (targetBtn) {
+                targetBtn.click();
+            }
+        } else {
+            // Initial render with all articles
+            renderArticles(articles);
+        }
     </script>
 </body>
 </html>

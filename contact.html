@@ -95,6 +95,12 @@
             margin-bottom: 0.5rem;
         }
 
+        .contact-link-image {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
         .contact-link-card .link-label {
             font-size: 1.125rem;
             font-weight: 700;
@@ -131,9 +137,10 @@
 
         @media (max-width: 768px) {
             .contact-links-grid {
-                grid-template-columns: 0.5fr;
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
                 gap: 0.5rem;
                 padding: 0.5rem 0;
+                max-width: 100%;
             }
 
             .contact-hero h1 {
@@ -143,6 +150,11 @@
             .contact-link-card {
                 padding: 1.5rem 1rem;
             }
+
+            .contact-link-image {
+                width: 56px;
+                height: 56px;
+            }
         }
     </style>
 </head>
@@ -150,14 +162,18 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="nav-logo">Sonika Janagill</a>
+            <a href="/" class="nav-logo">
+                <img src="img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+            </a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="articles/">Articles</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="theme-icon">DARK</span>
+                        <img src="img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
                     </button>
                 </li>
             </ul>
@@ -191,10 +207,6 @@
 
                 <a href="https://medium.com/@sonika.janagill" target="_blank" rel="noopener noreferrer" class="contact-link-card" aria-label="Medium">
                     <img src="../img/medium-icon.png" alt="Medium" class="contact-link-image">
-                </a>
-
-                <a href="https://www.credly.com/users/sonika-janagill" target="_blank" rel="noopener noreferrer" class="contact-link-card" aria-label="Credly">
-                    <img src="../img/credly-icon.png" alt="Credly" class="contact-link-image">
                 </a>
             </div>
         </section>
@@ -271,15 +283,6 @@
         document.documentElement.setAttribute('data-theme', theme);
 
         const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.querySelector('.theme-icon');
-
-        // Update icon based on current theme
-        function updateIcon() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            themeIcon.textContent = currentTheme === 'dark' ? 'LIGHT' : 'DARK';
-        }
-
-        updateIcon();
 
         // Toggle theme
         themeToggle.addEventListener('click', () => {
@@ -288,7 +291,6 @@
 
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            updateIcon();
         });
     </script>
 </body>

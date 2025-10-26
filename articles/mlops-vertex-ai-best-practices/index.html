@@ -23,14 +23,18 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="../../" class="nav-logo">Sonika Janagill</a>
+            <a href="/" class="nav-logo">
+                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+            </a>
             <ul class="nav-links">
                 <li><a href="../../about.html">About</a></li>
                 <li><a href="../../articles/">Articles</a></li>
                 <li><a href="../../contact.html">Contact</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="theme-icon">DARK</span>
+                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
                     </button>
                 </li>
             </ul>
@@ -39,6 +43,7 @@
 
     <!-- Blog Post Header -->
     <header class="blog-post-header">
+        <a href="/" class="back-link">← Back to Home</a>
         <h1>MLOps on Vertex AI: Best Practices</h1>
         <div class="blog-post-meta">
             <span class="blog-tag">MLOps</span>
@@ -244,14 +249,6 @@
         document.documentElement.setAttribute('data-theme', theme);
 
         const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.querySelector('.theme-icon');
-
-        function updateIcon() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
-        }
-
-        updateIcon();
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -259,8 +256,8 @@
 
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            updateIcon();
         });
     </script>
+    <script src="../article-utils.js"></script>
 </body>
 </html>
