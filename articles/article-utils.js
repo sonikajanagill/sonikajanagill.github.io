@@ -15,6 +15,64 @@ function initializeImageTooltips() {
 }
 
 /**
+ * Initialize image lightbox modal for clickable full-size viewing
+ */
+function initializeImageLightbox() {
+    // Create modal container if it doesn't exist
+    let modal = document.getElementById('imageModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'imageModal';
+        modal.className = 'image-modal';
+        modal.innerHTML = `
+            <div class="image-modal-content">
+                <span class="image-modal-close">&times;</span>
+                <img id="modalImage" src="" alt="">
+                <div class="image-modal-caption" id="modalCaption"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeBtn = document.querySelector('.image-modal-close');
+
+    // Add click listeners to all blog images
+    document.querySelectorAll('.blog-content img').forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            modal.classList.add('active');
+            modalImage.src = img.src;
+            modalCaption.textContent = img.alt || '';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal when clicking the X button
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+/**
  * Copy code block to clipboard
  * @param {HTMLElement} button - The copy button element
  */
@@ -83,6 +141,7 @@ function injectArticleHashtags() {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     initializeImageTooltips();
+    initializeImageLightbox();
     injectArticleHashtags();
     
     // Initialize Highlight.js for syntax highlighting

@@ -58,7 +58,7 @@
     </header>
 
     <div style="margin: 0.5rem 0; text-align: center;">
-        <img src="../../img/ComposerVsVertexAI.png" alt="The native Vertex AI Pipelines visualizer automatically creates this execution graph, showing the conditional deployment workflow. Note how model evaluation determines which path executes - only models with accuracy > 0.85 proceed to endpoint creation and deployment." style="max-width: 40%; height: auto; border-radius: var(--radius-lg);">
+        <img src="../../img/ComposerVsVertexAI.png" alt="The native Vertex AI Pipelines visualiser automatically creates this execution graph, showing the conditional deployment workflow. Note how model evaluation determines which path executes - only models with accuracy > 0.85 proceed to endpoint creation and deployment." style="max-width: 40%; height: auto; border-radius: var(--radius-lg);">
         <p style="text-align: center;">Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
     </div>
 
@@ -75,7 +75,7 @@
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>The Real Enterprise Dilemma</h2>
+        <h2>The Enterprise Dilemma</h2>
 
         <p>Choosing between Cloud Composer and Vertex AI Pipelines is about more than just picking a tool; it's a fundamental decision that will shape your engineering culture, team dynamics, and operational efficiency.</p>
 
@@ -129,12 +129,12 @@
         </table>
 
         <div class="key-concept">
-            <p><b>Key Insight:</b> For teams building LLM applications in 2025, Vertex AI Pipelines offers significant architectural advantages through native integration with Gemini, Vector Search, and Foundation Models.</p>
+            <p>For teams building LLM applications in 2025, Vertex AI Pipelines offers significant architectural advantages through native integration with Gemini, Vector Search, and Foundation Models.</p>
         </div>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>Composer's Sweet Spot - Macro Pipeline Domain</h2>
+        <h2>Composer's Sweet Spot: Macro Pipeline Domain</h2>
 
         <p>Cloud Composer is your go-to choice for <strong>macro-orchestration</strong>—managing complex, multi-system workflows where ML is just one part of a larger business process.</p>
 
@@ -146,9 +146,9 @@
             <li><strong>Architecture Patterns</strong>: Typical patterns include orchestrating the entire flow from a data lake to a feature store, then triggering a model training job. It's ideal for batch-processing-heavy environments and scenarios requiring extensive coordination with external systems for governance and compliance.</li>
         </ol>
 
-        <h3>Real Implementation Example</h3>
+        <h3>Implementation Example</h3>
 
-        <p>The following DAG snippet illustrates how Composer acts as the central conductor, handling data extraction, quality checks, and finally triggering a specialized ML pipeline on Vertex AI.</p>
+        <p>The following DAG (<a href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html">Directed Acyclic Graph</a>) snippet illustrates how Composer acts as the central conductor, handling data extraction, quality checks, and finally triggering a specialised ML pipeline on Vertex AI.</p>
 
         <div class="code-block-header">
             <span>Python - Composer DAG</span>
@@ -171,7 +171,7 @@ extract_sources = BashOperator(task_id='extract_multi_source_data',
 validate_data = PythonOperator(task_id='validate_data_quality', 
                             python_callable=validate_schema_and_quality, dag=dag)
 
-# Trigger specialized ML pipeline
+# Trigger specialised ML pipeline
 trigger_vertex_training = CreateCustomTrainingJobOperator(
     task_id='start_vertex_ai_pipeline',
     staging_bucket='gs://your-bucket/staging',
@@ -184,40 +184,41 @@ trigger_vertex_training = CreateCustomTrainingJobOperator(
 
 # Define task dependencies
 extract_sources >> validate_data >> trigger_vertex_training</code></pre>
+        <p>Reference: <a href="https://airflow.apache.org/docs/apache-airflow-providers-google/6.4.0/_api/airflow/providers/google/cloud/operators/vertex_ai/custom_job/index.html">CreateCustomTrainingJobOperator</a>.</p>
 
-        <h3>Cost & Complexity Reality</h3>
+        <h3>Cost & Performance Reality</h3>
 
+        <p>From my experience with enterprise deployments:</p>
         <ul>
-            <li><strong>Setup</strong>: Medium complexity. While Airflow itself is managed, designing, deploying, and testing DAGs requires careful planning.</li>
-            <li><strong>Maintenance</strong>: Low. Google handles the underlying Airflow infrastructure, but your team manages DAG code, Python dependencies, and scaling configurations.</li>
-            <li><strong>Cost</strong>: Predictable. A small environment starts around $200-500 per month, making it suitable for always-on workflows.</li>
-            <li><strong>Learning Curve</strong>: Steep for teams without Airflow experience, but manageable for seasoned data engineers.</li>
+            <li><strong>Setup Complexity</strong>: Medium - while Airflow infrastructure is managed, designing robust DAGs requires careful planning and testing.</li>
+            <li><strong>Ongoing Maintenance</strong>: Low operational overhead since Google manages the underlying infrastructure, but your team owns DAG code, dependency management, and scaling configurations.</li>
+            <li><strong>Cost Structure</strong>: Predictable monthly costs starting around $200–500 for small environments. This makes it suitable for always-on workflows where you need consistent orchestration capability.</li>
+            <li><strong>Learning Curve</strong>: Steep for teams without Airflow experience, but manageable for seasoned data engineers who understand workflow orchestration concepts.</li>
         </ul>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>Section 3: Vertex AI Pipelines' Sweet Spot - Micro Pipeline Domain</h2>
+        <h2>Vertex AI Pipelines' Sweet Spot: Micro Pipeline Domain</h2>
 
-        <p>Vertex AI Pipelines is purpose-built for the <strong>micro-orchestration</strong> of machine learning workflows. It manages the steps from feature engineering to model deployment with a deep, native understanding of ML concepts.</p>
+        <p>Vertex AI Pipelines specialises in <strong>micro-orchestration</strong> of machine learning workflows with deep, native understanding of ML concepts.</p>
 
         <h3>When Vertex AI Pipelines Excels</h3>
+
+        <ol>
+            <li><strong>ML-Native Workflows</strong>: Built-in experiment tracking, model versioning, hyperparameter optimisation, and A/B testing infrastructure.</li>
+            <li><strong>Team Profile Match</strong>: ML Engineers and Data Scientists with Python-first culture, containerisation comfort, rapid research-to-production focus.</li>
+            <li><strong>Architecture Patterns</strong>: Feature engineering → training → evaluation → deployment loop, experiment-heavy environments, component reusability priority.</li>
+        </ol>
 
         <div style="margin: 2rem 0; text-align: center;">
             <img src="../../img/vertexai_example.jpg" alt="Vertex AI Pipelines example showing ML workflow with experiment tracking, model versioning, and native Vertex AI integration for rapid experimentation and production deployment." style="max-width: 100%; height: auto; border-radius: var(--radius-lg);">
         </div>
 
-        <ol>
-            <li><strong>ML-Native Workflows</strong>: Its core strength lies in features that are bolted-on or absent in Composer: robust experiment tracking, seamless model versioning and comparison, built-in hyperparameter optimization, and solid A/B testing infrastructure.</li>
-            <li><strong>Team Profile Match</strong>: This service is ideal for teams dominated by ML Engineers and Data Scientists. It assumes a Python-first culture, comfort with the concepts of containers and pipelines (without needing to manage Kubernetes), and a focus on moving rapidly from research to production.</li>
-            <li><strong>Architecture Patterns</strong>: It's optimized for the inner loop of ML: feature engineering → training → evaluation → deployment. It excels in experiment-heavy environments where comparing the performance of dozens of model runs is a daily activity and where pipeline component reusability is valued.</li>
-        </ol>
-
         <div class="key-concept">
-            <strong>KEY CONCEPT: Kubeflow Pipelines (KFP) Fully Managed</strong>
             <p>It's crucial to understand that Vertex AI Pipelines is <strong>Kubeflow Pipelines (KFP) fully managed by Google</strong>. You get the full power and flexibility of KFP for defining complex ML workflows, with all the Kubernetes operational overhead completely abstracted away.</p>
         </div>
 
-        <h3>Real Implementation Example</h3>
+        <h3>Implementation Example</h3>
 
         <p>This Python code defines a pipeline component and orchestrates a full ML lifecycle, leveraging built-in Vertex AI components for evaluation and deployment.</p>
 
@@ -228,200 +229,281 @@ extract_sources >> validate_data >> trigger_vertex_training</code></pre>
                 <button class="code-btn"><a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines" target="_blank" rel="noopener noreferrer">🔗 GitHub</a></button>
             </div>
         </div>
-        <pre><code class="language-python">@component(base_image="gcr.io/your-project/ml-base:latest")
-        def train_model(dataset_path: str, model_output_path: str, project_id: str, hyperparameters: dict) -> tuple[str, float]:
-            """Train ML model with Vertex AI experiment tracking"""
-            from google.cloud import aiplatform
-            
-            aiplatform.init(project=project_id, location="us-central1")
-            
-            with aiplatform.start_run(run="training-run") as run:
-                model = train_with_vertex_ai(dataset_path, hyperparameters)
-                accuracy = evaluate_model(model)
-                
-                run.log_metrics({"accuracy": accuracy, "loss": model.loss})
-                run.log_params(hyperparameters)
-                
-                model_resource = aiplatform.Model.upload(
-                    display_name="ml-model",
-                    artifact_uri=model_output_path,
-                    serving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/tf2-cpu.2-12:latest"
-                )
-                
-            return model_resource.resource_name, accuracy
-        </code></pre>
+        <pre><code class="language-python">from kfp import dsl
+from google.cloud.aiplatform import PipelineJob
+from google_cloud_pipeline_components.v1.model_evaluation import ModelEvaluationOp
+
+@dsl.component(base_image="us-docker.pkg.dev/vertex-ai/training/tf-gpu.2-13:latest")
+def train_model(dataset_path: str, model_output_path: str, hyperparameters: dict) -> tuple[str, float]:
+    """Train ML model with native Vertex AI experiment tracking"""
+    from google.cloud import aiplatform
+    
+    with aiplatform.start_run(run="training-run") as run:
+        model = train_with_vertex_ai(dataset_path, hyperparameters)
+        accuracy = evaluate_model(model)
+        
+        # Native experiment tracking
+        run.log_metrics({"accuracy": accuracy, "loss": model.loss})
+        run.log_params(hyperparameters)
+        
+        model_resource = aiplatform.Model.upload(
+            display_name="ml-model",
+            artifact_uri=model_output_path,
+            serving_container_image_uri="us-docker.pkg.dev/vertex-ai/prediction/tf2-gpu.2-13:latest"
+        )
+    return model_resource.resource_name, accuracy
+
+@dsl.pipeline(name="ml-training-pipeline")
+def ml_pipeline(dataset_path: str, hyperparameters: dict):
+    train_task = train_model(dataset_path=dataset_path, hyperparameters=hyperparameters)
+    
+    # Built-in evaluation with zero configuration
+    eval_task = ModelEvaluationOp(
+        project="your-project",
+        model=train_task.outputs["model_resource_name"],
+        target_field_name="target",
+        prediction_type="classification"
+    )</code></pre>
         <div class="key-concept">
-            <strong>KEY CONCEPT 1: Reusable Components</strong>
-            <p>The <code>@component</code> decorator creates a containerized, reusable pipeline step with explicit input/output typing. This enables team collaboration, reusability across pipelines, and component versioning.</p>
-        </div>
-        <div class="code-block-header">
-            <span>Python - Vertex AI Pipeline Component</span>
-            <div class="code-block-actions">
-                <button class="code-btn" onclick="copyCode(this)">📋 Copy</button>
-                <button class="code-btn"><a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines" target="_blank" rel="noopener noreferrer">🔗 GitHub</a></button>
-            </div>
-        </div>
-        <pre><code class="language-python">@component(base_image="gcr.io/your-project/ml-base:latest")
-        # Built-in Vertex AI evaluation component
-        eval_task = ModelEvaluationOp(
-            project=project,
-            model=train_task.outputs["model_resource_name"],
-            target_field_name="target",
-            prediction_type="classification"
-        )</code></pre>
-        <div class="key-concept">
-            <strong>KEY CONCEPT 2: Native Vertex AI Integration</strong>
-            <p>Built-in Vertex AI components deliver zero-config evaluation, managed infrastructure, experiment integration, and production readiness with built-in model governance.</p>
+            <p><strong>Reusable Components</strong>: The <code>@dsl.component</code> decorator creates a containerised, reusable pipeline step with explicit input/output typing. This enables team collaboration, reusability across pipelines, and component versioning. Reference: <a href="https://cloud.google.com/vertex-ai/docs/pipelines/build-pipeline">https://cloud.google.com/vertex-ai/docs/pipelines/build-pipeline</a>.</p>
+            <p><strong>Native Vertex AI Integration</strong>: Built-in Vertex AI components deliver zero-config evaluation, managed infrastructure, experiment integration, and production readiness with built-in model governance. Reference: <a href="https://cloud.google.com/vertex-ai/docs/pipelines/gcpc-list">https://cloud.google.com/vertex-ai/docs/pipelines/gcpc-list</a>.</p>
         </div>
 
-        <h3>Cost & Complexity Reality</h3>
+        <h3>Cost & Performance Reality</h3>
 
+        <p>Based on projects I've worked on:</p>
         <ul>
-            <li><strong>Setup</strong>: Low complexity. You define your pipeline in Python and submit it; there's no cluster to provision.</li>
-            <li><strong>Maintenance</strong>: Very Low. Google manages everything, including the underlying Kubernetes clusters. You only manage your pipeline and component definitions.</li>
-            <li><strong>Cost</strong>: Pay-per-use. You are charged per pipeline run (e.g., ~$0.03) plus the cost of the underlying compute resources.</li>
-            <li><strong>Learning Curve</strong>: Moderate. The barrier is conceptual (understanding components, pipelines, and KFP DSL) rather than infrastructural.</li>
+            <li><strong>Setup Complexity</strong>: Low - you define pipelines in Python and submit them. No cluster provisioning or infrastructure management required.</li>
+            <li><strong>Ongoing Maintenance</strong>: Very low since Google manages the underlying Kubernetes infrastructure. You only maintain pipeline and component definitions.</li>
+            <li><strong>Cost Structure</strong>: Pay-per-use model with approximately $0.03 per pipeline run plus compute costs. This can be significantly cheaper for sporadic training jobs, but costs add up with frequent experimentation.</li>
+            <li><strong>Learning Curve</strong>: Moderate - the barrier is conceptual (understanding components, pipelines, and containerisation) rather than infrastructural.</li>
         </ul>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>Section 4: Decision Framework - The 4-Factor Analysis</h2>
+        <h2>Comprehensive Decision Framework</h2>
 
-        <p>To move beyond guesswork, evaluate your context against these four critical factors.</p>
-
-        <h3>Factor 1: Data Complexity Profile</h3>
-
-        <ul>
-            <li><strong>High External Integration → Composer</strong>: Choose Composer if your workflow is defined by connections to legacy systems, multi-cloud services, processes requiring manual regulatory approval steps, or deep integration with business process tools like ERP or CRM systems.</li>
-            <li><strong>ML-Focused Workflows → Vertex AI Pipelines</strong>: Choose Vertex AI Pipelines if your primary challenge is managing the ML lifecycle itself—running countless experiments, comparing model performance, and streamlining the path from a research notebook to a deployed model endpoint.</li>
-        </ul>
-
-        <h3>Factor 2: Team Skill Matrix</h3>
+        <p>Based on my experience across different team compositions:</p>
+        <h3><strong>Team Skill and Cost Considerations</strong></h3>
 
         <table>
             <tr>
                 <th>Skill Area</th>
-                <th>Composer</th>
+                <th>Cloud Composer</th>
                 <th>Vertex AI Pipelines</th>
             </tr>
             <tr>
-                <td>Data Engineering</td>
-                <td>✔ Airflow familiarity</td>
-                <td>✘ New concepts</td>
+                <td><strong>Data Engineering</strong></td>
+                <td>✔ Airflow expertise advantage</td>
+                <td>⚠ New concepts to learn</td>
             </tr>
             <tr>
-                <td>ML Engineering</td>
-                <td>✘ Limited ML features</td>
-                <td>✔ Native Vertex AI</td>
+                <td><strong>ML Engineering</strong></td>
+                <td>⚠ Limited native ML features</td>
+                <td>✔ Native Vertex AI integration</td>
             </tr>
             <tr>
-                <td>Infrastructure</td>
-                <td>✔ Managed</td>
-                <td>✔ Managed (no K8s)</td>
+                <td><strong>Python Development</strong></td>
+                <td>✔ DAG development skills</td>
+                <td>✔ Component development skills</td>
             </tr>
             <tr>
-                <td>Gen AI/LLMs</td>
-                <td>✘ Manual setup</td>
-                <td>✔ Native Gemini integration</td>
+                <td><strong>Infrastructure Management</strong></td>
+                <td>⚠ DAG dependency management</td>
+                <td>✔ Fully managed simplicity</td>
+            </tr>
+            <tr>
+                <td><strong>Generative AI/LLMs</strong></td>
+                <td>✘ Manual integration required</td>
+                <td>✔ Native Gemini components</td>
+            </tr>
+            <tr>
+                <td><strong>Security & Compliance</strong></td>
+                <td>✔ Full audit trail control</td>
+                <td>✔ Built-in governance features</td>
             </tr>
         </table>
 
-        <h3>Factor 3: Budget & Maintenance Reality</h3>
+        <h3>Cost Reality Check</h3>
+        <p><strong>Small Teams (2–5 engineers):</strong> Vertex AI Pipelines typically offer better cost efficiency due to a pay-per-use model, especially for experimental workloads.</p>
+        <p><strong>Medium Teams (5–15 engineers):</strong> Costs become more comparable; tool choice should focus on team skills and workflow complexity.</p>
+        <p><strong>Large Teams (15+ engineers):</strong> Hybrid approaches often provide the best balance, using each tool for its strengths.</p>
+        <p><i>Cost estimates based on personal experience with enterprise deployments and publicly available Google Cloud pricing.</i></p>
 
+        <h3>Security Considerations</h3>
+        <p>Both platforms provide enterprise-grade security, but with different approaches:</p>
         <ul>
-            <li><strong>Composer TCO</strong>: Predictable monthly costs for the Composer environment. Ideal for stable, continuous workloads.</li>
-            <li><strong>Vertex AI Pipelines TCO</strong>: Pay-per-pipeline-run model. No idle costs, highly cost-effective for sporadic training jobs.</li>
+            <li><strong>Identity & Access Management:</strong>
+                <ul>
+                    <li>Composer: Granular DAG-level permissions, manual service account management</li>
+                    <li>Vertex AI Pipelines: Component-level IAM with automatic service account propagation</li>
+                </ul>
+            </li>
+            <li><strong>Network Security:</strong>
+                <ul>
+                    <li>Composer: Full control over VPC configuration and custom networking</li>
+                    <li>Vertex AI Pipelines: Managed VPC with automatic private endpoint setup</li>
+                </ul>
+            </li>
+            <li><strong>Audit & Compliance:</strong>
+                <ul>
+                    <li>Composer: Complete task lineage through Cloud Logging, custom audit implementations</li>
+                    <li>Vertex AI Pipelines: Built-in ML governance and automatic artifact lineage</li>
+                </ul>
+            </li>
+        </ul>
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h2>Migration Strategies & Performance Benchmarks</h2>
+
+        <h3>Migration Approaches</h3>
+        <p><strong>From Composer to Vertex AI Pipelines:</strong> In my experience, this migration typically takes 2–4 months, depending on DAG complexity. The main challenges involve:</p>
+        <ul>
+            <li>Converting Python operators to containerised components</li>
+            <li>Migrating custom experiment tracking to Vertex AI Experiments</li>
+            <li>Retraining teams on KFP concepts</li>
         </ul>
 
-        <h3>Factor 4: Future Scalability Needs</h3>
-
+        <p><strong>From Vertex AI Pipelines to Composer:</strong> This path is more complex (3–6 months) because you're moving from managed simplicity to infrastructure management:</p>
         <ul>
-            <li><strong>Composer Scaling</strong>: Scales by adding more workers to your Airflow cluster. Scales well for workflow complexity and breadth of service integration.</li>
-            <li><strong>Vertex AI Pipelines Scaling</strong>: Scales inherently with the managed Kubernetes backend. Each pipeline step can auto-scale its compute resources.</li>
+            <li>Building custom operators for ML components</li>
+            <li>Implementing experiment tracking systems</li>
+            <li>Setting up proper DAG orchestration for component dependencies</li>
+        </ul>
+
+        <h3>Common Troubleshooting Patterns</h3>
+        <p><strong>Composer Issues I've Encountered:</strong></p>
+        <ul>
+            <li><strong>DAG Import Failures:</strong> Usually due to missing dependencies or import errors</li>
+            <div class="code-block-header">
+            <span>Python - Error Handling</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-python">try:
+    from airflow.providers.google.cloud.operators.vertex_ai import CreateCustomTrainingJobOperator
+except ImportError as e:
+    logging.error(f"Missing dependency: {e}")
+    raise</code></pre>
+            <li><strong>Resource Contention:</strong> Monitor Airflow scheduler and worker resources. Implement DAG-level concurrency controls. Use pool-based resource management.</li>
+            <li><strong>Dependency Conflicts:</strong> Use virtual environments for Python dependencies. Implement proper DAG testing in CI/CD. Version pin all dependencies.</li>
+        </ul>
+
+        <p><strong>Vertex AI Pipelines Common Problems:</strong></p>
+        <ul>
+            <li><strong>Component Definition Errors:</strong> Often missing type annotations or improper input/output specifications</li>
+            <div class="code-block-header">
+            <span>Python - Component Type Hints</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-python"># ✘ Missing type hint
+@dsl.component
+def bad_component(data):
+    return process_data(data)
+
+# ✔ Proper typing
+@dsl.component  
+def good_component(data: str) -> str:
+    return process_data(data)</code></pre>
+            <li><strong>Pipeline Compilation Failures</strong>: Validate component inputs/outputs match. Check for circular dependencies. Ensure proper parameter passing.</li>
+            <li><strong>Resource Allocation Issues</strong>: Monitor component resource requests vs. limits. Implement proper auto-scaling configuration. Use appropriate machine types for workloads.</li>
         </ul>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>Section 5: Hybrid Architecture - Best of Both Worlds</h2>
+        <h2>Hybrid Architecture Implementation</h2>
 
-        <p>For many enterprises, the answer isn't "either/or" but "both." A hybrid architecture leverages the strengths of each tool by establishing clear service boundaries.</p>
-
-        <h3>When to Use Both</h3>
-
-        <p>Adopt a hybrid strategy when you have clear separation between macro-level data/business orchestration and micro-level ML experimentation. <strong>Composer</strong> owns the broad data orchestration and business process integration, while <strong>Vertex AI Pipelines</strong> owns the specialized ML model development lifecycle. They integrate through event-driven triggers.</p>
+        <p>For enterprises requiring both macro and micro orchestration, a hybrid approach leverages each tool's strengths through clear service boundaries.</p>
 
         <h3>Implementation Pattern</h3>
 
-        <p>The hybrid architecture follows this flow:</p>
+        <div class="code-block-header">
+            <span>Python - Hybrid Integration Pattern</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">📋 Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-python"># Composer DAG triggers Vertex AI Pipeline
+from airflow.providers.google.cloud.operators.vertex_ai.pipeline_job import CreatePipelineJobOperator
 
+trigger_ml_pipeline = CreatePipelineJobOperator(
+    task_id="trigger_vertex_pipeline",
+    display_name="ml-training-workflow",
+    template_path="gs://your-bucket/pipeline.json",
+    parameter_values={
+        "dataset_path": "{{ task_instance.xcom_pull(task_ids='data_validation') }}",
+        "model_name": "recommendation-model-{{ ds }}"
+    },
+    dag=dag
+)
+
+# Vertex AI Pipeline signals back via Cloud Storage
+@dsl.component
+def signal_completion(model_uri: str, accuracy: float):
+    """Signal pipeline completion back to Composer"""
+    import json
+    from google.cloud import storage
+    
+    client = storage.Client()
+    bucket = client.bucket("pipeline-coordination")
+    blob = bucket.blob("ml-pipeline-complete.json")
+    
+    result = {
+        "model_uri": model_uri,
+        "accuracy": accuracy,
+        "timestamp": datetime.utcnow().isoformat(),
+        "status": "completed"
+    }
+    blob.upload_from_string(json.dumps(result))</code></pre>
+
+        <p>The hybrid architecture follows this flow:</p>
         <div style="margin: 2rem 0; text-align: center;">
-            <img src="../../img/vertexai_full_pipeline.png" alt="Hybrid Vertex AI Pipeline Flow" title="Hybrid architecture with clear service boundaries: Composer (blue) handles macro-orchestration and business processes, while Vertex AI Pipelines (purple) specializes in ML micro-orchestration. Yellow nodes represent integration points." style="max-width: 100%; height: auto; border-radius: var(--radius-lg);">
+            <img src="../../img/vertexai_full_pipeline.png" alt="Vertex AI Pipelines example showing ML workflow with experiment tracking, model versioning, and native Vertex AI integration for rapid experimentation and production deployment." style="max-width: 100%; height: auto; border-radius: var(--radius-lg);">
         </div>
 
-        <h3>Hand-off Patterns</h3>
-
-        <ol>
-            <li><strong>Data Ready Event</strong>: A Composer DAG, after successfully processing and validating a new batch of data, publishes a message to Pub/Sub or directly triggers a Vertex AI Pipeline run via the Airflow operator.</li>
-            <li><strong>Model Ready Event</strong>: Upon a successful pipeline run, Vertex AI Pipelines can signal back to Composer (e.g., by writing to a Cloud Storage location monitored by an Airflow sensor) to kick off a downstream deployment or business process.</li>
-            <li><strong>Performance Alert</strong>: Vertex AI Monitoring can detect model drift and trigger a Composer DAG via webhook to initiate a full retraining pipeline.</li>
-        </ol>
-
-        <h3>Cost Optimization Strategy</h3>
-
-        <p>This hybrid approach can be highly cost-effective. Use Composer as the always-on, predictable-cost coordinator for core data workflows. Leverage Vertex AI Pipelines for the computationally intensive, bursty ML workloads, benefiting from its pay-per-run model. This keeps base costs predictable while optimizing for variable ML experimentation costs.</p>
-
-        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
-
-        <h2>Section 6: Real-World Case Studies</h2>
-
-        <h3>Case Study 1: E-commerce Recommendation Engine</h3>
+        <h3>Cost Optimisation Strategy</h3>
+        <p>From enterprise implementations I've observed:</p>
 
         <ul>
-            <li><strong>Challenge</strong>: A large retailer needed real-time personalization but relied on complex batch data processing from multiple sources (web logs, CRM, inventory).</li>
-            <li><strong>Solution</strong>: Composer orchestrated the nightly batch data jobs, cleaned data, and populated the feature store. It then triggered a Vertex AI Pipeline for model training, hyperparameter tuning, and evaluation.</li>
-            <li><strong>Outcome</strong>: The ML team achieved 40% faster experiment iteration using Vertex AI's native tools, while overall infrastructure costs dropped by 60% by using the right tool for each job.</li>
-            <li><strong>Key Lesson</strong>: Clear separation of concerns (data plumbing vs. ML experimentation) enabled each team to work independently without stepping on each other's toes.</li>
-        </ul>
-
-        <h3>Case Study 2: Financial Risk Assessment</h3>
-
-        <ul>
-            <li><strong>Challenge</strong>: A fintech company needed a robust pipeline for fraud detection that was fully auditable and compliant with financial regulations.</li>
-            <li><strong>Solution</strong>: A Composer-only approach was chosen. Custom Python operators handled model training, but the entire workflow—from data extraction to model deployment and compliance reporting—was contained within a single, auditable Airflow DAG.</li>
-            <li><strong>Outcome</strong>: The company achieved a full audit trail for every model run and simplified its compliance reporting, as everything was tracked in one place.</li>
-            <li><strong>Key Lesson</strong>: Sometimes the "best" tool is the one that fits your regulatory and operational constraints, not the one with the most features.</li>
-        </ul>
-
-        <h3>Case Study 3: Healthcare Diagnostic AI</h3>
-
-        <ul>
-            <li><strong>Challenge</strong>: A health tech startup had a fast-paced research environment for new diagnostic models but needed a robust, gated path to production for patient safety.</li>
-            <li><strong>Solution</strong>: Data scientists used Vertex AI Pipelines for rapid experimentation and model development. Once a model was approved for clinical testing, a Composer DAG managed its deployment, integration with hospital systems, and monitoring.</li>
-            <li><strong>Outcome</strong>: Researchers iterated 10x faster using Vertex AI Experiments, while the production pipeline managed by Composer ensured robustness and reliability.</li>
-            <li><strong>Key Lesson</strong>: Hybrid architecture shines when you have distinct phases: research (fast iteration) and production (stability and compliance).</li>
+            <li><strong>Predictable Base Costs</strong>: Use Composer for always-on data workflows ($400-600/month baseline)</li>
+            <li><strong>Variable ML Costs</strong>: Leverage Vertex AI Pipelines for experiment-heavy workloads (pay-per-use scaling)</li>
+            <li><strong>Total Cost Optimisation</strong>: 40-60% cost reduction vs. single-tool approaches in enterprise scenarios</li>
         </ul>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>Section 7: Implementation Decision Checklist</h2>
+        <h2>Real-World Case Studies</h2>
 
-        <h3>Red Flags for Each Choice</h3>
+        <h3>Case Study 1: E-commerce Recommendation (Hybrid Success)</h3>
 
-        <p><strong>Don't choose Composer if:</strong></p>
         <ul>
-            <li>Your team is primarily ML engineers who will struggle with Airflow concepts.</li>
-            <li>Experiment tracking and model comparison are non-negotiable requirements.</li>
-            <li>ML workflow reusability and componentization are key priorities.</li>
-            <li>Deep, native integration with the Vertex AI suite is a primary driver.</li>
+            <li><strong>Architecture</strong>: Composer for data orchestration + Vertex AI for ML experimentation</li>
+            <li><strong>Outcome</strong>: 40% faster ML iteration, 60% infrastructure cost reduction</li>
+            <li><strong>Key Lesson</strong>: Service boundary separation enabled independent team scaling</li>
         </ul>
 
-        <p><strong>Don't choose Vertex AI Pipelines if:</strong></p>
+        <h3>Case Study 2: Financial Compliance (Composer-Only)</h3>
+
         <ul>
-            <li>Your team lacks strong Python ML development skills.</li>
-            <li>Integration with non-Google services (e.g., Salesforce, Snowflake) is a core part of the workflow.</li>
-            <li>You have strong existing Airflow expertise and your ML needs are relatively basic.</li>
-            <li>The primary need is complex business process orchestration with human-in-the-loop steps.</li>
+            <li><strong>Architecture</strong>: End-to-end Airflow DAGs for audit trail requirements</li>
+            <li><strong>Outcome</strong>: Complete regulatory compliance, simplified audit processes</li>
+            <li><strong>Key Lesson</strong>: Regulatory constraints often override technical preferences</li>
         </ul>
+
+        <h3>Case Study 3: Healthcare AI (Research-to-Production Pipeline)</h3>
+
+        <ul>
+            <li><strong>Architecture</strong>: Vertex AI for research, Composer for production deployment</li>
+            <li><strong>Outcome</strong>: 10x faster research iteration, robust production reliability</li>
+            <li><strong>Key Lesson</strong>: Different phases of ML lifecycle benefit from specialised tools</li>
+        </ul>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h2>Implementation Decision Checklist</h2>
 
         <h3>Quick Decision Tree</h3>
 
@@ -432,93 +514,58 @@ extract_sources >> validate_data >> trigger_vertex_training</code></pre>
             </iframe>
         </div>
 
-        <h3>Pre-Implementation Checklist</h3>
+        <h3>Red Flags</h3>
 
-        <div class="checklist">
-            <ul>
-                <li>Assess current team skills and learning capacity</li>
-                <li>Map out your end-to-end workflow (data → ML → deployment)</li>
-                <li>Identify the primary pain point (data plumbing or ML chaos?)</li>
-                <li>Evaluate existing tools and integrations</li>
-                <li>Estimate budget constraints and growth trajectory</li>
-                <li>Define success metrics (velocity, reliability, cost, satisfaction)</li>
-                <li>Plan for migration strategy if switching tools later</li>
-                <li>Document decision rationale for future reference</li>
-                <li>Schedule quarterly reviews to assess tool fit</li>
-                <li>Identify hybrid integration points if applicable</li>
-            </ul>
-        </div>
-
-        <h3>Post-Implementation Monitoring</h3>
-
-        <p>Once you've made your choice, track these metrics to ensure the tool is delivering value:</p>
-
-        <table>
-            <tr>
-                <th>Metric</th>
-                <th>Target</th>
-                <th>Red Flag</th>
-            </tr>
-            <tr>
-                <td>Pipeline Success Rate</td>
-                <td>&gt;95%</td>
-                <td>&lt;90%</td>
-            </tr>
-            <tr>
-                <td>Time to Production (days)</td>
-                <td>&lt;7 days</td>
-                <td>&gt;30 days</td>
-            </tr>
-            <tr>
-                <td>Team Adoption Rate</td>
-                <td>&gt;80%</td>
-                <td>&lt;50%</td>
-            </tr>
-            <tr>
-                <td>Cost per Model (monthly)</td>
-                <td>Predictable</td>
-                <td>Unexplained spikes</td>
-            </tr>
-            <tr>
-                <td>Incident Response Time</td>
-                <td>&lt;1 hour</td>
-                <td>&gt;4 hours</td>
-            </tr>
-        </table>
-
-        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
-
-        <h2>Conclusion: Strategic Implementation Approach</h2>
-
-        <p>The perfect MLOps architecture is a myth. The goal is to find the most effective one for your organization <em>today</em>.</p>
-
-        <h3>The 80% Rule Applied</h3>
-
-        <p>Start with the tool that matches your <strong>current team strengths</strong> and addresses your <strong>most immediate and painful workflow needs</strong>. Avoid the trap of over-engineering for hypothetical future requirements. If 80% of your pain is in data plumbing, start with Composer. If it's in model chaos, start with Vertex AI Pipelines.</p>
-
-        <h3>Migration Strategy</h3>
-
-        <p>Thankfully, this is not a permanent, irreversible decision. As demonstrated in the hybrid pattern, both tools can coexist and hand off work between them. Start with one to solve your most critical problem. You can strategically introduce the other when you hit specific, tangible limitations, using event-driven patterns for integration.</p>
-
-        <h3>Success Metrics</h3>
-
-        <p>Measure your success not by the elegance of your architecture, but by its outcomes:</p>
         <ul>
-            <li><strong>Developer Velocity</strong>: How quickly can a new idea go from experiment to production?</li>
-            <li><strong>System Reliability</strong>: What is your pipeline success rate?</li>
-            <li><strong>Cost Efficiency</strong>: What is your total cost of ownership per model or per prediction?</li>
-            <li><strong>Team Satisfaction</strong>: Are your developers empowered or frustrated?</li>
+            <li><strong>Avoid Composer if</strong>: ML-heavy team, experiment tracking critical, native Vertex AI integration required</li>
+            <li><strong>Avoid Vertex AI Pipelines if</strong>: Limited Python ML skills, extensive non-Google integrations, complex business process orchestration</li>
+            <li><strong>Consider Hybrid if</strong>: Clear separation between data/business logic and ML experimentation</li>
         </ul>
 
-        <p><strong>Remember</strong>: The best MLOps architecture is the one your team will actually use and maintain successfully. Perfect on paper means nothing if it's abandoned after 6 months.</p>
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h2>Strategic Implementation Approach</h2>
+
+        <h3>The Generative AI Reality</h3>
+
+        <p>With the rapid evolution of LLMs and multimodal AI, <strong>Vertex AI Pipelines has gained significant strategic advantage</strong> through native integration with Google's AI ecosystem. Teams building on Gemini, RAG, or advanced AI applications should strongly consider this path.</p>
+
+        <h3>Implementation Strategy</h3>
+
+        <ol>
+            <li><strong>Start with Primary Pain Point</strong>: Address your biggest workflow challenge first</li>
+            <li><strong>Plan for Evolution</strong>: Both tools can coexist; start simple, scale strategically</li>
+            <li><strong>Measure Outcomes</strong>: Track developer velocity, cost efficiency, and team satisfaction</li>
+            <li><strong>Embrace Hybrid</strong>: Most enterprises benefit from specialised tools for specialised problems</li>
+        </ol>
+
+        <h3>Success Metrics That Matter</h3>
+
+        <ul>
+            <li><strong>Developer Velocity</strong>: Idea to production timeline</li>
+            <li><strong>System Reliability</strong>: Pipeline success rates >95%</li>
+            <li><strong>Cost Efficiency</strong>: Total ownership cost per model</li>
+            <li><strong>Team Adoption</strong>: Active usage rates >80%</li>
+        </ul>
+        
+        <div class="key-concept">
+            <p><strong>Remember</strong>: The best architecture is the one your team actually uses and maintains successfully. Technical elegance means nothing if it's abandoned after six months.</p>
+        </div>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>Call to Action</h2>
+        <!--<h2>Resources & Next Steps</h2>
 
-        <p>Which pattern fits your team's reality? Share your architecture story—whether it's a successful hybrid implementation, lessons from a migration, or questions about your specific use case.</p>
+        <p><strong>Companion Resources</strong>:</p>
+        <ul>
+            <li><a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines" target="_blank" rel="noopener noreferrer">Complete working examples and Terraform configurations</a></li>
+            <li><a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines/tree/main/templates" target="_blank" rel="noopener noreferrer">Architecture decision templates and cost calculators</a></li>
+        </ul>
 
-        <p><strong>Coming Next</strong>: "Multi-Cloud Data Access: Workload Identity Federation Patterns" - diving deep into enterprise security architecture for MLOps.</p>
+        <p><strong>Community Discussion</strong>: Share your architecture decisions and lessons learned in the comments or <a href="https://github.com/sonikajanagill/composer-vs-vertex-ai-pipelines/discussions" target="_blank" rel="noopener noreferrer">open a GitHub discussion</a>.</p>
+        -->
+        <h3>Coming Next:</h3>
+        <p>"Multi-Cloud Data Access: Workload Identity Federation Patterns" - diving deep into enterprise security architecture for MLOps.</p>
 
         <div class="article-share">
             <p class="share-title">Share this article:</p>
