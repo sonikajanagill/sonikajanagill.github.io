@@ -437,6 +437,187 @@ nav {
 }
 
 /* ===========================
+   Hero Banner Section (New)
+   =========================== */
+
+.hero-banner {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-main);
+    overflow: hidden;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+[data-theme="light"] .hero-background {
+    opacity: 0.08;
+}
+
+.tech-icon {
+    position: absolute;
+    font-size: 3rem;
+    left: var(--x);
+    top: var(--y);
+    animation: float var(--duration) infinite ease-in-out;
+    animation-delay: var(--delay);
+    opacity: 0.6;
+    filter: grayscale(0.3);
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(20px, -20px) rotate(5deg);
+    }
+    50% {
+        transform: translate(-15px, 15px) rotate(-5deg);
+    }
+    75% {
+        transform: translate(15px, 10px) rotate(3deg);
+    }
+}
+
+.hero-banner-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-status {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    background: var(--bg-card);
+}
+
+.hero-headline {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-hero {
+    margin-top: 1rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+    background: var(--primary);
+    color: white;
+    border: 2px solid var(--primary);
+    box-shadow: 0 4px 20px rgba(255, 68, 68, 0.3);
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 68, 68, 0.5);
+    background: var(--primary-hover);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .tech-icon {
+        animation: none;
+    }
+
+    .btn-hero:hover {
+        transform: none;
+    }
+
+    .hero-banner {
+        animation: none;
+    }
+}
+
+/* Responsive adjustments for hero banner */
+@media (max-width: 968px) {
+    .hero-banner {
+        min-height: 60vh;
+        padding: 3rem 1.5rem;
+    }
+
+    .hero-headline {
+        font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+    }
+
+    .tech-icon {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        min-height: 50vh;
+        padding: 2.5rem 1rem;
+    }
+
+    .hero-banner-content {
+        padding: 1.5rem;
+    }
+
+    .hero-status {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .hero-headline {
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        margin-bottom: 1.5rem;
+    }
+
+    .tech-icon {
+        font-size: 2rem;
+    }
+
+    .btn-hero {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner {
+        min-height: 45vh;
+        padding: 2rem 1rem;
+    }
+
+    .hero-headline {
+        font-size: clamp(1.375rem, 3.5vw, 2rem);
+    }
+
+    .tech-icon {
+        font-size: 1.5rem;
+    }
+}
+
+/* ===========================
    Buttons
    =========================== */
 
