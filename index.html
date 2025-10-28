@@ -92,24 +92,110 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-banner" aria-labelledby="hero-heading">
-        <div class="hero-background" aria-hidden="true">
-            <div class="tech-icon" style="--x: 10%; --y: 20%; --delay: 0s; --duration: 25s;">⚡</div>
-            <div class="tech-icon" style="--x: 85%; --y: 15%; --delay: 2s; --duration: 28s;">🧠</div>
-            <div class="tech-icon" style="--x: 20%; --y: 70%; --delay: 4s; --duration: 30s;">☁️</div>
-            <div class="tech-icon" style="--x: 75%; --y: 65%; --delay: 1s; --duration: 26s;">🗄️</div>
-            <div class="tech-icon" style="--x: 45%; --y: 25%; --delay: 3s; --duration: 27s;">🔌</div>
-            <div class="tech-icon" style="--x: 60%; --y: 80%; --delay: 5s; --duration: 29s;">🏗️</div>
-            <div class="tech-icon" style="--x: 30%; --y: 45%; --delay: 2.5s; --duration: 31s;">⚙️</div>
-            <div class="tech-icon" style="--x: 90%; --y: 50%; --delay: 1.5s; --duration: 24s;">🔬</div>
-            <div class="tech-icon" style="--x: 15%; --y: 85%; --delay: 4.5s; --duration: 28s;">💡</div>
-            <div class="tech-icon" style="--x: 55%; --y: 10%; --delay: 3.5s; --duration: 26s;">🚀</div>
+    <section class="sj-hero" role="banner" aria-labelledby="hero-heading">
+        <div class="sj-hero-background" aria-hidden="true">
+            <div class="sj-tech-grid">
+                <!-- AI/ML Neural Network Icon -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6" cy="6" r="2"/>
+                    <circle cx="18" cy="6" r="2"/>
+                    <circle cx="6" cy="18" r="2"/>
+                    <circle cx="18" cy="18" r="2"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="m8 6 2.5 4.5M16 6l-2.5 4.5M8 18l2.5-4.5M16 18l-2.5-4.5" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <!-- Cloud Icon -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <!-- Database Icon -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="12" cy="5" rx="9" ry="3" stroke="currentColor" stroke-width="2"/>
+                    <path d="m3 5v14a9 3 0 0 0 18 0V5" stroke="currentColor" stroke-width="2"/>
+                    <path d="m3 12a9 3 0 0 0 18 0" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <!-- Code Icon -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polyline points="16,18 22,12 16,6" stroke="currentColor" stroke-width="2"/>
+                    <polyline points="8,6 2,12 8,18" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <!-- API/Layers Icon -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="8" height="4" x="8" y="2" rx="1" ry="1" stroke="currentColor" stroke-width="2"/>
+                    <rect width="16" height="4" x="4" y="6" rx="1" ry="1" stroke="currentColor" stroke-width="2"/>
+                    <rect width="8" height="4" x="8" y="10" rx="1" ry="1" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <!-- Git Branch Icon -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="6" x2="6" y1="3" y2="15" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="18" cy="6" r="3" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="2"/>
+                    <path d="m18 9a5 5 0 0 1-5 5l-3 0" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <!-- Infrastructure Icon -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="8" height="8" x="3" y="3" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="m7 11 4-4 4 4" stroke="currentColor" stroke-width="2"/>
+                    <rect width="8" height="8" x="13" y="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <!-- ML Pipeline Icon -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                    <path d="m8 16-4-4 4-4M16 8l4 4-4 4" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <!-- Repeat icons for grid coverage -->
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="6" cy="6" r="2"/>
+                    <circle cx="18" cy="6" r="2"/>
+                    <circle cx="6" cy="18" r="2"/>
+                    <circle cx="18" cy="18" r="2"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="m8 6 2.5 4.5M16 6l-2.5 4.5M8 18l2.5-4.5M16 18l-2.5-4.5" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="12" cy="5" rx="9" ry="3" stroke="currentColor" stroke-width="2"/>
+                    <path d="m3 5v14a9 3 0 0 0 18 0V5" stroke="currentColor" stroke-width="2"/>
+                </svg>
+
+                <svg class="sj-tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polyline points="16,18 22,12 16,6" stroke="currentColor" stroke-width="2"/>
+                    <polyline points="8,6 2,12 8,18" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
         </div>
 
-        <div class="hero-banner-content">
-            <p class="hero-status" aria-label="Current status">Sharing insights on AI & MLOps</p>
-            <h1 id="hero-heading" class="hero-headline">Thoughts on AI, MLOps & Enterprise Transformation</h1>
-            <a href="#featured-articles" class="btn btn-hero" aria-label="Scroll to latest articles">Read Latest Articles</a>
+        <div class="sj-hero-content">
+            <div class="sj-status">
+                <div class="sj-status-dot" aria-hidden="true"></div>
+                <span>Sharing insights on AI & MLOps</span>
+            </div>
+
+            <h1 id="hero-heading" class="sj-hero-title">
+                <span class="sj-gradient-text">Thoughts on AI, MLOps</span><br>
+                <span>& Enterprise Transformation</span>
+            </h1>
+
+            <p class="sj-hero-subtitle">
+                Exploring the intersection of artificial intelligence, machine learning operations, and
+                enterprise-scale transformation. Insights from the field on RAG, AI agents, and cloud architecture.
+            </p>
+
+            <div class="sj-hero-cta">
+                <a href="#featured-articles" class="sj-cta-button" aria-label="Scroll to latest articles">Read Latest Articles</a>
+            </div>
         </div>
     </section>
 
