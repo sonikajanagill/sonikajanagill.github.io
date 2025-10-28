@@ -7,3 +7,6 @@ public
 
 # VSCode
 .vscode
+
+# drafts
+articles/*v0*
