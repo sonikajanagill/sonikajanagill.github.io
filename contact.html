@@ -19,28 +19,7 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Contact page specific styles */
-        .contact-hero {
-            background: var(--bg-main);
-            padding: 3rem 2rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .contact-hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-
-        .contact-hero p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
+        /* Contact hero uses shared .page-hero styles from styles.css */
 
         /* Prominent contact links grid */
         .contact-links-grid {
@@ -165,6 +144,7 @@
             <a href="/" class="nav-logo">
                 <img src="img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
                 <img src="img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <span class="nav-home-text">Home</span>
             </a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
@@ -181,12 +161,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="contact-hero">
+    <header class="page-hero">
         <h1>Get In Touch</h1>
-        <p>
-            I'm always interested in discussing AI transformation, collaboration opportunities, and speaking engagements.
-        </p>
-    </section>
+        <p>I'm always interested in discussing AI transformation, collaboration opportunities, and speaking engagements.</p>
+    </header>
 
     <!-- Main Content -->
     <div class="container">
