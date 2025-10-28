@@ -2,40 +2,7 @@
    Articles Page Styles
    =========================== */
 
-.articles-header {
-    background: var(--bg-main);
-    color: var(--text-primary);
-    padding: 4rem 2rem;
-    text-align: center;
-    border-bottom: 2px solid var(--border);
-}
-
-.articles-header-content h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-}
-
-.articles-header-content p {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    letter-spacing: 0.3px;
-}
-
-@media (max-width: 768px) {
-    .articles-header {
-        padding: 2.5rem 1.5rem;
-    }
-
-    .articles-header-content h1 {
-        font-size: 2rem;
-    }
-
-    .articles-header-content p {
-        font-size: 1rem;
-    }
-}
+/* Articles header uses shared .page-hero styles from styles.css */
 
 /* ===========================
    Hashtag Filter Section
@@ -85,6 +52,12 @@
     gap: 2rem;
 }
 
+.article-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+}
+
 .article-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -93,6 +66,7 @@
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .article-card:hover {
@@ -120,7 +94,7 @@
 }
 
 .article-content {
-    padding: 1.5rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -151,12 +125,13 @@
     display: block !important;
 }
 
-.article-card p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-    flex-grow: 1;
+.article-card p,
+.article-content p {
+    font-size: 0.95rem !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.5rem !important;
+    flex-grow: 1 !important;
 }
 
 .read-more {
