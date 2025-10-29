@@ -6,29 +6,32 @@
     <title>Architecture Decisions: Cloud Composer vs Vertex AI Pipelines - Sonika Janagill</title>
     <meta name="description" content="A practical decision framework for choosing between Cloud Composer and Vertex AI Pipelines. Learn when to use each tool, hybrid patterns, and real-world case studies.">
     <meta name="author" content="Sonika Janagill">
-    <meta name="keywords" content="MLOps, Cloud Composer, Vertex AI Pipelines, Google Cloud, Architecture">
+    <meta name="keywords" content="MLOps, Cloud Composer, Vertex AI Pipelines, Google Cloud, Apache Airflow, Kubeflow Pipelines, Architecture, AI/ML, MLOps in 2025">
 
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Architecture Decisions: Cloud Composer vs Vertex AI Pipelines">
+    <meta property="og:description" content="A practical decision framework for choosing between Cloud Composer and Vertex AI Pipelines. Learn when to use each tool, hybrid patterns, and real-world case studies.">
+    <meta property="og:url" content="https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/">
     
+    <!-- Styles -->
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../article-styles.css">
-    
-    <!-- Highlight.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="/" class="nav-logo">
                 <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
                 <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <span class="nav-home-text">Home</span>
             </a>
             <ul class="nav-links">
                 <li><a href="/about.html">About</a></li>
@@ -44,15 +47,41 @@
         </div>
     </nav>
 
+    <!-- Blog Header -->
     <header class="blog-header">
         <div class="container">
-            <a href="/" class="back-link">← Back to Home</a>
-            <h2>MLOps Architecture Decisions</h2>
-            <p class="blog-subtitle">Cloud Composer vs Vertex AI Pipelines</p>
-            <div class="blog-meta">
-                <span>Sonika Janagill</span>
-                <span>October 2025</span>
-                <span>11 min read</span>
+            <div class="blog-header-left">
+                <div class="blog-header-tags">
+                    <a href="/articles/?tag=MLOps" class="blog-header-tag">#MLOps</a>
+                    <a href="/articles/?tag=AI/ML" class="blog-header-tag">#AI/ML</a>
+                </div>
+                <h2>MLOps Architecture Decisions</h2>
+                <p class="blog-subtitle">Cloud Composer vs Vertex AI Pipelines</p>
+
+            <div class="blog-header-right">
+                <div class="blog-meta">
+                    <div class="blog-meta-item">
+                        <span>October 2025</span>
+                    </div>
+                    <div class="blog-meta-item">
+                        <span>10 min read</span>
+                    </div>
+                </div>
+                <div class="blog-share-buttons">
+                    <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/x-icon.png" alt="X">
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                    </a>
+                    <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/" class="blog-share-btn" title="Share via Email">
+                        <img src="../../img/email-icon.png" alt="Email">
+                    </a>
+                    <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                        <img src="../../img/copy-icon.png" alt="Copy">
+                    </button>
+                </div>
+            </div>
             </div>
         </div>
     </header>
@@ -62,6 +91,7 @@
         <p style="text-align: center;">Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
     </div>
 
+    <!-- Blog Content -->
     <main class="blog-content">
         <p><strong>Your team just got budget approval for MLOps infrastructure. The architect recommends Cloud Composer for large-scale data ingestion to support your new Gemini model fine-tuning pipeline. The ML engineers want Vertex AI Pipelines for experiment tracking and model evaluation. The data engineers are confused. Sound familiar?</strong></p>
 
@@ -568,19 +598,19 @@ def signal_completion(model_uri: str, accuracy: float):
         <p>"Multi-Cloud Data Access: Workload Identity Federation Patterns" - diving deep into enterprise security architecture for MLOps.</p>
 
         <div class="article-share">
-            <p class="share-title">Share this article:</p>
+            <div class="share-title">Share this article:</div>
             <div class="share-buttons">
-                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/&text=Architecture%20Decisions:%20Cloud%20Composer%20vs%20Vertex%20AI%20Pipelines%20-%20A%20practical%20decision%20framework%20by%20@sonikajanagill" target="_blank" rel="noopener noreferrer" class="share-btn">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/&text=Architecture%20Decisions:%20Cloud%20Composer%20vs%20Vertex%20AI%20Pipelines%20-%20A%20practical%20decision%20framework%20by%20@sonikajanagill" target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on X">
                     <img src="../../img/x-icon.png" alt="X">
-                    X
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/" target="_blank" rel="noopener noreferrer" class="share-btn">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/" target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on LinkedIn">
                     <img src="../../img/linkedin-icon.png" alt="LinkedIn">
-                    LinkedIn
                 </a>
-                <button onclick="copyShareLink(this)" class="share-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                    Copy Link
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/" class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
                 </button>
             </div>
         </div>

@@ -12,7 +12,7 @@ const articlesData = [
     },
     {
         id: 1,
-        title: 'Architecture Decisions: Cloud Composer vs Vertex AI Pipelines for MLOps',
+        title: 'Architecture Decisions: Cloud Composer vs Vertex AI Pipelines',
         date: 'October 2025',
         tags: ['MLOps', 'AI/ML'],
         readTime: '11 min read',
