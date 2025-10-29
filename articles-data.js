@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 3,
+        title: 'The Innovation Gap: How Diverse Perspectives Drive Better AI for Everyone',
+        date: 'November 2025',
+        tags: ['AI/ML', 'Leadership'],
+        readTime: '12 min read',
+        description: 'From knowledge hoarding to knowledge democratization: Why AI is the great equalizer we\'ve been waiting for. Explore how diverse perspectives lead to more inclusive AI solutions and drive innovation.',
+        url: 'articles/innovation-gap-diverse-perspectives-ai/',
+        image: 'img/innovation-gap.png'
+    },
+    {
         id: 1,
         title: 'Architecture Decisions: Cloud Composer vs Vertex AI Pipelines for MLOps',
         date: 'October 2025',
