@@ -2,6 +2,16 @@
 const articlesData = [
     {
         id: 1,
+        title: 'The Hidden Cost of Data Chaos in ML Projects',
+        date: 'November 2025',
+        tags: ['MLOps', 'AI/ML'],
+        readTime: '10 min read',
+        description: 'Most ML projects fail not because of models, but because of data chaos. Understand the real costs, failure patterns, and how MLOps reduces failure and accelerates time to production.',
+        url: 'articles/hidden-cost-of-data-chaos-ml/',
+        image: 'img/hackathons.png'
+    },
+    {
+        id: 2,
         title: 'Architecture Decisions: Cloud Composer vs Vertex AI Pipelines',
         date: 'October 2025',
         tags: ['MLOps', 'AI/ML'],
@@ -11,7 +21,7 @@ const articlesData = [
         image: 'img/ComposerVsVertexAIBanner.png'
     },
     {
-        id: 2,
+        id: 3,
         title: 'Why Hackathons Are Your Fast-Track to AI Mastery',
         date: 'July 2025',
         tags: ['Technology', 'Leadership'],
