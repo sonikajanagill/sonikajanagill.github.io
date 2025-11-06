@@ -2,26 +2,26 @@
 const articlesData = [
     {
         id: 3,
-        title: 'The Innovation Gap: How Diverse Perspectives Drive Better AI for Everyone',
+        title: 'The Creator Divide: Why Fresh Voices Are Solving Problems Experts Miss',
         date: 'November 2025',
-        tags: ['AI/ML', 'Leadership'],
-        readTime: '12 min read',
-        description: 'From knowledge hoarding to knowledge democratization: Why AI is the great equalizer we\'ve been waiting for. Explore how diverse perspectives lead to more inclusive AI solutions and drive innovation.',
-        url: 'articles/innovation-gap-diverse-perspectives-ai/',
-        image: 'img/innovation-gap.png'
+        tags: ['AI', 'Innovation', 'Leadership'],
+        readTime: '15 min read',
+        description: 'AI didn\'t just make learning easier — it changed who gets to innovate. Explore how democratized knowledge is creating a divide between optimization and innovation, and why diverse voices are the key to solving tomorrow\'s problems.',
+        url: 'articles/the-creator-divide/',
+        image: 'img/the_creator_divide.png'
     },
     {
-        id: 1,
+        id: 2,
         title: 'Architecture Decisions: Cloud Composer vs Vertex AI Pipelines',
         date: 'October 2025',
-        tags: ['MLOps', 'AI/ML'],
+        tags: ['MLOps', 'AI'],
         readTime: '11 min read',
         description: 'A practical decision framework for choosing between Cloud Composer and Vertex AI Pipelines. Learn when to use each tool, hybrid patterns, and real-world case studies for enterprise ML infrastructure.',
         url: 'articles/composer-vs-vertex-ai-pipelines/',
         image: 'img/ComposerVsVertexAIBanner.png'
     },
     {
-        id: 2,
+        id: 1,
         title: 'Why Hackathons Are Your Fast-Track to AI Mastery',
         date: 'July 2025',
         tags: ['Technology', 'Leadership'],

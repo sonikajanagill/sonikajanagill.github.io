@@ -2,6 +2,12 @@
    Reusable Article Utilities
    =========================== */
 
+// Initialize theme immediately (before page renders)
+(function() {
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+})();
+
 /**
  * Auto-populate tooltips from alt text for blog images
  * Runs on page load
@@ -73,6 +79,61 @@ function initializeImageLightbox() {
 }
 
 /**
+ * Toggle key points section
+ * @param {HTMLElement} button - The toggle button element
+ */
+function toggleKeyPoints(button) {
+    const content = button.nextElementSibling;
+    const arrow = button.querySelector('.key-points-arrow');
+    
+    if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        arrow.classList.add('collapsed');
+    } else {
+        content.classList.add('expanded');
+        arrow.classList.remove('collapsed');
+    }
+}
+
+/**
+ * Copy share link to clipboard
+ * @param {HTMLElement} button - The copy button element
+ */
+function copyShareLink(button) {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+        button.style.opacity = '0.6';
+        setTimeout(() => {
+            button.style.opacity = '1';
+        }, 200);
+    }).catch(err => {
+        console.error('Failed to copy link:', err);
+    });
+}
+
+/**
+ * Initialize theme toggle functionality
+ */
+function initializeThemeToggle() {
+    // Check for saved theme preference or default to dark mode
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    if (themeToggle) {
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+}
+
+/**
  * Copy code block to clipboard
  * @param {HTMLElement} button - The copy button element
  */
@@ -104,11 +165,11 @@ function injectArticleHashtags() {
     
     // Map article URLs to their tags
     const articleTagMap = {
-        'composer-vs-vertex-ai-pipelines': ['MLOps', 'AI/ML'],
+        'composer-vs-vertex-ai-pipelines': ['MLOps', 'AI'],
         'why-hackathons-fast-track-ai-mastery': ['Technology', 'Leadership'],
         'mlops-vertex-ai-best-practices': ['MLOps'],
         'leading-ai-transformation-enterprise-teams': ['Leadership'],
-        'building-production-ready-rag-systems': ['AI/ML']
+        'building-production-ready-rag-systems': ['AI']
     };
     
     // Find matching article
@@ -140,6 +201,7 @@ function injectArticleHashtags() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+    initializeThemeToggle();
     initializeImageTooltips();
     initializeImageLightbox();
     injectArticleHashtags();
