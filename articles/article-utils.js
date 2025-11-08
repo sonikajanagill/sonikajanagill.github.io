@@ -169,8 +169,8 @@ function injectArticleHashtags() {
         'why-hackathons-fast-track-ai-mastery': ['Technology', 'Leadership'],
         'mlops-vertex-ai-best-practices': ['MLOps'],
         'leading-ai-transformation-enterprise-teams': ['Leadership'],
-        'hidden-cost-of-data-chaos-ml': ['MLOps', 'AI/ML'],
-        'building-production-ready-rag-systems': ['AI/ML']
+        'hidden-cost-of-data-chaos-ml': ['MLOps', 'AI'],
+        'building-production-ready-rag-systems': ['AI']
     };
     
     // Find matching article

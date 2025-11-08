@@ -1,27 +1,27 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 4,
+        title: 'The Hidden Cost of Data Chaos in ML Projects',
+        date: 'November 2025',
+        tags: ['MLOps', 'AI'],
+        readTime: '10 min read',
+        description: 'Most ML projects fail not because of models, but because of data chaos. Understand the real costs, failure patterns, and how MLOps reduces failure and accelerates time to production.',
+        url: 'articles/hidden-cost-of-data-chaos-ml/',
+        image: 'img/the_hidden_cost_of_data_chaos.png'
+    },
+    {
         id: 3,
         title: 'The Creator Divide: Why Fresh Voices Are Solving Problems Experts Miss',
         date: 'November 2025',
         tags: ['AI', 'Innovation', 'Leadership'],
-        readTime: '15 min read',
+        readTime: '5 min read',
         description: 'AI didn\'t just make learning easier — it changed who gets to innovate. Explore how democratized knowledge is creating a divide between optimization and innovation, and why diverse voices are the key to solving tomorrow\'s problems.',
         url: 'articles/the-creator-divide/',
         image: 'img/the_creator_divide.png'
     },
     {
-        id: 2,
-        title: 'The Hidden Cost of Data Chaos in ML Projects',
-        date: 'November 2025',
-        tags: ['MLOps', 'AI/ML'],
-        readTime: '10 min read',
-        description: 'Most ML projects fail not because of models, but because of data chaos. Understand the real costs, failure patterns, and how MLOps reduces failure and accelerates time to production.',
-        url: 'articles/hidden-cost-of-data-chaos-ml/',
-        image: 'img/hackathons.png'
-    },
-    {
-        id: 2,
+        id:2,
         title: 'Architecture Decisions: Cloud Composer vs Vertex AI Pipelines',
         date: 'October 2025',
         tags: ['MLOps', 'AI'],

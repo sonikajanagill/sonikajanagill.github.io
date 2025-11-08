@@ -1591,6 +1591,16 @@ footer {
     color: var(--primary);
 }
 
+/* Certifications & Achievements section - red headings */
+#certifications .achievement-card h3 {
+    color: var(--primary);
+}
+
+/* Community & Mentoring section - red headings */
+#mentoring .achievement-card h3 {
+    color: var(--primary);
+}
+
 /* ===========================
    Contact Link Cards
    =========================== */
