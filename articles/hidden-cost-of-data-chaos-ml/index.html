@@ -102,11 +102,11 @@
 
         <p>This article examines ML project failures through a <strong>data engineering lens</strong>, because that's where most projects typically fail, not in model architecture, but in the data foundation beneath it. Whether you are a data leader, engineer, or executive, understanding the crucial role of solid data foundations will drive your AI success.</p>
 
-        <p>And the numbers back this up. Poor data quality costs organizations $12.9 million per year, according to Gartner, and can reach $15M in sectors like supply chains. MIT's research shows most generative AI pilots do not deliver value, while RAND found a high rate of AI project failures—much higher than traditional IT projects.</p>
+        <p>And the numbers back this up. Poor data quality costs organisations $12.9 million per year, according to Gartner, and can reach $15M in sectors like supply chains. MIT's research shows most generative AI pilots do not deliver value, while RAND found a high rate of AI project failures—much higher than traditional IT projects.</p>
 
         <p>The culprit? <strong>Data chaos</strong>, not algorithms. While teams debate which transformer architecture to use, their data foundation is falling apart. Data scientists spend <strong>40-60% of their time</strong> cleaning and wrangling data instead of building models.</p>
 
-        <p>In this article, we'll first explore why projects fail. Then, we'll examine Zillow's $881M lesson in what not to do, followed by how companies like Wayfair reduced deployment time from one month to one hour using MLOps on Vertex AI. Next, I'll show you why these approaches are now accessible to teams of all sizes—not just tech giants. Finally, I'll provide a practical, step-by-step approach for data leaders to start improving their MLOps maturity. This roadmap will help you set clear expectations for effectively integrating these practices into your organization.</p>
+        <p>In this article, we'll first explore why projects fail. Then, we'll examine Zillow's $881M lesson in what not to do, followed by how companies like Wayfair reduced deployment time from one month to one hour using MLOps on Vertex AI. Next, I'll show you why these approaches are now accessible to teams of all sizes—not just tech giants. Finally, I'll provide a practical, step-by-step approach for data leaders to start improving their MLOps maturity. This roadmap will help you set clear expectations for effectively integrating these practices into your organisation.</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
@@ -120,7 +120,7 @@
             <li><strong>Technical success, business failure</strong>: It works technically but solves the wrong problem (15-20%)</li>
         </ul>
         <p>Recent data shows the problem is worsening: MIT reports that most generative AI pilots fail, and the percentage of businesses abandoning AI initiatives is rapidly rising.</p>
-        <!--<p>The hidden drain on productivity makes things worse. When data scientists spend most of their time cleaning data instead of building models, organizations lose in two ways: they face direct financial losses and miss out on big opportunities. Takeaway: Inefficient data management directly drains both resources and potential gains.</p>-->
+        <!--<p>The hidden drain on productivity makes things worse. When data scientists spend most of their time cleaning data instead of building models, organisations lose in two ways: they face direct financial losses and miss out on big opportunities. Takeaway: Inefficient data management directly drains both resources and potential gains.</p>-->
 
         <h3>Where the Money Goes</h3>
         <!--<p>Gartner's $12.9M annual cost breaks down like this:</p>-->
@@ -175,15 +175,15 @@
         <p>Jupyter notebooks are perfect for experimentation. But getting from notebook to production? That's where projects die.</p>
         <img src="../../img/notebook_to_production_gap.png" alt="Notebook to Production Gap" style="width: 40%; max-width: 600px; margin: 2rem auto; display: block; border-radius: 8px;">
         
-        <p>RAND's 2024 analysis found that teams often misunderstand which problems to solve, organizations lack the right data, and infrastructure needs are underestimated. As a result, it can take 3-6 months to get a working model into production, with most of the effort spent on engineering instead of ML.</p>
-        <!--<p>Besides technical challenges, consider cultural factors that may cause delays. Think about your organization's reward systems: Do they value quick experiments over safe deployments? Looking at these incentives can help you find the non-technical reasons behind the 'notebook-to-production' gap.</p>
-        <p>To address these issues, organizations could encourage cross-team collaboration between data scientists and engineers to bridge gaps that slow down the production process. Leaders might set up regular workshops or 'lessons learned' sessions where teams share deployment strategies and failures, fostering an environment of continuous learning and improvement.</p>
+        <p>RAND's 2024 analysis found that teams often misunderstand which problems to solve, organisations lack the right data, and infrastructure needs are underestimated. As a result, it can take 3-6 months to get a working model into production, with most of the effort spent on engineering instead of ML.</p>
+        <!--<p>Besides technical challenges, consider cultural factors that may cause delays. Think about your organisation's reward systems: Do they value quick experiments over safe deployments? Looking at these incentives can help you find the non-technical reasons behind the 'notebook-to-production' gap.</p>
+        <p>To address these issues, organisations could encourage cross-team collaboration between data scientists and engineers to bridge gaps that slow down the production process. Leaders might set up regular workshops or 'lessons learned' sessions where teams share deployment strategies and failures, fostering an environment of continuous learning and improvement.</p>
     -->
         <p>But things are changing. Vertex AI makes this transition smooth instead of difficult. Managed notebooks automatically track experiments, and with one click, you can turn your notebook into a production pipeline. You no longer need to be an expert in distributed systems, as YAML files and automation handle the complexity.</p>
 
         <h3>Pattern #3: The Experiment Amnesia Problem</h3>
         <p>Three months ago, your team trained a model that performed well. Now you need to reproduce it. Nobody remembers which hyperparameters were used, which data version, or which preprocessing steps were applied.</p>
-        <p>This organizational memory loss is expensive. NewVantage's 2024 survey found that 92.7% of executives identify data as the biggest barrier to AI success. However, here's the kicker: only 48% of data scientists consistently measure their performance. Teams track technical metrics, such as AUC, but often overlook business KPIs, like ROI.</p>
+        <p>This organisational memory loss is expensive. NewVantage's 2024 survey found that 92.7% of executives identify data as the biggest barrier to AI success. However, here's the kicker: only 48% of data scientists consistently measure their performance. Teams track technical metrics, such as AUC, but often overlook business KPIs, like ROI.</p>
         <p><strong>Why this matters for enterprises:</strong> Beyond wasted compute and lost knowledge, this lack of tracking creates serious compliance and governance issues. Regulated industries like finance, healthcare, and government require complete audit trails regarding which data was used, when, by whom, and what model version was deployed. Without proper version control and lineage tracking, you can't pass audits, demonstrate compliance with regulations such as GDPR or HIPAA, or explain to regulators how a model made a specific decision. Consider a compliance scenario where an auditor requests the exact data path for prediction #123. Without a clear lineage, providing a detailed answer becomes a challenge, turning what might seem like a tech problem into a significant business risk. Proper data lineage can transform governance from a mere checkbox requirement into a crucial safeguard.</p>
         <p>The result? Wasted compute, lost knowledge, failed audits, and inability to improve models systematically.</p>
 
@@ -208,7 +208,7 @@
         <h2>Why Traditional Solutions Don't Work</h2>
 
         <h3>The "Buy More Tools" Trap</h3>
-        <p>Organizations think they can solve data chaos by purchasing more tools. The result? Ten disconnected systems requiring custom glue code and specialist knowledge for each one.</p>
+        <p>Organisations think they can solve data chaos by purchasing more tools. The result? Ten disconnected systems requiring custom glue code and specialist knowledge for each one.</p>
         <p>Tool sprawl creates more complexity than capability. Each additional solution introduces new integration challenges without addressing the underlying governance gaps. Takeaway: Purchasing more tools does not fix foundational data issues.</p>
 
         <h3>The "Hire More People" Illusion</h3>
@@ -217,7 +217,7 @@
         <h3>What's Actually Missing</h3>
         <p>The fundamental issue isn't lack of tools or people. It's the absence of a unified <strong>data control plane</strong>—a system that brings order to data chaos through:</p>
         <ul>
-            <li><strong>Centralized access control</strong> across all data sources</li>
+            <li><strong>Centralised access control</strong> across all data sources</li>
             <li><strong>Automated governance</strong> with version tracking and lineage</li>
             <li><strong>Unified interfaces</strong> that abstract away complexity</li>
             <li><strong>Built-in monitoring</strong> that catches problems before production impact</li>
@@ -266,7 +266,7 @@
         </div>
         <pre><code class="language-python">from google.cloud import aiplatform
 
-# Initialize with your project
+# Initialise with your project
 aiplatform.init(project="your-project-id", location="us-central1")
 
 # Create a feature store - your central data repository
@@ -305,7 +305,7 @@ customer_entity.batch_create_features(
     feature_configs=customer_features
 )
 
-# Your data is now centralized, versioned, and ready for production
+# Your data is now centralised, versioned, and ready for production
 print(f"Feature Store created: {feature_store.resource_name}")
 print(f"Features registered with automatic lineage tracking")</code></pre>
 
@@ -410,7 +410,7 @@ aiplatform.PipelineJob(
         <p><strong>After Vertex AI Implementation:</strong></p>
         <ul>
             <li>Deployment time: <strong>1 hour</strong> (96% reduction)</li>
-            <li>Centralized Feature Store serving 100+ models</li>
+            <li>Centralised Feature Store serving 100+ models</li>
             <li>Real-time predictions at massive scale</li>
             <li>Unified data access with automated governance</li>
         </ul>
@@ -423,7 +423,7 @@ aiplatform.PipelineJob(
 
         <h2>Building Your MLOps Maturity</h2>
 
-        <p>Most organizations aren't ready to jump straight to full MLOps. Here's the practical path forward, regardless of your current state:</p>
+        <p>Most organisations aren't ready to jump straight to full MLOps. Here's the practical path forward, regardless of your current state:</p>
 
         <h3>Level 0: Manual Process (Where Most Teams Start)</h3>
 
@@ -569,7 +569,7 @@ aiplatform.PipelineJob(
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <!--<h2>Why This Matters for Your Organization</h2>
+        <!--<h2>Why This Matters for Your Organisation</h2>
 
         <h3>The Business Case</h3>
 
@@ -585,7 +585,7 @@ aiplatform.PipelineJob(
         <ul>
             <li>75% reduction in failures</li>
             <li>10x faster time to production</li>
-            <li>Centralized governance and compliance</li>
+            <li>Centralised governance and compliance</li>
             <li>Data scientists doing ML instead of data janitor work</li>
         </ul>
 
@@ -640,7 +640,7 @@ aiplatform.PipelineJob(
             <li><strong>Outcome:</strong> Weeks to value, not years</li>
         </ul>
 
-        <p>This is what I call <strong>MLOps democratization</strong>: capabilities that once needed a huge investment are now available to teams of any size.</p>
+        <p>This is what I call <strong>MLOps democratisation</strong>: capabilities that once needed a huge investment are now available to teams of any size.</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
@@ -664,7 +664,7 @@ aiplatform.PipelineJob(
             <li><strong>Start this week:</strong> Pick your biggest pain point and address it</li>
         </ol>
 
-        <p>The democratization of MLOps means you don't need Google-scale resources to achieve Google-scale reliability. Smaller organizations can now adopt these practices to unlock AI value and scale operations efficiently.</p>
+        <p>The democratisation of MLOps means you don't need Google-scale resources to achieve Google-scale reliability. Smaller organisations can now adopt these practices to unlock AI value and scale operations efficiently.</p>
 
        
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
@@ -695,7 +695,7 @@ aiplatform.PipelineJob(
         <ul>
             <li>95% of generative AI pilots fail (MIT 2025)</li>
             <li>80% of AI/ML projects never reach production (RAND 2024)</li>
-            <li>$12.9M–$15M average annual cost per organization (Gartner)</li>
+            <li>$12.9M–$15M average annual cost per organisation (Gartner)</li>
             <li>$881M Zillow's loss from data quality issues</li>
         </ul>
 
@@ -766,6 +766,7 @@ aiplatform.PipelineJob(
         </div>
     </footer>
 
+    <script src="../article-utils.js"></script>
     <script>
         // Copy share link to clipboard
         function copyShareLink(button) {
@@ -781,22 +782,6 @@ aiplatform.PipelineJob(
                 alert('Failed to copy link');
             });
         }
-
-        // Check for saved theme preference or default to dark mode
-        const theme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-
-        const themeToggle = document.getElementById('theme-toggle');
-
-        // Toggle theme
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
     </script>
-    <script src="../article-utils.js"></script>
 </body>
 </html>

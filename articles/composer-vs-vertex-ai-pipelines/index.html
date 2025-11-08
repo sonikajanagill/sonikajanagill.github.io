@@ -628,6 +628,7 @@ def signal_completion(model_uri: str, accuracy: float):
         </div>
     </footer>
 
+    <script src="../article-utils.js"></script>
     <script>
         // Copy share link to clipboard
         function copyShareLink(button) {
@@ -643,22 +644,6 @@ def signal_completion(model_uri: str, accuracy: float):
                 alert('Failed to copy link');
             });
         }
-
-        // Check for saved theme preference or default to dark mode
-        const theme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-
-        const themeToggle = document.getElementById('theme-toggle');
-
-        // Toggle theme
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
     </script>
-    <script src="../article-utils.js"></script>
 </body>
 </html>
