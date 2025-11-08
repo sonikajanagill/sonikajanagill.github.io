@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeThemeToggle();
     initializeImageTooltips();
     initializeImageLightbox();
-    injectArticleHashtags();
+    // injectArticleHashtags();
     
     // Initialize Highlight.js for syntax highlighting
     if (typeof hljs !== 'undefined') {
