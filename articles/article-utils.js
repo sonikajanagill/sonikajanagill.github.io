@@ -169,6 +169,7 @@ function injectArticleHashtags() {
         'why-hackathons-fast-track-ai-mastery': ['Technology', 'Leadership'],
         'mlops-vertex-ai-best-practices': ['MLOps'],
         'leading-ai-transformation-enterprise-teams': ['Leadership'],
+        'hidden-cost-of-data-chaos-ml': ['MLOps', 'AI'],
         'building-production-ready-rag-systems': ['AI']
     };
     
@@ -204,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeThemeToggle();
     initializeImageTooltips();
     initializeImageLightbox();
-    injectArticleHashtags();
+    // injectArticleHashtags();
     
     // Initialize Highlight.js for syntax highlighting
     if (typeof hljs !== 'undefined') {
