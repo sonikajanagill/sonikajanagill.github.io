@@ -109,16 +109,14 @@
         <p>But the bill wasn't even the worst part.</p>
 
         <p>When I first read about this incident, two things struck me:</p>
-
         <p><strong>First, the attack speed.</strong> Hours, not days. The automation on both sides (malicious bots vs. cloud infrastructure) meant the damage compounded before any human intervention was possible.</p>
-
         <p><strong>Second, the remediation complexity.</strong> In my implementations across systems, I've seen how credentials proliferate: GitHub Actions variables, AWS Secrets Manager, local dev machines, test containers. When I asked, "Where are all your GCP service account keys?" the answer is always uncertain: "Everywhere."</p>
 
         <p>The problem is widespread:</p>
         <ul>
-            <li>Developers exposed <strong>13 million secrets</strong> on public GitHub repositories in 2023 alone—a 28% increase from 2022 (GitGuardian)</li>
-            <li><strong>65% of Forbes AI 50 companies</strong> had leaked verified secrets on GitHub (Cycode research)</li>
-            <li>Average cost per data breach: <strong>$4.45 million</strong> (IBM Security Report 2024)</li>
+            <li>Developers exposed <strong>23.8 million secrets</strong> on public GitHub repositories in 2024 alone—a significant 25% year-over-year increase from the previous year's figures. (<a href="https://blog.gitguardian.com/the-state-of-secrets-sprawl-2025/">GitGuardian</a>)</li>
+            <li><strong>65% of Forbes AI 50 companies</strong> had leaked verified secrets on GitHub (<a href="https://www.wiz.io/blog/forbes-ai-50-leaking-secrets">Wiz Exposure Report 2025</a>)</li>
+            <li>Average cost per data breach: <strong>$4.44 million</strong> (<a href="https://uk.newsroom.ibm.com/2025-cost-of-data-breach-UK">IBM Security Report 2025</a>)</li>
         </ul>
 
         <p>This problem isn't just a technical annoyance; it's a strategic failure. Let's talk about why the traditional approach to multi-cloud access is broken.</p>
