@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 5,
+        title: 'Why Static Credentials Are Your MLOps Security Catastrophe (And How to Fix It)',
+        date: 'November 2025',
+        tags: ['MLOps', 'Security', 'Cloud'],
+        readTime: '8 min read',
+        description: 'Static credentials cost you money, time, and security. Learn how Workload Identity Federation eliminates secrets entirely through cryptographic trust and zero-trust architecture.',
+        url: 'articles/static-credentials-mlops-security/',
+        image: 'img/static_credentials_security.png'
+    },
+    {
         id: 4,
         title: 'The Hidden Cost of Data Chaos in ML Projects',
         date: 'November 2025',
