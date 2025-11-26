@@ -2,7 +2,7 @@
 const articlesData = [
     {
         id: 5,
-        title: 'Why Static Credentials Are Your MLOps Security Catastrophe (And How to Fix It)',
+        title: 'Stop Storing Cloud Secrets: How Workload Identity Federation Eliminates Static Keys',
         date: 'November 2025',
         tags: ['MLOps', 'Security', 'Cloud'],
         readTime: '8 min read',
