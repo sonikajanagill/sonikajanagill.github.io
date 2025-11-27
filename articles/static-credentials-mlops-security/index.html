@@ -104,7 +104,7 @@
 
         <!--<p><em>Series: Enterprise MLOps on GCP (Part 2A)</em></p>-->
 
-        <p class="drop-cap">Recently, a computer science student accidentally committed their Google Cloud service account key to a public GitHub repository. Within hours, malicious bots—constantly scanning for exactly this kind of mistake—discovered it and spun up cryptocurrency mining operations. The bill: <strong>$55,000</strong> before the student even woke up. This is the reality of MLOps security when cloud credentials and cloud secrets are managed through static service account keys instead of modern multi-cloud authentication solutions like Workload Identity Federation.</p>
+        <p class="drop-cap">Recently, a computer science student accidentally committed their Google Cloud service account key to a public GitHub repository. Within hours, malicious bots—constantly scanning for exactly this kind of mistake—discovered it and spun up cryptocurrency mining operations. The bill: <strong>$55,000</strong> before the student even woke up (<a href="https://www.reddit.com/r/googlecloud/comments/1noctxi/student_hit_with_a_5544478_google_cloud_bill/">Ref</a>). This is the reality of MLOps security when cloud credentials and cloud secrets are managed through static service account keys instead of modern multi-cloud authentication solutions like Workload Identity Federation.</p>
 
         <p>But the bill wasn't even the worst part.</p>
 
@@ -142,17 +142,8 @@
 
         <p>According to Gartner, 92% of enterprises operate in multi-cloud environments. From my implementations, that number feels conservative. The challenge isn't migrating everything to one cloud (unrealistic). The challenge is connecting them securely.</p>
 
-        <h3>Real Example from My Implementations</h3>
-
-        <p>An e-commerce client needed to:</p>
-        <ul>
-            <li>Read customer behavior data from their 10-year-old AWS data lake</li>
-            <li>Process it in Azure Databricks (acquired company's infrastructure, migration not feasible)</li>
-            <li>Train recommendation models in Vertex AI (GCP's AutoML provided the best accuracy for their use case)</li>
-            <li>Serve predictions from on-premise Kubernetes (regulatory requirements for data residency)</li>
-        </ul>
-
         <p><strong>Migration timeline to single-cloud?</strong> 18+ months, $2M+ in engineering costs.<br>
+
         <strong>Time to secure this with Workload Identity Federation?</strong> 2 days.</p>
 
         <p>That's the difference we're talking about.</p>
@@ -230,7 +221,7 @@
 
         <p><strong>Workload Identity Federation eliminates all of them.</strong></p>
 
-        <h2>Enter Workload Identity Federation: The Zero-Trust Solution</h2>
+        <h2>Workload Identity Federation: The Zero-Trust Solution</h2>
 
         <p>So, if static keys are the problem, what is the solution?</p>
 
@@ -250,7 +241,7 @@
 
         <p><strong>Workload Identity Federation is the doorman.</strong><br>
         Your AWS or Azure environment is the ID.<br>
-        The temporary pass is the short-lived token.</p>
+        The temporary pass is a short-lived token.</p>
 
         <h3>How It Works: The Conceptual Flow</h3>
 
@@ -317,7 +308,18 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
         </div>
         <h3>See It In Action</h3>
 
-        <p>If you're more of a visual learner, the Google Cloud team has an excellent 6-minute walkthrough that demonstrates this exact flow: <a href="https://www.youtube.com/watch?v=4vajaXzHN08" target="_blank" rel="noopener noreferrer">Workload Identity Federation Explained</a>. Watch how seamlessly the token exchange happens—no secrets, no manual rotation, just secure authentication.</p>
+        <p>If you're more of a visual learner, the Google Cloud team has an excellent 6-minute walkthrough that demonstrates this exact flow. Watch how seamlessly the token exchange happens—no secrets, no manual rotation, just secure authentication.</p>
+
+        <div class="youtube-embed">
+            <iframe 
+                src="https://www.youtube.com/embed/4vajaXzHN08" 
+                title="Workload Identity Federation Explained - Google Cloud"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
 
         <p>Now, let's break down why this matters...</p>
 
@@ -327,11 +329,11 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
 
         <p><strong>Key Security Properties:</strong></p>
         <ul>
-            <li>✅ <strong>Ephemeral credentials</strong> - Tokens expire automatically in 1 hour (configurable). Even if stolen, they're useless by the time an attacker figures out what they are.</li>
-            <li>✅ <strong>No secrets stored</strong> - Nothing to leak or rotate. There's literally no JSON file to commit to GitHub.</li>
-            <li>✅ <strong>Cryptographic verification</strong> - AWS/Azure signs tokens; GCP verifies cryptographically</li>
-            <li>✅ <strong>Attribute-based access</strong> - Fine-grained control via IAM conditions. You can write policies like <em>"Only allow access if the request comes from this specific AWS role AND this specific production environment."</em></li>
-            <li>✅ <strong>Full audit trail</strong> - Every token exchange logged with complete context</li>
+            <li>✔ <strong>Ephemeral credentials</strong> - Tokens expire automatically in 1 hour (configurable). Even if stolen, they're useless by the time an attacker figures out what they are.</li>
+            <li>✔ <strong>No secrets stored</strong> - Nothing to leak or rotate. There's literally no JSON file to commit to GitHub.</li>
+            <li>✔ <strong>Cryptographic verification</strong> - AWS/Azure signs tokens; GCP verifies cryptographically</li>
+            <li>✔ <strong>Attribute-based access</strong> - Fine-grained control via IAM conditions. You can write policies like <em>"Only allow access if the request comes from this specific AWS role AND this specific production environment."</em></li>
+            <li>✔ <strong>Full audit trail</strong> - Every token exchange logged with complete context</li>
         </ul>
 
         <h3>Before vs After: The Transformation</h3>
@@ -417,13 +419,13 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
 
         <p><strong>Scenarios where you still need service account keys:</strong></p>
         <ul>
-            <li><strong>Legacy systems</strong> without OIDC/SAML support (rare, but exists in older enterprise systems)</li>
+            <li><strong>Legacy systems</strong> without OIDC/SAML support (rare, but exist in older enterprise systems)</li>
             <li><strong>Local development</strong> environments (though Application Default Credentials work better here)</li>
-            <li><strong>Third-party tools</strong> that require static keys (increasingly uncommon as tooling modernizes)</li>
+            <li><strong>Third-party tools</strong> that require static keys (increasingly uncommon as tooling modernises)</li>
             <li><strong>Offline/disconnected systems</strong> that can't make real-time token exchanges</li>
         </ul>
 
-        <p>For these cases, minimize the blast radius: use short-lived keys, strict IAM policies with principle of least privilege, comprehensive monitoring, and automated rotation. But for 90% of multi-cloud workloads? WIF is the answer.</p>
+        <p>For these cases, minimise the 'blast radius': use short-lived keys, strict IAM policies with the principle of least privilege, comprehensive monitoring, and automated rotation. But for 90% of multi-cloud workloads? WIF is the answer.</p>
 
         <h2>The Promise: From Strategy to Implementation</h2>
 
@@ -431,19 +433,19 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
 
         <p><strong>But how do you actually build it?</strong></p>
 
-        <p>How do you configure the AWS IAM roles? How do you map the OIDC tokens? How do you write the Terraform? What about troubleshooting when the trust validation fails?</p>
+        <p>How do you configure the AWS IAM roles? How do you map the OIDC tokens? How do you write Terraform? What about troubleshooting when the trust validation fails?</p>
 
         <p>That's exactly what we'll cover in <strong>Part 2B</strong>.</p>
 
         <p>In the next article, I'll drop the theory and give you the implementation manual. We'll walk through:</p>
 
         <ul>
-            <li>✅ <strong>Step-by-step AWS to Vertex AI implementation</strong> (deployable in 15 minutes)</li>
-            <li>✅ <strong>Azure to Vertex AI pattern</strong> specifically for HIPAA-compliant healthcare workloads</li>
-            <li>✅ <strong>Storage Transfer Service pattern</strong> for moving multi-TB datasets without bottlenecks</li>
-            <li>✅ <strong>Complete troubleshooting guide</strong> for when things go wrong (because they will)</li>
-            <li>✅ <strong>Terraform code samples</strong> ready to adapt for your infrastructure</li>
-            <li>✅ <strong>Testing strategies</strong> to validate your WIF configuration before production</li>
+            <li>✔ <strong>Step-by-step AWS to Vertex AI implementation</strong> (deployable in 15 minutes)</li>
+            <li>✔ <strong>Azure to Vertex AI pattern</strong> specifically for HIPAA-compliant healthcare workloads</li>
+            <li>✔ <strong>Storage Transfer Service pattern</strong> for moving multi-TB datasets without bottlenecks</li>
+            <li>✔ <strong>Complete troubleshooting guide</strong> for when things go wrong (because they will)</li>
+            <li>✔ <strong>Terraform code samples</strong> ready to adapt for your infrastructure</li>
+            <li>✔ <strong>Testing strategies</strong> to validate your WIF configuration before production</li>
         </ul>
 
         <p><strong>Ready to eliminate your credential nightmares?</strong> Part 2B drops later this week with the complete code and architecture guides.</p>
