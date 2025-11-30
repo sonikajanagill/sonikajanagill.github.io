@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 6,
+        title: 'Implementing Zero-Trust Multi-Cloud: A Complete WIF Setup Guide',
+        date: 'November 2025',
+        tags: ['MLOps', 'Security', 'Cloud'],
+        readTime: '10 min read',
+        description: 'Step-by-step guide to implement Workload Identity Federation for AWS→Vertex AI and Azure→Vertex AI. Production-ready code, real troubleshooting, enterprise patterns.',
+        url: 'articles/zero-trust-wif-implementation/',
+        image: 'img/wif_implementation.png'
+    },
+    {
         id: 5,
         title: 'Stop Storing Cloud Secrets: How Workload Identity Federation Eliminates Static Keys',
         date: 'November 2025',

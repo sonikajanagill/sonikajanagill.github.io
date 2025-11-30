@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementing Zero-Trust Multi-Cloud: A Complete WIF Setup Guide - Sonika Janagill</title>
+    <meta name="description" content="Step-by-step guide to implement Workload Identity Federation for AWS→Vertex AI and Azure→Vertex AI. Production-ready code, real troubleshooting, enterprise patterns.">
+    <meta name="author" content="Sonika Janagill">
+    <meta name="keywords" content="Workload Identity Federation, multi-cloud security, Vertex AI authentication, zero-trust architecture, AWS to GCP integration, Azure to Vertex AI, Storage Transfer Service, keyless authentication, HIPAA compliance, MLOps security patterns">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Implementing Zero-Trust Multi-Cloud: A Complete WIF Setup Guide">
+    <meta property="og:description" content="Step-by-step guide to implement Workload Identity Federation for AWS→Vertex AI and Azure→Vertex AI. Production-ready code, real troubleshooting, enterprise patterns.">
+    <meta property="og:url" content="https://sonikajanagill.com/articles/zero-trust-wif-implementation/">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://sonikajanagill.com/articles/zero-trust-wif-implementation/">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/Sonika_Salmon.jpeg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../article-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <span class="nav-home-text">Home</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-header-left">
+                <div class="blog-header-tags">
+                    <a href="/articles/?tag=MLOps" class="blog-header-tag">#MLOps</a>
+                    <a href="/articles/?tag=Security" class="blog-header-tag">#Security</a>
+                    <a href="/articles/?tag=GCP" class="blog-header-tag">#GCP</a>
+                </div>
+                <h2>Enterprise MLOps on GCP</h2>
+                <p class="blog-subtitle">Implementing Zero-Trust Multi-Cloud: A Complete WIF Setup Guide</p>
+                <p><i>Step-by-step guide to implement Workload Identity Federation for AWS→Vertex AI and Azure→Vertex AI.</i></p>
+                
+            <div class="blog-header-right">
+                <div class="blog-meta">
+                    <div class="blog-meta-item">
+                        <span>November 2025</span>
+                    </div>
+                    <div class="blog-meta-item">
+                        <span>10 min read</span>
+                    </div>
+                </div>
+                <div class="blog-share-buttons">
+                    <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/zero-trust-wif-implementation/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/x-icon.png" alt="X">
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/zero-trust-wif-implementation/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                    </a>
+                    <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/zero-trust-wif-implementation/" class="blog-share-btn" title="Share via Email">
+                        <img src="../../img/email-icon.png" alt="Email">
+                    </a>
+                    <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                        <img src="../../img/copy-icon.png" alt="Copy">
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-header-image">
+        <img src="../../img/wif_implementation.png" alt="Implementing Zero-Trust Multi-Cloud WIF Setup">
+        <p>Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
+    </div>
+
+    <!-- Blog Content -->
+    <main class="blog-content">
+        <a href="../" class="back-link">← Back to Articles</a>
+
+        <p class="drop-cap">In <a href="https://sonikajanagill.com/articles/static-credentials-mlops-security/">Part 2A</a>, I showed you why Workload Identity Federation (WIF) is the Zero-Trust solution for multi-cloud MLOps. We covered the business case, the security benefits, the cost savings.</p>
+
+        <p>Now let's build it.</p>
+
+        <p>I've implemented this pattern multiple times and each time, I hit the same gotchas, solved the same "Permission Denied" errors, and learned new tricks.</p>
+
+        <p>This is the implementation guide I wish I'd had for my first setup. It would have saved me 10 hours of debugging. We are going to build a production-ready, keyless authentication pipeline from <strong>AWS to Vertex AI</strong>, adaptable for Azure and GitHub Actions. We will cover:</p>
+
+        <ol>
+            <li><strong>The Core Setup:</strong> A complete AWS → Vertex AI implementation in 15 minutes.</li>
+            <li><strong>The Enterprise Pattern:</strong> Moving multi-TB datasets using Storage Transfer Service (STS) without proxying data.</li>
+            <li><strong>The Compliance Pattern:</strong> Azure to Vertex AI for HIPAA-regulated workloads.</li>
+            <li><strong>Troubleshooting:</strong> How to debug the dreaded "Permission Denied" errors.</li>
+        </ol>
+        <p class="key-concept">
+            If you just want to test WIF works, skip to <a href="#phase-3-vertex-ai-pipeline"></a>Phase 3</a> and use the Standard Pattern with a small test file. Come back for the enterprise patterns later.
+        </p>
+        <h2>WIF Architecture: Understanding the Core Components</h2>
+
+        <p>Before we run the Terraform, let's visualize the components. When I implemented this for the first time, I made the mistake of jumping straight into creating resources. I ended up with a mess of permissions that took 3 hours to untangle.</p>
+
+        <p>Here's the mental model that finally clicked for me:</p>
+
+        <div class="image-placeholder">
+            <img src="../../img/wif_flow.png" alt="WIF Trust Flow Architecture">
+        </div>
+
+        <h3>The 8-Step Trust Dance</h3>
+
+        <ol>
+            <li><strong>AWS Identity Token:</strong> Your EC2 instance requests its identity from AWS STS</li>
+            <li><strong>Token Retrieval:</strong> AWS issues a signed token proving "I am IAM role X in account Y"</li>
+            <li><strong>Token Exchange:</strong> Your app presents this AWS token to GCP's Workload Identity Pool</li>
+            <li><strong>Provider Validation:</strong> The AWS Provider validates the token signature</li>
+            <li><strong>Attribute Checking:</strong> Conditions verify the role ARN matches your allowed list</li>
+            <li><strong>Service Account Impersonation:</strong> If checks pass, GCP issues a short-lived token for your service account</li>
+            <li><strong>Resource Access:</strong> Your code uses this token to call Vertex AI APIs</li>
+            <li><strong>Data Operations:</strong> Vertex AI accesses Cloud Storage with the service account's permissions</li>
+        </ol>
+
+        <h3>Key Components Explained</h3>
+
+        <ul>
+            <li><strong>Workload Identity Pool:</strong> The container for external identities (e.g., <code>aws-prod-pool</code>).</li>
+            <li><strong>Pool Provider:</strong> The "bouncer" that verifies tokens (e.g., checks if the AWS token is valid).</li>
+            <li><strong>GCP Service Account:</strong> The identity your external workload <em>impersonates</em> after passing the bouncer.</li>
+            <li><strong>Attribute Conditions:</strong> The fine-grained rules (e.g., <em>"Only allow access if the AWS role is <code>ml-training-role</code>"</em>).</li>
+        </ul>
+
+        <p>Notice how <strong>zero static credentials</strong> flow through this system. Every token is short-lived (1 hour max), and if your AWS role is compromised, you just remove it from the attribute conditions.</p>
+
+        <h2>Pattern 1: AWS to Vertex AI Authentication (15-Minute Setup)</h2>
+
+        <p><strong>Scenario:</strong> You have training data in AWS S3, model training on Vertex AI, zero static credentials. This is the most frequently used pattern implementations.</p>
+
+        <p><strong>Time to implement:</strong> 15-20 minutes for first-time setup, 10 minutes once you know the steps.</p>
+
+        <p>We'll do this in three phases:</p>
+        <ol>
+            <li><strong>GCP Configuration</strong> - Tell Google who to trust (5 min)</li>
+            <li><strong>AWS Configuration</strong> - Give AWS permission to request tokens (5 min)</li>
+            <li><strong>Application Code</strong> - Use the credentials seamlessly (5 min)</li>
+        </ol>
+
+        <p>Let's start with the GCP side.</p>
+
+        <h3>Phase 1: GCP Configuration (The Trust Side)</h3>
+
+        <p>First, we tell Google Cloud to trust specific AWS identities.</p>
+
+        <h4>1. Create the Workload Identity Pool</h4>
+
+        <p>This acts as a namespace for your external identities.</p>
+
+        <div class="code-block-header">
+            <span>Bash - Create Workload Identity Pool</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code>export PROJECT_ID="your-ml-project"
+export POOL_ID="aws-prod-pool"
+export LOCATION="global"
+
+gcloud iam workload-identity-pools create $POOL_ID \
+  --project=$PROJECT_ID \
+  --location=$LOCATION \
+  --display-name="AWS Production ML Workloads" \
+  --description="Federated access for AWS-based ML pipelines"</code></pre>
+
+        <h4>2. Create the AWS Provider</h4>
+
+        <p>This links your specific AWS Account ID to the pool.</p>
+
+        <div class="code-block-header">
+            <span>Bash - Create AWS Provider</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code>export PROVIDER_ID="aws-provider"
+export AWS_ACCOUNT_ID="123456789012"  # Replace with your AWS Account ID
+
+gcloud iam workload-identity-pools providers create-aws $PROVIDER_ID \
+  --project=$PROJECT_ID \
+  --location=$LOCATION \
+  --workload-identity-pool=$POOL_ID \
+  --account-id=$AWS_ACCOUNT_ID</code></pre>
+
+        <h4>3. Create the Service Account & Grant Permissions</h4>
+
+        <p>This is the identity your AWS workload will "become."</p>
+
+        <div class="code-block-header">
+            <span>Bash - Create Service Account</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code>export SA_NAME="vertex-training-sa"
+
+# Create the Service Account
+gcloud iam service-accounts create $SA_NAME \
+  --project=$PROJECT_ID \
+  --display-name="Vertex AI Training Agent"
+
+# Grant it access to Vertex AI and GCS
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/aiplatform.user"
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/storage.objectViewer"</code></pre>
+
+        <h4>4. Bind the Trust (The Critical Step)</h4>
+
+        <p>This is where we say: <em>"Allow the <code>ml-training-role</code> from AWS Account <code>123...</code> to impersonate this Service Account."</em></p>
+
+        <div class="code-block-header">
+            <span>Bash - Bind the Trust</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code># Get the full pool resource name
+POOL_RESOURCE_NAME=$(gcloud iam workload-identity-pools describe $POOL_ID \
+  --project=$PROJECT_ID --location=$LOCATION --format="value(name)")
+
+# Allow impersonation ONLY from a specific AWS Role
+gcloud iam service-accounts add-iam-policy-binding \
+  "$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/iam.workloadIdentityUser" \
+  --member="principalSet://iam.googleapis.com/$POOL_RESOURCE_NAME/attribute.aws_role/arn:aws:iam::$AWS_ACCOUNT_ID:role/ml-training-role"</code></pre>
+
+        <p class="key-concept"><strong>Pro Tip:</strong> Being specific with <code>attribute.aws_role</code> here is what makes this Zero-Trust. Never use a wildcard (<code>*</code>) in production.</p>
+
+        <h3>Phase 2: AWS Configuration (The Client Side)</h3>
+
+        <p>Now, we configure AWS to provide the credentials.</p>
+
+        <h4>1. Create the IAM Role</h4>
+
+        <p>This role will be assumed by your EC2 instance or EKS pod. It needs a trust policy that allows it to talk to Google.</p>
+
+        <p><strong>Important:</strong> This trust policy goes in your AWS IAM role definition, NOT in GCP. This is what allows AWS to issue tokens that GCP will accept.</p>
+
+        <p><em>trust-policy.json:</em></p>
+
+        <div class="code-block-header">
+            <span>JSON - AWS Trust Policy</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "accounts.google.com"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "accounts.google.com:aud": "http://iam.googleapis.com/projects/${GCP_PROJECT_NUMBER}/locations/global/workloadIdentityPools/aws-prod-pool/providers/aws-provider"
+        }
+      }
+    }
+  ]
+}</code></pre>
+
+        <h4>2. Configure the Client Library</h4>
+
+        <p>Google's client libraries need a configuration file to know how to perform the exchange. You generate this once and bake it into your application image or mount it as a Kubernetes secret.</p>
+
+        <div class="code-block-header">
+            <span>Bash - Configure Client Library</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code>gcloud iam workload-identity-pools create-cred-config \
+  projects/$PROJECT_NUMBER/locations/global/workloadIdentityPools/$POOL_ID/providers/$PROVIDER_ID \
+  --service-account="$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com" \
+  --aws \
+  --output-file="credential-config.json"</code></pre>
+
+        <h3 id="phase-3-vertex-ai-pipeline">Phase 3: The Vertex AI Pipeline Code</h3>
+
+        <p>This is where the magic happens. We will look at two patterns: the <strong>Standard Pattern</strong> for small data, and the <strong>Enterprise Pattern</strong> for massive datasets.</p>
+
+        <h4>Common Setup</h4>
+
+        <p>In your Python script running on AWS, simply point to the config file.</p>
+
+        <div class="code-block-header">
+            <span>Python - Common Setup</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code>import os
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/path/to/credential-config.json'</code></pre>
+
+        <h4>Option A: The "Standard" Pattern (Small Data)</h4>
+
+        <p>For metadata or small files, you can download to the AWS worker and re-upload to GCS.</p>
+
+        <div class="code-block-header">
+            <span>Python - Standard Pattern</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code>def fetch_data_standard(s3_bucket, gcs_bucket):
+    import boto3
+    from google.cloud import storage
+
+    # 1. Get data from S3 (using AWS native credentials)
+    s3 = boto3.client('s3')
+    s3.download_file(s3_bucket, 'data.csv', '/tmp/data.csv')
+
+    # 2. Upload to GCS (using WIF credentials automatically)
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(gcs_bucket)
+    blob = bucket.blob('training/data.csv')
+    blob.upload_from_filename('/tmp/data.csv')
+    
+    return f"gs://{gcs_bucket}/training/data.csv"</code></pre>
+
+        <h4>Option B: The "Enterprise" Pattern (Multi-TB Data)</h4>
+
+        <p>If you are moving 2TB of training data, <strong>do not proxy it through your worker node.</strong> It's slow, expensive, and fragile.</p>
+
+        <p>Let me show you why with a visual comparison:</p>
+
+        <h5>Enterprise Approach: Direct STS Transfer</h5>
+
+        <div class="image-placeholder">
+            <img src="../../img/wif_direct_sts.png" alt="Enterprise Approach: Direct STS Transfer">
+        </div>
+
+        <h5>Naive Approach: Proxy Through Worker</h5>
+
+        <div class="image-placeholder">
+            <img src="../../img/wif_proxy_through_worker.png" alt="Naive Approach: Proxy Through Worker">
+        </div>
+
+        <h4>The Cost of Getting This Wrong</h4>
+
+        <p><strong>Naive Approach</strong> (Proxy Through Worker):</p>
+        <ul>
+            <li>Download 2TB from S3 to EC2: 2 hours</li>
+            <li>Upload 2TB from EC2 to GCS: 3 hours</li>
+            <li><strong>Total time: 5 hours</strong></li>
+            <li><strong>AWS egress cost: $180</strong> (S3 → Internet → GCS)</li>
+            <li><strong>Single point of failure:</strong> Your worker node</li>
+            <li><strong>Network instability:</strong> Any disconnect = start over</li>
+        </ul>
+
+        <p><strong>Enterprise Approach</strong> (Storage Transfer Service):</p>
+        <ul>
+            <li>Issue STS transfer command via WIF: 30 seconds</li>
+            <li>GCP transfers directly with parallel streams: 1.5 hours</li>
+            <li><strong>Total time: 1.5 hours</strong></li>
+            <li><strong>AWS egress cost: $90</strong> (S3 → GCP direct peering)</li>
+            <li><strong>No worker dependency:</strong> STS handles retries automatically</li>
+            <li><strong>Bandwidth optimization:</strong> Google's infrastructure, not your EC2 instance</li>
+        </ul>
+
+        <h4>The Architectural Insight</h4>
+
+        <p>With STS, your worker node becomes a <strong>lightweight orchestrator</strong> instead of a data proxy. You use WIF credentials to <em>command</em> GCP to fetch the data, then step aside while the platforms handle the heavy lifting.</p>
+
+        <p>This is the architect-level distinction: Knowing when to move data yourself, and when to orchestrate the platform to do it for you.</p>
+
+        <div class="code-block-header">
+            <span>Python - Enterprise Pattern</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code>def trigger_enterprise_transfer(s3_bucket, gcs_bucket):
+    """
+    Triggers a server-to-server transfer from AWS S3 to GCS.
+    Zero data flows through this script.
+    """
+    from google.cloud import storage_transfer
+
+    client = storage_transfer.StorageTransferServiceClient()
+
+    transfer_job = {
+        "description": "Enterprise Transfer via WIF",
+        "project_id": "your-ml-project",
+        "transfer_spec": {
+            "aws_s3_data_source": {
+                "bucket_name": s3_bucket,
+                # STS requires a federated role ARN on the AWS side
+                # This is a SEPARATE AWS role specifically for STS
+                # It needs s3:GetObject permissions on source bucket
+                # And should be listed in the GCP WIF pool's allowed principals
+                "role_arn": "arn:aws:iam::123456789012:role/sts-transfer-role"
+            },
+            "gcs_data_sink": {"bucket_name": gcs_bucket},
+        },
+        "status": "ENABLED"
+    }
+
+    result = client.create_transfer_job({"transfer_job": transfer_job})
+    print(f"✓ STS Job Started: {result.name}")
+    return result.name</code></pre>
+
+        <blockquote>
+            <strong>Cost Impact</strong>: Using STS instead of proxying saved us $90 in egress costs on a single 2TB transfer. For weekly transfers, that's $4,680/year.
+        </blockquote>
+
+        <h2>Implementation Pattern 2: Azure to Vertex AI (Healthcare)</h2>
+
+        <p>Standard WIF is great. But what about regulated industries?</p>
+
+        <p>Let me show you how WIF adapts for healthcare compliance. This is the pattern implemented for a diagnostics startup that needed:</p>
+        <ul>
+            <li>Patient data must stay in Azure (existing HIPAA-compliant environment)</li>
+            <li>Training must happen on Vertex AI (AutoML capabilities)</li>
+            <li>Zero PHI (Protected Health Information) can touch public internet</li>
+            <li>Full audit trail required for compliance</li>
+        </ul>
+
+        <p class="key-concept"><strong>HIPAA Note:</strong> CMEK is required for HIPAA workloads on GCP. Combined with WIF, VPC Service Controls, and audit logging, this creates a compliant ML environment. Always consult your compliance team for your specific requirements.</p>
+
+        <p>Healthcare compliance adds three layers beyond basic WIF:</p>
+
+        <h3>1. Data Residency</h3>
+        <p>All patient data stayed in Azure Blob Storage in their compliant region. Only anonymized features crossed the cloud boundary.</p>
+
+        <h3>2. Network Isolation</h3>
+        <p>We used Cloud Interconnect + VPC Service Controls to ensure data never touched public internet. In retrospect, this was the most complex part of the implementation—it took 2 days to get the routing right.</p>
+
+        <h3>3. Cryptographic Trail</h3>
+        <p>Every data access had to be auditable. WIF gave us this automatically—each token exchange generated an audit log we could present to regulators.</p>
+
+        <h3>The Azure Difference</h3>
+
+        <p>Azure doesn't use the AWS-style federation. It uses <strong>OIDC (OpenID Connect)</strong>.</p>
+
+        <h4>GCP Side: Create an OIDC Provider</h4>
+
+        <div class="code-block-header">
+            <span>Bash - Create OIDC Provider</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code>gcloud iam workload-identity-pools providers create-oidc "azure-provider" \
+  --workload-identity-pool="azure-health-pool" \
+  --issuer-uri="https://sts.windows.net/YOUR_TENANT_ID/" \
+  --allowed-audiences="api://AzureADTokenExchange"</code></pre>
+
+        <h4>Azure Side: Enable Managed Identity</h4>
+        <p>Enable <strong>Managed Identity</strong> on your VM/AKS cluster.</p>
+
+        <h3>Compliance Hardening: CMEK</h3>
+
+        <p><strong>CMEK (Customer Managed Encryption Keys):</strong> All ML artifacts encrypted with your own keys for full cryptographic control.</p>
+
+        <p>First, create your encryption key:</p>
+
+        <div class="code-block-header">
+            <span>Bash - Create KMS Key</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code># Create KMS key ring (one-time setup)
+gcloud kms keyrings create healthcare-ml-keyring \
+  --location=us-central1 \
+  --project=$PROJECT_ID
+
+# Create the encryption key
+gcloud kms keys create vertex-artifacts-key \
+  --keyring=healthcare-ml-keyring \
+  --location=us-central1 \
+  --purpose=encryption \
+  --rotation-period=90d \
+  --next-rotation-time=$(date -u -d "+90 days" +%Y-%m-%dT%H:%M:%SZ)
+
+# Grant Vertex AI permission to use this key
+gcloud kms keys add-iam-policy-binding vertex-artifacts-key \
+  --keyring=healthcare-ml-keyring \
+  --location=us-central1 \
+  --member="serviceAccount:service-$PROJECT_NUMBER@gcp-sa-aiplatform.iam.gserviceaccount.com" \
+  --role="roles/cloudkms.cryptoKeyEncrypterDecrypter"</code></pre>
+
+        <p>Then reference it in your Vertex AI training jobs:</p>
+
+        <div class="code-block-header">
+            <span>Python - CMEK Configuration</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code>from google.cloud import aiplatform
+
+# Initialize with CMEK configuration
+aiplatform.init(
+    project='your-healthcare-project',
+    location='us-central1',
+    encryption_spec_key_name='projects/your-healthcare-project/locations/us-central1/keyRings/healthcare-ml-keyring/cryptoKeys/vertex-artifacts-key'
+)
+
+# Training job with CMEK
+job = aiplatform.CustomTrainingJob(
+    display_name='hipaa-compliant-training',
+    container_uri='gcr.io/your-project/training-image:latest',
+    model_serving_container_image_uri='gcr.io/your-project/serving-image:latest',
+    # This ensures ALL artifacts (model, logs, metadata) use CMEK
+    encryption_spec_key_name='projects/your-healthcare-project/locations/us-central1/keyRings/healthcare-ml-keyring/cryptoKeys/vertex-artifacts-key'
+)
+
+model = job.run(
+    dataset=dataset,
+    model_display_name='diagnostic-model-v1',
+    # Model registry artifacts also encrypted
+    encryption_spec_key_name='projects/your-healthcare-project/locations/us-central1/keyRings/healthcare-ml-keyring/cryptoKeys/vertex-artifacts-key'
+)
+
+# Deploy endpoint with CMEK
+endpoint = model.deploy(
+    deployed_model_display_name='diagnostic-endpoint',
+    machine_type='n1-standard-4',
+    # Even prediction endpoint artifacts encrypted
+    encryption_spec_key_name='projects/your-healthcare-project/locations/us-central1/keyRings/healthcare-ml-keyring/cryptoKeys/vertex-artifacts-key'
+)</code></pre>
+
+        <h3>Why CMEK Matters for Healthcare</h3>
+
+        <p>Here's how the encryption layers protect your ML pipeline:</p>
+
+        <div class="image-placeholder">
+            <img src="../../img/wif_kms.png" alt="CMEK Encryption Layers for Healthcare ML">
+        </div>
+
+        <h4>The Compliance Value Chain</h4>
+
+        <p>For our healthcare client, this architecture meant:</p>
+
+        <ul>
+            <li><strong>Cryptographic Control:</strong> The customer owns the keys in their KMS, not Google. If they need to revoke access, they disable the key and all encrypted data becomes immediately inaccessible.</li>
+            <li><strong>Automated Rotation:</strong> 90-day key rotation satisfies HIPAA requirements without manual intervention.</li>
+            <li><strong>Complete Audit Trail:</strong> Every time Vertex AI uses the encryption key, it's logged in Cloud Audit Logs with:
+                <ul>
+                    <li>Which service account requested access</li>
+                    <li>What artifact was encrypted/decrypted</li>
+                    <li>Timestamp and source IP</li>
+                    <li>Success or failure status</li>
+                </ul>
+            </li>
+            <li><strong>Instant Revocation:</strong> If a compliance issue arises, disabling the KMS key instantly cuts off all access to training data, models, and predictions.</li>
+        </ul>
+
+        <h4>What Gets Encrypted</h4>
+
+        <ul>
+            <li>✓ Training datasets and preprocessing artifacts</li>
+            <li>✓ Model binaries and checkpoints</li>
+            <li>✓ Prediction logs and metadata</li>
+            <li>✓ Explainability reports and feature attributions</li>
+        </ul>
+
+        <p>The pattern above ensures that even Google engineers cannot access your ML artifacts without your explicit key permissions.</p>
+
+        <p class="key-concept"><strong>Pro Tip:</strong> Use separate keys for different sensitivity levels. We used one key for anonymized features, another for the diagnostic models containing derived PHI.</p>
+
+        <h3>VPC Service Controls</h3>
+
+        <p>Wrap your GCP project in a perimeter that blocks all internet egress, allowing traffic <em>only</em> from your trusted Azure range via Private/Interconnect.</p>
+
+        <h2>Common WIF Errors: Debugging Permission Denied and Token Issues</h2>
+
+        <p>You've built it. Now let's make sure it works.</p>
+
+        <p>I've debugged WIF implementations dozens of times. Here are the three errors you'll almost certainly encounter, and how to fix them in minutes.</p>
+
+        <h3>Problem 1: "Permission Denied" on Token Exchange</h3>
+
+        <ul>
+            <li><strong>Symptom:</strong> <code>Error: Permission 'iam.serviceAccounts.getAccessToken' denied</code></li>
+            <li><strong>The Fix:</strong> You likely forgot the Service Account impersonation binding. Check that your AWS role is <em>exactly</em> matching the attribute condition.</li>
+        </ul>
+
+        <div class="code-block-header">
+            <span>Bash - Debug Command</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code># Debug Command
+gcloud iam service-accounts get-iam-policy $SA_EMAIL</code></pre>
+
+        <p>Look for <code>roles/iam.workloadIdentityUser</code>.</p>
+
+        <h3>Problem 2: "Invalid Token"</h3>
+
+        <ul>
+            <li><strong>Symptom:</strong> The exchange fails claiming the AWS token is invalid. The error message is completely unhelpful: "Invalid token format."</li>
+            <li><strong>The Fix:</strong> Check <strong>IMDSv2</strong>. AWS now defaults to requiring a "hop limit" of 2 for containerized workloads. If your hop limit is 1, the token cannot be retrieved inside the container.</li>
+        </ul>
+
+        <div class="code-block-header">
+            <span>Bash - Fix IMDSv2</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+                
+            </div>
+        </div>
+        <pre><code># Fix on EC2
+aws ec2 modify-instance-metadata-options --http-put-response-hop-limit 2 --instance-id ${INSTANCE_ID}</code></pre>
+
+        <p>By the third implementation, I just automated this check in the Terraform modules.</p>
+
+        <h3>Problem 3: "Security Token Service API Disabled"</h3>
+
+        <ul>
+            <li><strong>Symptom:</strong> A generic 403 error.</li>
+            <li><strong>The Fix:</strong> It sounds obvious, but ensure the <code>sts.googleapis.com</code> and <code>iamcredentials.googleapis.com</code> APIs are enabled in your GCP project.</li>
+        </ul>
+
+        <h2>Conclusion: Start Small, Scale Securely</h2>
+
+        <p>You now have the blueprint to eliminate static keys from your infrastructure.</p>
+
+        <h3>Your Next Steps</h3>
+
+        <ol>
+            <li><strong>Week 1:</strong> Implement the AWS setup in a sandbox environment.</li>
+            <li><strong>Week 2:</strong> Migrate one non-critical pipeline (e.g., a daily batch job).</li>
+            <li><strong>Week 3:</strong> Enable "Attribute Conditions" to lock down access to specific roles.</li>
+        </ol>
+
+        <h3>Get the Code</h3>
+
+        <p>I've published the complete Terraform modules and Python scripts for both the AWS and Azure patterns in my GitHub repository. Star it, fork it, and use it as your template.</p>
+
+        <p><strong><a href="https://github.com/sonikajanagill/mlops-factory-templates/" target="_blank" rel="noopener noreferrer">GitHub Repo: wif-mlops-patterns</a></strong></p>
+
+        <h2>What's Next: From Security to Economics</h2>
+
+        <p>You now have the security foundation in place—zero static credentials, cryptographic trust, and automated compliance. Your multi-cloud MLOps pipeline is secure.</p>
+
+        <p>But security is just one dimension of production readiness. The other critical question: <strong>What does this infrastructure actually cost?</strong></p>
+
+        <p>In <strong><a href="../composer-vs-vertex-ai-pipelines/">Part 3: Cloud Composer vs. Vertex AI Pipelines</a></strong>, we discussed how to choose the right orchestration layer for your ML workflows. Now it's time to make it cost-efficient.</p>
+
+        <p>In <strong>Part 4</strong>, we'll tackle the economics: <strong>Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%</strong>. I'll show you:</p>
+
+        <ul>
+            <li>How I reduced a $3,200/month ML infrastructure bill to $600/month</li>
+            <li>The service isolation strategy that unlocked these savings</li>
+            <li>Preemptible instances, auto-scaling, and scheduling tactics with real ROI numbers</li>
+            <li>A cost optimization checklist you can apply to your pipelines this week</li>
+        </ul>
+
+        <p>Because secure pipelines that bankrupt your team aren't sustainable.</p>
+
+        <h2>Series Navigation</h2>
+
+        <ul>
+            <li><a href="../hidden-cost-of-data-chaos-ml/">Part 1</a>: The Hidden Cost of Data Chaos in ML Projects</li>
+            <li><a href="../static-credentials-mlops-security/">Part 2A</a>: Why static credentials are catastrophic + WIF strategy</li>
+            <li><strong>Part 2B</strong>: Complete AWS + Azure implementation (you are here)</li>
+            <li><a href="../composer-vs-vertex-ai-pipelines/">Part 3</a>: Orchestration decisions - Composer vs Kubeflow</li>
+            <li>Part 4: Cost-Optimized MLOps: Reducing Infrastructure Spend by 80% (coming soon)</li>
+        </ul>
+
+        <p><em>This article is part of the "Enterprise MLOps on GCP" series. Follow me on <a href="https://medium.sonikajanagill.com/" target="_blank" rel="noopener noreferrer">Medium</a> and <a href="https://www.linkedin.com/in/sonikaj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> for Part 4 and the rest of the series.</em></p>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/sonikaj/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://medium.sonikajanagill.com/" target="_blank" rel="noopener noreferrer">Medium</a>
+                <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../article-utils.js"></script>
+</body>
+</html>

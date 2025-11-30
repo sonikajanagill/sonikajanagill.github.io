@@ -146,7 +146,7 @@ function copyCode(button) {
         button.classList.add('copied');
         
         setTimeout(() => {
-            button.textContent = '📋 Copy';
+            button.textContent = 'Copy';
             button.classList.remove('copied');
         }, 2000);
     }).catch(err => {
