@@ -2,7 +2,7 @@
 const articlesData = [
     {
         id: 7,
-        title: 'Building the Internet of Agents: AGNTCY, Protocols, and the Open Stack You Need',
+        title: "Internet of Agents: AGNTCY, Protocols, and Mach Alliance's Agent Ecosystem",
         date: 'December 2025',
         tags: ['AI', 'Architecture', 'Strategy'],
         readTime: '25 min read',
