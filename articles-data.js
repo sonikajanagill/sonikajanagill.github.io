@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 7,
+        title: 'Building the Internet of Agents: AGNTCY, Protocols, and the Open Stack You Need',
+        date: 'December 2025',
+        tags: ['AI', 'Architecture', 'Strategy'],
+        readTime: '25 min read',
+        description: 'How AGNTCY, open protocols, and MACH Alliance are building interoperable AI agent systems—and why enterprise architects must act now to avoid lock-in.',
+        url: 'articles/architecting-internet-of-agents/',
+        image: 'img/architecting_internet_of_agents.png'
+    },
+    {
         id: 6,
         title: 'Implementing Zero-Trust Multi-Cloud: A Complete WIF Setup Guide',
         date: 'November 2025',

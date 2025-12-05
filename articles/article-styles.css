@@ -578,6 +578,33 @@
     margin: 0 auto;
 }
 
+/* Article Content Image (full height) */
+.blog-content .article-image {
+    text-align: center;
+    margin: 2rem 0;
+    width: 100%;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+.blog-content .article-image img {
+    max-width: 100%;
+    width: auto;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
+}
+
+.blog-content .article-image figcaption {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 0.75rem;
+}
+
 .article-header-image p {
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -714,6 +741,53 @@
 
 .callout-box strong {
     color: var(--primary);
+}
+
+/* ===========================
+   Citation Link Styles
+   =========================== */
+
+.citation-link {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    display: inline-block;
+    margin-left: 0.5rem;
+    background: color-mix(in srgb, var(--bg-secondary) 30%, transparent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+    vertical-align: middle;
+}
+
+.blog-content h4:has(+ .citation-link) {
+    display: inline;
+}
+
+.blog-content h3:has(+ .citation-link) {
+    display: inline;
+}
+
+.blog-content h3 + .citation-link,
+.blog-content h4 + .citation-link {
+    margin-bottom: 0.5rem;
+}
+
+.blog-content h3 + .citation-link + p,
+.blog-content h4 + .citation-link + p {
+    margin-top: 0.5rem;
+}
+
+.citation-link::after {
+    content: " ↗";
+    font-size: 0.55rem;
+    vertical-align: super;
+}
+
+.citation-link:hover {
+    color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 10%, transparent);
+    border-color: var(--primary);
 }
 
 /* ===========================
