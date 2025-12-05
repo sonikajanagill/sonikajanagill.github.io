@@ -121,7 +121,7 @@
         </p>
         <h2>WIF Architecture: Understanding the Core Components</h2>
 
-        <p>Before we run the Terraform, let's visualize the components. When I implemented this for the first time, I made the mistake of jumping straight into creating resources. I ended up with a mess of permissions that took 3 hours to untangle.</p>
+        <p>Before we run Terraform, let's visualise the components. When I implemented this for the first time, I made the mistake of jumping straight into creating resources. I ended up with a mess of permissions that took 3 hours to untangle.</p>
 
         <p>Here's the mental model that finally clicked for me:</p>
 
@@ -142,7 +142,7 @@
             <li><strong>Data Operations:</strong> Vertex AI accesses Cloud Storage with the service account's permissions</li>
         </ol>
 
-        <h3>Key Components Explained</h3>
+        <h3>Key Components</h3>
 
         <ul>
             <li><strong>Workload Identity Pool:</strong> The container for external identities (e.g., <code>aws-prod-pool</code>).</li>
@@ -155,7 +155,7 @@
 
         <h2>Pattern 1: AWS to Vertex AI Authentication (15-Minute Setup)</h2>
 
-        <p><strong>Scenario:</strong> You have training data in AWS S3, model training on Vertex AI, zero static credentials. This is the most frequently used pattern implementations.</p>
+        <p><strong>Scenario:</strong> You have training data in AWS S3, model training on Vertex AI. This is the most frequently used pattern implementation.</p>
 
         <p><strong>Time to implement:</strong> 15-20 minutes for first-time setup, 10 minutes once you know the steps.</p>
 
@@ -241,7 +241,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 
         <h4>4. Bind the Trust (The Critical Step)</h4>
 
-        <p>This is where we say: <em>"Allow the <code>ml-training-role</code> from AWS Account <code>123...</code> to impersonate this Service Account."</em></p>
+        <p>This is where we say: <em>"Allow the <code>ml-training-role</code> from the AWS Account <code>123...</code> to impersonate this Service Account."</em></p>
 
         <div class="code-block-header">
             <span>Bash - Bind the Trust</span>
@@ -398,7 +398,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/path/to/credential-config.json'
             <li><strong>Total time: 1.5 hours</strong></li>
             <li><strong>AWS egress cost: $90</strong> (S3 → GCP direct peering)</li>
             <li><strong>No worker dependency:</strong> STS handles retries automatically</li>
-            <li><strong>Bandwidth optimization:</strong> Google's infrastructure, not your EC2 instance</li>
+            <li><strong>Bandwidth optimisation:</strong> Google's infrastructure, not your EC2 instance</li>
         </ul>
 
         <h4>The Architectural Insight</h4>
@@ -464,7 +464,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/path/to/credential-config.json'
         <p>Healthcare compliance adds three layers beyond basic WIF:</p>
 
         <h3>1. Data Residency</h3>
-        <p>All patient data stayed in Azure Blob Storage in their compliant region. Only anonymized features crossed the cloud boundary.</p>
+        <p>All patient data stayed in Azure Blob Storage in their compliant region. Only anonymised features crossed the cloud boundary.</p>
 
         <h3>2. Network Isolation</h3>
         <p>We used Cloud Interconnect + VPC Service Controls to ensure data never touched public internet. In retrospect, this was the most complex part of the implementation—it took 2 days to get the routing right.</p>
@@ -581,7 +581,7 @@ endpoint = model.deploy(
         <p>For our healthcare client, this architecture meant:</p>
 
         <ul>
-            <li><strong>Cryptographic Control:</strong> The customer owns the keys in their KMS, not Google. If they need to revoke access, they disable the key and all encrypted data becomes immediately inaccessible.</li>
+            <li><strong>Cryptographic Control:</strong> The customer owns the keys in their KMS, not Google. If they need to revoke access, they disable the key, and all encrypted data becomes immediately inaccessible.</li>
             <li><strong>Automated Rotation:</strong> 90-day key rotation satisfies HIPAA requirements without manual intervention.</li>
             <li><strong>Complete Audit Trail:</strong> Every time Vertex AI uses the encryption key, it's logged in Cloud Audit Logs with:
                 <ul>
@@ -605,7 +605,7 @@ endpoint = model.deploy(
 
         <p>The pattern above ensures that even Google engineers cannot access your ML artifacts without your explicit key permissions.</p>
 
-        <p class="key-concept"><strong>Pro Tip:</strong> Use separate keys for different sensitivity levels. We used one key for anonymized features, another for the diagnostic models containing derived PHI.</p>
+        <p class="key-concept"><strong>Pro Tip:</strong> Use separate keys for different sensitivity levels. We used one key for anonymised features, another for the diagnostic models containing derived PHI.</p>
 
         <h3>VPC Service Controls</h3>
 
@@ -653,7 +653,7 @@ gcloud iam service-accounts get-iam-policy $SA_EMAIL</code></pre>
         <pre><code># Fix on EC2
 aws ec2 modify-instance-metadata-options --http-put-response-hop-limit 2 --instance-id ${INSTANCE_ID}</code></pre>
 
-        <p>By the third implementation, I just automated this check in the Terraform modules.</p>
+        <p>By the third implementation, I just automated this check in Terraform modules.</p>
 
         <h3>Problem 3: "Security Token Service API Disabled"</h3>
 
@@ -688,13 +688,13 @@ aws ec2 modify-instance-metadata-options --http-put-response-hop-limit 2 --insta
 
         <p>In <strong><a href="../composer-vs-vertex-ai-pipelines/">Part 3: Cloud Composer vs. Vertex AI Pipelines</a></strong>, we discussed how to choose the right orchestration layer for your ML workflows. Now it's time to make it cost-efficient.</p>
 
-        <p>In <strong>Part 4</strong>, we'll tackle the economics: <strong>Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%</strong>. I'll show you:</p>
+        <p>In <strong>Part 4</strong>, we'll tackle the economics: <strong>Cost-optimised MLOps: Reducing Infrastructure Spend by 80%</strong>. I'll show you:</p>
 
         <ul>
             <li>How I reduced a $3,200/month ML infrastructure bill to $600/month</li>
             <li>The service isolation strategy that unlocked these savings</li>
             <li>Preemptible instances, auto-scaling, and scheduling tactics with real ROI numbers</li>
-            <li>A cost optimization checklist you can apply to your pipelines this week</li>
+            <li>A cost optimisation checklist you can apply to your pipelines this week</li>
         </ul>
 
         <p>Because secure pipelines that bankrupt your team aren't sustainable.</p>
@@ -706,7 +706,7 @@ aws ec2 modify-instance-metadata-options --http-put-response-hop-limit 2 --insta
             <li><a href="../static-credentials-mlops-security/">Part 2A</a>: Why static credentials are catastrophic + WIF strategy</li>
             <li><strong>Part 2B</strong>: Complete AWS + Azure implementation (you are here)</li>
             <li><a href="../composer-vs-vertex-ai-pipelines/">Part 3</a>: Orchestration decisions - Composer vs Kubeflow</li>
-            <li>Part 4: Cost-Optimized MLOps: Reducing Infrastructure Spend by 80% (coming soon)</li>
+            <li>Part 4: Cost-optimised MLOps: Reducing Infrastructure Spend by 80% (coming soon)</li>
         </ul>
 
         <p><em>This article is part of the "Enterprise MLOps on GCP" series. Follow me on <a href="https://medium.sonikajanagill.com/" target="_blank" rel="noopener noreferrer">Medium</a> and <a href="https://www.linkedin.com/in/sonikaj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> for Part 4 and the rest of the series.</em></p>
