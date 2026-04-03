@@ -23,8 +23,8 @@ const articlesData = eval(match[1]);
 
 // Site metadata
 const site = {
-    title: 'Sonika Janagill',
-    description: 'Insights on AI, MLOps, Cloud Architecture, and Enterprise Transformation',
+    title: 'Sonika Janagill - Google Developer Expert',
+    description: 'Google Developer Expert in Cloud AI & Google Cloud sharing insights on AI, MLOps, Cloud Architecture, and Enterprise Transformation',
     link: 'https://sonikajanagill.com',
     language: 'en-gb',
     author: 'Sonika Janagill',

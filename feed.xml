@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-    <title>Sonika Janagill</title>
-    <description>Insights on AI, MLOps, Cloud Architecture, and Enterprise Transformation</description>
+    <title>Sonika Janagill - Google Developer Expert</title>
+    <description>Google Developer Expert in Cloud AI &amp; Google Cloud sharing insights on AI, MLOps, Cloud Architecture, and Enterprise Transformation</description>
     <link>https://sonikajanagill.com</link>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 03 Apr 2026 11:48:54 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2026 12:32:47 GMT</lastBuildDate>
     <atom:link href="https://sonikajanagill.com/feed.xml" rel="self" type="application/rss+xml"/>
     <managingEditor>sonika.janagill@gmail.com (Sonika Janagill)</managingEditor>
     <webMaster>sonika.janagill@gmail.com (Sonika Janagill)</webMaster>
