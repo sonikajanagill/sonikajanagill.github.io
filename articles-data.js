@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 10,
+        title: 'The Skills Explosion Is Here. Enterprise Governance Isn\'t.',
+        date: 'April 2026',
+        tags: ['Agent Skills', 'Enterprise AI', 'Security'],
+        readTime: '13 min read',
+        description: 'Anthropic\'s creators say stop building agents, start building skills. They\'re right. But 170 skills in production taught us something they didn\'t cover: the hard part isn\'t building them. It\'s governing them.',
+        url: 'articles/enterprise-agent-skills-governance/',
+        image: 'img/enterprise_agent_skills.png'
+    },
+    {
         id: 9,
         title: 'AdkBot: Building a Personal AI Agent with Google ADK on Cloud Run',
         date: 'March 2026',
