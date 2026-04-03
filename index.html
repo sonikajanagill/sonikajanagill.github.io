@@ -73,8 +73,9 @@
     </script>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="nav-logo">
                 <img src="img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
@@ -343,12 +344,13 @@
             </h1>
 
             <p class="sj-hero-subtitle">
-                Google Developer Expert in Cloud AI & Google Cloud and Women Coding Community Lead sharing insights on AI implementation, MLOps, and cloud architecture. Co-instructor of the AI Learning Series, guiding developers to build production AI systems through hands-on mentorship.
+                Google Developer Expert in Cloud AI & Google Cloud exploring agentic AI, ADK, Vertex AI, and agentic ecommerce. Women Coding Community Lead and AI Learning Series co-instructor, guiding developers to build production AI systems through hands-on mentorship.
             </p>
         </div>
     </section>
 
     <!-- Main Content -->
+    <main id="main-content">
     <div class="container">
         <!-- Featured Articles Section -->
         <section id="featured-articles" class="section reveal">
@@ -386,8 +388,9 @@
         </section>
     </div>
 
+    </main>
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-content">
             <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
         </div>
@@ -410,15 +413,27 @@
         // Hamburger menu
         const hamburger = document.getElementById('nav-hamburger');
         const navLinks = document.getElementById('nav-links');
-        function toggleMenu() {
-            const isOpen = navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active', isOpen);
+        const navOverlay = document.getElementById('nav-overlay');
+        function openMenu() {
+            navLinks.classList.add('active');
+            hamburger.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-        hamburger.addEventListener('click', toggleMenu);
-        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        function closeMenu() {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
-        }));
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.contains('active') ? closeMenu() : openMenu();
+        });
+        navOverlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) closeMenu();
+        });
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
 
         // Scroll reveal
         const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');

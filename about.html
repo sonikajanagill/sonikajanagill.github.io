@@ -19,8 +19,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="nav-logo">
                 <img src="img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
@@ -48,6 +49,7 @@
     </nav>
 
     <!-- Main Content -->
+    <main id="main-content">
     <div class="container">
         <!-- Professional Summary Section -->
         <section id="about" class="section about-section reveal" aria-labelledby="about-heading">
@@ -57,10 +59,10 @@
                     <p class="hero-title">Google Developer Expert in Cloud AI & Google Cloud</p>
                     <p class="hero-location">Watford, UK</p>
                     <div class="about-content">
-                        <p>As a Google Developer Expert (GDE) in Cloud AI & Google Cloud and Lead Backend Engineer with two decades of enterprise experience, I love architecting scalable AI/ML solutions on Google Cloud Platform that bridge cutting-edge research with real-world business impact. My journey from Java/J2EE enterprise development to cloud-native AI engineering has given me unique insights into both legacy system challenges and the exciting potential of AI transformation.</p>
-                        <p>I create custom AI tools and educational content that help teams around the world adopt AI more effectively. I enjoy translating complex AI concepts into practical solutions and leading cross-functional teams through MLOps implementations while keeping an eye on cost optimization and scalability.</p>
-                        <p>Based in the UK with experience across Indian, US, UK and European markets, I'm passionate about making AI more accessible through technical writing, mentoring, and speaking. Whether you're tackling enterprise AI challenges or exploring new possibilities in machine learning, I'd love to hear about your projects and share what I've learned along the way.</p>
-                        <p><strong>Interested in discussing AI, cloud architecture, or potential collaborations? Let's connect!</strong></p>
+                        <p>As a Google Developer Expert (GDE) in Cloud AI & Google Cloud and Lead Backend Engineer with two decades of enterprise experience, I architect agentic AI solutions on Google Cloud that bridge cutting-edge research with real-world business impact. My current focus is on agentic ecommerce, the Google Agent Development Kit (ADK), and Vertex AI -- building intelligent systems that go beyond simple automation to truly autonomous decision-making.</p>
+                        <p>My journey from Java/J2EE enterprise development to cloud-native AI engineering has given me unique insights into both legacy system challenges and the transformative potential of agentic AI. I create custom AI tools and educational content that help teams around the world adopt AI more effectively, translating complex concepts into practical, production-ready solutions.</p>
+                        <p>At VML, I'm actively involved in the AI Guild, the Agentic Commerce group, and Agent Skills initiatives -- driving enterprise adoption of agentic systems at scale. Based in the UK with experience across Indian, US, UK and European markets, I'm passionate about making AI more accessible through technical writing, mentoring, and speaking.</p>
+                        <p><strong>Interested in discussing agentic AI, ecommerce transformation, or potential collaborations? Let's connect!</strong></p>
                     </div>
                 </div>
                 <div class="about-image">
@@ -77,10 +79,10 @@
                 <div class="skill-category">
                     <h3>Current Focus</h3>
                     <ul>
-                        <li>Vertex AI & Google Cloud ML</li>
+                        <li>Agentic AI & Agentic Ecommerce</li>
+                        <li>Google Agent Development Kit (ADK)</li>
+                        <li>Vertex AI & Google Cloud AI</li>
                         <li>MLOps & AI Engineering</li>
-                        <li>Enterprise AI Transformation</li>
-                        <li>Technical Content Creation</li>
                     </ul>
                 </div>
                 <div class="skill-category">
@@ -98,9 +100,9 @@
                 <div class="skill-category">
                     <h3>AI/ML Development</h3>
                     <ul>
-                        <li>Python & Machine Learning Libraries</li>
-                        <li>LangChain & OpenAI APIs</li>
+                        <li>Agentic Systems & Multi-Agent Workflows</li>
                         <li>RAG Systems & Vector Databases</li>
+                        <li>LangChain, LangGraph & OpenAI APIs</li>
                         <li>MLOps Pipelines & Automation</li>
                     </ul>
                 </div>
@@ -108,9 +110,9 @@
                     <h3>Enterprise Systems</h3>
                     <ul>
                         <li>Java/Spring Framework</li>
-                        <li>Enterprise Integration Patterns</li>
-                        <li>API Design & Architecture</li>
-                        <li>Database Architecture & Optimization</li>
+                        <li>Ecommerce Platform Architecture</li>
+                        <li>API Design & Integration Patterns</li>
+                        <li>Database Architecture & Optimisation</li>
                     </ul>
                 </div>
             </div>
@@ -155,16 +157,16 @@
                     <p>Co-instructor of the AI Learning Series, guiding 100+ developers from "never touched AI" to building production RAG systems and multi-agent workflows through hands-on mentorship and real projects</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>AI Education & Mentorship</h3>
-                    <p>Teaching real-world AI implementation through hands-on projects, proving you don't need to be an expert to build impactful AI systems. Democratizing AI knowledge through depth over breadth and progress over perfection</p>
+                    <h3>GDE Programme Volunteer</h3>
+                    <p>Actively volunteering within the Google Developer Expert programme, sharing knowledge about new Google Cloud and AI releases, and supporting the wider developer community</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>Diversity & Inclusion Advocate</h3>
-                    <p>Passionate about making AI more accessible and creating inclusive spaces in technology</p>
+                    <h3>VML AI Initiatives</h3>
+                    <p>Contributing to the VML AI Guild, Agentic Commerce group, and Agent Skills programme -- driving enterprise adoption of agentic AI systems at scale</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>Open to Mentoring</h3>
-                    <p>Always interested in connecting with individuals looking to grow in AI/ML, cloud platforms, or tech careers</p>
+                    <h3>Mentoring in Tech</h3>
+                    <p>Mentoring developers in AI/ML, cloud platforms, and career growth. Passionate about making AI accessible and creating inclusive spaces in technology</p>
                 </div>
             </div>
 
@@ -204,8 +206,9 @@
         </section>
     </div>
 
+    </main>
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-content">
             <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
         </div>
@@ -226,15 +229,27 @@
         // Hamburger menu
         const hamburger = document.getElementById('nav-hamburger');
         const navLinks = document.getElementById('nav-links');
-        function toggleMenu() {
-            const isOpen = navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active', isOpen);
+        const navOverlay = document.getElementById('nav-overlay');
+        function openMenu() {
+            navLinks.classList.add('active');
+            hamburger.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-        hamburger.addEventListener('click', toggleMenu);
-        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        function closeMenu() {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
-        }));
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.contains('active') ? closeMenu() : openMenu();
+        });
+        navOverlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) closeMenu();
+        });
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
 
         // Scroll reveal
         const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');

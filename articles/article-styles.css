@@ -59,6 +59,7 @@
 }
 
 .blog-subtitle {
+    font-family: var(--font-heading);
     font-size: 2.5rem;
     color: var(--text-primary);
     margin: 0;
@@ -160,20 +161,22 @@
     padding: 3rem 2rem; 
 }
 
-.blog-content h2 { 
-    font-size: 1.75rem; 
-    font-weight: 700; 
-    margin-top: 2.5rem; 
-    margin-bottom: 1rem; 
-    color: var(--text-primary); 
+.blog-content h2 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
-.blog-content h3 { 
-    font-size: 1.375rem; 
-    font-weight: 700; 
-    margin-top: 1.75rem; 
-    margin-bottom: 0.75rem; 
-    color: var(--text-primary); 
+.blog-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
 }
 
 .blog-content p { 

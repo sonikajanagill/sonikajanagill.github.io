@@ -2,7 +2,7 @@
    Google Fonts Import
    =========================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ===========================
    CSS Variables & Theme Colors
@@ -55,6 +55,7 @@
     --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Fonts */
+    --font-heading: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
     --font-serif: Georgia, 'Times New Roman', serif;
@@ -115,10 +116,58 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sans);
+    font-family: var(--font-heading);
     font-weight: 700;
     letter-spacing: -0.025em;
     line-height: 1.2;
+}
+
+/* ===========================
+   Accessibility
+   =========================== */
+
+.skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+    top: 1rem;
+}
+
+/* Visible focus indicators for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Remove outline for mouse clicks */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Screen reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 /* ===========================
@@ -189,8 +238,9 @@ nav {
 
 .nav-home-text {
     margin-left: 0.625rem;
+    font-family: var(--font-heading);
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     transition: var(--transition);
     letter-spacing: -0.01em;
@@ -206,7 +256,8 @@ nav {
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 500;
+    font-family: var(--font-heading);
+    font-weight: 600;
     transition: var(--transition);
     font-size: 0.9rem;
     position: relative;
@@ -590,6 +641,7 @@ nav {
 }
 
 .sj-hero-title {
+    font-family: var(--font-heading);
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     line-height: 1.08;
@@ -623,6 +675,7 @@ nav {
 }
 
 .page-hero h1 {
+    font-family: var(--font-heading);
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 0.75rem;
@@ -943,6 +996,7 @@ nav {
 }
 
 .section-title {
+    font-family: var(--font-heading);
     font-size: 1.75rem;
     font-weight: 800;
     margin-bottom: 0.75rem;
@@ -1078,6 +1132,7 @@ nav {
 }
 
 .achievement-card h3 {
+    font-family: var(--font-heading);
     font-size: 1rem;
     font-weight: 700;
     color: var(--text-primary);
@@ -1128,6 +1183,7 @@ nav {
 }
 
 .skill-category h3 {
+    font-family: var(--font-heading);
     font-size: 1.375rem;
     font-weight: 700;
     color: var(--primary);
@@ -1327,6 +1383,7 @@ nav {
 }
 
 .article-card .article-title {
+    font-family: var(--font-heading) !important;
     font-size: 1.375rem !important;
     font-weight: 700 !important;
     color: var(--text-primary) !important;
@@ -1534,9 +1591,10 @@ footer {
     padding: 0.875rem 0;
     color: var(--text-primary);
     text-decoration: none;
-    font-weight: 500;
+    font-family: var(--font-heading);
+    font-weight: 600;
     font-size: 0.9rem;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     transition: var(--transition);
     border-bottom: 1px solid var(--border-subtle);
 }
@@ -1827,6 +1885,7 @@ footer {
 }
 
 .view-all-card h3 {
+    font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
@@ -1887,6 +1946,19 @@ footer {
 
 .nav-overlay {
     display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 @media (max-width: 640px) {
@@ -1956,7 +2028,7 @@ footer {
     }
 
     .nav-overlay {
-        display: none;
+        display: block;
     }
 }
 
@@ -2022,5 +2094,17 @@ footer {
     }
     .sj-hero-content {
         animation: none;
+    }
+    .sj-row-1,
+    .sj-row-2,
+    .sj-row-3 {
+        animation: none;
+    }
+    .article-card:hover,
+    .achievement-card:hover,
+    .skill-category:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none;
     }
 }

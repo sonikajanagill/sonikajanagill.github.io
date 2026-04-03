@@ -138,8 +138,9 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="nav-logo">
                 <img src="img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
@@ -173,6 +174,7 @@
     </header>
 
     <!-- Main Content -->
+    <main id="main-content">
     <div class="container">
         <!-- Primary Contact Methods - Prominent Grid -->
         <section id="contact-methods" class="section reveal" aria-labelledby="methods-heading">
@@ -202,13 +204,13 @@
                 <div class="skill-category">
                     <h3>Speaking Engagements</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8; margin-top: 1rem;">
-                        Available for conference talks, workshops, and technical presentations on AI/ML, MLOps, Vertex AI, enterprise transformation, and cloud architecture topics.
+                        Available for conference talks, workshops, and technical presentations on agentic AI, ADK, Vertex AI, agentic ecommerce, and Google Cloud architecture.
                     </p>
                 </div>
                 <div class="skill-category">
                     <h3>Collaboration Opportunities</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8; margin-top: 1rem;">
-                        Open to technical writing, content creation, open source contributions, and consulting engagements focused on AI engineering and cloud-native solutions.
+                        Open to technical writing, content creation, open source contributions, and consulting engagements focused on agentic systems, ecommerce AI, and cloud-native solutions.
                     </p>
                 </div>
             </div>
@@ -220,20 +222,20 @@
 
             <div class="achievements" style="margin-top: 2rem;">
                 <div class="achievement-card">
-                    <h3>AI/ML Engineering</h3>
-                    <p>Production RAG systems, LLM integration, prompt engineering</p>
+                    <h3>Agentic AI & ADK</h3>
+                    <p>Multi-agent systems, Google Agent Development Kit, autonomous workflows</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>Vertex AI & GCP</h3>
-                    <p>MLOps pipelines, model deployment, cloud architecture</p>
+                    <h3>Agentic Ecommerce</h3>
+                    <p>AI-driven commerce, personalisation agents, intelligent automation at scale</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>Enterprise AI Transformation</h3>
-                    <p>Legacy system modernization, team upskilling, AI adoption</p>
+                    <h3>Vertex AI & Google Cloud</h3>
+                    <p>MLOps pipelines, model deployment, cloud-native AI architecture</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>Technical Content</h3>
-                    <p>Developer advocacy, technical writing, community building</p>
+                    <h3>Community & Mentoring</h3>
+                    <p>GDE volunteering, Women Coding Community, technical writing, developer advocacy</p>
                 </div>
             </div>
         </section>
@@ -253,8 +255,9 @@
         </section>
     </div>
 
+    </main>
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-content">
             <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
         </div>
@@ -275,15 +278,27 @@
         // Hamburger menu
         const hamburger = document.getElementById('nav-hamburger');
         const navLinks = document.getElementById('nav-links');
-        function toggleMenu() {
-            const isOpen = navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active', isOpen);
+        const navOverlay = document.getElementById('nav-overlay');
+        function openMenu() {
+            navLinks.classList.add('active');
+            hamburger.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-        hamburger.addEventListener('click', toggleMenu);
-        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        function closeMenu() {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
-        }));
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.contains('active') ? closeMenu() : openMenu();
+        });
+        navOverlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) closeMenu();
+        });
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
 
         // Scroll reveal
         const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');

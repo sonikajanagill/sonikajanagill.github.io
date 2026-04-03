@@ -23,8 +23,9 @@
     <script src="../articles-data.js"></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="../" class="nav-logo">
                 <img src="../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
@@ -57,6 +58,7 @@
         <p>Insights on AI, MLOps, and enterprise transformation</p>
     </header>
 
+    <main id="main-content">
     <!-- Hashtag Filter -->
     <section class="articles-filter-section">
         <div class="container">
@@ -81,8 +83,9 @@
         </div>
     </section>
 
+    </main>
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-content">
             <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
         </div>
@@ -103,15 +106,27 @@
         // Hamburger menu
         const hamburger = document.getElementById('nav-hamburger');
         const navLinksEl = document.getElementById('nav-links');
-        function toggleMenu() {
-            const isOpen = navLinksEl.classList.toggle('active');
-            hamburger.classList.toggle('active', isOpen);
+        const navOverlay = document.getElementById('nav-overlay');
+        function openMenu() {
+            navLinksEl.classList.add('active');
+            hamburger.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-        hamburger.addEventListener('click', toggleMenu);
-        navLinksEl.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        function closeMenu() {
             navLinksEl.classList.remove('active');
             hamburger.classList.remove('active');
-        }));
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        hamburger.addEventListener('click', () => {
+            navLinksEl.classList.contains('active') ? closeMenu() : openMenu();
+        });
+        navOverlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinksEl.classList.contains('active')) closeMenu();
+        });
+        navLinksEl.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
     </script>
 
     <!-- Articles Data and Filter Script -->
