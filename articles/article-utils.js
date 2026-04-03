@@ -156,30 +156,19 @@ function copyCode(button) {
 
 /**
  * Inject article hashtags after Back to Home link
- * Hashtags link to articles list page with filter applied
+ * Hashtags are extracted from the blog-header-tags in the page itself
+ * No hardcoded mapping needed - uses the article's own metadata
  */
 function injectArticleHashtags() {
-    // Get article tags from the page URL or data attribute
-    const urlPath = window.location.pathname;
-    let tags = [];
+    // Get tags from the blog-header-tags section (already in the page)
+    const headerTags = document.querySelectorAll('.blog-header-tag');
+    if (headerTags.length === 0) return;
     
-    // Map article URLs to their tags
-    const articleTagMap = {
-        'composer-vs-vertex-ai-pipelines': ['MLOps', 'AI'],
-        'why-hackathons-fast-track-ai-mastery': ['Technology', 'Leadership'],
-        'mlops-vertex-ai-best-practices': ['MLOps'],
-        'leading-ai-transformation-enterprise-teams': ['Leadership'],
-        'hidden-cost-of-data-chaos-ml': ['MLOps', 'AI'],
-        'building-production-ready-rag-systems': ['AI']
-    };
-    
-    // Find matching article
-    for (const [slug, articleTags] of Object.entries(articleTagMap)) {
-        if (urlPath.includes(slug)) {
-            tags = articleTags;
-            break;
-        }
-    }
+    // Extract tag names from the header tags
+    const tags = Array.from(headerTags).map(tag => {
+        const text = tag.textContent.trim();
+        return text.startsWith('#') ? text.substring(1) : text;
+    });
     
     if (tags.length === 0) return;
     

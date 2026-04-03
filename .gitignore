@@ -11,3 +11,13 @@ public
 # drafts
 articles/*v0*
 article-drafts/*
+
+# AI IDs
+.kiro/*
+.windsurf/*
+.claude/*
+.agents/*
+CLAUDE.md
+CLAUDE.md.tmp
+
+.DS_Store

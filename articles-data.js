@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 9,
+        title: 'AdkBot: Building a Personal AI Agent with Google ADK on Cloud Run',
+        date: 'March 2026',
+        tags: ['AI', 'Cloud', 'Security'],
+        readTime: '7 min read',
+        description: 'Build a secure personal AI agent with Google ADK 1.0 on Cloud Run. 6-layer GCP security, human-in-the-loop approvals, Cloud DLP, and Workload Identity Federation.',
+        url: 'articles/adkbot-personal-ai-agent-adk-cloud-run/',
+        image: 'img/adkbot_personal_ai_agent.png'
+    },
+    {
         id: 8,
         title: 'Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%',
         date: 'December 2025',

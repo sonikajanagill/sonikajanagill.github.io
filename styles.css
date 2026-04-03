@@ -1428,14 +1428,10 @@ nav {
    =========================== */
 
 footer {
-    background: var(--text-primary);
-    color: var(--text-inverse);
+    background: var(--bg-card);
+    color: var(--text-primary);
     padding: var(--spacing-lg) var(--spacing-lg);
     margin-top: var(--spacing-xl);
-}
-
-[data-theme="dark"] footer {
-    background: #020617;
     border-top: 1px solid var(--border);
 }
 
@@ -1450,19 +1446,17 @@ footer {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin-bottom: var(--spacing-lg);
     flex-wrap: wrap;
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--primary);
     text-decoration: none;
     transition: var(--transition);
-    font-weight: 500;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+}
+
+.footer-links {
+    list-style: none;
     padding-left: 0;
 }
 
@@ -1474,7 +1468,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: white;
+    color: var(--primary-hover);
     padding-left: 0.5rem;
 }
 
@@ -1483,21 +1477,9 @@ footer {
     margin-left: 0;
 }
 
-[data-theme="dark"] .footer-links a {
-    color: var(--text-secondary);
-}
-
-[data-theme="dark"] .footer-links a:hover {
-    color: var(--text-primary);
-}
-
 .footer-content p {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-secondary);
     font-size: 0.8rem;
-}
-
-[data-theme="dark"] .footer-content p {
-    color: var(--text-tertiary);
 }
 
 /* ===========================

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Sonika Janagill</title>
+    <description>Insights on AI, MLOps, Cloud Architecture, and Enterprise Transformation</description>
+    <link>https://sonikajanagill.com</link>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 03 Apr 2026 11:48:54 GMT</lastBuildDate>
+    <atom:link href="https://sonikajanagill.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <managingEditor>sonika.janagill@gmail.com (Sonika Janagill)</managingEditor>
+    <webMaster>sonika.janagill@gmail.com (Sonika Janagill)</webMaster>
+
+    <item>
+        <title>AdkBot: Building a Personal AI Agent with Google ADK on Cloud Run</title>
+        <description>Build a secure personal AI agent with Google ADK 1.0 on Cloud Run. 6-layer GCP security, human-in-the-loop approvals, Cloud DLP, and Workload Identity Federation.</description>
+        <link>https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/</guid>
+        <pubDate>15 Mar 2026 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>AI</category>
+        <category>Cloud</category>
+        <category>Security</category>
+    </item>
+
+    <item>
+        <title>Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%</title>
+        <description>Learn 5 architectural patterns that reduced MLOps costs from $6,600/month to $1,200/month (82% reduction). Auto-shutdown, Spot VMs, zero-scaling inference, Feature Store caching, and multi-cloud WIF patterns.</description>
+        <link>https://sonikajanagill.com/articles/cost-optimized-mlops/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/cost-optimized-mlops/</guid>
+        <pubDate>15 Dec 2025 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>MLOps</category>
+        <category>Architecture</category>
+        <category>Cloud</category>
+    </item>
+
+    <item>
+        <title>Internet of Agents: AGNTCY, Protocols, and Mach Alliance&apos;s Agent Ecosystem</title>
+        <description>How AGNTCY, open protocols, and MACH Alliance are building interoperable AI agent systems—and why enterprise architects must act now to avoid lock-in.</description>
+        <link>https://sonikajanagill.com/articles/architecting-internet-of-agents/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/architecting-internet-of-agents/</guid>
+        <pubDate>15 Dec 2025 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>AI</category>
+        <category>Architecture</category>
+        <category>Strategy</category>
+    </item>
+
+    <item>
+        <title>Implementing Zero-Trust Multi-Cloud: A Complete WIF Setup Guide</title>
+        <description>Step-by-step guide to implement Workload Identity Federation for AWS→Vertex AI and Azure→Vertex AI. Production-ready code, real troubleshooting, enterprise patterns.</description>
+        <link>https://sonikajanagill.com/articles/zero-trust-wif-implementation/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/zero-trust-wif-implementation/</guid>
+        <pubDate>15 Nov 2025 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>MLOps</category>
+        <category>Security</category>
+        <category>Cloud</category>
+    </item>
+
+    <item>
+        <title>Stop Storing Cloud Secrets: How Workload Identity Federation Eliminates Static Keys</title>
+        <description>Static credentials cost you money, time, and security. Learn how Workload Identity Federation eliminates secrets entirely through cryptographic trust and zero-trust architecture.</description>
+        <link>https://sonikajanagill.com/articles/static-credentials-mlops-security/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/static-credentials-mlops-security/</guid>
+        <pubDate>15 Nov 2025 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>MLOps</category>
+        <category>Security</category>
+        <category>Cloud</category>
+    </item>
+
+    <item>
+        <title>The Hidden Cost of Data Chaos in ML Projects</title>
+        <description>Most ML projects fail not because of models, but because of data chaos. Understand the real costs, failure patterns, and how MLOps reduces failure and accelerates time to production.</description>
+        <link>https://sonikajanagill.com/articles/hidden-cost-of-data-chaos-ml/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/hidden-cost-of-data-chaos-ml/</guid>
+        <pubDate>15 Nov 2025 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>MLOps</category>
+        <category>AI</category>
+    </item>
+
+    <item>
+        <title>The Creator Divide: Why Fresh Voices Are Solving Problems Experts Miss</title>
+        <description>AI didn&apos;t just make learning easier — it changed who gets to innovate. Explore how democratized knowledge is creating a divide between optimization and innovation, and why diverse voices are the key to solving tomorrow&apos;s problems.</description>
+        <link>https://sonikajanagill.com/articles/the-creator-divide/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/the-creator-divide/</guid>
+        <pubDate>15 Nov 2025 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>AI</category>
+        <category>Innovation</category>
+        <category>Leadership</category>
+    </item>
+
+    <item>
+        <title>Architecture Decisions: Cloud Composer vs Vertex AI Pipelines</title>
+        <description>A practical decision framework for choosing between Cloud Composer and Vertex AI Pipelines. Learn when to use each tool, hybrid patterns, and real-world case studies for enterprise ML infrastructure.</description>
+        <link>https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/composer-vs-vertex-ai-pipelines/</guid>
+        <pubDate>15 Oct 2025 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>MLOps</category>
+        <category>AI</category>
+    </item>
+
+    <item>
+        <title>Why Hackathons Are Your Fast-Track to AI Mastery</title>
+        <description>Explore how hackathons accelerate AI learning and skill development. Learn from my 2025 hackathon journey including AWS AI Hackathon win and insights on building real-world AI solutions.</description>
+        <link>https://sonikajanagill.com/articles/why-hackathons-fast-track-ai-mastery/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/why-hackathons-fast-track-ai-mastery/</guid>
+        <pubDate>15 Jul 2025 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>Technology</category>
+        <category>Leadership</category>
+    </item>
+</channel>
+</rss>

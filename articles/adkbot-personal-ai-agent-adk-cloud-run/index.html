@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdkBot: Building a Personal AI Agent with Google ADK on Cloud Run - Sonika Janagill</title>
+    <meta name="description" content="Build a secure personal AI agent with Google ADK 1.0 on Cloud Run. 6-layer GCP security, human-in-the-loop approvals, Cloud DLP, and Workload Identity Federation.">
+    <meta name="author" content="Sonika Janagill">
+    <meta name="keywords" content="Google ADK, Agent Development Kit, Cloud Run AI agent, personal AI assistant, GCP security, human-in-the-loop AI, Vertex AI Memory Bank, Cloud DLP, Workload Identity Federation, Gemini 2.0">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="AdkBot: Building a Personal AI Agent with Google ADK on Cloud Run">
+    <meta property="og:description" content="Build a secure personal AI agent with Google ADK 1.0 on Cloud Run. 6-layer GCP security, human-in-the-loop approvals, and enterprise-grade architecture.">
+    <meta property="og:url" content="https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/">
+    <meta property="og:image" content="https://sonikajanagill.com/img/adkbot_personal_ai_agent.png">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/Sonika_Salmon.jpeg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../article-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <span class="nav-home-text">Home</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-header-left">
+                <div class="blog-header-tags">
+                    <a href="/articles/?tag=AI" class="blog-header-tag">#AI</a>
+                    <a href="/articles/?tag=Cloud" class="blog-header-tag">#Cloud</a>
+                    <a href="/articles/?tag=Security" class="blog-header-tag">#Security</a>
+                </div>
+                <h2>Google ADK on GCP</h2>
+                <p class="blog-subtitle">AdkBot: Building a Personal AI Agent with Google ADK on Cloud Run</p>
+                <p><i>Cloud-native, 6-layer GCP security, human-in-the-loop approvals, a truly secure personal AI agent</i></p>
+
+            <div class="blog-header-right">
+                <div class="blog-meta">
+                    <div class="blog-meta-item">
+                        <span>March 2026</span>
+                    </div>
+                    <div class="blog-meta-item">
+                        <span>7 min read</span>
+                    </div>
+                </div>
+                <div class="blog-share-buttons">
+                    <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/x-icon.png" alt="X">
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                    </a>
+                    <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/" class="blog-share-btn" title="Share via Email">
+                        <img src="../../img/email-icon.png" alt="Email">
+                    </a>
+                    <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                        <img src="../../img/copy-icon.png" alt="Copy">
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-header-image">
+        <img src="../../img/adkbot_personal_ai_agent.png" alt="AdkBot: Building a Personal AI Agent with Google ADK on Cloud Run">
+        <p>Image generated using <a href="https://gemini.google.com/">Nano Banana 2</a></p>
+    </div>
+
+    <!-- Blog Content -->
+    <main class="blog-content">
+        <a href="../" class="back-link">← Back to Articles</a>
+
+        <p class="drop-cap">OpenClaw has had its moment in the spotlight, and a security wake-up call to go with it. The self-hosted personal AI assistant — the one Fortune called "the latest craze transforming China's AI sector" — saw its creator hired away by OpenAI, connected to 24+ messaging channels, and inspired thousands of "lobster on a Mac Mini" setups. It also, somewhat inevitably, had a supply-chain incident: malicious "skills" uploaded to ClawHub quietly targeting users' crypto wallets and credentials.</p>
+
+        <p>While working with Google ADK, I thought: <strong>what would OpenClaw look like if it were born cloud-native, built with enterprise security from day one, and lived entirely on GCP?</strong></p>
+
+        <p>The result is <strong>AdkBot</strong>, an open-source, secure personal AI assistant built on Google's Agent Development Kit 1.0, deployed on Cloud Run, and protected by six layers of native GCP security. The repo is live; the Terraform and DLP pipeline are there now.</p>
+
+        <p class="key-concept"><strong>Status:</strong> Active build. The security infrastructure and agent orchestration are fully wired. Google Workspace integrations (Gmail, Calendar, Drive) currently return mocked data. OAuth flows for live Google Workspace access are coming next. Everything described in this article reflects the real architecture; the tools are the work in progress.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>What Is OpenClaw, and Why Does It Matter?</h3>
+
+        <p>OpenClaw is the idea that your AI assistant should live with you, not in someone else's cloud. Your context, your memory, your skills: all local. It runs on macOS, Linux, or Windows (WSL2), wakes up to a voice command, handles your Gmail, connects to 24+ messaging channels, and automates tasks via cron jobs and webhooks. No vendor lock-in. No monthly SaaS bill.</p>
+
+        <p>It's genuinely brilliant, and the community around it is electric. The "raise a lobster" meme — a nod to OpenClaw's logo where users place a plastic lobster on their Mac Mini as a badge of honour — is absurd and I love it.</p>
+
+        <p><strong>But security is an afterthought, not a foundation.</strong> OpenClaw does have some baseline protections: DM pairing requires approval codes from unknown senders, and non-core sessions run in Docker sandboxes. But there's no DLP layer, no managed secret store, no IAM scoping. And, as we now know, a supply-chain attack vector that required zero effort to exploit.</p>
+
+        <p>The recent malicious crypto skill incident wasn't a freak accident; it was a predictable consequence of an ecosystem that prioritises openness and extensibility over hardening.</p>
+
+        <p><strong>That gap is exactly what AdkBot explores.</strong></p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>So What Is AdkBot?</h3>
+
+        <p>AdkBot is a Telegram-connected AI assistant built on Google ADK 1.0 — the same multi-agent framework Google uses internally for Agentspace and Customer Engagement Suite. It delegates tasks to four specialised subagents (Gmail, Calendar, Drive, Web Search), runs on Cloud Run, and is secure by default with six layers of protection baked in at the infrastructure level.</p>
+
+        <p><strong>Think of it as OpenClaw's cloud-native, security-first cousin.</strong></p>
+
+        <h4>What it does (same as OpenClaw):</h4>
+        <ul>
+            <li>Reads and searches your Gmail inbox</li>
+            <li>Manages Google Calendar events (with human approval before anything is created)</li>
+            <li>Searches Google Drive</li>
+            <li>Runs web searches</li>
+            <li>Remembers your conversations across sessions (Vertex AI Memory Bank)</li>
+        </ul>
+
+        <h4>What it does differently:</h4>
+
+        <table>
+            <tr>
+                <th>Capability</th>
+                <th>OpenClaw</th>
+                <th>AdkBot</th>
+            </tr>
+            <tr>
+                <td><strong>Where it runs</strong></td>
+                <td>Local (your hardware)</td>
+                <td>Cloud Run (GCP)</td>
+            </tr>
+            <tr>
+                <td><strong>Security model</strong></td>
+                <td>Manual / community packages</td>
+                <td>6-layer enterprise hardening</td>
+            </tr>
+            <tr>
+                <td><strong>Agent framework</strong></td>
+                <td>Custom / LLM routing</td>
+                <td>Google ADK 1.0 (multi-agent)</td>
+            </tr>
+            <tr>
+                <td><strong>PII protection</strong></td>
+                <td>None by default</td>
+                <td>Cloud DLP pre-filters every message</td>
+            </tr>
+            <tr>
+                <td><strong>Secret management</strong></td>
+                <td>.env files</td>
+                <td>GCP Secret Manager</td>
+            </tr>
+            <tr>
+                <td><strong>Memory</strong></td>
+                <td>Local</td>
+                <td>Vertex AI Memory Bank (persistent, cross-session)</td>
+            </tr>
+            <tr>
+                <td><strong>Deployment</strong></td>
+                <td>Local install</td>
+                <td>Terraform + GitHub Actions (WIF)</td>
+            </tr>
+            <tr>
+                <td><strong>Cost</strong></td>
+                <td>Hardware (Mac Mini ~£600)</td>
+                <td>~$0–$5/month for personal use*</td>
+            </tr>
+            <tr>
+                <td><strong>Interface</strong></td>
+                <td>24+ messaging channels</td>
+                <td>Telegram</td>
+            </tr>
+            <tr>
+                <td><strong>Extensibility</strong></td>
+                <td>24+ channels, cron, webhooks, companion apps</td>
+                <td>Focused: 4 GCP-native subagents, extendable via ADK</td>
+            </tr>
+        </table>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Architecture</h3>
+
+        <p>AdkBot is a root orchestrator + four specialised subagents, all running on Gemini 2.0 Flash. A FastAPI gateway receives Telegram messages, runs them through Cloud DLP for PII scrubbing, hands off to the ADK root agent, which routes to the right subagent, and returns the response. Cloud Trace records every hop.</p>
+
+        <div class="code-block-header">
+            <span>Architecture Flow</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code>Telegram Message
+     │
+     ▼
+FastAPI Gateway (Cloud Run)
+     │
+     ├─ Cloud DLP (PII scan & redact)
+     │
+     ▼
+ADK Root Orchestrator (Gemini 2.0 Flash)
+     │
+     ├─── GmailAgent     → read_inbox, search_emails, read_email
+     ├─── CalendarAgent  → list_events, create_event [human approval required]
+     ├─── DriveAgent     → search_files, read_file
+     └─── SearchAgent    → web_search
+     │
+     ▼
+Vertex AI Memory Bank (memory) + Cloud Trace (observability)
+     │
+     ▼
+Telegram Response</code></pre>
+
+        <p><strong>Memory</strong> is handled by Vertex AI Memory Bank — Google's managed vector store for agents — rather than a hand-rolled Firestore schema. Conversations persist across sessions, context survives restarts, and retrieval is semantic rather than exact-match string lookup.</p>
+
+        <p>Everything is provisioned with <strong>Terraform</strong>. Deployment is keyless via <strong>Workload Identity Federation</strong>. No service account keys ever touch GitHub Actions.</p>
+
+        <figure class="article-image">
+            <img src="../../img/adkbot_architecture.png" alt="ADKBot architecture diagram showing the flow from Telegram to FastAPI gateway, through Cloud DLP, to the ADK root orchestrator, then to specialised subagents, and finally to Vertex AI Memory Bank and Cloud Trace.">
+            <figcaption>ADKBot Architecture</figcaption>
+        </figure>
+
+        <p class="key-concept"><strong>Cost Note:</strong> For personal use (hundreds of messages/day), you'll stay comfortably within free-tier or near-zero costs. Cloud DLP, Vertex AI Memory Bank, and Gemini API calls via Vertex AI all accrue if you exceed free-tier thresholds, but those thresholds are generous for personal workloads. At enterprise scale, costs climb accordingly. <em>Free for a personal assistant; priced for a product.</em></p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Six Security Layers (This Is the Real Story)</h3>
+
+        <p>This is where AdkBot earns its "secure by default" tagline. None of these are bolt-ons; they're all native GCP services wired together from the start.</p>
+
+        <h4>1. Cloud DLP PII Filtering</h4>
+        <p>The LLM never sees raw PII. Every incoming message is scanned before it reaches the model. Credit card numbers, SSNs, phone numbers are redacted automatically at the gateway.</p>
+
+        <h4>2. Secret Manager</h4>
+        <p>Zero <code>.env</code> files in production. Every credential (Telegram token, Gemini API key, OAuth secrets) lives in Secret Manager and is injected at runtime. Nothing sensitive is ever in the codebase or container image.</p>
+
+        <h4>3. IAM Least Privilege</h4>
+        <p>The agent can't hurt itself. The Cloud Run service account has exactly the permissions it needs and nothing more. It cannot modify IAM, cannot access Secret Manager beyond its own secrets, cannot touch the Terraform state.</p>
+
+        <h4>4. Human-in-the-Loop</h4>
+        <p>Nothing destructive runs without your tap. When you ask AdkBot to create a calendar event, execution pauses. Telegram sends you a message with two inline buttons: <strong>✅ Approve</strong> and <strong>❌ Reject</strong>. The agent waits. Only after you tap Approve does it proceed — at which point ADK resumes the paused execution from exactly where it left off.</p>
+
+        <p>This is a <strong>first-class callback in ADK's orchestration model</strong>, not a polling loop bolted on after the fact.</p>
+
+        <h4>5. Workload Identity Federation</h4>
+        <p>No long-lived keys, anywhere. CI/CD deployments via GitHub Actions are keyless. WIF tokens are short-lived and scoped to the specific repo and branch. Compromise one token, and you've gained nothing reusable.</p>
+
+        <p><em>For a deep dive on WIF implementation, see my article: <a href="../zero-trust-wif-implementation/">Implementing Zero-Trust Multi-Cloud: A Complete WIF Setup Guide</a>.</em></p>
+
+        <h4>6. Cloud Trace</h4>
+        <p>Full visibility across every agent hop. You can see exactly what the root orchestrator delegated, how long the DLP scan took, and where latency lives. This is table stakes for production; most hobby agents skip it entirely.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Why ADK 1.0 Changes the Game</h3>
+
+        <p>ADK launched at Google Cloud NEXT 2025, and it's genuinely different from LangChain or AutoGen. It's the framework Google built for themselves to power Agentspace — with the same orchestration logic and multi-agent patterns — now open-source under Apache 2.0.</p>
+
+        <div class="callout-box">
+            <p><strong>The key difference from a LangChain Router:</strong></p>
+            <p>In LangChain, a router is essentially a prompt that picks a tool from a list. The "agents" sharing that router share context, share state, and often bleed into each other.</p>
+            <p>In ADK, the root orchestrator delegates to <strong>fully independent agents</strong>, each with its own system prompt, its own tool registry, and its own execution context. The GmailAgent has no visibility into what the CalendarAgent is doing. There's no shared mutable state to corrupt, and no way for a poorly-scoped tool to accidentally affect another agent's operation.</p>
+            <p><strong>This matters for security as much as it does for reliability.</strong> Least-privilege isn't just an IAM concept; it applies at the agent level too.</p>
+        </div>
+
+        <h4>What else makes ADK interesting:</h4>
+        <ul>
+            <li><strong>Built-in Human-in-the-Loop:</strong> Approval flows are a first-class callback, not a polling hack bolted on top</li>
+            <li><strong>ADK Web UI:</strong> Run <code>adk web</code> and get a local dev interface to test agent flows without Telegram. Invaluable for iteration</li>
+            <li><strong>Model-agnostic:</strong> Optimised for Gemini but works with Anthropic, Mistral, LLaMA via LiteLLM</li>
+        </ul>
+
+        <p>For someone with a GCP Pro Architect background, building with ADK felt like coming home. Cloud Run, Secret Manager, Trace: all familiar primitives, now assembled in service of an agent rather than a traditional backend.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>What This Isn't (Honest Caveats)</h3>
+
+        <p>AdkBot is a <strong>demonstration repo</strong>, not a production assistant. The Gmail, Calendar, and Drive tools are currently mocked; they return realistic fake data rather than live API calls. The real OAuth integration is the next phase of the build.</p>
+
+        <p>It also deliberately doesn't try to replicate OpenClaw's breadth. Fifty integrations and a companion iOS app are not the point. The point is: <strong>here's what a minimal, secure, cloud-native agent looks like using the newest Google tooling.</strong> You can extend it.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>What's Next</h3>
+
+        <p>The repo is actively being built. Coming soon:</p>
+        <ul>
+            <li><strong>Live Gmail OAuth integration</strong> (replace mocked tools)</li>
+            <li><strong>Proactive scheduling</strong> via Cloud Scheduler (cron-style reminders)</li>
+            <li><strong>Agent evaluation</strong> using ADK's built-in eval framework</li>
+            <li><strong>A companion article</strong> going deep on the DLP + Human-in-the-Loop implementation</li>
+        </ul>
+
+        <p>⭐ <a href="https://github.com/sonikajanagill/AdkBot" target="_blank" rel="noopener noreferrer">Star the repo on GitHub</a> — the Terraform modules, Cloud Run config, and DLP pipeline are all there now. If you're an infrastructure person, the IaC is often the most instructive part. Live Workspace integrations are landing next; starring is the best way to follow along. Issues and PRs welcome.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Bigger Picture</h3>
+
+        <p>OpenClaw is the right idea with an incomplete risk model. Local-first is powerful, and the DM pairing and Docker sandboxing show awareness of the problem. But awareness isn't the same as defence-in-depth. The supply-chain incident wasn't unusual; it's the predictable outcome when a fast-growing ecosystem prioritises extensibility without a hardened baseline for what extensions can do.</p>
+
+        <p>ADK 1.0 gives us a clean slate to build differently. Not because GCP is inherently safer, but because <strong>when your defaults are Secret Manager, DLP, IAM, and WIF, the secure path is also the easy path.</strong></p>
+
+        <p><strong>That's the principle I try to carry across everything I build: security as an architectural decision, not an afterthought.</strong></p>
+
+        <p>If you're experimenting with ADK or building your own personal assistant, I'd love to compare notes. Drop a comment, find me on <a href="https://www.linkedin.com/in/sonikajanagill/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, or follow along on <a href="https://medium.com/@sonika.janagill" target="_blank" rel="noopener noreferrer">Medium</a>, where the next piece will go deep on the DLP + Human-in-the-Loop implementation.</p>
+
+
+        <!-- Share Section -->
+        <div class="article-share">
+            <p class="share-title">Share this article:</p>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/x-icon.png" alt="X">
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/adkbot-personal-ai-agent-adk-cloud-run/" class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
+                </button>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--text-tertiary); font-size: 0.9rem;">   
+            Also published on <a href="https://medium.sonikajanagill.com/adkbot-building-a-personal-ai-agent-with-google-adk-on-cloud-run-768af62c09fa" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
+        </p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="../article-utils.js"></script>
+</body>
+</html>
