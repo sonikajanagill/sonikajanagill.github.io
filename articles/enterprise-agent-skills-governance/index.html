@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en-GB">
+    <title>The Skills Explosion Is Here. Enterprise Governance Isn't. - Sonika Janagill</title>
+    <meta name="description" content="Anthropic's creators say stop building agents, start building skills. They're right. But there's a moment almost every enterprise AI team hits that never makes it into the keynotes. But 170 skills in production taught us something they didn't cover: the hard part isn't building them. It's governing them.">
+    <meta name="author" content="Sonika Janagill">
+    <meta name="keywords" content="Agent Skills, Enterprise AI, Security, Claude Code, AI Governance, Engineering Leadership, Skills governance, AI security, enterprise AI architecture">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Skills Explosion Is Here. Enterprise Governance Isn't.">
+    <meta property="og:description" content="Anthropic's creators say stop building agents, start building skills. They're right. But 170 skills in production taught us something they didn't cover: the hard part isn't building them. It's governing them.">
+    <meta property="og:url" content="https://sonikajanagill.com/articles/enterprise-agent-skills-governance/">
+    <meta property="og:image" content="https://sonikajanagill.com/img/enterprise_agent_skills.png">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://sonikajanagill.com/articles/enterprise-agent-skills-governance/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/Sonika_Salmon.jpeg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../article-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <span class="nav-home-text">Home</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-header-left">
+                <div class="blog-header-tags">
+                    <a href="/articles/?tag=Agent%20Skills" class="blog-header-tag">#Agent Skills</a>
+                    <a href="/articles/?tag=Enterprise%20AI" class="blog-header-tag">#Enterprise AI</a>
+                    <a href="/articles/?tag=Security" class="blog-header-tag">#Security</a>
+                </div>
+                <h2>Enterprise Difficulties in Managing & Securely Using Agent Skills</h2>
+                <p class="blog-subtitle">The Skills Explosion Is Here. Enterprise Governance Isn't.</p>
+                <p><i>Anthropic's creators say stop building agents, start building skills. They're right. But there's a moment almost every enterprise AI team hits that never makes it into the keynotes.</i></p>
+
+            <div class="blog-header-right">
+                <div class="blog-meta">
+                    <div class="blog-meta-item">
+                        <span>Mar 26, 2026</span>
+                    </div>
+                    <div class="blog-meta-item">
+                        <span>12 min read</span>
+                    </div>
+                </div>
+                <div class="blog-share-buttons">
+                    <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/x-icon.png" alt="X">
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                    </a>
+                    <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" class="blog-share-btn" title="Share via Email">
+                        <img src="../../img/email-icon.png" alt="Email">
+                    </a>
+                    <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                        <img src="../../img/copy-icon.png" alt="Copy">
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
+
+        <div class="article-header-image">
+        <img src="../../img/enterprise_agent_skills_governance.png" alt="Enterprise Agent Skills Governance">
+        <p>Image generated using <a href="https://gemini.google.com/">Nano Banana 2</a></p>
+    </div>
+
+    <!-- Blog Content -->
+    <main class="blog-content">
+        <a href="../" class="back-link">← Back to Articles</a>
+
+        <p class="drop-cap">Anthropic's creators say stop building agents, start building skills. They're right.</p>
+
+        <p>But there's a moment almost every enterprise AI team hits that never makes it into the keynotes.</p>
+
+        <p>You've finally stood up your internal agent skills repository. Developers are shipping faster than ever. Security hasn't raised a single red flag yet.</p>
+
+        <p>Then someone drops a GitHub link in the team Slack:</p>
+
+        <p><em>"Just found this repo with 100+ community-built skills. Brand guidelines auditor, Jira sprint automation, SEC filing formatter…"</em></p>
+
+        <p>Forty reaction emojis.</p>
+
+        <p>By Friday, three engineers have already installed it.</p>
+
+        <p>That is the moment your skills governance strategy either exists… or it doesn't.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Vision: Models as Processors, Skills as Applications</h3>
+
+        <p>Barry Zhang and Mahesh Murag from Anthropic put it plainly: models are processors, the agent runtime is the operating system, and skills are the applications that encode unique expertise. The real leverage point isn't model selection or agent architecture, it's the application layer. The skills.</p>
+
+        <p>Today's agents are intelligent but inexperienced. They can reason through novel problems, but they don't retain procedural knowledge between sessions. Skills are the solution: a minimal format for packaging repeatable, domain-specific knowledge that agents can load dynamically. When you standardise on skills, institutional knowledge survives model upgrades. The expertise doesn't reset.</p>
+
+        <p>That vision is right. The governance infrastructure to support it at an enterprise scale largely does not exist yet.</p>
+
+        <p style="text-align: center; font-style: italic; color: var(--text-secondary); margin: 1.5rem 0;">Don't Build Agents, Build Skills Instead — Barry Zhang & Mahesh Murag, Anthropic</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Vulnerability Numbers Are Not Theoretical</h3>
+
+        <p>Before discussing governance patterns, the current state of the public skills ecosystem needs to be stated plainly.</p>
+
+        <p>A January 2026 study — the first large-scale empirical security analysis of public skill marketplaces — scanned 31,132 skills from two major registries. One in four contained at least one vulnerability. Data exfiltration patterns appeared in 13.3% of skills. Privilege escalation attempts in 11.8%. Patterns consistent with deliberate malicious intent in 5.2%. Skills bundling executable scripts were 2.12 times more likely to contain vulnerabilities than instruction-only skills.</p>
+
+        <p>Separately, Snyk's AgentScan found that 7.1% of publicly listed skills leak API keys through hardcoded credentials. In February 2026, 341 malicious skills were distributed through ClawHub — some containing obfuscated download-and-execute payloads hidden in HTML comments within Markdown files, invisible when rendered in a browser but faithfully read by every agent that loaded the skill. At the time of discovery, at least one of those skills was the most downloaded in its category.</p>
+
+        <p>These are not edge cases. They are the baseline state of the public skills ecosystem in 2026.</p>
+
+        <p>Your developers know this ecosystem exists. They will use it. The question is whether they do so with a framework or without one.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>How Enterprises Are Responding and What the Data Shows</h3>
+
+        <p>The governance problem is not hypothetical, and the industry response is moving fast. Databricks research across 20,000+ organisations found that companies using AI governance tools get over 12 times more AI projects into production. Governance is not a brake on adoption; it's what makes scale possible.</p>
+
+        <p>IBM now requires employees to pass an internal certification before building AI agents, after discovering teams were accessing sensitive systems without security reviews. GitHub's Enterprise AI Controls gives administrators a centralised panel to manage MCP allowlists and audit agent session activity, treating agent configuration as infrastructure policy. These are meaningful steps. But almost none of this addresses what knowledge agents are loading or where it came from.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Challenge 1: The GitHub Skills Problem</h3>
+
+        <p>Your internal repository is vetted. You know who wrote each skill, what it does, and what systems it touches. The problem is that developers do not live in your internal repository.</p>
+
+        <p>They live on GitHub, Clawhub, SkillsMP: marketplaces reporting 90,000+ listed skills as of early 2026. And when a community-built Jira automation skill saves two hours of setup time versus writing one from scratch, the pragmatic choice is obvious. The security implications are not.</p>
+
+        <p>The attack patterns in community skills are predictable once you know them:</p>
+
+        <p><strong>Hidden prompt injection.</strong> Markdown renders cleanly in a browser. It also hides HTML comments that humans cannot see, but agents read and follow. A polished, well-reviewed skill can carry embedded instructions that redirect your agent's behaviour without any visible indicator in the rendered preview. This is not theoretical, it is how the most-downloaded ClawHub skill in February operated.</p>
+
+        <p><strong>Hardcoded credentials.</strong> Skills that frequently call external APIs have credentials baked directly into scripts rather than referenced from environment variables. Install the skill; inadvertently expose your credentials to a third party.</p>
+
+        <p><strong>Chained capability exploitation.</strong> A skill that combines file-read access with network calls creates a data exfiltration channel. Neither capability is dangerous in isolation. Together, they are. Academic research found this combination to be the dominant pattern among high-severity vulnerabilities.</p>
+
+        <p><strong>Supply chain substitution.</strong> A legitimate skill gains trust and downloads, then a malicious update is pushed. Without integrity verification at install time, your developers may be running a different skill than the one they originally reviewed.</p>
+
+        <p>The practical recommendation is to treat skill installation with the same rigour as installing third-party software on a production system — because that is functionally what it is.</p>
+
+        <h4>Where to Source External Skills: Three-Tier Classification</h4>
+
+        <p>Not all external sources carry equal risk. Skills.sh is the closest thing the ecosystem has to a curated public registry, with an Official section surfacing skills published directly by Anthropic, Microsoft, Google, Vercel, Cloudflare, and others. Each listed skill is run through three independent security scanners (Gen Agent Trust Hub, Socket, and Snyk), with results published on their Audits page. Use this to narrow your review list, but treat it as a pre-filter, not a final gate.</p>
+
+        <p>For practical classification, apply a three-tier model to any externally sourced skill:</p>
+
+        <p><strong>Green:</strong> Official vendor skills from verified registries, with content hashing and integrity verification. Approved for internal use after basic security review.</p>
+
+        <p><strong>Amber:</strong> Community skills with active maintenance, clear authorship, and no bundled executable scripts. Permitted with a mandatory security review log, a named approver, and a documented review date.</p>
+
+        <p><strong>Red:</strong> Any skill with executable scripts from unverified sources. Requires full audit, sandboxed testing, and security team sign-off. No exceptions.</p>
+
+        <p>Anthropic's own enterprise documentation is explicit: read all skill directory content, verify no hardcoded credentials, identify all bash commands and file operations, and assess combined risk when file-read and network access appear together. The Cisco Skill Scanner (available standalone and as a GitHub Actions PR check) can raise the baseline above zero, which is where most organisations currently sit.</p>
+
+        <h4>The Zero-Dependency Rule</h4>
+
+        <p>One constraint worth enforcing as both a security and portability policy: require that any Python tools bundled with skills use only the standard library; no pip install, no requirements.txt, no virtual environments. Every external dependency is another supply chain to vet, and a skill that pulls in requests and pyyaml has expanded its attack surface beyond the SKILL.md file itself. Stdlib-only runs on any machine without setup and keeps the blast radius of any compromise contained to the skill itself.</p>
+
+        <h4>Runtime Sandbox Matters</h4>
+
+        <p>One additional note on security assessment: the runtime sandbox in which a skill executes varies significantly across tools. Claude Code runs skills with no network access and no package installation in its code execution environment, meaningful guardrails. Antigravity, Windsurf, and Codex CLI have different execution models. A skill that is contained in one environment may have broader access in another. Your security assessment needs to account for which tool your engineers are actually running the skill in, not just whether the SKILL.md file looks clean.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Challenge 2: Layering Skills — Organisation, Project, Personal</h3>
+
+        <p>Once you establish a security policy for external skills, the second problem is architectural: how do you layer your own?</p>
+
+        <p>The pattern that works at enterprise scale — and that Anthropic's enterprise documentation endorses — is a three-layer hierarchy:</p>
+
+        <div class="code-block-header">
+            <span>Skills Hierarchy</span>
+        </div>
+        <pre><code>Organisation skills  (company-wide standards, always loaded)
+        ↓
+Project skills       (client or codebase specific, loaded per context)
+        ↓
+Personal skills      (individual developer workflows, developer-owned)</code></pre>
+
+        <figure class="article-image">
+            <img src="../../img/agent_skill_hierarchy.png" alt="Agent skill hierarchy diagram showing organisation, project, and personal skill layers.">
+            <figcaption>Agent Skill Hierarchy</figcaption>
+        </figure>
+
+        <h4>Foundational vs. Workflow Skills</h4>
+
+        <p>Within the organisation layer, it is worth making a further distinction: foundational skills Vs workflow skills.</p>
+
+        <p>Foundational skills add capabilities the agent does not have natively, document creation, PDF processing, code review patterns, spreadsheet generation. These are good candidates to source from vendor-published repositories via skills.sh Official, audit, and import. Anthropic, Microsoft, and others publish and maintain these. You do not need to build them from scratch.</p>
+
+        <p>Workflow skills encode your organisation's specific processes — your Jira conventions, your compliance checklist, your deployment runbook, your brand voice guidelines. These you build internally. No registry has them, because they are uniquely yours. This is where your institutional knowledge lives in a form agents can actively apply.</p>
+
+        <p>The distinction matters for governance: foundational skills need security review and compatibility testing; workflow skills need domain review, owner assignment, and ongoing maintenance as your processes evolve.</p>
+
+        <h4>Progressive Disclosure: Avoiding Context Drowning</h4>
+
+        <p>The architectural challenge with layering is context window management when all three layers are active simultaneously. Anthropic's own creators use the term "context drowning" for what happens when too much is loaded at once; the model is so occupied processing instructions that it has little capacity left for the actual task. The failure mode is common: one practitioner's account of building 100+ skills in production describes a marketing content auditor that loaded 15,000 tokens on every invocation—brand voice guidelines, SEO checklists, competitor templates, platform formatting rules, all in a single SKILL.md file. The skill worked, but consumed so much context that there was barely room for the content being audited. Output quality dropped.</p>
+
+        <p>The solution is progressive disclosure: the SKILL.md file contains only core instructions and a list of reference files. The agent loads reference files only when the specific task requires them. The base load dropped from 15,000 tokens to roughly 650. The full 15,000 remained accessible when needed. The pattern—small core, on-demand references, 200 to 500 lines per skill—should be the standard for every organisational skill.</p>
+
+        <p>For project-level skills specifically, resist the temptation to duplicate documentation into SKILL.md. Instead, point to existing project documentation: ADRs, README files, CONTRIBUTING guides. The skill becomes a routing layer that tells the agent which project documentation to consult. One source of truth; the skill just knows where to find it.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Challenge 3: Versioning and Change Communication</h3>
+
+        <p>Barry Zhang and Mahesh Murag were explicit: treat skills like software, with testing methodologies, versioning practices, and quality measurement. The engineering side maps cleanly to existing patterns: pin versions, run evals before promotion, verify checksums at deployment, and keep the previous version as a rollback.</p>
+
+        <p>The change communication problem across a large, distributed engineering organisation is less solved. A few patterns that work in practice:</p>
+
+        <p><strong>Semantic versioning with CHANGELOG in the skill directory.</strong> Engineers who want to understand what changed can read it. Your skills CI can enforce that pull requests include changelog entries as a merge requirement.</p>
+
+        <p><strong>Automated Slack notifications on merge.</strong> A GitHub Action that posts a summary of changes to your team channel on every merge to main handles passive notification without requiring engineers to monitor the repository actively.</p>
+
+        <p><strong>Skills Bill of Materials (SBoM) per project.</strong> Just as software projects track dependency versions in a package-lock.json, each project should maintain a Skills Bill of Materials—a record of which skills it uses, at which version, when each was last audited, and who approved it. When a security incident involves a skill, you know exactly which projects are affected and can remediate in minutes rather than days. The SBoM is the audit trail your security team will ask for; build it before they ask.</p>
+
+        <p><strong>Explicit update policy by change type.</strong> Security-related updates trigger mandatory migration with a defined deadline. Feature updates are optional until the next quarterly skills refresh cycle. Making this explicit prevents the assumption that all updates are equivalent.</p>
+
+        <p>One lesson from a practitioner who built 170 skills in production is worth flagging: the security auditor was added after 130 skills were already published. Retroactively scanning and remediating took a full weekend. Build the scanning infrastructure before the first skill goes into production.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Challenge 4: The Discovery Problem and the Enterprise Audit Registry</h3>
+
+        <p>A practitioner who built 100+ skills in production describes the moment around skill 80 when the folder structure had become the architecture, skills sitting in the wrong domain because they were created before the taxonomy stabilised. At 250+ engineers, that moment arrives much earlier.</p>
+
+        <h4>Define the Taxonomy First</h4>
+
+        <p>The intervention is straightforward: define your domain taxonomy before writing skills, not after. Establish structured domain folders—Engineering, Product, Finance, Legal, Marketing, Operations—and explicitly document the context each domain assumes. Engineering skills assume codebase access. Finance skills assume access to metrics data. Marketing skills assume brand guidelines are available. Documenting these assumptions in each domain's README means engineers understand what a skill needs before they try to run it.</p>
+
+        <h4>Add a Routing Layer at Scale</h4>
+
+        <p>A well-defined taxonomy solves discovery for humans browsing the catalogue. It does not solve it for the agent when the library reaches 500+ skills. At that point, even a well-organised registry creates a different version of context drowning—too many candidate skills, no clear signal about which to load.</p>
+
+        <p>The solution is a lightweight routing layer: a dedicated orchestration skill that acts as a switchboard. It reads user intent, identifies which domain skills are relevant to the current task, and loads them in sequence rather than dumping everything into context at once. The same practitioner implemented exactly this in his 170-skill repository—a keyword-based routing protocol that coordinates cross-domain tasks without requiring the engineer to manually invoke five skills in sequence.</p>
+
+        <p>For enterprise teams, this routing layer is worth building deliberately as a first-class skill, not discovering accidentally when the agent starts ignoring half the library.</p>
+
+        <h4>Build an Internal Audit Registry</h4>
+
+        <p>Your internal registry needs to go further than any public audit page. Here's what it should track that public registries don't:</p>
+
+        <table style="width: 100%; margin: 2rem 0; border-collapse: collapse;">
+            <tr style="border-bottom: 2px solid var(--border);">
+                <th style="text-align: left; padding: 0.75rem; font-weight: 600;">Dimension</th>
+                <th style="text-align: left; padding: 0.75rem; font-weight: 600;">Public registry (skills.sh)</th>
+                <th style="text-align: left; padding: 0.75rem; font-weight: 600;">Enterprise internal registry</th>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Security scan results</td>
+                <td style="padding: 0.75rem;">Gen + Socket + Snyk</td>
+                <td style="padding: 0.75rem;">Same, plus internal policy rules</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Named approver</td>
+                <td style="padding: 0.75rem;">Not shown</td>
+                <td style="padding: 0.75rem;">Required — with date</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Tool compatibility</td>
+                <td style="padding: 0.75rem;">Not shown</td>
+                <td style="padding: 0.75rem;">Tested in Claude Code / Windsurf / Antigravity</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Token footprint</td>
+                <td style="padding: 0.75rem;">Not shown</td>
+                <td style="padding: 0.75rem;">Base load + max load documented</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Tier classification</td>
+                <td style="padding: 0.75rem;">Not shown</td>
+                <td style="padding: 0.75rem;">Green / Amber / Red</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Named owner</td>
+                <td style="padding: 0.75rem;">Not shown</td>
+                <td style="padding: 0.75rem;">Required — accountable for updates</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Deprecation date</td>
+                <td style="padding: 0.75rem;">Not shown</td>
+                <td style="padding: 0.75rem;">Review-by date assigned at creation</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Coexistence testing</td>
+                <td style="padding: 0.75rem;">Not shown</td>
+                <td style="padding: 0.75rem;">Which other skills does this conflict with?</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem;">Source / provenance</td>
+                <td style="padding: 0.75rem;">GitHub link</td>
+                <td style="padding: 0.75rem;">Internal / Official vendor / Community (audited)</td>
+            </tr>
+            <tr>
+                <td style="padding: 0.75rem;">Usage metrics</td>
+                <td style="padding: 0.75rem;">Not shown</td>
+                <td style="padding: 0.75rem;">Which teams, how frequently</td>
+            </tr>
+        </table>
+
+        <p>The security scan is the floor, not the ceiling. A skills catalogue without owner accountability, compatibility testing, and deprecation dates is a junk drawer; engineers will stop using it and start rebuilding locally, creating exactly the sprawl you were trying to prevent. Apply a deprecation policy: skills not updated in twelve months with low usage are candidates for archiving.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Challenge 5: E-Commerce Knowledge — Skills or RAG?</h3>
+
+        <p>This question comes up frequently when organisations consider converting years of accumulated institutional knowledge into something AI agents can use. An e-commerce services company with 20 years of wiki and Jira history is a good test case: is it better to build skills, or to convert all of that into a RAG or KAG system?</p>
+
+        <p>The answer depends on what kind of knowledge you are dealing with and what you want the agent to do with it.</p>
+
+        <p><strong>RAG and KAG are the right answer when:</strong></p>
+        <ul>
+            <li>Knowledge is dense, unstructured, and spans thousands of documents</li>
+            <li>Queries are exploratory — "what did we decide about the checkout flow in 2019?"</li>
+            <li>The answer requires synthesising across multiple sources</li>
+        </ul>
+
+        <p><strong>Skills are the right answer when:</strong></p>
+        <ul>
+            <li>Knowledge encodes a repeatable workflow or decision pattern</li>
+            <li>You want consistent, predictable agent behaviour across engineers and tools</li>
+            <li>The context is bounded and can be expressed in a few hundred lines</li>
+        </ul>
+
+        <p>For a 20-year e-commerce knowledge base, the answer is almost certainly both — with a clear separation of concerns. RAG handles institutional memory retrieval. Skills handle workflow encoding. The skill that handles a customer return query does not need to contain your full returns policy documentation — it needs to know how to query your KAG for the relevant policy, then apply the procedural steps your team has agreed on.</p>
+
+        <p>The failure mode to avoid is trying to encode 20 years of unstructured knowledge directly into SKILL.md files. The procedural knowledge — how to handle checkout edge cases, how to assess fraud risk, how to escalate a supplier dispute — translates well into skills. The factual knowledge — what the policy says, what the historical decision was — belongs in a retrieval layer. Skills that try to do both become too large to maintain and too heavy to load efficiently.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Where This Is Heading</h3>
+
+        <p>Three directions worth watching for enterprise planning:</p>
+
+        <p><strong>Capability-based permissions.</strong> The January 2026 academic research calls for skills to declare upfront what tools and data they need, with runtime enforcement rather than convention-based trust. Expect explicit capability declarations in skill frontmatter, network access, file-read scope, and tool dependencies to be enforced at deployment.</p>
+
+        <p><strong>Cross-surface synchronisation.</strong> Skills uploaded via the Anthropic API are currently not available in Claude Code, and vice versa. This will eventually resolve, but plan now for a single source-of-truth repository that distributes to all surfaces.</p>
+
+        <p><strong>Agent-authored skills.</strong> Barry Zhang and Mahesh Murag explicitly flagged this: agents will eventually write their own skills from experience. Who reviews them, what version control applies, what security scanning runs before they propagate; none of this is answered yet. Worth thinking through before it arrives.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>A Starting Point for Enterprise Teams</h3>
+
+        <p>If I were structuring this for an organisation where skills are currently in use for AI SDLC workflows, I'd prioritise four things before scaling further:</p>
+
+        <p><strong>Establish the security policy first.</strong> Define the three tiers, integrate the Cisco Skill Scanner as a pre-commit hook, and enforce the zero-dependency rule before the next contribution sprint.</p>
+
+        <p><strong>Source foundational skills from Official registries.</strong> Skills.sh Official surfaces vendor-published skills from Anthropic, Microsoft, and Google, pre-audited and free to import, so you're not building from scratch what already exists.</p>
+
+        <p><strong>Build the enterprise audit registry before the library grows further.</strong> Assign owners, document compatibility and token footprint, set deprecation date, this investment compounds, and the later you do it, the more expensive it becomes.</p>
+
+        <p><strong>Run one structured workshop on the layering model.</strong> Align on the foundational/workflow split, the org/project/personal hierarchy, and the versioning process now, before the defaults calcify.</p>
+
+        <p>The Anthropic creators are right that the future belongs to skills. But the organisations that build that future carefully, with governance embedded from the start, will have a durable advantage over those who accumulate skills reactively and deal with the consequences later.</p>
+
+        <p>The skills explosion is here. The governance infrastructure is not. That gap is where the real engineering work begins.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <p><em>If you run an internal skills repository at your company, I would like to hear about your biggest governance headache in the comments.</em></p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <p><em>Sonika Janagill is a Google Developer Expert in Cloud AI & Google Cloud, Lead Backend Engineer & Engineering Advocate at VML, and Team Lead of the Women Coding Community AI Learning Series. She writes about enterprise AI architecture, MLOps, and the engineering patterns behind responsible AI adoption at sonikajanagill.com and for the Google Cloud Community on Medium.</em></p>
+
+        <!-- Share Section -->
+        <div class="article-share">
+            <p class="share-title">Share this article:</p>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/x-icon.png" alt="X">
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
+                </button>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--text-tertiary); font-size: 0.9rem;">   
+            Also published on <a href="https://medium.com/@sonika.janagill/the-skills-explosion-is-here-enterprise-governance-isnt-5a2cc152301b" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
+        </p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="../article-utils.js"></script>
+</body>
+</html>
