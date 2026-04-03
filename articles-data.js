@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 8,
+        title: 'Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%',
+        date: 'December 2025',
+        tags: ['MLOps', 'Architecture', 'Cloud'],
+        readTime: '15 min read',
+        description: 'Learn 5 architectural patterns that reduced MLOps costs from $6,600/month to $1,200/month (82% reduction). Auto-shutdown, Spot VMs, zero-scaling inference, Feature Store caching, and multi-cloud WIF patterns.',
+        url: 'articles/cost-optimized-mlops/',
+        image: 'img/cost_optimized_mlops.png'
+    },
+    {
         id: 7,
         title: "Internet of Agents: AGNTCY, Protocols, and Mach Alliance's Agent Ecosystem",
         date: 'December 2025',
