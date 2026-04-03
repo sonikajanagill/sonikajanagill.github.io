@@ -59,6 +59,7 @@
 }
 
 .blog-subtitle {
+    font-family: var(--font-heading);
     font-size: 2.5rem;
     color: var(--text-primary);
     margin: 0;
@@ -97,8 +98,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: transparent;
     border: 1px solid var(--border);
@@ -109,8 +110,8 @@
 }
 
 .blog-share-btn img {
-    width: 28px;
-    height: 28px;
+    width: 18px;
+    height: 18px;
     object-fit: contain;
     display: block;
 }
@@ -160,20 +161,22 @@
     padding: 3rem 2rem; 
 }
 
-.blog-content h2 { 
-    font-size: 1.75rem; 
-    font-weight: 700; 
-    margin-top: 2.5rem; 
-    margin-bottom: 1rem; 
-    color: var(--text-primary); 
+.blog-content h2 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
-.blog-content h3 { 
-    font-size: 1.375rem; 
-    font-weight: 700; 
-    margin-top: 1.75rem; 
-    margin-bottom: 0.75rem; 
-    color: var(--text-primary); 
+.blog-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
 }
 
 .blog-content p { 
@@ -304,12 +307,12 @@
     font-size: 0.8rem; 
     font-weight: 600; 
     transition: var(--transition); 
-    box-shadow: 0 0 8px rgba(255, 68, 68, 0.2);
+    box-shadow: 0 0 8px rgba(212, 84, 78, 0.15);
 }
 
 .code-btn:hover { 
-    background: rgba(255, 68, 68, 0.05);
-    box-shadow: 0 0 12px rgba(255, 68, 68, 0.4);
+    background: rgba(212, 84, 78, 0.05);
+    box-shadow: 0 0 12px rgba(212, 84, 78, 0.25);
 }
 
 .code-btn.copied { 
@@ -395,8 +398,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: transparent;
     border: 1px solid var(--border);
@@ -407,8 +410,8 @@
 }
 
 .blog-share-btn img {
-    width: 28px;
-    height: 28px;
+    width: 18px;
+    height: 18px;
     object-fit: contain;
     display: block;
 }

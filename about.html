@@ -19,15 +19,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="nav-logo">
                 <img src="img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
                 <img src="img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
                 <span class="nav-home-text">Home</span>
             </a>
-            <ul class="nav-links">
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-overlay" id="nav-overlay"></div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="articles/">Articles</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -42,19 +49,20 @@
     </nav>
 
     <!-- Main Content -->
+    <main id="main-content">
     <div class="container">
         <!-- Professional Summary Section -->
-        <section id="about" class="section about-section" aria-labelledby="about-heading">
+        <section id="about" class="section about-section reveal" aria-labelledby="about-heading">
             <div class="about-grid">
                 <div class="about-text">
                     <h1 class="section-title" id="about-heading">Who Am I</h1>
                     <p class="hero-title">Google Developer Expert in Cloud AI & Google Cloud</p>
                     <p class="hero-location">Watford, UK</p>
                     <div class="about-content">
-                        <p>As a Google Developer Expert (GDE) in Cloud AI & Google Cloud and Lead Backend Engineer with two decades of enterprise experience, I love architecting scalable AI/ML solutions on Google Cloud Platform that bridge cutting-edge research with real-world business impact. My journey from Java/J2EE enterprise development to cloud-native AI engineering has given me unique insights into both legacy system challenges and the exciting potential of AI transformation.</p>
-                        <p>I create custom AI tools and educational content that help teams around the world adopt AI more effectively. I enjoy translating complex AI concepts into practical solutions and leading cross-functional teams through MLOps implementations while keeping an eye on cost optimization and scalability.</p>
-                        <p>Based in the UK with experience across Indian, US, UK and European markets, I'm passionate about making AI more accessible through technical writing, mentoring, and speaking. Whether you're tackling enterprise AI challenges or exploring new possibilities in machine learning, I'd love to hear about your projects and share what I've learned along the way.</p>
-                        <p><strong>Interested in discussing AI, cloud architecture, or potential collaborations? Let's connect!</strong></p>
+                        <p>As a Google Developer Expert (GDE) in Cloud AI & Google Cloud and Lead Backend Engineer with two decades of enterprise experience, I architect agentic AI solutions on Google Cloud that bridge cutting-edge research with real-world business impact. My current focus is on agentic ecommerce, the Google Agent Development Kit (ADK), and Vertex AI -- building intelligent systems that go beyond simple automation to truly autonomous decision-making.</p>
+                        <p>My journey from Java/J2EE enterprise development to cloud-native AI engineering has given me unique insights into both legacy system challenges and the transformative potential of agentic AI. I create custom AI tools and educational content that help teams around the world adopt AI more effectively, translating complex concepts into practical, production-ready solutions.</p>
+                        <p>At VML, I'm actively involved in the AI Guild, the Agentic Commerce group, and Agent Skills initiatives -- driving enterprise adoption of agentic systems at scale. Based in the UK with experience across Indian, US, UK and European markets, I'm passionate about making AI more accessible through technical writing, mentoring, and speaking.</p>
+                        <p><strong>Interested in discussing agentic AI, ecommerce transformation, or potential collaborations? Let's connect!</strong></p>
                     </div>
                 </div>
                 <div class="about-image">
@@ -64,17 +72,17 @@
         </section>
 
         <!-- Technical Focus Areas Section -->
-        <section id="focus-areas" class="section" aria-labelledby="focus-heading">
+        <section id="focus-areas" class="section reveal" aria-labelledby="focus-heading">
             <h2 class="section-title" id="focus-heading">Technical Focus Areas</h2>
 
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Current Focus</h3>
                     <ul>
-                        <li>Vertex AI & Google Cloud ML</li>
+                        <li>Agentic AI & Agentic Ecommerce</li>
+                        <li>Google Agent Development Kit (ADK)</li>
+                        <li>Vertex AI & Google Cloud AI</li>
                         <li>MLOps & AI Engineering</li>
-                        <li>Enterprise AI Transformation</li>
-                        <li>Technical Content Creation</li>
                     </ul>
                 </div>
                 <div class="skill-category">
@@ -92,9 +100,9 @@
                 <div class="skill-category">
                     <h3>AI/ML Development</h3>
                     <ul>
-                        <li>Python & Machine Learning Libraries</li>
-                        <li>LangChain & OpenAI APIs</li>
+                        <li>Agentic Systems & Multi-Agent Workflows</li>
                         <li>RAG Systems & Vector Databases</li>
+                        <li>LangChain, LangGraph & OpenAI APIs</li>
                         <li>MLOps Pipelines & Automation</li>
                     </ul>
                 </div>
@@ -102,19 +110,19 @@
                     <h3>Enterprise Systems</h3>
                     <ul>
                         <li>Java/Spring Framework</li>
-                        <li>Enterprise Integration Patterns</li>
-                        <li>API Design & Architecture</li>
-                        <li>Database Architecture & Optimization</li>
+                        <li>Ecommerce Platform Architecture</li>
+                        <li>API Design & Integration Patterns</li>
+                        <li>Database Architecture & Optimisation</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- Certifications & Achievements Section -->
-        <section id="certifications" class="section" aria-labelledby="certifications-heading">
+        <section id="certifications" class="section reveal" aria-labelledby="certifications-heading">
             <h2 class="section-title" id="certifications-heading">Certifications & Achievements</h2>
 
-            <div class="achievements">
+            <div class="achievements reveal-stagger">
                 <div class="achievement-card">
                     <h3>Google Developer Expert</h3>
                     <p>Cloud AI & Google Cloud | 2026</p>
@@ -140,32 +148,32 @@
         </section>
 
         <!-- Community & Mentoring Section -->
-        <section id="mentoring" class="section" aria-labelledby="mentoring-heading">
+        <section id="mentoring" class="section reveal" aria-labelledby="mentoring-heading">
             <h2 class="section-title" id="mentoring-heading">Community & Mentoring</h2>
 
-            <div class="achievements">
+            <div class="achievements reveal-stagger">
                 <div class="achievement-card">
                     <h3>Women Coding Community Lead</h3>
                     <p>Co-instructor of the AI Learning Series, guiding 100+ developers from "never touched AI" to building production RAG systems and multi-agent workflows through hands-on mentorship and real projects</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>AI Education & Mentorship</h3>
-                    <p>Teaching real-world AI implementation through hands-on projects, proving you don't need to be an expert to build impactful AI systems. Democratizing AI knowledge through depth over breadth and progress over perfection</p>
+                    <h3>GDE Programme Volunteer</h3>
+                    <p>Actively volunteering within the Google Developer Expert programme, sharing knowledge about new Google Cloud and AI releases, and supporting the wider developer community</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>Diversity & Inclusion Advocate</h3>
-                    <p>Passionate about making AI more accessible and creating inclusive spaces in technology</p>
+                    <h3>VML AI Initiatives</h3>
+                    <p>Contributing to the VML AI Guild, Agentic Commerce group, and Agent Skills programme -- driving enterprise adoption of agentic AI systems at scale</p>
                 </div>
                 <div class="achievement-card">
-                    <h3>Open to Mentoring</h3>
-                    <p>Always interested in connecting with individuals looking to grow in AI/ML, cloud platforms, or tech careers</p>
+                    <h3>Mentoring in Tech</h3>
+                    <p>Mentoring developers in AI/ML, cloud platforms, and career growth. Passionate about making AI accessible and creating inclusive spaces in technology</p>
                 </div>
             </div>
 
         </section>
 
         <!-- Connect Section -->
-        <section id="connect" class="section" aria-labelledby="connect-heading">
+        <section id="connect" class="section reveal" aria-labelledby="connect-heading">
             <h2 class="section-title" id="connect-heading">Let's Connect</h2>
             <div class="social-links">
                 <a href="https://linkedin.com/in/sonikaj" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -198,29 +206,57 @@
         </section>
     </div>
 
+    </main>
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-content">
-            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Dark Mode Toggle Script -->
     <script>
-        // Check for saved theme preference or default to dark mode
+        // Theme
         const theme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
-
         const themeToggle = document.getElementById('theme-toggle');
-
-        // Toggle theme
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('nav-hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navOverlay = document.getElementById('nav-overlay');
+        function openMenu() {
+            navLinks.classList.add('active');
+            hamburger.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.contains('active') ? closeMenu() : openMenu();
+        });
+        navOverlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) closeMenu();
+        });
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
+
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>

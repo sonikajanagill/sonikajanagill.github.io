@@ -23,15 +23,22 @@
     <script src="../articles-data.js"></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="../" class="nav-logo">
                 <img src="../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
                 <img src="../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
                 <span class="nav-home-text">Home</span>
             </a>
-            <ul class="nav-links">
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-overlay" id="nav-overlay"></div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="../about.html">About</a></li>
                 <li><a href="./">Articles</a></li>
                 <li><a href="../contact.html">Contact</a></li>
@@ -51,6 +58,7 @@
         <p>Insights on AI, MLOps, and enterprise transformation</p>
     </header>
 
+    <main id="main-content">
     <!-- Hashtag Filter -->
     <section class="articles-filter-section">
         <div class="container">
@@ -75,27 +83,50 @@
         </div>
     </section>
 
+    </main>
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-content">
-            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Dark Mode Toggle Script -->
     <script>
+        // Theme
         const theme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
-
         const themeToggle = document.getElementById('theme-toggle');
-
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('nav-hamburger');
+        const navLinksEl = document.getElementById('nav-links');
+        const navOverlay = document.getElementById('nav-overlay');
+        function openMenu() {
+            navLinksEl.classList.add('active');
+            hamburger.classList.add('active');
+            navOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            navLinksEl.classList.remove('active');
+            hamburger.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        hamburger.addEventListener('click', () => {
+            navLinksEl.classList.contains('active') ? closeMenu() : openMenu();
+        });
+        navOverlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinksEl.classList.contains('active')) closeMenu();
+        });
+        navLinksEl.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMenu));
     </script>
 
     <!-- Articles Data and Filter Script -->
