@@ -27,7 +27,13 @@
                 <img src="img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
                 <span class="nav-home-text">Home</span>
             </a>
-            <ul class="nav-links">
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-overlay" id="nav-overlay"></div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="articles/">Articles</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -44,7 +50,7 @@
     <!-- Main Content -->
     <div class="container">
         <!-- Professional Summary Section -->
-        <section id="about" class="section about-section" aria-labelledby="about-heading">
+        <section id="about" class="section about-section reveal" aria-labelledby="about-heading">
             <div class="about-grid">
                 <div class="about-text">
                     <h1 class="section-title" id="about-heading">Who Am I</h1>
@@ -64,7 +70,7 @@
         </section>
 
         <!-- Technical Focus Areas Section -->
-        <section id="focus-areas" class="section" aria-labelledby="focus-heading">
+        <section id="focus-areas" class="section reveal" aria-labelledby="focus-heading">
             <h2 class="section-title" id="focus-heading">Technical Focus Areas</h2>
 
             <div class="skills-grid">
@@ -111,10 +117,10 @@
         </section>
 
         <!-- Certifications & Achievements Section -->
-        <section id="certifications" class="section" aria-labelledby="certifications-heading">
+        <section id="certifications" class="section reveal" aria-labelledby="certifications-heading">
             <h2 class="section-title" id="certifications-heading">Certifications & Achievements</h2>
 
-            <div class="achievements">
+            <div class="achievements reveal-stagger">
                 <div class="achievement-card">
                     <h3>Google Developer Expert</h3>
                     <p>Cloud AI & Google Cloud | 2026</p>
@@ -140,10 +146,10 @@
         </section>
 
         <!-- Community & Mentoring Section -->
-        <section id="mentoring" class="section" aria-labelledby="mentoring-heading">
+        <section id="mentoring" class="section reveal" aria-labelledby="mentoring-heading">
             <h2 class="section-title" id="mentoring-heading">Community & Mentoring</h2>
 
-            <div class="achievements">
+            <div class="achievements reveal-stagger">
                 <div class="achievement-card">
                     <h3>Women Coding Community Lead</h3>
                     <p>Co-instructor of the AI Learning Series, guiding 100+ developers from "never touched AI" to building production RAG systems and multi-agent workflows through hands-on mentorship and real projects</p>
@@ -165,7 +171,7 @@
         </section>
 
         <!-- Connect Section -->
-        <section id="connect" class="section" aria-labelledby="connect-heading">
+        <section id="connect" class="section reveal" aria-labelledby="connect-heading">
             <h2 class="section-title" id="connect-heading">Let's Connect</h2>
             <div class="social-links">
                 <a href="https://linkedin.com/in/sonikaj" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -201,26 +207,41 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Dark Mode Toggle Script -->
     <script>
-        // Check for saved theme preference or default to dark mode
+        // Theme
         const theme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
-
         const themeToggle = document.getElementById('theme-toggle');
-
-        // Toggle theme
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
         });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('nav-hamburger');
+        const navLinks = document.getElementById('nav-links');
+        function toggleMenu() {
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active', isOpen);
+        }
+        hamburger.addEventListener('click', toggleMenu);
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }));
+
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
