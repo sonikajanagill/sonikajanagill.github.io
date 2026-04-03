@@ -22,7 +22,7 @@ const articlesData = [
     },
     {
         id: 8,
-        title: 'Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%',
+        title: 'Cost-Optimised MLOps: Reducing Infrastructure Spend by 80%',
         date: 'December 2025',
         tags: ['MLOps', 'Architecture', 'Cloud'],
         readTime: '15 min read',

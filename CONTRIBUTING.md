@@ -2,6 +2,17 @@
 
 This document covers the build process and publishing workflow for the site. Not relevant for casual visitors.
 
+## Language & Style
+
+All articles are written in **British English (en-GB)**. This includes:
+- Spelling: organisation, colour, realise, analyse, centre, licence (noun), practice (noun)
+- Punctuation: Use em dashes (—) for parenthetical statements
+- Vocabulary: favour British terms (e.g., "whilst" not "while", "amongst" not "among")
+- Dates: Use format "April 2026" or "3 April 2026"
+- Measurements: Use metric where applicable
+
+When adding new articles, ensure the HTML includes: `<meta http-equiv="Content-Language" content="en-GB">`
+
 ## Structure
 
 ```
