@@ -8,7 +8,7 @@ const articlesData = [
         readTime: '13 min read',
         description: 'Anthropic\'s creators say stop building agents, start building skills. They\'re right. But 170 skills in production taught us something they didn\'t cover: the hard part isn\'t building them. It\'s governing them.',
         url: 'articles/enterprise-agent-skills-governance/',
-        image: 'img/enterprise_agent_skills.png'
+        image: 'img/enterprise_agent_skills_governance.png'
     },
     {
         id: 9,
