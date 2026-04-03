@@ -468,21 +468,51 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
 
         <p><em>This article is part of the "Enterprise MLOps on GCP" series. Follow me on <a href="https://medium.sonikajanagill.com/" target="_blank" rel="noopener noreferrer">Medium</a> and <a href="https://www.linkedin.com/in/sonikaj/" target="_blank" rel="noopener noreferrer">LinkedIn</a> for Part 2B and the rest of the series.</em></p>
 
+        <div class="article-share">
+            <div class="share-title">Share this article:</div>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/static-credentials-mlops-security/&text=Stop%20Storing%20Cloud%20Secrets%3A%20How%20Workload%20Identity%20Federation%20Eliminates%20Static%20Keys%20-%20by%20@sonikajanagill" target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on X">
+                    <img src="../../img/x-icon.png" alt="X">
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/static-credentials-mlops-security/" target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on LinkedIn">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/static-credentials-mlops-security/" class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
+                </button>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--text-tertiary); font-size: 0.9rem;">   
+            Also published on <a href="https://medium.sonikajanagill.com" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
+        </p>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://www.linkedin.com/in/sonikaj/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://medium.sonikajanagill.com/" target="_blank" rel="noopener noreferrer">Medium</a>
-                <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="../article-utils.js"></script>
+    <script>
+        // Copy share link to clipboard
+        function copyShareLink(button) {
+            const url = 'https://sonikajanagill.com/articles/static-credentials-mlops-security/';
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy link:', err);
+                alert('Failed to copy link');
+            });
+        }
+    </script>
 </body>
 </html>

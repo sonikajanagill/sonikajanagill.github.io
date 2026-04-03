@@ -175,9 +175,7 @@
 
         <h3>Strategy 1: Auto-Shutdown Development (87% Savings)</h3>
 
-        <h4>The Innovation: Automated Lifecycle Management</h4>
-
-        <p>This strategy automates the shutdown of Vertex AI Workbench instances when they're idle, eliminating the cost of always-on development environments.</p>
+        <p>Automate the shutdown of Vertex AI Workbench instances when idle, eliminating always-on development environment costs.</p>
 
         <div class="code-block-header">
             <span>Python - Auto-Shutdown Script for Vertex AI Workbench</span>
@@ -345,11 +343,7 @@ resource "google_cloud_scheduler_job" "shutdown_schedule" {
 
         <h3>Strategy 2: Spot VM Training (79% Savings)</h3>
 
-        <h4>The Economics</h4>
-
-        <p><strong>Standard VMs:</strong> n1-standard-4 @ $0.19/hour<br>
-        <strong>Spot VMs:</strong> Same @ $0.048/hour (75% discount)<br>
-        <strong>The catch:</strong> Can be preempted with 30 seconds notice</p>
+        <p><strong>Standard VMs:</strong> n1-standard-4 @ $0.19/hour | <strong>Spot VMs:</strong> Same @ $0.048/hour (75% discount) | <strong>The catch:</strong> Can be preempted with 30 seconds notice</p>
 
         <div class="code-block-header">
             <span>Python - Fault-Tolerant Spot VM Training</span>
@@ -566,9 +560,7 @@ class GCSCheckpointManager:
 
         <h3>Strategy 3: Zero-Scaling Inference (81% Savings)</h3>
 
-        <h4>The Game-Changer: min_replicas=0</h4>
-
-        <p><strong>Why most don't know this:</strong> Not prominently featured in tutorials, cold-start concerns</p>
+        <p><strong>The game-changer:</strong> <code>min_replicas=0</code> - not prominently featured in tutorials due to cold-start concerns, but perfect for batch processing, dev/staging, and sporadic traffic.</p>
 
         <p><strong>The reality:</strong></p>
         <ul>
@@ -687,21 +679,7 @@ def create_warmup_schedule(endpoint_id):
 
         <h3>Strategy 4: Feature Store Caching (40% Compute Reduction)</h3>
 
-        <h4>The Novel Use Case (GDE Innovation Factor)</h4>
-
-        <p><strong>Your embeddings project problem:</strong></p>
-        <ul>
-            <li>50K products needing embeddings</li>
-            <li>Multiple models (search, recommendations, similar items)</li>
-            <li>Recomputing same embeddings across experiments</li>
-            <li><strong>Waste:</strong> 40% of compute on redundant work</li>
-        </ul>
-
-        <p><strong>Solution:</strong> Vertex AI Feature Store as embeddings cache</p>
-
-        <p><strong>Why this is GDE-level:</strong> Novel use case (Feature Store typically for tabular features)</p>
-
-        <h3>Implementation</h3>
+        <p><strong>The problem:</strong> 50K products needing embeddings across multiple models (search, recommendations, similar items) results in recomputing the same embeddings repeatedly—40% of compute wasted on redundant work. <strong>The solution:</strong> Use Vertex AI Feature Store as an embeddings cache (novel use case beyond typical tabular features).</p>
 
         <div class="code-block-header">
             <span>Python - Vertex AI Feature Store for Embeddings Caching</span>
@@ -847,19 +825,7 @@ def generate_embeddings_with_cache(product_ids, model_name="embeddings_minilm"):
 
         <h3>Strategy 5: Multi-Cloud WIF (Builds on Part 2)</h3>
 
-        <h4>The Opportunity</h4>
-
-        <p>Your <a href="/articles/zero-trust-wif-implementation/">Part 2 WIF patterns</a> enable <strong>cost-free cross-cloud data access</strong></p>
-
-        <p><strong>Scenario:</strong></p>
-        <ul>
-            <li>Training data in AWS S3 (cheaper cold storage)</li>
-            <li>Processing in GCP (better ML tools)</li>
-            <li><strong>Normally:</strong> $0.09/GB egress kills savings</li>
-            <li><strong>With WIF:</strong> Zero egress, secure access</li>
-        </ul>
-
-        <h4>From Your Wayfair Example</h4>
+        <p>Your <a href="/articles/zero-trust-wif-implementation/">Part 2 WIF patterns</a> enable <strong>cost-free cross-cloud data access</strong>. <strong>Scenario:</strong> Training data in AWS S3 (cheaper cold storage), processing in GCP (better ML tools). Normally $0.09/GB egress kills savings; with WIF, zero egress and secure access.</p>
 
         <div class="code-block-header">
             <span>Python - Multi-Cloud Data Processing with WIF</span>
@@ -894,169 +860,77 @@ def cost_optimized_pipeline(aws_bucket):
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>The Complete Transformation</h2>
+        <h2>The Complete Picture: $5,400/Month Savings</h2>
 
-        <div class="key-concept">
-            <pre style="background: var(--code-bg); padding: 1rem; border-radius: 8px; overflow-x: auto;">
-BEFORE: $6,600/month
-├── Workbench (always-on): $2,400
-├── Training (defaults): $1,200
-├── Endpoints (min=2): $1,800
-├── Storage: $400
-└── DataProc: $800
+        <p>These five strategies transformed our embeddings project from <strong>$6,600/month to $1,200/month (82% reduction)</strong>: auto-shutdown saved $2,080, Spot VMs saved $950, zero-scaling saved $1,450, Feature Store caching saved $355, and WIF eliminated $200-300 in cross-cloud egress. Total annual savings: <strong>$64,800</strong> with a 4.4-month break-even on the 120-hour implementation investment.</p>
 
-AFTER: $1,200/month (82% reduction)
-├── Workbench (auto-shutdown): $320 (-87%)
-├── Training (Spot VMs): $250 (-79%)
-├── Endpoints (min=0): $350 (-81%)
-├── Storage (lifecycle): $180 (-55%)
-└── Composer: $100 (new)
-
-TRANSFORMATION:
-Monthly Savings: $5,400
-Annual Savings: $64,800
-3-Year ROI: $194,400
-Implementation: 120 hours ($24K)
-Break-even: 4.4 months</pre>
-        </div>
+        <p><strong>When to apply these patterns:</strong> Optimize when you have stable production workloads (3+ months), monthly spend exceeds $500, baseline metrics available, and team buy-in secured. Skip optimization during MVP/prototype phases or if major architecture changes are planned—focus on product-market fit first, cost efficiency second.</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h2>When NOT to Optimize</h2>
+        <h2>Your Week-One Action Plan</h2>
 
-        <p><strong>Don't optimize if:</strong></p>
+        <p><strong>Start with visibility, then optimize:</strong></p>
         <ol>
-            <li><strong>MVP/Prototype phase</strong> - Focus on product-market fit</li>
-            <li><strong>Monthly spend < $500</strong> - ROI doesn't justify engineering time</li>
-            <li><strong>Team < 5 engineers</strong> - Manual processes suffice</li>
-            <li><strong>Architecture changes planned</strong> - Wait for stability</li>
-            <li><strong>No baseline metrics</strong> - Need 30 days of tracking first</li>
+            <li><strong>Enable billing export to BigQuery</strong> - Query top 5 cost drivers with <code>SELECT service.description, SUM(cost) FROM billing_export GROUP BY 1 ORDER BY 2 DESC LIMIT 5</code></li>
+            <li><strong>Tag all ML resources</strong> - Label instances with environment, team, and cost-center for tracking</li>
+            <li><strong>Set budget alerts</strong> - Create alerts at 50% and 90% thresholds to catch runaway costs early</li>
+            <li><strong>Audit idle resources</strong> - List all notebook instances and identify candidates for auto-shutdown</li>
+            <li><strong>Deploy auto-shutdown (dry-run)</strong> - Test the pattern on dev instances before production rollout</li>
+            <li><strong>Present findings to leadership</strong> - Share current costs, top 3 drivers, identified savings, and request approval for optimization sprint</li>
         </ol>
 
-        <p><strong>Do optimize when:</strong></p>
-        <ul>
-            <li>✔ Stable production workload (3+ months)</li>
-            <li>✔ Baseline available</li>
-            <li>✔ Team buy-in</li>
-            <li>✔ Leadership support</li>
-            <li>✔ Clear goals</li>
-        </ul>
+        <p><strong>Implementation code:</strong> <a href="https://github.com/sonikajanagill/cost-optimized-mlops-gcp" target="_blank" rel="noopener noreferrer">GitHub: cost-optimized-mlops-gcp</a></p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
-
-        <h2>Your 7-Day Quick-Start Challenge</h2>
-
-        <p><strong>Day 1:</strong> Enable billing export to BigQuery</p>
-
-        <div class="code-block-header">
-            <span>SQL - Find Your Top 5 Cost Drivers</span>
-            <div class="code-block-actions">
-                <button class="code-btn" onclick="copyCode(this)">Copy</button>
-            </div>
-        </div>
-        <pre><code class="language-sql">-- Find your top 5 cost drivers
-SELECT service.description, SUM(cost) as total_cost
-FROM `project.dataset.gcp_billing_export_v1_XXXXX`
-WHERE DATE(_PARTITIONTIME) >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
-GROUP BY service.description
-ORDER BY total_cost DESC LIMIT 5</code></pre>
-
-        <p><strong>Day 2:</strong> Tag all ML resources</p>
-
-        <div class="code-block-header">
-            <span>Bash - Tag Resources</span>
-            <div class="code-block-actions">
-                <button class="code-btn" onclick="copyCode(this)">Copy</button>
-            </div>
-        </div>
-        <pre><code class="language-bash">gcloud notebooks instances update INSTANCE \
-  --labels=environment=dev,team=ml,cost-center=eng</code></pre>
-
-        <p><strong>Day 3:</strong> Set up cost alerts</p>
-
-        <div class="code-block-header">
-            <span>Bash - Create Budget Alerts</span>
-            <div class="code-block-actions">
-                <button class="code-btn" onclick="copyCode(this)">Copy</button>
-            </div>
-        </div>
-        <pre><code class="language-bash">gcloud billing budgets create \
-  --budget-amount=1500 \
-  --threshold-rule=percent=50 \
-  --threshold-rule=percent=90</code></pre>
-
-        <p><strong>Day 4:</strong> Audit idle resources</p>
-
-        <div class="code-block-header">
-            <span>Bash - List Notebook Instances</span>
-            <div class="code-block-actions">
-                <button class="code-btn" onclick="copyCode(this)">Copy</button>
-            </div>
-        </div>
-        <pre><code class="language-bash">gcloud notebooks instances list --format="table(name,state,createTime)"</code></pre>
-
-        <p><strong>Day 5:</strong> Deploy auto-shutdown (dry-run first)</p>
-
-        <div class="code-block-header">
-            <span>Bash - Deploy Auto-Shutdown</span>
-            <div class="code-block-actions">
-                <button class="code-btn" onclick="copyCode(this)">Copy</button>
-            </div>
-        </div>
-        <pre><code class="language-bash">git clone https://github.com/sonikajanagill/cost-optimized-mlops-gcp
-cd cloud-functions/auto-shutdown
-./deploy.sh --project-id=YOUR_PROJECT --dry-run=true</code></pre>
-
-        <p><strong>Day 7:</strong> Share results with leadership</p>
-        <ul>
-            <li>Current monthly cost</li>
-            <li>Top 3 drivers</li>
-            <li>Identified savings</li>
-            <li>Request approval for 30-day optimization sprint</li>
-        </ul>
-
-        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
-
-        <h2>Final Thoughts</h2>
 
         <p>This article isn't about saving money. It's about <strong>building ML systems your organization can afford long-term</strong>.</p>
 
-        <p><strong>The $5,400/month we saved went toward:</strong></p>
-        <ul>
-            <li>Hiring another ML engineer</li>
-            <li>Better training data</li>
-            <li>More experiments</li>
-            <li>Team development</li>
-        </ul>
+        <div class="article-share">
+            <div class="share-title">Share this article:</div>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/cost-optimized-mlops/&text=Cost-Optimized%20MLOps%3A%20Reducing%20Infrastructure%20Spend%20by%2080%25%20-%20by%20@sonikajanagill" target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on X">
+                    <img src="../../img/x-icon.png" alt="X">
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/cost-optimized-mlops/" target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on LinkedIn">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/cost-optimized-mlops/" class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
+                </button>
+            </div>
+        </div>
 
-        <p><strong>Cost optimization unlocks opportunity.</strong></p>
-
-        <p>When you're not worried about the GCP bill, you can focus on what matters: <strong>building ML that creates real business value</strong>.</p>
-
+        <p style="margin-top: 2rem; color: var(--text-tertiary); font-size: 0.9rem;">   
+            Also published on <a href="https://medium.sonikajanagill.com" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
+        </p>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="../article-utils.js"></script>
     <script>
-        const theme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-
-        const themeToggle = document.getElementById('theme-toggle');
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
+        // Copy share link to clipboard
+        function copyShareLink(button) {
+            const url = 'https://sonikajanagill.com/articles/cost-optimized-mlops/';
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy link:', err);
+                alert('Failed to copy link');
+            });
+        }
     </script>
 </body>
 </html>
