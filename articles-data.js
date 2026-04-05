@@ -1,9 +1,19 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 11,
+        title: 'Gemma 4 and the Rise of Agentic Commerce: A Hands-On Enterprise Perspective',
+        date: 'April 2026',
+        tags: ['AI', 'Agentic Commerce', 'Open Models'],
+        readTime: '10 min read',
+        description: 'Gemma 4 brings native function-calling, multimodal vision, and Apache 2.0 to open models. Here\'s what it means for enterprise agentic commerce systems.',
+        url: 'articles/gemma4-agentic-commerce/',
+        image: 'img/gemma4_agentic_commerce.png'
+    },
+    {
         id: 10,
         title: 'The Skills Explosion Is Here. Enterprise Governance Isn\'t.',
-        date: 'April 2026',
+        date: 'March 2026',
         tags: ['Agent Skills', 'Enterprise AI', 'Security'],
         readTime: '13 min read',
         description: 'Anthropic\'s creators say stop building agents, start building skills. They\'re right. But 170 skills in production taught us something they didn\'t cover: the hard part isn\'t building them. It\'s governing them.',

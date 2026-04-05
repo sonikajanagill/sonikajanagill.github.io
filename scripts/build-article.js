@@ -20,9 +20,19 @@ const path = require('path');
 function markdownToHtml(md) {
     let html = md;
     
-    // Code blocks with language
-    html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-        const langLabel = lang ? lang.charAt(0).toUpperCase() + lang.slice(1) : 'Code';
+    // Code blocks with language and optional description
+    html = html.replace(/```(\w+)?(?:[ \t]+(.*))?\n([\s\S]*?)```/g, (match, lang, desc, code) => {
+        let langLabel = lang ? lang.charAt(0).toUpperCase() + lang.slice(1) : 'Code';
+        
+        if (desc && desc.trim()) {
+            const trimmedDesc = desc.trim();
+            if (trimmedDesc.startsWith('-')) {
+                langLabel = `${langLabel} ${trimmedDesc}`;
+            } else {
+                langLabel = `${langLabel} - ${trimmedDesc}`;
+            }
+        }
+        
         return `<div class="code-block-header">
             <span>${langLabel}</span>
             <div class="code-block-actions">
@@ -32,10 +42,37 @@ function markdownToHtml(md) {
         <pre><code class="language-${lang || ''}">${escapeHtml(code.trim())}</code></pre>`;
     });
     
+    // Tables - must be processed before other conversions
+    html = html.replace(/\|(.+)\n\|[-\s|:]+\n((?:\|.+\n?)*)/g, (match) => {
+        const lines = match.trim().split('\n');
+        let tableHtml = '<table>\n<thead>\n<tr>';
+        
+        // Header row
+        const headerCells = lines[0].split('|').filter(cell => cell.trim());
+        headerCells.forEach(cell => {
+            tableHtml += `<th>${cell.trim()}</th>`;
+        });
+        tableHtml += '</tr>\n</thead>\n<tbody>\n';
+        
+        // Data rows (skip separator line at index 1)
+        for (let i = 2; i < lines.length; i++) {
+            if (lines[i].trim()) {
+                tableHtml += '<tr>';
+                const cells = lines[i].split('|').filter(cell => cell.trim());
+                cells.forEach(cell => {
+                    tableHtml += `<td>${cell.trim()}</td>`;
+                });
+                tableHtml += '</tr>\n';
+            }
+        }
+        tableHtml += '</tbody>\n</table>';
+        return tableHtml;
+    });
+    
     // Inline code
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
     
-    // Headers
+    // Headers (page breaks handled by --- in markdown)
     html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
     html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
     html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
@@ -44,6 +81,30 @@ function markdownToHtml(md) {
     html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    
+    // Images (must be before links to avoid conflicts)
+    // Support optional sizing: ![alt](path){50%} or ![alt](path){75%} etc.
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)(?:\{([^}]+)\})?/g, (match, alt, src, sizing) => {
+        // Convert relative paths from markdown (../img/) to HTML (../../img/)
+        // Markdown is in article-drafts/, HTML is in articles/article-name/
+        const imageSrc = src.replace(/^\.\.\/img\//, '../../img/');
+        
+        // Extract filename without extension for caption
+        const filename = imageSrc.split('/').pop().split('.')[0];
+        // Convert snake_case to Title Case for caption
+        const caption = filename
+            .split('_')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+        
+        // Build style attribute if sizing is specified
+        const style = sizing ? ` style="max-width: ${sizing};"` : '';
+        
+        return `<figure class="article-image">
+            <img src="${imageSrc}" alt="${alt}"${style}>
+            <figcaption>${caption}</figcaption>
+        </figure>`;
+    });
     
     // Links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
@@ -60,18 +121,28 @@ function markdownToHtml(md) {
     const processedLines = [];
     let inList = false;
     let inPre = false;
+    let inTable = false;
+    let firstParagraph = true;
     
     for (let line of lines) {
         if (line.includes('<pre>')) inPre = true;
         if (line.includes('</pre>')) inPre = false;
         if (line.includes('<ul>')) inList = true;
         if (line.includes('</ul>')) inList = false;
+        if (line.includes('<table>')) inTable = true;
+        if (line.includes('</table>')) inTable = false;
         
-        if (!inPre && !inList && 
+        if (!inPre && !inList && !inTable &&
             line.trim() && 
-            !line.startsWith('<') && 
+            !line.trim().startsWith('<') && 
             !line.match(/^[\s]*$/)) {
-            line = `<p>${line}</p>`;
+            // Add drop-cap class to first paragraph
+            if (firstParagraph) {
+                line = `<p class="drop-cap">${line}</p>`;
+                firstParagraph = false;
+            } else {
+                line = `<p>${line}</p>`;
+            }
         }
         processedLines.push(line);
     }
@@ -109,6 +180,16 @@ function parseFrontmatter(content) {
     return { frontmatter, body: match[2] };
 }
 
+// Site configuration
+const SITE_CONFIG = {
+    author: 'Sonika Janagill',
+    siteUrl: 'https://sonikajanagill.com',
+    favicon: '../../img/Sonika_Salmon.jpeg',
+    copyrightYear: '2026',
+    logoLight: '../../img/Sonika-Logo-Light.jpeg',
+    logoDark: '../../img/Sonika-Logo-Dark.jpeg'
+};
+
 // HTML template
 function generateHtml(article, bodyHtml) {
     const tags = Array.isArray(article.tags) ? article.tags : [article.tags];
@@ -116,14 +197,18 @@ function generateHtml(article, bodyHtml) {
         `<a href="/articles/?tag=${tag}" class="blog-header-tag">#${tag}</a>`
     ).join('\n                    ');
     
+    // Extract short title from full title if it contains a colon
+    // e.g., "AdkBot: Building a Personal AI Agent..." → "AdkBot"
+    const shortTitle = article.title.includes(':') ? article.title.split(':')[0].trim() : article.title;
+    
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${article.title} - Sonika Janagill</title>
+    <title>${article.title} - ${SITE_CONFIG.author}</title>
     <meta name="description" content="${article.description}">
-    <meta name="author" content="Sonika Janagill">
+    <meta name="author" content="${SITE_CONFIG.author}">
     <meta name="keywords" content="${tags.join(', ')}">
 
     <!-- Security Headers -->
@@ -136,14 +221,14 @@ function generateHtml(article, bodyHtml) {
     <meta property="og:type" content="article">
     <meta property="og:title" content="${article.title}">
     <meta property="og:description" content="${article.description}">
-    <meta property="og:url" content="https://sonikajanagill.com/${article.url}">
-    <meta property="og:image" content="https://sonikajanagill.com/${article.image}">
+    <meta property="og:url" content="${SITE_CONFIG.siteUrl}/${article.url}">
+    <meta property="og:image" content="${SITE_CONFIG.siteUrl}/${article.image}">
     
     <!-- Canonical Link -->
-    <link rel="canonical" href="https://sonikajanagill.com/${article.url}">
+    <link rel="canonical" href="${SITE_CONFIG.siteUrl}/${article.url}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../../img/Sonika_Salmon.jpeg">
+    <link rel="icon" type="image/png" href="${SITE_CONFIG.favicon}">
 
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles.css">
@@ -154,8 +239,8 @@ function generateHtml(article, bodyHtml) {
     <nav>
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
-                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <img src="${SITE_CONFIG.logoLight}" alt="${SITE_CONFIG.author}" class="logo-light">
+                <img src="${SITE_CONFIG.logoDark}" alt="${SITE_CONFIG.author}" class="logo-dark">
                 <span class="nav-home-text">Home</span>
             </a>
             <ul class="nav-links">
@@ -179,7 +264,7 @@ function generateHtml(article, bodyHtml) {
                 <div class="blog-header-tags">
                     ${tagsHtml}
                 </div>
-                <h2>${article.category || tags[0]}</h2>
+                <h2>${article.category || shortTitle}</h2>
                 <p class="blog-subtitle">${article.title}</p>
                 ${article.subtitle ? `<p><i>${article.subtitle}</i></p>` : ''}
 
@@ -193,13 +278,13 @@ function generateHtml(article, bodyHtml) {
                     </div>
                 </div>
                 <div class="blog-share-buttons">
-                    <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/${article.url}" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                    <a href="https://x.com/intent/tweet?url=${SITE_CONFIG.siteUrl}/${article.url}" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
                         <img src="../../img/x-icon.png" alt="X">
                     </a>
-                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/${article.url}" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=${SITE_CONFIG.siteUrl}/${article.url}" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
                         <img src="../../img/linkedin-icon.png" alt="LinkedIn">
                     </a>
-                    <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/${article.url}" class="blog-share-btn" title="Share via Email">
+                    <a href="mailto:?subject=Check out this article&body=${SITE_CONFIG.siteUrl}/${article.url}" class="blog-share-btn" title="Share via Email">
                         <img src="../../img/email-icon.png" alt="Email">
                     </a>
                     <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
@@ -226,13 +311,13 @@ ${bodyHtml}
         <div class="article-share">
             <p class="share-title">Share this article:</p>
             <div class="share-buttons">
-                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/${article.url}" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/intent/tweet?url=${SITE_CONFIG.siteUrl}/${article.url}" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
                     <img src="../../img/x-icon.png" alt="X">
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/${article.url}" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=${SITE_CONFIG.siteUrl}/${article.url}" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
                     <img src="../../img/linkedin-icon.png" alt="LinkedIn">
                 </a>
-                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/${article.url}" class="blog-share-btn" title="Share via Email">
+                <a href="mailto:?subject=Check out this article&body=${SITE_CONFIG.siteUrl}/${article.url}" class="blog-share-btn" title="Share via Email">
                     <img src="../../img/email-icon.png" alt="Email">
                 </a>
                 <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
@@ -245,7 +330,7 @@ ${bodyHtml}
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Sonika Janagill. All rights reserved.</p>
+            <p>&copy; ${SITE_CONFIG.copyrightYear} ${SITE_CONFIG.author}. All rights reserved.</p>
         </div>
     </footer>
 
