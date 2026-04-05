@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemma 4 and the Rise of Agentic Commerce - Sonika Janagill</title>
+    <meta name="description" content="Gemma 4 brings native function-calling, multimodal vision, and Apache 2.0 to open models. Here's what it means for enterprise agentic commerce systems.">
+    <meta name="author" content="Sonika Janagill">
+    <meta name="keywords" content="AI, Agentic Commerce, Ecommerce, Open Models, Gemma, Google Cloud, Enterprise AI, On-Device AI">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Gemma 4 and the Rise of Agentic Commerce">
+    <meta property="og:description" content="Gemma 4 brings native function-calling, multimodal vision, and Apache 2.0 to open models. Here's what it means for enterprise agentic commerce systems.">
+    <meta property="og:url" content="https://sonikajanagill.com/articles/gemma4-agentic-commerce/">
+    <meta property="og:image" content="https://sonikajanagill.com/img/gemma4_agentic_commerce.png">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://sonikajanagill.com/articles/gemma4-agentic-commerce/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/Sonika_Salmon.jpeg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../article-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <span class="nav-home-text">Home</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-header-left">
+                <div class="blog-header-tags">
+                    <a href="/articles/?tag=AI, Agentic Commerce, Ecommerce, Open Models, Gemma, Google Cloud, Enterprise AI, On-Device AI" class="blog-header-tag">#AI, Agentic Commerce, Ecommerce, Open Models, Gemma, Google Cloud, Enterprise AI, On-Device AI</a>
+                </div>
+                <h2>Agentic Commerce</h2>
+                <p class="blog-subtitle">Gemma 4 and the Rise of Agentic Commerce</p>
+                <p><i>Native multimodality, configurable thinking, reliable function calling, and true Apache 2.0 licensing: why Gemma 4 is the most enterprise-ready open model for agentic commerce yet.</i></p>
+
+            <div class="blog-header-right">
+                <div class="blog-meta">
+                    <div class="blog-meta-item">
+                        <span>April 2026</span>
+                    </div>
+                    <div class="blog-meta-item">
+                        <span>13 min read</span>
+                    </div>
+                </div>
+                <div class="blog-share-buttons">
+                    <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/gemma4-agentic-commerce/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/x-icon.png" alt="X">
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/gemma4-agentic-commerce/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                    </a>
+                    <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/gemma4-agentic-commerce/" class="blog-share-btn" title="Share via Email">
+                        <img src="../../img/email-icon.png" alt="Email">
+                    </a>
+                    <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                        <img src="../../img/copy-icon.png" alt="Copy">
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-header-image">
+        <img src="../../img/gemma4_agentic_commerce.png" alt="Gemma 4 and the Rise of Agentic Commerce">
+        <p>Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
+    </div>
+
+    <!-- Blog Content -->
+    <main class="blog-content">
+        <a href="../" class="back-link">← Back to Articles</a>
+
+
+<p class="drop-cap">The promise of <strong>agentic commerce</strong> has always been the same: an AI that doesn't just recommend, it acts. It reads a product image, checks inventory, negotiates terms, and places the order. The problem hasn't been the vision. It's been the model. You needed multimodal understanding, reliable function-calling, structured output, and something you could actually deploy in a regulated enterprise environment without your legal team shutting it down.</p>
+
+<a href="https://cloud.google.com/blog/products/ai-machine-learning/gemma-4-available-on-google-cloud?utm_campaign=deveco_gdemembers&utm_source=deveco" target="_blank" rel="noopener noreferrer">Gemma 4</a> dropped on 2 April 2026. It's the most enterprise-ready open model for this use case yet, and it's <strong>Apache 2.0</strong>.
+
+<p>I've been building a multi-protocol agentic commerce POC (supporting UCP, ACP, and MCP) at VML. Here's what Gemma 4 changes, what I tested hands-on in Google AI Studio, and what it means for the full ecommerce stack, from the device in a customer's pocket to the procurement system in the back office.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h3>Why Ecommerce Is the Perfect Domain for Gemma 4</h3>
+
+<p>Before we get into the architecture, it's worth stepping back to understand why Gemma 4 and ecommerce are a particularly strong fit. Most AI model coverage focuses on cloud deployments and enterprise back-office workflows. That's only half the ecommerce picture.</p>
+
+<p>The ecommerce stack spans two very different environments, and Gemma 4 is one of the first open model families designed to serve both:</p>
+
+<strong>On-device (E2B and E4B models):</strong>
+
+<p>This is where the customer experience lives, and it's where small model capability matters most. Consider what a shopper's phone can now do locally, without any data leaving the device, without any API call, without any latency from a round-trip to the cloud:</p>
+
+<ul>
+<li><strong>Visual product search:</strong> point a camera at a product or take a photo, and the model identifies it, finds similar items, and surfaces relevant results, entirely on-device</li>
+<li><strong>Personalised recommendations:</strong> inference runs locally against a user's browsing and purchase context, meaning recommendations are generated without sending behavioural data to a server</li>
+<li><strong>Image-based size and fit analysis:</strong> a customer uploads a photo; the model analyses dimensions and attributes locally and suggests the right size or variant</li>
+<li><strong>Accessibility features:</strong> real-time audio descriptions of products for visually impaired shoppers, running offline with no external dependency</li>
+<li><strong>In-store price and label scanning:</strong> a retail associate points their device at a shelf; the model reads labels, identifies products, and surfaces inventory data instantly</li>
+<li><strong>Multilingual shopping assistance:</strong> 140+ languages natively supported, meaning a tourist shopping in a foreign-language store gets real-time translation and product context without an internet connection</li>
+</ul>
+
+<p>The critical point here is <strong>customer data safety</strong>. When inference runs on-device, purchase history, browsing behaviour, and personal preferences never leave the customer's hardware. This is a genuine architectural advantage over cloud-only approaches, particularly as data privacy regulations tighten across the EU, UK, and beyond. For retailers, it also reduces cloud inference costs at scale.</p>
+
+<strong>Cloud and enterprise (26B MoE and 31B Dense models):</strong>
+
+<p>This is where agentic workflows run: procurement automation, supplier negotiation, inventory management, compliance review, catalogue intelligence. These workflows require deep reasoning, large context windows (up to 256K tokens, enough to fit an entire supplier contract), and reliable function-calling against enterprise APIs.</p>
+
+<p>What Gemma 4 uniquely enables is a <strong>single model family</strong> that spans both environments with native multimodality, consistent function-calling behaviour, and one licence (Apache 2.0) that legal teams in regulated sectors will actually approve.</p>
+
+<p>This is the ecommerce AI architecture from a Google technology perspective.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h3>What Agentic Commerce Actually Needs From a Model</h3>
+
+<p>Commerce agents don't just converse, they transact. That requires <strong>multimodal input</strong> (product images, receipts, catalogues), reliable structured output (not "close enough" JSON), multi-step planning across tool calls, and low-latency responses at the edge (in-store, mobile POS, field sales).</p>
+
+<p>In plain language: agentic commerce isn't just AI applied to shopping, it's commerce workflows that run themselves. Think of the difference between a sat-nav that suggests a route (assistant) versus a self-driving car that drives it (agent). The agent perceives, decides, and acts. Gemma 4 is one of the strongest open models capable of doing all three on hardware you control.</p>
+
+<p>A commerce agent needs to operate across three layers:</p>
+
+<ul>
+<li><strong>Perception layer:</strong> understand what it's looking at (product, document, image)</li>
+<li><strong>Reasoning layer:</strong> plan a multi-step workflow across tools and APIs</li>
+<li><strong>Action layer:</strong> reliably execute via structured function calls with verifiable output</li>
+</ul>
+
+<p>Previous open models forced a choice: small + fast (weak reasoning) or large + capable (can't deploy at edge). The Gemma 4 family, with edge-optimised E2B/E4B, 26B MoE, and 31B Dense variants, is a strong contender for spanning both tiers without sacrificing native multimodality or function-calling.</p>
+
+<p>What makes Gemma 4 particularly significant for enterprise is that it solves what I'd call the <strong>Three L's</strong> of enterprise AI adoption:</p>
+
+<ul>
+<li><strong>Legal:</strong> Apache 2.0 removes the licensing risk that blocked regulated sectors from committing to previous Gemma versions</li>
+<li><strong>Logic:</strong> configurable thinking mode enables deep multi-step reasoning for high-stakes decisions</li>
+<li><strong>Latency:</strong> the MoE/Dense split means you can match model tier to workflow speed requirements</li>
+</ul>
+
+<p>Previous Gemma versions carried a custom Google licence with potential termination risks and commercial restrictions. <strong>Apache 2.0</strong> removes that blocker, enabling air-gapped, sovereign cloud, or fully on-premises deployments. Let's look at what Gemma 4 specifically brings to each of the three architecture layers.</p>
+
+<figure class="article-image">
+            <img src="../../img/gemma4_three_layer_architecture.png" alt="Three-layer agentic commerce architecture: Perception, Reasoning, Action, with Gemma 4 mapped to each layer">
+            <figcaption>Gemma4 Three Layer Architecture</figcaption>
+        </figure>
+<em>The three-layer model for agentic commerce. Gemma 4 provides the model capability across all three; ADK handles orchestration; UCP/ACP/MCP handle enterprise integration.</em>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h3>The Perception Layer: Multimodal That Commerce Can Actually Use</h3>
+
+<p>Gemma 4 brings native multimodality across the entire family. All models support image input with variable aspect ratios and configurable token budgets, what I call <strong>Elastic Perception</strong>. You can allocate ~70 tokens for a quick SKU barcode scan on a mobile POS, or scale to 1,120 tokens for a complex invoice OCR or dense product catalogue page. The same model handles both without needing separate pipelines.</p>
+
+<p>Video input is supported on the larger models (26B and 31B), useful for in-store camera feeds or product demo analysis. The edge models (E2B and E4B) add native audio input for speech recognition and translation, perfect for warehouse voice-picking, in-car ordering, or field sales dictation, without an external ASR pipeline.</p>
+
+<p>Additional capabilities include improved object detection, OCR (including fine print and multilingual text), screen and UI understanding, and bounding box output for product identification in visual agents. Bounding box outputs are returned in normalised [ymin, xmin, ymax, xmax] format scaled 0–1000, making them resolution-agnostic and straightforward to overlay on UI elements regardless of the source device's aspect ratio.</p>
+
+<strong>Why AI Studio for this test?</strong>
+
+<p>AI Studio gives direct access to per-request token usage data, which local runners (Ollama, llama.cpp, LM Studio) don't expose cleanly. For understanding Gemma 4's visual token budget behaviour in practice, that granularity matters. Local runners are better suited to latency benchmarking on specific hardware; AI Studio is the right tool for model-level capability and token economics analysis. The Vertex AI and ADK hands-on comes in the next article in this series.</p>
+
+<strong>Hands-on test: gemma-4-31b-it in Google AI Studio</strong> I fed a packaged consumer product image with this prompt:
+
+<div class="code-block-header">
+            <span>Text</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-text">You are a commerce agent. Analyse this product image and return:
+1. Product name and category
+2. Key attributes visible (size, colour, brand, format)
+3. Any pricing or promotional information visible
+4. Confidence score (0-1) for each field
+5. Fields where you would recommend human review
+
+<p>Return as structured JSON only.</code></pre></p>
+
+<strong>Results:</strong> The model extracted name, category, visible attributes, and pricing accurately in most cases, with appropriate confidence scores and hedging on ambiguous fine print. Failures occurred mainly on extremely dense nutritional tables at low token budgets.
+
+<strong>Elastic Perception in practice:</strong> A standard product label worked well at ~280 tokens. A dense ingredients list or multi-buy offer required ~1,120 tokens to avoid missing details.
+
+<p>The token usage data from AI Studio confirmed this precisely. For a high-resolution product catalogue scan, I observed <strong>1,168 total tokens</strong> (334 input + 834 output) on the 31B model. This breaks down as: 1,120-token visual budget plus approximately 48 tokens of overhead for learned 2D position embeddings. That ~48-token overhead is worth understanding: it's what allows the model to treat a receipt as "tall and skinny" rather than a square block of pixels, preserving OCR line-integrity for vertical formats. On the 26B MoE, the same task consumed 814 total tokens (325 input + 489 output), reflecting the MoE's more efficient routing with a smaller but still highly capable output.</p>
+
+<figure class="article-image">
+            <img src="../../img/ai_studio_31b_token_usage.png" alt="AI Studio token usage: 31B model on product catalogue scan, 1,168 tokens">
+            <figcaption>Ai Studio 31b Token Usage</figcaption>
+        </figure>
+<em>Token usage in AI Studio: 1,168 tokens for the 31B model (334 input + 834 output). The 2D position embedding overhead of ~48 tokens sits above the 1,120-token visual budget.</em>
+
+<figure class="article-image">
+            <img src="../../img/elastic_perception_comparison.png" alt="Side-by-side: low token budget (~70) vs high token budget (~1,120) on a dense product label">
+            <figcaption>Elastic Perception Comparison</figcaption>
+        </figure>
+<em>Elastic Perception in practice. Low budget misses fine-print detail; high budget captures the full ingredients list. Same model, different allocation.</em>
+
+<div class="code-block-header">
+            <span>Json - Successful structured JSON output from the multimodal test</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-json">{
+  "product_name": "Puma x Pokémon Pikachu Sneakers",
+  "category": "Footwear / Sneakers",
+  "key_attributes": {
+    "size": null,
+    "colour": "Yellow and Black",
+    "brand": "Puma",
+    "format": "Pair"
+  },
+  "pricing_promotional_info": null,
+  "confidence_scores": {
+    "product_name_category": 0.9,
+    "key_attributes": 0.98,
+    "pricing_promotional_info": 1.0
+  },
+  "human_review_recommended": [
+    "product_name",
+    "size"
+  ]
+<p>}</code></pre></p>
+<em>Structured JSON output with confidence scores and human-review flags, exactly what a commerce pipeline needs for reliable downstream processing.</em>
+
+<p>In a commerce context, Elastic Perception enables:</p>
+<ul>
+<li>Voice-first interactions and speech-to-translated-text for multilingual customer service</li>
+<li>Local image and video understanding for product scanning, receipt processing, and in-store feeds</li>
+<li>Object detection, OCR, and screen understanding for navigating supplier portals autonomously</li>
+</ul>
+
+<p>All of this runs locally. No sensitive product images, supplier documents, or customer voice recordings need to leave your network.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h3>The Reasoning Layer: Thinking Mode and Multi-Step Planning</h3>
+
+<p>Gemma 3 relied on a single forward pass. For multi-step commerce workflows, check stock, verify supplier terms, validate compliance, place order, that's insufficient.</p>
+
+<p>Gemma 4 introduces <strong>Reasoning on Demand</strong>: configurable thinking mode with extended reasoning tokens. The enterprise framing matters here: a £50k procurement contract justifies the latency of a full think block; a simple POS lookup does not. This isn't a limitation, it's an architecture decision you control per call.</p>
+
+<strong>Why did the benchmark improvements happen?</strong> Two factors working together. First, training data and recipe: the 31B core architecture isn't dramatically different from Gemma 3's 27B; the leap is primarily a training improvement, which means it's stable and reproducible rather than a one-off architectural gamble. Second, the <code><|think|></code> token space: the model can simulate tool outputs mentally before committing to an actual API call, a <strong>mental sandbox</strong>. It reasons through what <code>check_inventory</code> will return, anticipates the <code>get_supplier_terms</code> follow-up, then executes the correct sequence with confidence. This is what makes the agentic benchmark improvements so dramatic, it's not just better text generation, it's better planning.
+
+<p>In my POC, thinking mode measurably improved tool selection and sequencing reliability, especially when routing across protocols (UCP/ACP/MCP).</p>
+
+<strong>The latency trade-off in numbers:</strong> AI Studio doesn't expose raw latency directly, but token output volume tells a comparable story. On the same procurement reasoning task, the 31B Dense produced <strong>834 output tokens</strong> versus the 26B MoE's <strong>489</strong>. On typical hardware, this translates to a meaningful latency difference that architects need to factor into UX design: when to show a loading indicator versus returning a synchronous response. As a rule of thumb, thinking ON is appropriate for decisions above a value threshold you define; thinking OFF suits real-time interactions where response speed matters more than depth.
+
+<strong>Commerce workflow:</strong>
+
+<figure class="article-image">
+            <img src="../../img/gemma4_three_layer_workflow.png" alt="Three-layer agentic commerce workflow" style="max-width: 50%;">
+            <figcaption>Gemma4 Three Layer Workflow</figcaption>
+        </figure>
+<em>The three-layer model for agentic commerce workflow.</em>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h3>The Action Layer: Native Function Calling That Enterprise Teams Can Trust</h3>
+
+<p>Gemma 3 needed heavy prompt engineering to coax structured tool use. Gemma 4 trains function calling from the ground up, optimised for multi-turn agentic flows with multiple tools.</p>
+
+<p>Critically, Gemma 4 adds <strong>native system prompt support</strong>: agent persona and guardrails are baked into the KV cache more efficiently than previous instruction-tuning workarounds. For enterprise governance, this means cleaner separation between agent configuration (managed by platform teams) and runtime requests (generated by business logic). Auditability improves as a direct result.</p>
+
+<strong>Hands-on test: system prompt and tool schema</strong>
+
+<div class="code-block-header">
+            <span>Code</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-">SYSTEM PROMPT:
+You are a procurement agent for an enterprise retail organisation.
+Your available tools are check_inventory and get_supplier_terms.
+Always check inventory before retrieving supplier terms.
+Return structured JSON with a confidence score and reasoning.
+<p>Never place an order, return a recommendation only.</code></pre></p>
+
+<div class="code-block-header">
+            <span>Python</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-python">tools = [
+    {
+        "name": "check_inventory",
+        "description": "Check product availability and current stock levels",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "product_id": {"type": "string"},
+                "quantity_requested": {"type": "integer"},
+                "warehouse_region": {"type": "string"}
+            },
+            "required": ["product_id", "quantity_requested"]
+        }
+    },
+    {
+        "name": "get_supplier_terms",
+        "description": "Retrieve supplier pricing and lead times for a product",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "product_id": {"type": "string"},
+                "supplier_id": {"type": "string"}
+            },
+            "required": ["product_id"]
+        }
+    }
+<p>]</code></pre></p>
+
+<em>Full schema and system prompt available in <a href="https://gist.github.com/sonikajanagill/53e1f2164a3d26b5b03557c9848b53f2" target="_blank" rel="noopener noreferrer">this GitHub Gist</a>.</em>
+
+<div class="code-block-header">
+            <span>Code</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-">USER PROMPT:
+A buyer has requested 500 units of SKU-8821 for delivery to the UK
+warehouse within 14 days. Assess whether this is feasible and
+<p>recommend next steps.</code></pre></p>
+
+<strong>Observations (31B Dense):</strong> The model reliably called <code>check_inventory</code> first, chained to <code>get_supplier_terms</code> correctly in most runs, and returned parseable JSON. Thinking mode improved recommendation quality and reduced unnecessary tool calls.
+
+<strong>Type handling test:</strong> When asked for "half a thousand units" rather than "500", the 31B returned <code>500</code> as an integer in the function call, correct behaviour. The 26B MoE handled the quantity conversion correctly too, but on the same complex chain it twice attempted to call <code>get_supplier_terms</code> in parallel with <code>check_inventory</code>, rather than strictly following the "check inventory first" instruction in the system prompt. For high-stakes logic where sequence is a legal or financial requirement, the Dense model remains the safer choice.
+
+<strong>One honest failure:</strong> During a stress test with a highly stylised, cursive "Limited Edition" label on a vintage-style beverage bottle, the model hallucinated a promotional discount ("20% off") that wasn't present, likely triggered by the visual starburst shape common in discount stickers. The model was pattern-matching graphic design intent rather than reading actual text. This is an important production caveat: OCR accuracy on standard product labels is strong, but spatial reasoning about the <em>intent</em> of graphic design elements still requires a human-in-the-loop for high-accuracy cataloguing work.
+
+<strong>Enterprise reliability note:</strong> Trained-in function calling reduces schema hallucination compared to prompted approaches, but always validate output at the application layer. Agentic reliability is a shared responsibility between the model and your orchestration code.
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h3>Deployment: Where Gemma 4 Fits in an Enterprise Commerce Stack</h3>
+
+<p>Model selection should map to use case and hardware reality:</p>
+
+<table>
+<thead>
+<tr><th>Use Case</th><th>Model</th><th>Approx. Memory</th><th>Context</th><th>Why</th></tr>
+</thead>
+<tbody>
+<tr><td>Mobile POS / in-store scanning</td><td>E2B</td><td>~1.5–3 GB</td><td>128K</td><td>Offline, audio + vision, battery-efficient</td></tr>
+<tr><td>Field sales / voice-first agent</td><td>E4B</td><td>~3–5 GB</td><td>128K</td><td>Stronger reasoning + audio, on-device</td></tr>
+<tr><td>Product catalogue understanding</td><td>26B MoE</td><td>~14–16 GB active</td><td>256K</td><td>Fast inference (3.8B active), strong OCR</td></tr>
+<tr><td>Supplier negotiation / high-stakes</td><td>31B Dense</td><td>~60+ GB (bf16)</td><td>256K</td><td>Max reasoning quality, full thinking mode</td></tr>
+<tr><td>Compliance / contract review</td><td>31B Dense</td><td>~60+ GB (bf16)</td><td>256K</td><td>256K fits entire contracts in one prompt</td></tr>
+</tbody>
+</table>
+<em>Figures approximate. Edge models (E2B/E4B) quantise well to Q4/Q5 with minimal quality degradation, enabling deployment on Android devices, Raspberry Pi, and Jetson Nano.</em>
+
+<strong>Where to start with Gemma 4: choosing your entry point</strong>
+
+<p>The right starting point depends on what you're trying to do. Here's the honest breakdown:</p>
+
+<table>
+<thead>
+<tr><th>Goal</th><th>Best Entry Point</th><th>Why</th></tr>
+</thead>
+<tbody>
+<tr><td>Prototype and explore</td><td><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer">Google AI Studio</a></td><td>Instant access, no setup, token usage visible</td></tr>
+<tr><td>Experiment with notebooks</td><td><a href="https://www.kaggle.com/models/google/gemma" target="_blank" rel="noopener noreferrer">Kaggle</a></td><td>Free GPU quota, Gemma 4 available day one</td></tr>
+<tr><td>Run locally on your machine</td><td><a href="https://ollama.com/library/gemma4" target="_blank" rel="noopener noreferrer">Ollama</a> (<code>ollama pull gemma4:27b</code>)</td><td>Fastest local setup, good for latency testing</td></tr>
+<tr><td>Build an agent with tools</td><td><a href="https://google.github.io/adk-docs?utm_campaign=deveco_gdemembers&utm_source=deveco" target="_blank" rel="noopener noreferrer">ADK</a> + Vertex AI</td><td>Full agent lifecycle, tool registration, production-ready</td></tr>
+<tr><td>Deploy to production</td><td><a href="https://cloud.google.com/vertex-ai/generative-ai/docs/open-models/use-gemma/?utm_campaign=deveco_gdemembers&utm_source=deveco" target="_blank" rel="noopener noreferrer">Vertex AI Model Garden</a></td><td>Managed endpoints, fine-tuning, enterprise security</td></tr>
+<tr><td>Fine-tune on your data</td><td>Vertex AI Training Clusters</td><td>Optimised SFT recipes via NeMo Megatron</td></tr>
+<tr><td>Edge / Android deployment</td><td><a href="https://developers.googleblog.com/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4?utm_campaign=deveco_gdemembers&utm_source=deveco/" target="_blank" rel="noopener noreferrer">AI Edge Gallery</a></td><td>E2B/E4B via AICore Developer Preview</td></tr>
+</tbody>
+</table>
+<p>Each of these deserves its own deep-dive from a commerce perspective. That's what this series is building toward.</p>
+
+<strong>Deploying on Google Cloud: </strong> <figure class="article-image">
+            <img src="https://discuss.google.dev/t/end-to-end-guide-fine-tuning-and-serving-gemma-4-on-vertex-ai/345865?utm_campaign=deveco_gdemembers&utm_source=deveco" alt="End-to-end guide: Fine-tuning and serving Gemma 4 on Vertex AI">
+            <figcaption>345865?utm Campaign=deveco Gdemembers&utm Source=deveco</figcaption>
+        </figure>:
+
+<div class="code-block-header">
+            <span>Bash - one command to get started</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-bash">gcloud ai model-garden models deploy \
+<p>  --model=google/gemma4@gemma-4-31b</code></pre></p>
+
+<p>From there, enterprise security layers (Workload Identity Federation, Cloud DLP, Secret Manager) are additive. You're not rebuilding from scratch.</p>
+
+<strong>Apache 2.0 and data sovereignty:</strong> Zero data has to leave your company's network perimeter. For commerce specifically, no customer purchase history, supplier pricing terms, or inventory figures touch an external API. That's not just a compliance checkbox, it's a meaningful competitive advantage in regulated sectors.
+
+<strong>The split-role architecture: a POC observation</strong>
+
+<p>This is where benchmarks stop and production reality begins. In building the multi-protocol server (UCP/ACP/MCP), I found that the 26B MoE and 31B Dense aren't interchangeable, they serve different roles in the same pipeline.</p>
+
+<strong>26B MoE</strong> excels at real-time protocol interactions: price lookups, availability checks, UCP session initiation. These interactions have tight timing requirements. Critically, the 31B Dense can be <em>too slow</em> for certain UCP protocol handshakes, the timeout expires before the model responds. This isn't a model weakness, it's a latency constraint that makes a <strong>multi-model strategy</strong> architecturally necessary rather than optional.
+
+<strong>31B Dense</strong> handles commitment reasoning: evaluating supplier terms, assessing compliance, making the actual procurement decision where depth of reasoning matters more than response speed.
+
+<p>The practical pattern:</p>
+
+<p>> <strong>MoE for protocol handshakes, Dense for commitment decisions.</strong> In building the multi-protocol server (UCP/ACP/MCP), I found that the 31B Dense can be <em>too slow</em> for certain UCP protocol handshakes — the timeout expires before the model responds. This isn't a model weakness, it's a latency constraint that makes a multi-model strategy architecturally necessary rather than optional. No model card will tell you this. It comes from running the protocol.</p>
+
+<p>This is the kind of production nuance that rarely appears in model announcement blogs. If you're designing a commerce agent pipeline, plan for model selection at the workflow step level, not the system level.</p>
+
+<strong>Where everything fits together:</strong>
+
+<ul>
+<li><strong>Gemma 4:</strong> the engine, perception, reasoning, structured output</li>
+<li><strong>ADK:</strong> the gearbox, agent lifecycle, tool registration, multi-agent coordination</li>
+<li><strong>UCP/ACP/MCP:</strong> the transmission, enterprise integration patterns</li>
+</ul>
+
+<p>MCP specifically is what allows Gemma 4 to <em>see</em> live data. Without it, the agent is reasoning in a vacuum. Gemma 4 generates the structured output that UCP requires, the model capability and the commerce protocol are co-dependent.</p>
+
+<figure class="article-image">
+            <img src="../../img/gemma4_enterprise_stack.png" alt="Gemma 4 in enterprise stack: Engine (Gemma 4), Gearbox (ADK), Transmission (UCP/ACP/MCP)">
+            <figcaption>Gemma4 Enterprise Stack</figcaption>
+        </figure>
+<em>The full enterprise stack. Gemma 4 is the capability layer; ADK handles orchestration; the protocol layer handles integration with existing enterprise systems.</em>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h3>What's Still Not Solved</h3>
+
+<p>Gemma 4 advances the model layer significantly, but agentic commerce has unsolved problems that are architecture and platform challenges, not model limitations:</p>
+
+<ul>
+<li><strong>Orchestration at scale:</strong> managing hundreds of concurrent agents across SKUs, suppliers, and markets is an orchestration problem, not a model problem. Gemma 4 is the reasoning core inside an agent; the agent itself is built with ADK, with Gemma 4 handling perception, planning, and structured output at each step. Coordinating many such agents reliably is the hard part.</li>
+<li><strong>Agent memory and session context:</strong> procurement negotiations can span days. Cross-session context management is unsolved at the model level.</li>
+<li><strong>Multi-agent coordination:</strong> specialist agents (inventory, compliance, finance) working together reliably requires a coordination layer above the model. This is where ADK becomes essential: it handles agent lifecycle, inter-agent messaging, and tool registration across a fleet. Vertex AI adds the managed infrastructure to run that fleet at enterprise scale.</li>
+<li><strong>Evaluation and observability:</strong> how do you know your commerce agent is making good decisions at scale? Agentic evaluation frameworks are still early-stage, though Vertex AI's Gen AI Evaluation Service is a useful starting point for measuring output quality across tool-calling flows.</li>
+</ul>
+
+<p>These are the natural topics for the articles ahead in this series.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h3>Conclusion: The Foundation Is Ready</h3>
+
+<p>→ Gemma 4 solves the Three L's of enterprise AI: Legal (Apache 2.0), Logic (thinking mode), and Latency (MoE/Dense split)</p>
+<p>→ On-device models (E2B/E4B) enable private, low-latency ecommerce experiences: visual search, personalised recommendations, and image analysis without customer data leaving the device</p>
+<p>→ The three-layer model (perception, reasoning, action) maps directly to how commerce agents should be architected</p>
+<p>→ Elastic Perception (configurable token budgets) means one model handles barcode scans and dense invoice OCR without separate pipelines</p>
+<p>→ The MoE/Dense split isn't just a performance choice, it's architecturally necessary for protocols with timing constraints</p>
+<p>→ The model layer is largely solved. Orchestration, memory, and evaluation are where the real architecture work begins</p>
+
+<p>This is the first in the <strong>Agentic Commerce</strong> series, exploring how Google technology specifically enables the next generation of ecommerce and retail AI from a Google tech perspective.</p>
+
+<p>In the next article, I'll be exploring <strong>Gemma 4 with ADK on a Cymbal Store demo</strong>, moving from model capability to full agent orchestration in a realistic retail scenario. If you're building agentic commerce systems, that's where the architecture gets interesting.</p>
+
+<p>Follow the <strong>Agentic Commerce</strong> series for deeper dives. Tag me or comment below with your experiences deploying open models in commerce. I'd particularly like to hear from anyone running on-device inference or multi-model strategies in production.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+
+        <!-- Share Section -->
+        <div class="article-share">
+            <p class="share-title">Share this article:</p>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/gemma4-agentic-commerce/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/x-icon.png" alt="X">
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/gemma4-agentic-commerce/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/gemma4-agentic-commerce/" class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="../article-utils.js"></script>
+</body>
+</html>

@@ -5,10 +5,34 @@
     <description>Google Developer Expert in Cloud AI &amp; Google Cloud sharing insights on AI, MLOps, Cloud Architecture, and Enterprise Transformation</description>
     <link>https://sonikajanagill.com</link>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 03 Apr 2026 12:32:47 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2026 16:22:57 GMT</lastBuildDate>
     <atom:link href="https://sonikajanagill.com/feed.xml" rel="self" type="application/rss+xml"/>
     <managingEditor>sonika.janagill@gmail.com (Sonika Janagill)</managingEditor>
     <webMaster>sonika.janagill@gmail.com (Sonika Janagill)</webMaster>
+
+    <item>
+        <title>Gemma 4 and the Rise of Agentic Commerce: A Hands-On Enterprise Perspective</title>
+        <description>Gemma 4 brings native function-calling, multimodal vision, and Apache 2.0 to open models. Here&apos;s what it means for enterprise agentic commerce systems.</description>
+        <link>https://sonikajanagill.com/articles/gemma4-agentic-commerce/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/gemma4-agentic-commerce/</guid>
+        <pubDate>15 Apr 2026 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>AI</category>
+        <category>Agentic Commerce</category>
+        <category>Open Models</category>
+    </item>
+
+    <item>
+        <title>The Skills Explosion Is Here. Enterprise Governance Isn&apos;t.</title>
+        <description>Anthropic&apos;s creators say stop building agents, start building skills. They&apos;re right. But 170 skills in production taught us something they didn&apos;t cover: the hard part isn&apos;t building them. It&apos;s governing them.</description>
+        <link>https://sonikajanagill.com/articles/enterprise-agent-skills-governance/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/enterprise-agent-skills-governance/</guid>
+        <pubDate>15 Mar 2026 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>Agent Skills</category>
+        <category>Enterprise AI</category>
+        <category>Security</category>
+    </item>
 
     <item>
         <title>AdkBot: Building a Personal AI Agent with Google ADK on Cloud Run</title>
@@ -23,7 +47,7 @@
     </item>
 
     <item>
-        <title>Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%</title>
+        <title>Cost-Optimised MLOps: Reducing Infrastructure Spend by 80%</title>
         <description>Learn 5 architectural patterns that reduced MLOps costs from $6,600/month to $1,200/month (82% reduction). Auto-shutdown, Spot VMs, zero-scaling inference, Feature Store caching, and multi-cloud WIF patterns.</description>
         <link>https://sonikajanagill.com/articles/cost-optimized-mlops/</link>
         <guid isPermaLink="true">https://sonikajanagill.com/articles/cost-optimized-mlops/</guid>
