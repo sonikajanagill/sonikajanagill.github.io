@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Cloud's Agent Ops Stack: Why Deployment Is No Longer the Hard Part - Sonika Janagill</title>
+    <meta name="description"
+        content="The Gemini Enterprise Agent Platform shifts from deployment to governance. Agent Identity, Registry, and Gateway make agents first-class operational entities on Google Cloud.">
+    <meta name="author" content="Sonika Janagill">
+    <meta name="keywords"
+        content="Agent Ops Stack, Google Cloud, Agent Platform, Gemini Enterprise, Agent Identity, Agent Registry, Agent Gateway, ADK, Agent Governance">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Google Cloud's Agent Ops Stack: Why Deployment Is No Longer the Hard Part">
+    <meta property="og:description"
+        content="The Gemini Enterprise Agent Platform shifts from deployment to governance. Agent Identity, Registry, and Gateway make agents first-class operational entities on Google Cloud.">
+    <meta property="og:url" content="https://sonikajanagill.com/articles/agent-ops-stack/">
+    <meta property="og:image" content="https://sonikajanagill.com/img/agents_first_class_citizens.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://sonikajanagill.com/articles/agent-ops-stack/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/Sonika_Salmon.jpeg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../article-styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <span class="nav-home-text">Home</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-header-left">
+                <div class="blog-header-tags">
+                    <a href="/articles/?tag=AI" class="blog-header-tag">#AI</a>
+                    <a href="/articles/?tag=Google Cloud" class="blog-header-tag">#Google Cloud</a>
+                    <a href="/articles/?tag=Enterprise AI" class="blog-header-tag">#Enterprise AI</a>
+                </div>
+                <h2>Agent Platform</h2>
+                <p class="blog-subtitle">Google Cloud's Agent Ops Stack: Why Deployment Is No Longer the Hard Part</p>
+                <p><i>The Gemini Enterprise Agent Platform shifts the conversation from deployment to governance, from
+                        the Request/Response era to the Long-Lived Agentic Session.</i></p>
+
+                <div class="blog-header-right">
+                    <div class="blog-meta">
+                        <div class="blog-meta-item">
+                            <span>April 2026</span>
+                        </div>
+                        <div class="blog-meta-item">
+                            <span>12 min read</span>
+                        </div>
+                    </div>
+                    <div class="blog-share-buttons">
+                        <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/agent-ops-stack/"
+                            class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                            <img src="../../img/x-icon.png" alt="X">
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/agent-ops-stack/"
+                            class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                        </a>
+                        <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/agent-ops-stack/"
+                            class="blog-share-btn" title="Share via Email">
+                            <img src="../../img/email-icon.png" alt="Email">
+                        </a>
+                        <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                            <img src="../../img/copy-icon.png" alt="Copy">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-header-image">
+        <img src="../../img/agents_first_class_citizens.png" alt="Agents Are Now First-Class Citizens on Google Cloud">
+        <p>Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
+    </div>
+
+    <!-- Blog Content -->
+    <main class="blog-content">
+        <a href="../" class="back-link">← Back to Articles</a>
+
+
+        <p class="drop-cap">The Gemini Enterprise Agent Platform slide that opened <a
+                href="https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-next-26-ai-agent-platform">Google
+                Cloud Next '26</a> has four
+            layers: <strong>Build, Scale, Govern, Optimise.</strong> Look at what is missing: Deploy.</p>
+
+        <p>That omission is not an oversight. It is the point. Deploy has not disappeared. In the platform's lifecycle
+            it is handled as an automated background step via <a
+                href="https://cloud.google.com/agent-sdk/docs/agent-cli">Agent CLI</a> and <a
+                href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/runtime">Agent Runtime</a>,
+            part of Build and Scale.
+            Google has made it a standardised process precisely so it stops being the primary engineering challenge. The
+            hard questions are now upstream and downstream of it.</p>
+
+        <p>A year ago, the conversation in every enterprise AI session was "how do we run an agent?" Today, Thomas
+            Kurian opened the Next '26 keynote by declaring the agentic enterprise <i>"real — and deployed at a scale the
+            world has never before seen,"</i> and announcing a platform designed to answer an entirely different question:
+            how do we govern a fleet of thousands of them?</p>
+
+        <p>That shift from deployment to governance, from experiment to operations, is what it actually means for
+            agents to become first-class citizens on Google Cloud. It is a change in the platform's fundamental
+            assumptions. We are leaving the era of the Request/Response cycle and entering the era of the Long-Lived
+            Agentic Session. Infrastructure built for humans processing HTTP requests is being rebuilt for agents
+            processing week-long workflows, with identity, memory, security, and observability treated as primitives
+            rather than afterthoughts.</p>
+
+        <p>Here is what that looks like in practice.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>From Vertex AI to an Agent Operations Platform</h3>
+
+        <p>The Gemini Enterprise Agent Platform is not a rebrand of Vertex AI. It is the evolution of it. Vertex AI gave engineers a trusted surface to build and tune models. The Agent Platform
+            gives engineering teams a surface to manage agents as operational entities.</p>
+
+        <p>For the past two years, the industry has been consumed by the Dev Stack for agents: 
+            <ul>
+                <li>Which LLM to use?</li>
+                <li>How to write the perfect prompt?</li>
+                <li>Which RAG framework to pick?</li>
+            </ul>
+            Google's announcement effectively says: the Dev Stack
+            is largely solved. Let's talk about the Ops Stack.</p>
+
+        <p>The four pillars, Build, Scale, Govern, Optimise, are worth reading in the order Google chose, because that
+            order tells you where the work is.</p>
+
+        <figure class="article-image">
+            <img src="https://storage.googleapis.com/gweb-cloudblog-publish/images/1_gemini_enterprise_agent_platform_7Yj4NjK.max-2200x2200.jpg"
+                alt="Gemini Enterprise Agent Platform: Build, Scale, Govern, Optimise">
+            <figcaption>The four pillars of the Gemini Enterprise Agent Platform</figcaption>
+        </figure>
+
+        <p><strong>Build</strong> covers what most developers already expect: a graph-based <a href="https://adk.dev/">Agent Development Kit (ADK)</a>
+            supporting Python, TypeScript, Java, and Go; a low-code <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/agent-studio/overview">Agent Studio</a>; <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/agent-garden">Agent Garden</a> templates; and <a href="https://docs.cloud.google.com/architecture/agentic-ai-bidirectional-multimodal-streaming">multimodal
+            streaming</a>. Google reports that over six trillion tokens are processed monthly through ADK alone. The model
+            backbone for this platform is the Gemini 3 family: Gemini 3 Pro for complex workflow orchestration, Gemini 3
+            Flash for the high-frequency, lower-latency tasks that agent loops demand. The tooling here is mature. The
+            interesting announcements are in the next three layers.</p>
+
+        <p><strong>Scale</strong> is where the runtime gets serious. Agent Runtime now delivers sub-second cold starts.
+            Long-running agents can maintain state for up to seven days. Agent Sandbox provides hardened execution
+            environments for model-generated code and computer-use tasks. The key addition is <strong>Memory Bank with
+                Memory Profiles</strong>: agents can now retain long-term, high-accuracy context across sessions, mapped
+            to internal CRM and database records via Custom Session IDs. Stateful agents are not an edge case anymore;
+            they are the runtime's default assumption.</p>
+
+        <p><strong>Govern</strong> is the layer that signals the platform shift most clearly. Three new capabilities:
+            <strong>Agent Identity</strong>, <strong>Agent Registry</strong>, and <strong>Agent Gateway</strong>.
+        </p>
+
+        <figure class="article-image">
+            <img src="../../img/agents_govern_layer.png" alt="Agent Identity, Agent Registry, and Agent Gateway">
+            <figcaption>The Govern layer: Agent Identity, Registry, and Gateway</figcaption>
+        </figure>
+
+        <p>Think of Agent Identity, Agent Registry, and Agent Gateway together as Active Directory for the AI era: the
+            system that manages who your non-human workforce is, what it can access, and what it did. </p>
+        <p><strong>Agent Identity</strong>
+            gives every agent a unique cryptographic ID with an auditable trail mapped to authorisation policies. If an
+            agent takes an action, you know which agent, under which policy, at what time. This is not prompt
+            engineering; it is IAM for non-human principals.</p>
+
+        <p><strong>Agent Registry</strong> is a central catalogue of every agent and approved tool across your organisation — the
+            equivalent of a container registry, but for agents. Whether the agent was built internally on ADK or sourced
+            from the partner marketplace (Atlassian, Box, Salesforce, ServiceNow, Workday all launched agents at Next),
+            it has one identity and one index.</p>
+
+        <p><strong>Agent Gateway</strong> is described by Kurian as "air traffic control for your agent ecosystem." It routes all agent
+            traffic, speaks both MCP and A2A natively, and applies <strong>Model Armor</strong> inline: prompt injection
+            scanning and tool poisoning detection happen at the network layer before any agent action executes.
+            Critically, it also surfaces <strong>Agent Anomaly Detection</strong>, monitoring for tool misuse,
+            unauthorised data access, and reasoning drift in production.</p>
+
+        <p>Optimise closes the loop with <strong>Agent Simulation</strong> (generate thousands of synthetic interactions
+            to surface edge cases before your users do), Agent Evaluation (multi-turn autoraters scoring live traffic),
+            and OTel-compliant Agent Observability: automatic tracing, Agent Topology visualisation (a live map of how
+            your agents interact with one another and with tools), and turn-key dashboards that surface the full
+            reasoning chain behind every agent decision. If an agent chose the wrong tool or misread a user's intent,
+            you can see exactly which step in the chain caused it — not just that something went wrong, but why. These
+            are the SRE tools for agent fleets.</p>
+
+        <p>Taken together, this is not a developer stack. It is an ops stack.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Five Platform Changes That Make Agents Genuinely First-Class</h3>
+
+        <p>It is easy to claim that agents are "first-class." The evidence is in whether the platform treats them as
+            principals with rights and identities, not just processes with permissions.</p>
+
+        <p>On that test, five concrete things changed today.</p>
+
+        <figure class="article-image">
+            <img src="../../img/agents_five_changes.png" alt="Five platform changes for first-class agents">
+            <figcaption>Five platform changes that make agents first-class citizens</figcaption>
+        </figure>
+
+        <p><strong>First, agents now have cryptographic identities.</strong> Agent Identity means IAM, audit, and
+            compliance can treat an agent as a principal rather than an extension of a human user. When an agent in your
+            supply chain pipeline calls a Spanner instance or reads from BigQuery, that action is traceable to a
+            specific agent with a specific policy scope. That is a meaningful governance primitive, not a feature flag.
+        </p>
+
+        <p><strong>Second, they route through a dedicated control plane.</strong> Agent Gateway is effectively an API
+            gateway for agent traffic. Architecturally, this mirrors what happened when enterprises standardised on API
+            gateways a decade ago: a chokepoint that enforces policy, provides observability, and decouples caller from
+            callee. The fact that it speaks MCP and A2A natively means the gateway understands agent semantics, not just
+            HTTP verbs. A Google Cloud engineering post published this month makes the underlying technical case: in
+            agentic protocols, policy attributes live inside message bodies rather than headers, so any governance layer
+            that does not parse MCP and A2A payloads is operating blind. <a href="https://cloud.google.com/blog/products/networking/the-case-for-envoy-networking-in-the-agentic-ai-era">Envoy</a>, the proxy underpinning Agent Gateway, is
+            built precisely for this.</p>
+
+        <p><strong>Third, they have persistent managed memory.</strong> Memory Bank and Memory Profiles are now managed
+            infrastructure, not application state you build yourself. The Gurunavi case study at Next described
+            eliminating manual searches entirely by having agents recall past preferences across sessions. Payhawk's
+            Financial Controller Agent reduced expense submission time by over 50% by remembering user-specific
+            constraints. Stateful behaviour is no longer something you bolt on; it is something the platform provides.
+        </p>
+
+        <p><strong>Fourth, they have dedicated runtime economics.</strong> Sub-second cold starts and 300 sandboxes per
+            second on GKE reflect a runtime optimised for agent workload patterns: bursty, parallel, potentially
+            long-running, and needing isolation. The TPU 8i chip (Zebrafish), announced separately today, goes further:
+            designed explicitly for the low-latency, chain-of-thought MoE inference that agent reasoning demands, with
+            roughly 80% better performance-per-dollar than Ironwood on that workload.</p>
+
+        <p><strong>Fifth, they have a dedicated observability and evaluation stack.</strong> OTel-compliant traces,
+            simulation, and live autorater evaluation give engineers the same observability primitives for agents that
+            SRE tooling gave them for services. You can now run a stress test against your agent fleet before deploying
+            to production, score live traffic, and trace a failed reasoning chain end-to-end. That is the maturity
+            signal.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>What This Means If You Are Building Today</h3>
+
+        <p>I am building this in production. At WPP Media, the OpenIntelligence platform runs multi-step ML pipelines on
+            Vertex AI; at VML, I run POCs on ADK agents. The platform shift announced today changes the architecture
+            decisions I am making next week.</p>
+
+        <p>The most immediate implication: the boundary between model development and agent operations has moved. A year
+            ago, you deployed a model and called it via an API. Today, you deploy an agent with an identity, a memory
+            profile, a registered set of approved tools, and a gateway policy. The deployment step is the beginning of
+            the operational lifecycle, not the end of the development one.</p>
+
+        <blockquote>
+            <p><strong>The deployment step is the beginning of the operational lifecycle, not the end of the development
+                    one.</strong></p>
+        </blockquote>
+
+        <p>The architectural mental model shift is significant: stop thinking about agents as wrappers around LLM APIs
+            and start thinking about them as microservices — discrete, composable, independently deployable, and
+            governed by the same infrastructure controls as the rest of your stack. ADK is the framework that makes that
+            model practical.</p>
+
+        <p>For engineering leads, the Agent Registry changes the conversation about shadow AI. If every agent your
+            organisation uses — internal or sourced from a partner marketplace — needs to be registered and assigned an
+            identity, you have a forcing function for agent governance that does not depend on policy documentation or
+            developer discipline. The infrastructure enforces it.</p>
+
+        <p>For platform teams, Agent Gateway as an MCP-and-A2A-aware control plane means you can start enforcing
+            tool-level access control at the network layer. Restricting which tools a customer-facing commerce agent can
+            call is now an infrastructure configuration, not a prompt constraint.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Commerce Signal</h3>
+
+        <p>One customer story from the keynote is worth isolating for what it signals about the direction.</p>
+
+        <p>Macy's unveiled "Ask Macy's," a Gemini-powered shopping agent built in <strong>four weeks</strong> using
+            Gemini Enterprise for Customer Experience. Reliance demonstrated an agent planning a birthday party,
+            processing millions of product images in minutes via Gemini catalogue enrichment. PayPal's Principal
+            Engineer specifically called out Memory Bank and AP2 (Agent Payments Protocol) as the foundation enabling
+            trusted, agentic commerce experiences on their platform.</p>
+
+        <p>The pattern across all three is the same: agents handling not just product discovery but multi-step,
+            stateful, transactional workflows. An agent that can remember what you bought last month, understand your
+            current budget, recommend products, and initiate a UCP checkout — that requires identity, memory, a governed
+            tool set, and a payment layer that can verify authorisation cryptographically.</p>
+
+        <p>The Gemini Enterprise Agent Platform, announced today, provides the first three. AP2, which Google announced
+            earlier this year and reaffirmed today via the PayPal integration, provides the fourth.</p>
+
+        <p>Commerce is not just a use case for this platform. It is the stress test. If agents can handle a stateful,
+            multi-party, financially consequential transaction with full auditability, they can handle most enterprise
+            workflows.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>What Comes Next</h3>
+
+        <p>If you are building agents on Google Cloud today, the practical advice is simple: register them in Agent
+            Registry, assign them identities, route them through Agent Gateway, and instrument them with OTel traces.
+            The platform now supports that workflow end-to-end. The question is not whether to govern your agents. At
+            this point, the infrastructure assumes you will.</p>
+
+        <p>Tomorrow's developer keynote may add further detail on tool-level governance and Cloud Run specifics for
+            long-running agent workloads. I will update as confirmed.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h4>Sources</h4>
+        <ul>
+            <li>Thomas Kurian keynote transcript: <a
+                    href="https://cloud.google.com/blog/topics/google-cloud-next/welcome-to-google-cloud-next26"
+                    target="_blank"
+                    rel="noopener noreferrer">cloud.google.com/blog/topics/google-cloud-next/welcome-to-google-cloud-next26</a>
+            </li>
+            <li>Gemini Enterprise Agent Platform product blog: <a
+                    href="https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform"
+                    target="_blank"
+                    rel="noopener noreferrer">cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform</a>
+            </li>
+            <li>Video overview: <a href="https://www.youtube.com/live/j8qW5poBkEU" target="_blank"
+                    rel="noopener noreferrer">What is Gemini Enterprise Agent Platform?</a></li>
+            <li>Envoy as agentic AI networking foundation: <a
+                    href="https://cloud.google.com/blog/products/networking/the-case-for-envoy-networking-in-the-agentic-ai-era"
+                    target="_blank"
+                    rel="noopener noreferrer">cloud.google.com/blog/products/networking/the-case-for-envoy-networking-in-the-agentic-ai-era</a>
+            </li>
+        </ul>
+
+        <!-- Share Section -->
+        <div class="article-share">
+            <p class="share-title">Share this article:</p>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/agent-ops-stack/"
+                    class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/x-icon.png" alt="X">
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/agent-ops-stack/"
+                    class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/agent-ops-stack/"
+                    class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="../article-utils.js"></script>
+</body>
+
+</html>
