@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 12,
+        title: 'Google Cloud\'s Agent Ops Stack: Why Deployment Is No Longer the Hard Part',
+        date: 'April 2026',
+        tags: ['AI', 'Google Cloud', 'Enterprise AI'],
+        readTime: '12 min read',
+        description: 'The Gemini Enterprise Agent Platform shifts the conversation from deployment to governance. We are leaving the era of the Request/Response cycle and entering the era of the Long-Lived Agentic Session.',
+        url: 'articles/agent-ops-stack/',
+        image: 'img/agents_first_class_citizens.png'
+    },
+    {
         id: 11,
         title: 'Gemma 4 and the Rise of Agentic Commerce: A Hands-On Enterprise Perspective',
         date: 'April 2026',
