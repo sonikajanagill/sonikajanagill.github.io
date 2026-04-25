@@ -112,7 +112,8 @@
 
     <div class="article-header-image">
         <img src="../../img/google_agent_skills_stack.png" alt="Google Agent Skills Stack">
-        <p>Image generated using <a href="https://gemini.google.com/?utm_campaign=deveco_gdemembers&utm_source=deveco">Gemini</a></p>
+        <p>Image generated using <a
+                href="https://gemini.google.com/?utm_campaign=deveco_gdemembers&utm_source=deveco">Gemini</a></p>
     </div>
 
     <!-- Blog Content -->
@@ -137,7 +138,7 @@
             but it was drowning in its own instructions. The output was mediocre because the reasoning tax was too high.
         </p>
 
-        <p>At Google Cloud Next '26, Google productized the solution: <strong>Skills</strong>.</p>
+        <p>At Google Cloud Next '26, Google productised the solution: <strong>Skills</strong>.</p>
 
         <p>The core thesis is that Skills are the "settled" abstraction for agentic workflows. They occupy the vital
             middle ground:</p>
@@ -172,8 +173,8 @@
             has 150 organisations in production.</p>
 
         <p><strong>Skills.</strong> The ecosystem independently discovered that agents need loadable expertise. Google
-            productized it, kept the open `agentskills.io` name, and moved it from a "sidebar feature" to
-            **load-bearing** infrastructure.</p>
+            productised it, kept the open `agentskills.io` name, and moved it from a "sidebar feature" to
+            "load-bearing" infrastructure.</p>
 
         <p><strong>The practical implication:</strong> When Google adopts an open abstraction, the format stabilizes but
             the complexity shifts. You can stop worrying about the file format and start worrying about the governance.
@@ -189,7 +190,8 @@
 
         <h3>Three Surfaces Where Skills Have Now Shipped</h3>
 
-        <h4>1. <a href="https://cloud.google.com/blog/products/ai-machine-learning/whats-new-in-gemini-enterprise?utm_campaign=deveco_gdemembers&utm_source=deveco"
+        <h4>1. <a
+                href="https://cloud.google.com/blog/products/ai-machine-learning/whats-new-in-gemini-enterprise?utm_campaign=deveco_gdemembers&utm_source=deveco"
                 target="_blank" rel="noopener noreferrer">Gemini Enterprise</a>: Skills as a First-Class Product Feature
         </h4>
 
@@ -222,12 +224,12 @@
         </figure>
 
         <p>By preserving the <strong>reasoning budget</strong> for the task rather than the instructions, you get the
-            breadth of a deeply specialized agent without the context tax on every invocation.</p>
+            breadth of a deeply specialised agent without the context tax on every invocation.</p>
 
         <p>For enterprise teams, Skills are not a standalone feature; they are part of a coherent operating model. They
             sit alongside <strong>Agent Designer</strong>, secure execution sandboxes, and a central
             <strong>Inbox</strong>
-            for monitoring activity. This is Google providing the infrastructure to manage agents at an organizational
+            for monitoring activity. This is Google providing the infrastructure to manage agents at an organisational
             scale, rather than just building better chatbots.
         </p>
 
@@ -239,7 +241,8 @@
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h4>2. <a href="https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/?utm_campaign=deveco_gdemembers&utm_source=deveco"
+        <h4>2. <a
+                href="https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/?utm_campaign=deveco_gdemembers&utm_source=deveco"
                 target="_blank" rel="noopener noreferrer">Agents CLI</a>: Skills for Your Coding Assistant</h4>
 
         <p>The second surface is where the engineering actually happens: the terminal and their coding assistant.
@@ -378,8 +381,9 @@ npx skills add google/agents-cli</code></pre>
         <p>The Day 2 developer keynote demo built a planning agent using ADK, MCP servers, and Agent Runtime, and
             described what the agent needed in three words: <strong>Instructions, Skills, and Tools</strong>.</p>
 
-        <p><a href="https://docs.cloud.google.com/agent-registry/overview?utm_campaign=deveco_gdemembers&utm_source=deveco" target="_blank"
-                rel="noopener noreferrer">Agent Registry</a> reinforces this. Agent Registry maintains a central library
+        <p><a href="https://docs.cloud.google.com/agent-registry/overview?utm_campaign=deveco_gdemembers&utm_source=deveco"
+                target="_blank" rel="noopener noreferrer">Agent Registry</a> reinforces this. Agent Registry maintains a
+            central library
             of approved tools, indexing every
             internal agent, tool, and skill. That is governance infrastructure, not just a catalogue. When skills are
             indexed by Agent Registry, the "which skill was loaded?" accountability question I raised earlier has a
@@ -413,7 +417,7 @@ npx skills add google/agents-cli</code></pre>
                 </tr>
                 <tr>
                     <td>A2A</td>
-                    <td>Handoffs between specialized agents</td>
+                    <td>Handoffs between specialised agents</td>
                     <td>The agent's team</td>
                 </tr>
             </tbody>
@@ -443,7 +447,7 @@ npx skills add google/agents-cli</code></pre>
         <h3>The Enterprise Reality</h3>
 
         <p>For the past year, our core challenge hasn’t been selecting models or frameworks. It has been:
-            <strong>How do we make individual experimentation compatible with organizational standards?</strong>
+            <strong>How do we make individual experimentation compatible with organisational standards?</strong>
         </p>
 
         <p>The tension is genuine. A developer working on a client campaign in Berlin has domain context that a platform
@@ -454,11 +458,11 @@ npx skills add google/agents-cli</code></pre>
         <p>Google’s architecture addresses this through a Layered Composition Model:</p>
 
         <ul>
-            <li><b>Organization Level</b>: Global standards, brand voice, and compliance rules (managed via Gemini
+            <li><b>Organisation Level</b>: Global standards, brand voice, and compliance rules (managed via Gemini
                 Enterprise).</li>
             <li><b>Project Level</b>: Client-specific conventions and workflow patterns (managed via Agent Registry).
             </li>
-            <li><b>Personal Level</b>: Individual experimentation and localized hacks (managed via Agents CLI).</li>
+            <li><b>Personal Level</b>: Individual experimentation and localised hacks (managed via Agents CLI).</li>
         </ul>
 
         <p>This stack allows these layers to compose, but it doesn't yet solve the governance challenge sitting above

@@ -641,7 +641,7 @@ gcloud iam service-accounts get-iam-policy $SA_EMAIL</code></pre>
 
         <ul>
             <li><strong>Symptom:</strong> The exchange fails claiming the AWS token is invalid. The error message is completely unhelpful: "Invalid token format."</li>
-            <li><strong>The Fix:</strong> Check <strong>IMDSv2</strong>. AWS now defaults to requiring a "hop limit" of 2 for containerized workloads. If your hop limit is 1, the token cannot be retrieved inside the container.</li>
+            <li><strong>The Fix:</strong> Check <strong>IMDSv2</strong>. AWS now defaults to requiring a "hop limit" of 2 for containerised workloads. If your hop limit is 1, the token cannot be retrieved inside the container.</li>
         </ul>
 
         <div class="code-block-header">

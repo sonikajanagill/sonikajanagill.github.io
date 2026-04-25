@@ -5,10 +5,37 @@
     <description>Google Developer Expert in Cloud AI &amp; Google Cloud sharing insights on AI, MLOps, Cloud Architecture, and Enterprise Transformation</description>
     <link>https://sonikajanagill.com</link>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 03 Apr 2026 16:22:57 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 25 Apr 2026 18:00:00 GMT</lastBuildDate>
     <atom:link href="https://sonikajanagill.com/feed.xml" rel="self" type="application/rss+xml"/>
     <managingEditor>sonika.janagill@gmail.com (Sonika Janagill)</managingEditor>
     <webMaster>sonika.janagill@gmail.com (Sonika Janagill)</webMaster>
+
+    <item>
+        <title>Instructions. Skills. Tools. How Google Embedded Skills Into Every Layer of Its Agent Stack</title>
+        <description>Prompt Bloat has a name and a fix. Skills are now load-bearing across Google&apos;s agent stack: from on-device Gemma 4 to enterprise Gemini, from coding assistants to the official Cloud repository.</description>
+        <link>https://sonikajanagill.com/articles/google-agent-skills-stack/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/google-agent-skills-stack/</guid>
+        <pubDate>25 Apr 2026 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>AI</category>
+        <category>ADK</category>
+        <category>Agent Skills</category>
+        <category>Gemini</category>
+        <category>Google Cloud Next</category>
+        <category>Enterprise AI</category>
+    </item>
+
+    <item>
+        <title>Google Cloud&apos;s Agent Ops Stack: Why Deployment Is No Longer the Hard Part</title>
+        <description>The Gemini Enterprise Agent Platform shifts the conversation from deployment to governance. We are leaving the era of the Request/Response cycle and entering the era of the Long-Lived Agentic Session.</description>
+        <link>https://sonikajanagill.com/articles/agent-ops-stack/</link>
+        <guid isPermaLink="true">https://sonikajanagill.com/articles/agent-ops-stack/</guid>
+        <pubDate>25 Apr 2026 12:00:00 GMT</pubDate>
+        <author>sonika.janagill@gmail.com (Sonika Janagill)</author>
+        <category>AI</category>
+        <category>Google Cloud</category>
+        <category>Enterprise AI</category>
+    </item>
 
     <item>
         <title>Gemma 4 and the Rise of Agentic Commerce: A Hands-On Enterprise Perspective</title>
@@ -107,7 +134,7 @@
 
     <item>
         <title>The Creator Divide: Why Fresh Voices Are Solving Problems Experts Miss</title>
-        <description>AI didn&apos;t just make learning easier — it changed who gets to innovate. Explore how democratized knowledge is creating a divide between optimization and innovation, and why diverse voices are the key to solving tomorrow&apos;s problems.</description>
+        <description>AI didn&apos;t just make learning easier — it changed who gets to innovate. Explore how democratised knowledge is creating a divide between optimisation and innovation, and why diverse voices are the key to solving tomorrow&apos;s problems.</description>
         <link>https://sonikajanagill.com/articles/the-creator-divide/</link>
         <guid isPermaLink="true">https://sonikajanagill.com/articles/the-creator-divide/</guid>
         <pubDate>15 Nov 2025 12:00:00 GMT</pubDate>

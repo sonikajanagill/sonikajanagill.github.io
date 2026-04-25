@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Language" content="en-GB">
     <title>Cost-Optimised MLOps: Reducing Infrastructure Spend by 80% - Sonika Janagill</title>
-    <meta name="description" content="Learn 5 architectural patterns that reduced MLOps costs from $6,600/month to $1,200/month (82% reduction). Auto-shutdown, Spot VMs, zero-scaling inference, Feature Store caching, and multi-cloud WIF patterns.">
+    <meta name="description"
+        content="Learn 5 architectural patterns that reduced MLOps costs from $6,600/month to $1,200/month (82% reduction). Auto-shutdown, Spot VMs, zero-scaling inference, Feature Store caching, and multi-cloud WIF patterns.">
     <meta name="author" content="Sonika Janagill">
-    <meta name="keywords" content="MLOps cost optimisation, Vertex AI costs, GCP cost reduction, Spot VM training, zero-scaling inference, Feature Store caching, auto-shutdown workbench, cloud cost management, ML infrastructure savings">
+    <meta name="keywords"
+        content="MLOps cost optimisation, Vertex AI costs, GCP cost reduction, Spot VM training, zero-scaling inference, Feature Store caching, auto-shutdown workbench, cloud cost management, ML infrastructure savings">
 
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -18,10 +21,11 @@
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Cost-Optimised MLOps: Reducing Infrastructure Spend by 80%">
-    <meta property="og:description" content="Learn 5 architectural patterns that reduced MLOps costs from $6,600/month to $1,200/month. Auto-shutdown, Spot VMs, zero-scaling, Feature Store caching.">
+    <meta property="og:description"
+        content="Learn 5 architectural patterns that reduced MLOps costs from $6,600/month to $1,200/month. Auto-shutdown, Spot VMs, zero-scaling, Feature Store caching.">
     <meta property="og:url" content="https://sonikajanagill.com/articles/cost-optimized-mlops/">
     <meta property="og:image" content="https://sonikajanagill.com/img/cost_optimized_mlops.png">
-    
+
     <!-- Canonical Link -->
     <link rel="canonical" href="https://sonikajanagill.com/articles/cost-optimized-mlops/">
 
@@ -32,6 +36,7 @@
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -65,58 +70,70 @@
                     <a href="/articles/?tag=GCP" class="blog-header-tag">#Cloud</a>
                 </div>
                 <h2>Enterprise MLOps on GCP</h2>
-                <p class="blog-subtitle">Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%</p>
+                <p class="blog-subtitle">Cost-Optimised MLOps: Reducing Infrastructure Spend by 80%</p>
                 <p><i>Meta's $600B Question: Do You Need Hyperscale Budgets for Production ML?</i></p>
 
-            <div class="blog-header-right">
-                <div class="blog-meta">
-                    <div class="blog-meta-item">
-                        <span>December 2025</span>
+                <div class="blog-header-right">
+                    <div class="blog-meta">
+                        <div class="blog-meta-item">
+                            <span>December 2025</span>
+                        </div>
+                        <div class="blog-meta-item">
+                            <span>15 min read</span>
+                        </div>
                     </div>
-                    <div class="blog-meta-item">
-                        <span>15 min read</span>
+                    <div class="blog-share-buttons">
+                        <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/cost-optimized-mlops/"
+                            class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                            <img src="../../img/x-icon.png" alt="X">
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/cost-optimized-mlops/"
+                            class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                        </a>
+                        <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/cost-optimized-mlops/"
+                            class="blog-share-btn" title="Share via Email">
+                            <img src="../../img/email-icon.png" alt="Email">
+                        </a>
+                        <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                            <img src="../../img/copy-icon.png" alt="Copy">
+                        </button>
                     </div>
                 </div>
-                <div class="blog-share-buttons">
-                    <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/cost-optimized-mlops/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
-                        <img src="../../img/x-icon.png" alt="X">
-                    </a>
-                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/cost-optimized-mlops/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
-                        <img src="../../img/linkedin-icon.png" alt="LinkedIn">
-                    </a>
-                    <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/cost-optimized-mlops/" class="blog-share-btn" title="Share via Email">
-                        <img src="../../img/email-icon.png" alt="Email">
-                    </a>
-                    <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
-                        <img src="../../img/copy-icon.png" alt="Copy">
-                    </button>
-                </div>
-            </div>
             </div>
         </div>
     </header>
 
     <div class="article-header-image">
-        <img src="../../img/cost_optimized_mlops.png" alt="Cost-Optimized MLOps: Reducing Infrastructure Spend by 80%">
-        <p>Image generated using <a href="https://gemini.google.com/?utm_campaign=deveco_gdemembers&utm_source=deveco">Gemini Pro</a></p>
+        <img src="../../img/cost_optimized_mlops.png" alt="Cost-Optimised MLOps: Reducing Infrastructure Spend by 80%">
+        <p>Image generated using <a
+                href="https://gemini.google.com/?utm_campaign=deveco_gdemembers&utm_source=deveco">Gemini Pro</a></p>
     </div>
 
     <!-- Blog Content -->
     <main class="blog-content">
         <a href="../" class="back-link">← Back to Articles</a>
 
-        <p class="drop-cap"><a href="https://www.rcrwireless.com/20250908/ai-infrastructure/meta-infrastructure" target="_blank" rel="noopener noreferrer">Meta outlines plans for at least $600 billion in US infrastructure by 2028</a>, with 2025 capital expenditure alone projected at $66-72 billion for AI data centers.</p>
+        <p class="drop-cap"><a href="https://www.rcrwireless.com/20250908/ai-infrastructure/meta-infrastructure"
+                target="_blank" rel="noopener noreferrer">Meta outlines plans for at least $600 billion in US
+                infrastructure by 2028</a>, with 2025 capital expenditure alone projected at $66-72 billion for AI data
+            centers.</p>
 
-        <p><strong>Here's what they won't tell you:</strong> You don't need Meta-scale spending to run production MLOps. You just need to eliminate the infrastructure waste quietly inflating every GCP bill.</p>
+        <p><strong>Here's what they won't tell you:</strong> You don't need Meta-scale spending to run production MLOps.
+            You just need to eliminate the infrastructure waste quietly inflating every GCP bill.</p>
 
-        <p>This article shares the exact architectural patterns that reduced our embeddings project costs from <strong>$6,600/month to $1,200/month (82% reduction)</strong> - all while improving reliability and development velocity.</p>
+        <p>This article shares the exact architectural patterns that reduced our embeddings project costs from
+            <strong>$6,600/month to $1,200/month (82% reduction)</strong> - all while improving reliability and
+            development velocity.
+        </p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
         <h3>The Real Problem: Your ML System Scaled, Your Bill Exploded</h3>
 
         <p><strong>Month 1</strong> (Prototype): $432/month ✔ Budget approved<br>
-        <strong>Month 6</strong> (Production): $6,600/month ✘ More details required</p>
+            <strong>Month 6</strong> (Production): $6,600/month ✘ More details required
+        </p>
 
         <p><strong>What happened?</strong> You scaled prototype infrastructure patterns directly to production:</p>
         <ul>
@@ -131,7 +148,8 @@
 
         <h3>The 5 Strategies That Deliver 82% Savings</h3>
 
-        <p><strong>This isn't about buying cheaper instances.</strong> It's about architectural patterns that eliminate waste at the source.</p>
+        <p><strong>This isn't about buying cheaper instances.</strong> It's about architectural patterns that eliminate
+            waste at the source.</p>
 
         <table>
             <tr>
@@ -176,7 +194,8 @@
 
         <h3>Strategy 1: Auto-Shutdown Development (87% Savings)</h3>
 
-        <p>Automate the shutdown of Vertex AI Workbench instances when idle, eliminating always-on development environment costs.</p>
+        <p>Automate the shutdown of Vertex AI Workbench instances when idle, eliminating always-on development
+            environment costs.</p>
 
         <div class="code-block-header">
             <span>Python - Auto-Shutdown Script for Vertex AI Workbench</span>
@@ -326,12 +345,14 @@ resource "google_cloud_scheduler_job" "shutdown_schedule" {
 
         <h3>Real Results</h3>
 
-        <p><strong>Before:</strong> 2 Workbench instances @ $2,400/month (11% utilization)<br>
-        <strong>After:</strong> Same instances with auto-shutdown @ $320/month<br>
-        <strong>Savings:</strong> $2,080/month (87% reduction)</p>
+        <p><strong>Before:</strong> 2 Workbench instances @ $2,400/month (11% utilisation)<br>
+            <strong>After:</strong> Same instances with auto-shutdown @ $320/month<br>
+            <strong>Savings:</strong> $2,080/month (87% reduction)
+        </p>
 
         <p><strong>Implementation time:</strong> 4 hours<br>
-        <strong>False positives:</strong> 2 in first month (solved with "keep-alive" label)</p>
+            <strong>False positives:</strong> 2 in first month (solved with "keep-alive" label)
+        </p>
 
         <p><strong>Unexpected benefits:</strong></p>
         <ul>
@@ -344,7 +365,8 @@ resource "google_cloud_scheduler_job" "shutdown_schedule" {
 
         <h3>Strategy 2: Spot VM Training (79% Savings)</h3>
 
-        <p><strong>Standard VMs:</strong> n1-standard-4 @ $0.19/hour | <strong>Spot VMs:</strong> Same @ $0.048/hour (75% discount) | <strong>The catch:</strong> Can be preempted with 30 seconds notice</p>
+        <p><strong>Standard VMs:</strong> n1-standard-4 @ $0.19/hour | <strong>Spot VMs:</strong> Same @ $0.048/hour
+            (75% discount) | <strong>The catch:</strong> Can be preempted with 30 seconds notice</p>
 
         <div class="code-block-header">
             <span>Python - Fault-Tolerant Spot VM Training</span>
@@ -366,7 +388,7 @@ LOCATION = "us-central1"
 
 class SpotVMTrainingJob:
     """
-    Wrapper for Vertex AI with spot optimization
+    Wrapper for Vertex AI with spot optimisation
     Features: Auto-checkpointing, retry logic, cost tracking
     """
     
@@ -548,12 +570,14 @@ class GCSCheckpointManager:
         <p><strong>Training scenario:</strong> 50-epoch embeddings, 4 hours total</p>
 
         <p><strong>Standard VMs:</strong> $2.16/run × 10 runs/month = $21.60<br>
-        <strong>Spot VMs:</strong> $0.54/run × 10 runs/month = $5.40<br>
-        <strong>With retries:</strong> ~$6/month (5.8% preemption rate)</p>
+            <strong>Spot VMs:</strong> $0.54/run × 10 runs/month = $5.40<br>
+            <strong>With retries:</strong> ~$6/month (5.8% preemption rate)
+        </p>
 
         <p><strong>Savings:</strong> $15.60/month per pipeline<br>
-        <strong>Your project</strong> (5 models): $78/month savings<br>
-        <strong>Annual:</strong> $936</p>
+            <strong>Your project</strong> (5 models): $78/month savings<br>
+            <strong>Annual:</strong> $936
+        </p>
 
         <p><strong>Success rate:</strong> 120 runs, 7 preemptions, 0 failures (100% with checkpointing)</p>
 
@@ -561,7 +585,8 @@ class GCSCheckpointManager:
 
         <h3>Strategy 3: Zero-Scaling Inference (81% Savings)</h3>
 
-        <p><strong>The game-changer:</strong> <code>min_replicas=0</code> - not prominently featured in tutorials due to cold-start concerns, but perfect for batch processing, dev/staging, and sporadic traffic.</p>
+        <p><strong>The game-changer:</strong> <code>min_replicas=0</code> - not prominently featured in tutorials due to
+            cold-start concerns, but perfect for batch processing, dev/staging, and sporadic traffic.</p>
 
         <p><strong>The reality:</strong></p>
         <ul>
@@ -663,9 +688,10 @@ def create_warmup_schedule(endpoint_id):
 
         <p><strong>Traffic:</strong> 11,000 requests/month, sporadic business hours</p>
 
-        <p><strong>Traditional</strong> (min_replicas=2): $136.80/month @ 25% utilization<br>
-        <strong>Serverless</strong> (min_replicas=0): $37.27/month<br>
-        <strong>Savings:</strong> $99.53/month (73%)</p>
+        <p><strong>Traditional</strong> (min_replicas=2): $136.80/month @ 25% utilisation<br>
+            <strong>Serverless</strong> (min_replicas=0): $37.27/month<br>
+            <strong>Savings:</strong> $99.53/month (73%)
+        </p>
 
         <p><strong>Cold-start mitigation:</strong> Warmup schedule adds $0.22/month (22 weekdays)</p>
 
@@ -680,7 +706,10 @@ def create_warmup_schedule(endpoint_id):
 
         <h3>Strategy 4: Feature Store Caching (40% Compute Reduction)</h3>
 
-        <p><strong>The problem:</strong> 50K products needing embeddings across multiple models (search, recommendations, similar items) results in recomputing the same embeddings repeatedly—40% of compute wasted on redundant work. <strong>The solution:</strong> Use Vertex AI Feature Store as an embeddings cache (novel use case beyond typical tabular features).</p>
+        <p><strong>The problem:</strong> 50K products needing embeddings across multiple models (search,
+            recommendations, similar items) results in recomputing the same embeddings repeatedly—40% of compute wasted
+            on redundant work. <strong>The solution:</strong> Use Vertex AI Feature Store as an embeddings cache (novel
+            use case beyond typical tabular features).</p>
 
         <div class="code-block-header">
             <span>Python - Vertex AI Feature Store for Embeddings Caching</span>
@@ -813,7 +842,8 @@ def generate_embeddings_with_cache(product_ids, model_name="embeddings_minilm"):
         </ul>
 
         <p><strong>Savings:</strong> $355 over 3 months ($118/month)<br>
-        <strong>Annual:</strong> $1,420</p>
+            <strong>Annual:</strong> $1,420
+        </p>
 
         <p><strong>Cache hit rate progression:</strong></p>
         <ul>
@@ -826,7 +856,10 @@ def generate_embeddings_with_cache(product_ids, model_name="embeddings_minilm"):
 
         <h3>Strategy 5: Multi-Cloud WIF (Builds on Part 2)</h3>
 
-        <p>Your <a href="/articles/zero-trust-wif-implementation/">Part 2 WIF patterns</a> enable <strong>cost-free cross-cloud data access</strong>. <strong>Scenario:</strong> Training data in AWS S3 (cheaper cold storage), processing in GCP (better ML tools). Normally $0.09/GB egress kills savings; with WIF, zero egress and secure access.</p>
+        <p>Your <a href="/articles/zero-trust-wif-implementation/">Part 2 WIF patterns</a> enable <strong>cost-free
+                cross-cloud data access</strong>. <strong>Scenario:</strong> Training data in AWS S3 (cheaper cold
+            storage), processing in GCP (better ML tools). Normally $0.09/GB egress kills savings; with WIF, zero egress
+            and secure access.</p>
 
         <div class="code-block-header">
             <span>Python - Multi-Cloud Data Processing with WIF</span>
@@ -835,7 +868,7 @@ def generate_embeddings_with_cache(product_ids, model_name="embeddings_minilm"):
             </div>
         </div>
         <pre><code class="language-python">"""
-Multi-cloud data processing with cost optimization
+Multi-cloud data processing with cost optimisation
 Uses WIF patterns from Part 2
 """
 
@@ -863,9 +896,16 @@ def cost_optimized_pipeline(aws_bucket):
 
         <h2>The Complete Picture: $5,400/Month Savings</h2>
 
-        <p>These five strategies transformed our embeddings project from <strong>$6,600/month to $1,200/month (82% reduction)</strong>: auto-shutdown saved $2,080, Spot VMs saved $950, zero-scaling saved $1,450, Feature Store caching saved $355, and WIF eliminated $200-300 in cross-cloud egress. Total annual savings: <strong>$64,800</strong> with a 4.4-month break-even on the 120-hour implementation investment.</p>
+        <p>These five strategies transformed our embeddings project from <strong>$6,600/month to $1,200/month (82%
+                reduction)</strong>: auto-shutdown saved $2,080, Spot VMs saved $950, zero-scaling saved $1,450, Feature
+            Store caching saved $355, and WIF eliminated $200-300 in cross-cloud egress. Total annual savings:
+            <strong>$64,800</strong> with a 4.4-month break-even on the 120-hour implementation investment.
+        </p>
 
-        <p><strong>When to apply these patterns:</strong> Optimize when you have stable production workloads (3+ months), monthly spend exceeds $500, baseline metrics available, and team buy-in secured. Skip optimization during MVP/prototype phases or if major architecture changes are planned—focus on product-market fit first, cost efficiency second.</p>
+        <p><strong>When to apply these patterns:</strong> Optimize when you have stable production workloads (3+
+            months), monthly spend exceeds $500, baseline metrics available, and team buy-in secured. Skip optimisation
+            during MVP/prototype phases or if major architecture changes are planned—focus on product-market fit first,
+            cost efficiency second.</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
@@ -873,30 +913,42 @@ def cost_optimized_pipeline(aws_bucket):
 
         <p><strong>Start with visibility, then optimize:</strong></p>
         <ol>
-            <li><strong>Enable billing export to BigQuery</strong> - Query top 5 cost drivers with <code>SELECT service.description, SUM(cost) FROM billing_export GROUP BY 1 ORDER BY 2 DESC LIMIT 5</code></li>
-            <li><strong>Tag all ML resources</strong> - Label instances with environment, team, and cost-center for tracking</li>
-            <li><strong>Set budget alerts</strong> - Create alerts at 50% and 90% thresholds to catch runaway costs early</li>
-            <li><strong>Audit idle resources</strong> - List all notebook instances and identify candidates for auto-shutdown</li>
-            <li><strong>Deploy auto-shutdown (dry-run)</strong> - Test the pattern on dev instances before production rollout</li>
-            <li><strong>Present findings to leadership</strong> - Share current costs, top 3 drivers, identified savings, and request approval for optimization sprint</li>
+            <li><strong>Enable billing export to BigQuery</strong> - Query top 5 cost drivers with
+                <code>SELECT service.description, SUM(cost) FROM billing_export GROUP BY 1 ORDER BY 2 DESC LIMIT 5</code>
+            </li>
+            <li><strong>Tag all ML resources</strong> - Label instances with environment, team, and cost-center for
+                tracking</li>
+            <li><strong>Set budget alerts</strong> - Create alerts at 50% and 90% thresholds to catch runaway costs
+                early</li>
+            <li><strong>Audit idle resources</strong> - List all notebook instances and identify candidates for
+                auto-shutdown</li>
+            <li><strong>Deploy auto-shutdown (dry-run)</strong> - Test the pattern on dev instances before production
+                rollout</li>
+            <li><strong>Present findings to leadership</strong> - Share current costs, top 3 drivers, identified
+                savings, and request approval for optimisation sprint</li>
         </ol>
 
-        <p><strong>Implementation code:</strong> <a href="https://github.com/sonikajanagill/cost-optimized-mlops-gcp" target="_blank" rel="noopener noreferrer">GitHub: cost-optimized-mlops-gcp</a></p>
+        <p><strong>Implementation code:</strong> <a href="https://github.com/sonikajanagill/cost-optimized-mlops-gcp"
+                target="_blank" rel="noopener noreferrer">GitHub: cost-optimized-mlops-gcp</a></p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <p>This article isn't about saving money. It's about <strong>building ML systems your organization can afford long-term</strong>.</p>
+        <p>This article isn't about saving money. It's about <strong>building ML systems your organisation can afford
+                long-term</strong>.</p>
 
         <div class="article-share">
             <div class="share-title">Share this article:</div>
             <div class="share-buttons">
-                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/cost-optimized-mlops/&text=Cost-Optimized%20MLOps%3A%20Reducing%20Infrastructure%20Spend%20by%2080%25%20-%20by%20@sonikajanagill" target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on X">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/cost-optimized-mlops/&text=Cost-Optimized%20MLOps%3A%20Reducing%20Infrastructure%20Spend%20by%2080%25%20-%20by%20@sonikajanagill"
+                    target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on X">
                     <img src="../../img/x-icon.png" alt="X">
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/cost-optimized-mlops/" target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on LinkedIn">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/cost-optimized-mlops/"
+                    target="_blank" rel="noopener noreferrer" class="blog-share-btn" title="Share on LinkedIn">
                     <img src="../../img/linkedin-icon.png" alt="LinkedIn">
                 </a>
-                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/cost-optimized-mlops/" class="blog-share-btn" title="Share via Email">
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/cost-optimized-mlops/"
+                    class="blog-share-btn" title="Share via Email">
                     <img src="../../img/email-icon.png" alt="Email">
                 </a>
                 <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
@@ -905,8 +957,9 @@ def cost_optimized_pipeline(aws_bucket):
             </div>
         </div>
 
-        <p style="margin-top: 2rem; color: var(--text-tertiary); font-size: 0.9rem;">   
-            Also published on <a href="https://medium.sonikajanagill.com" target="_blank" rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
+        <p style="margin-top: 2rem; color: var(--text-tertiary); font-size: 0.9rem;">
+            Also published on <a href="https://medium.sonikajanagill.com" target="_blank"
+                rel="noopener noreferrer">Medium</a> - Join the discussion in the comments!
         </p>
     </main>
 
@@ -934,4 +987,5 @@ def cost_optimized_pipeline(aws_bucket):
         }
     </script>
 </body>
+
 </html>

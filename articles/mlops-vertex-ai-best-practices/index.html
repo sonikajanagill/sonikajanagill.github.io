@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Language" content="en-GB">
     <title>MLOps on Vertex AI: Best Practices - Sonika Janagill</title>
-    <meta name="description" content="Lessons learned from implementing MLOps pipelines on Google Cloud's Vertex AI platform.">
+    <meta name="description"
+        content="Lessons learned from implementing MLOps pipelines on Google Cloud's Vertex AI platform.">
 
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -20,6 +22,7 @@
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../blog-styles.css">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -57,11 +60,14 @@
     <article class="blog-post-content">
         <a href="../" class="back-to-blogs">← Back to Articles</a>
 
-        <p>After implementing multiple MLOps pipelines on Vertex AI for enterprise clients, I've learned that success comes down to a few key principles. Here's what actually works in production.</p>
+        <p>After implementing multiple MLOps pipelines on Vertex AI for enterprise clients, I've learned that success
+            comes down to a few key principles. Here's what actually works in production.</p>
 
         <h2>Why Vertex AI for MLOps?</h2>
 
-        <p>Vertex AI provides a unified platform for the entire ML lifecycle, but more importantly, it integrates seamlessly with the GCP ecosystem. If you're already on Google Cloud, Vertex AI eliminates the integration headaches you'd face with standalone MLOps tools.</p>
+        <p>Vertex AI provides a unified platform for the entire ML lifecycle, but more importantly, it integrates
+            seamlessly with the GCP ecosystem. If you're already on Google Cloud, Vertex AI eliminates the integration
+            headaches you'd face with standalone MLOps tools.</p>
 
         <h3>Key Advantages</h3>
 
@@ -139,7 +145,7 @@
         <ul>
             <li>Large-scale inference jobs</li>
             <li>Non-time-sensitive predictions</li>
-            <li>Cost optimization (runs on preemptible instances)</li>
+            <li>Cost optimisation (runs on preemptible instances)</li>
         </ul>
 
         <h3>Traffic Splitting for A/B Testing</h3>
@@ -169,7 +175,7 @@
         <ul>
             <li>Endpoint latency (P50, P95, P99)</li>
             <li>Error rates and failure patterns</li>
-            <li>Resource utilization (CPU, memory, GPU)</li>
+            <li>Resource utilisation (CPU, memory, GPU)</li>
             <li>Cost tracking per model</li>
         </ul>
 
@@ -183,7 +189,7 @@
             <li>Daily inference volume drops > 50%</li>
         </ul>
 
-        <h2>Cost Optimization Tips</h2>
+        <h2>Cost Optimisation Tips</h2>
 
         <p>Vertex AI costs can add up. Here's how to keep them reasonable:</p>
 
@@ -193,7 +199,7 @@
             <li><strong>Batch predictions</strong> - Use preemptible instances when possible</li>
             <li><strong>Autoscaling</strong> - Set max instances to control costs</li>
             <li><strong>Regional selection</strong> - Some regions are cheaper than others</li>
-            <li><strong>Model optimization</strong> - Quantization and distillation reduce serving costs</li>
+            <li><strong>Model optimisation</strong> - Quantisation and distillation reduce serving costs</li>
         </ol>
 
         <h2>CI/CD Integration</h2>
@@ -213,7 +219,7 @@
 
         <ol>
             <li><strong>Not testing pipelines end-to-end</strong> - Small dataset smoke tests save debugging time</li>
-            <li><strong>Hardcoded paths and configs</strong> - Use parameterized pipelines</li>
+            <li><strong>Hardcoded paths and configs</strong> - Use parameterised pipelines</li>
             <li><strong>Ignoring training/serving skew</strong> - Ensure preprocessing is identical</li>
             <li><strong>No rollback strategy</strong> - Always keep previous model version deployable</li>
             <li><strong>Insufficient logging</strong> - Log predictions and features for debugging</li>
@@ -221,11 +227,15 @@
 
         <h2>Conclusion</h2>
 
-        <p>Vertex AI provides solid building blocks for MLOps, but success requires thoughtful architecture. Start with simple pipelines, automate incrementally, and always monitor in production.</p>
+        <p>Vertex AI provides solid building blocks for MLOps, but success requires thoughtful architecture. Start with
+            simple pipelines, automate incrementally, and always monitor in production.</p>
 
-        <p>The goal isn't the fanciest MLOps setup—it's reliable, maintainable ML systems that deliver business value.</p>
+        <p>The goal isn't the fanciest MLOps setup—it's reliable, maintainable ML systems that deliver business value.
+        </p>
 
-        <p><em>Working on MLOps at your organisation? I'd love to hear about your challenges. Connect with me on <a href="https://linkedin.com/in/sonikaj" target="_blank" style="color: var(--primary);">LinkedIn</a>.</em></p>
+        <p><em>Working on MLOps at your organisation? I'd love to hear about your challenges. Connect with me on <a
+                    href="https://linkedin.com/in/sonikaj" target="_blank"
+                    style="color: var(--primary);">LinkedIn</a>.</em></p>
 
         <a href="../" class="back-to-blogs">← Back to Articles</a>
     </article>
@@ -261,4 +271,5 @@
     </script>
     <script src="../article-utils.js"></script>
 </body>
+
 </html>

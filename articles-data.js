@@ -106,7 +106,7 @@ const articlesData = [
         date: 'November 2025',
         tags: ['AI', 'Innovation', 'Leadership'],
         readTime: '5 min read',
-        description: 'AI didn\'t just make learning easier — it changed who gets to innovate. Explore how democratized knowledge is creating a divide between optimization and innovation, and why diverse voices are the key to solving tomorrow\'s problems.',
+        description: 'AI didn\'t just make learning easier — it changed who gets to innovate. Explore how democratised knowledge is creating a divide between optimisation and innovation, and why diverse voices are the key to solving tomorrow\'s problems.',
         url: 'articles/the-creator-divide/',
         image: 'img/the_creator_divide.png'
     },
