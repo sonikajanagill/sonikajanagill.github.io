@@ -468,7 +468,7 @@ import datetime
 class GCSCheckpointManager:
     """
     Manages checkpoints in GCS
-    Features: Versioning, optimizer state, corruption detection
+    Features: Versioning, optimiser state, corruption detection
     """
     
     def __init__(self, checkpoint_dir, save_frequency=5):
@@ -491,7 +491,7 @@ class GCSCheckpointManager:
         # Save model weights
         model.save_weights(local_path)
         
-        # Save optimizer state (critical for resumption)
+        # Save optimiser state (critical for resumption)
         if optimizer_state:
             with open(f"{local_path}-optimizer.json", "w") as f:
                 json.dump(optimizer_state, f)
