@@ -1,6 +1,16 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 13,
+        title: 'Instructions. Skills. Tools. How Google Embedded Skills Into Every Layer of Its Agent Stack',
+        date: 'April 2026',
+        tags: ['ADK', 'Agent Skills', 'Gemini', 'Google Cloud Next', 'Enterprise AI'],
+        readTime: '11 min read',
+        description: 'Prompt Bloat has a name and a fix. Skills are now load-bearing across Google\'s agent stack: from on-device Gemma 4 to enterprise Gemini, from coding assistants to the official Cloud repository.',
+        url: 'articles/google-agent-skills-stack/',
+        image: 'img/google_agent_skills_stack.png'
+    },
+    {
         id: 12,
         title: 'Google Cloud\'s Agent Ops Stack: Why Deployment Is No Longer the Hard Part',
         date: 'April 2026',

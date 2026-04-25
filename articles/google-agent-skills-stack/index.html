@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions. Skills. Tools. How Google Embedded Skills Into Every Layer of Its Agent Stack - Sonika Janagill
+    </title>
+    <meta name="description"
+        content="Prompt Bloat has a name and a fix. Skills are now load-bearing across Google's agent stack: from on-device Gemma 4 to enterprise Gemini, from coding assistants to the official Cloud repository.">
+    <meta name="author" content="Sonika Janagill">
+    <meta name="keywords"
+        content="ADK, Agent Skills, Gemini, Google Cloud Next, Enterprise AI, Skills, Agent Development Kit, Gemma 4">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title"
+        content="Instructions. Skills. Tools. How Google Embedded Skills Into Every Layer of Its Agent Stack">
+    <meta property="og:description"
+        content="Prompt Bloat has a name and a fix. Skills are now load-bearing across Google's agent stack: from on-device Gemma 4 to enterprise Gemini, from coding assistants to the official Cloud repository.">
+    <meta property="og:url" content="https://sonikajanagill.com/articles/google-agent-skills-stack/">
+    <meta property="og:image" content="https://sonikajanagill.com/img/google_agent_skills_stack.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://sonikajanagill.com/articles/google-agent-skills-stack/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/Sonika_Salmon.jpeg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../article-styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
+                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
+                <span class="nav-home-text">Home</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
+                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-header-left">
+                <div class="blog-header-tags">
+                    <a href="/articles/?tag=ADK" class="blog-header-tag">#ADK</a>
+                    <a href="/articles/?tag=Agent Skills" class="blog-header-tag">#Agent Skills</a>
+                    <a href="/articles/?tag=Gemini" class="blog-header-tag">#Gemini</a>
+                    <a href="/articles/?tag=Google Cloud Next" class="blog-header-tag">#Google Cloud Next</a>
+                    <a href="/articles/?tag=Enterprise AI" class="blog-header-tag">#Enterprise AI</a>
+                </div>
+                <h2>Google Agent Skills</h2>
+                <p class="blog-subtitle">Instructions. Skills. Tools. How Google Embedded Skills Into Every Layer of Its
+                    Agent Stack</p>
+                <p><i>Prompt Bloat has a name and a fix. Skills are now load-bearing across Google's agent stack: from
+                        on-device Gemma 4 to enterprise Gemini, from coding assistants to the official Cloud
+                        repository.</i></p>
+
+                <div class="blog-header-right">
+                    <div class="blog-meta">
+                        <div class="blog-meta-item">
+                            <span>April 2026</span>
+                        </div>
+                        <div class="blog-meta-item">
+                            <span>11 min read</span>
+                        </div>
+                    </div>
+                    <div class="blog-share-buttons">
+                        <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/google-agent-skills-stack/"
+                            class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                            <img src="../../img/x-icon.png" alt="X">
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/google-agent-skills-stack/"
+                            class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                        </a>
+                        <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/google-agent-skills-stack/"
+                            class="blog-share-btn" title="Share via Email">
+                            <img src="../../img/email-icon.png" alt="Email">
+                        </a>
+                        <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                            <img src="../../img/copy-icon.png" alt="Copy">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-header-image">
+        <img src="../../img/google_agent_skills_stack.png" alt="Google Agent Skills Stack">
+        <p>Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
+    </div>
+
+    <!-- Blog Content -->
+    <main class="blog-content">
+        <a href="../" class="back-link">← Back to Articles</a>
+
+        <p class="drop-cap">It usually starts with good intentions.</p>
+
+        <p>A team builds an agent. It works, mostly, until it misses a naming convention or ignores an approval
+            workflow. So, you add a paragraph to the system prompt. Then another to handle an edge case. Then three more
+            for stakeholder rules.</p>
+
+        <p>Six months in, the prompt is a 4,000-word monolith. Nobody knows what is still relevant, but everyone is
+            afraid to touch it. The agent is now slower and less reliable than when it had 200 words of instructions.
+            Every "fix" risks a regression.</p>
+
+        <p>This is the reality of <strong>Prompt Bloat</strong>: the silent technical debt of enterprise AI.</p>
+
+        <p>This has been the enterprise agent bottleneck for two years. I recently spoke with a practitioner managing
+            100+ production skills; they described a marketing auditor that loaded 15,000 tokens of instructions on
+            every invocation. It left almost no context window for the actual content being audited. The agent "worked,"
+            but it was drowning in its own instructions. The output was mediocre because the reasoning tax was too high.
+        </p>
+
+        <p>At Google Cloud Next '26, Google productized the solution: <strong>Skills</strong>.</p>
+
+        <p>The core thesis is that Skills are the "settled" abstraction for agentic workflows. They occupy the vital
+            middle ground:</p>
+        <ul>
+            <li><strong>Better than Prompts:</strong> Because they are reusable and persistent.</li>
+            <li><strong>Lighter than Fine-tuning:</strong> Because they iterate at the speed of business logic.</li>
+            <li><strong>Smarter than RAG:</strong> Because they are active expertise, not just passive retrieval.</li>
+            <li><strong>Richer than Tools:</strong> Because they encode "how" and "why," not just "do."</li>
+        </ul>
+
+        <p>Skills are small, named, dynamically loaded units of expertise. With Google shipping them across three
+            distinct surfaces, the industry debate over what to call this pattern is over. The real question begins: who
+            is responsible for governing yours?</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Pattern: How Google Embeds Open Abstractions</h3>
+
+        <p>Google’s shipping strategy follows a consistent <strong>"Adoption Flywheel"</strong>: observe the
+            abstractions the developer community is independently building, adopt the open standard, and embed it as a
+            first-class primitive across the stack.</p>
+
+        <p>Recognizing this pattern tells you exactly where to invest your time:</p>
+
+        <p><strong>MCP.</strong> Anthropic released the Model Context Protocol as a lightweight standard for connecting
+            agents to external tools and data sources. Google's response was not to build a competing standard. Within
+            months, managed MCP servers were shipping for Cloud Run, BigQuery, AlloyDB, Cloud SQL, and the full
+            Workspace suite. Google adopted the standard and built infrastructure around it.</p>
+
+        <p><strong>A2A.</strong> Google co-authored the Agent-to-Agent protocol for cross-agent communication, then
+            handed governance to the Linux Foundation's Agentic AI Foundation rather than keeping it proprietary. It now
+            has 150 organisations in production.</p>
+
+        <p><strong>Skills.</strong> The ecosystem independently discovered that agents need loadable expertise. Google
+            productized it, kept the open `agentskills.io` name, and moved it from a "sidebar feature" to
+            **load-bearing** infrastructure.</p>
+
+        <p><strong>The practical implication:</strong> When Google adopts an open abstraction, the format stabilizes but
+            the complexity shifts. You can stop worrying about the file format and start worrying about the governance.
+            Invest in the abstraction, not the vendor-specific implementation.</p>
+
+        <figure class="article-image">
+            <img src="../../img/google_open_abstractions.png"
+                alt="Google mainlines open ecosystem abstractions into load-bearing infrastructure">
+            <figcaption>Google mainlines open ecosystem abstractions into load-bearing infrastructure.</figcaption>
+        </figure>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Three Surfaces Where Skills Have Now Shipped</h3>
+
+        <h4>1. <a href="https://cloud.google.com/blog/products/ai-machine-learning/whats-new-in-gemini-enterprise"
+                target="_blank" rel="noopener noreferrer">Gemini Enterprise</a>: Skills as a First-Class Product Feature
+        </h4>
+
+        <p>The announcement of Skills inside the Gemini Enterprise marks a shift from "Linear Context
+            Loading" to "Dynamic Skill Dispatching".
+        </p>
+
+        <p>The technical cost of large system prompts is the "Lost in the Middle" phenomenon. When irrelevant
+            instructions saturate the context window, reasoning degrades. The model spends so much of its "cognitive
+            overhead" parsing the prompt that it has little capacity left for the actual task.
+        </p>
+
+        <p>Skills solve this via <strong></striong><a
+                    href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview#how-skills-work">Progressive
+                    Disclosure</a></strong> in three
+            stages:</p>
+
+        <ul>
+            <li><strong>Discovery:</strong> The agent knows the skill exists via a minimal metadata footprint.</li>
+            <li><strong>Activation:</strong> The full instructions load only when the task requires that specific
+                expertise.</li>
+            <li><strong>Execution:</strong> The agent follows the structured Markdown and templates to complete the
+                work.</li>
+        </ul>
+
+        <figure class="article-image">
+            <img src="../../img/gemini_enterprise_skills.png"
+                alt="Agent Skills: Progressive Disclosure in Three Stages">
+            <figcaption>Agent Skills: Progressive Disclosure in Three Stages</figcaption>
+        </figure>
+
+        <p>By preserving the <strong>reasoning budget</strong> for the task rather than the instructions, you get the
+            breadth of a deeply specialized agent without the context tax on every invocation.</p>
+
+        <p>For enterprise teams, Skills are not a standalone feature; they are part of a coherent operating model. They
+            sit alongside <strong>Agent Designer</strong>, secure execution sandboxes, and a central
+            <strong>Inbox</strong>
+            for monitoring activity. This is Google providing the infrastructure to manage agents at an organizational
+            scale, rather than just building better chatbots.
+        </p>
+
+        <figure class="article-image">
+            <img src="https://storage.googleapis.com/gweb-cloudblog-publish/images/4-_Skills.max-2200x2200.png"
+                alt="Gemini Enterprise Skills for reusable actions">
+            <figcaption>Gemini Enterprise Skills for reusable actions</figcaption>
+        </figure>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h4>2. <a href="https://developers.googleblog.com/agents-cli-in-agent-platform-create-to-production-in-one-cli/"
+                target="_blank" rel="noopener noreferrer">Agents CLI</a>: Skills for Your Coding Assistant</h4>
+
+        <p>The second surface is where the engineering actually happens: the terminal and their coding assistant.
+            Polong Lin, Google's Staff DevRel Manager for ADK, has positioned the Agents CLI as the bridge
+            between a cool demo and a production-ready AI workforce. It is pre-GA and available
+            now:</p>
+
+        <div class="code-block-header">
+            <span>Bash - Installing the agents CLI</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-bash"># Preferred: uvx handles an ephemeral env without polluting global Python paths
+uvx google-agents-cli setup
+
+# Alternative: install specific skills
+npx skills add google/agents-cli</code></pre>
+
+        <p>The Agents CLI turns assistants like Claude Code or Gemini CLI into ADK specialists. At launch, seven
+            "Workflow Skills" ship out of the box to handle the end-to-end development lifecycle:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>What it encodes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>google-agents-cli-workflow</code></td>
+                    <td>End-to-end ADK development process</td>
+                </tr>
+                <tr>
+                    <td><code>google-agents-cli-adk-code</code></td>
+                    <td>Idiomatic ADK patterns and conventions</td>
+                </tr>
+                <tr>
+                    <td><code>google-agents-cli-scaffold</code></td>
+                    <td>New agent project structure and bootstrapping</td>
+                </tr>
+                <tr>
+                    <td><code>google-agents-cli-eval</code></td>
+                    <td>Unit testing for expertise: evaluation and regression frameworks</td>
+                </tr>
+                <tr>
+                    <td><code>google-agents-cli-deploy</code></td>
+                    <td>Deploying to Cloud Run or Agent Runtime</td>
+                </tr>
+                <tr>
+                    <td><code>google-agents-cli-publish</code></td>
+                    <td>Publishing to Agent Registry</td>
+                </tr>
+                <tr>
+                    <td><code>google-agents-cli-observability</code></td>
+                    <td>Cloud Monitoring and tracing setup</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>What this means in practice: when you invoke <code>google-agents-cli-scaffold</code> inside Claude Code, your
+            coding assistant loads a skill that carries Google's conventions for ADK project structure, component
+            naming, and integration patterns. It does not need to guess or hallucinate ADK-specific idioms. The
+            expertise is encoded in the skill. The skills work immediately. </p>
+
+        <p>What takes longer is discipline: knowing when to write a custom skill versus when to extend a system prompt,
+            and agreeing on that line across your team.</p>
+
+        <p>The real breakthrough, however, is the </strong>Official Agent Skills Repository</strong>:
+            <a href="https://github.com/google/skills" target="_blank"
+                rel="noopener noreferrer">github.com/google/skills</a>. Thirteen skills at launch, covering the
+            most-used Google Cloud products and architectural concerns:
+        </p>
+
+        <ul>
+            <li><strong>Product skills:</strong> AlloyDB, BigQuery, Cloud Run, Cloud SQL, Firebase, Gemini API, GKE</li>
+            <li><strong>Well-Architected Pillar skills:</strong> Security, Reliability, Cost Optimisation</li>
+            <li><strong>Recipe skills:</strong> Authentication, Onboarding, Network Observability</li>
+        </ul>
+
+        <div class="code-block-header">
+            <span>Bash - Installing all the official skills</span>
+            <div class="code-block-actions">
+                <button class="code-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+        </div>
+        <pre><code class="language-bash">npx skills install github.com/google/skills</code></pre>
+
+        <p>These are agent-first documentation: compact, grounded expertise written for agents to consume, not humans to
+            read. Accurate terminal commands. No hallucinated API calls. No outdated SDK syntax. The Well-Architected
+            Pillar skills are particularly notable: they encode Google's architectural judgement as loadable expertise,
+            not a 200-page PDF that nobody reads.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h4>3. <a
+                href="https://developers.googleblog.com/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4/"
+                target="_blank" rel="noopener noreferrer">Gemma 4 Agent Skills</a>: The Edge Gallery</h4>
+
+        <p>The third surface is the most unexpected, and the most revealing about where this is heading.</p>
+
+        <p>Google AI Edge Gallery, available on iOS and Android, allows you to build and experiment with AI experiences
+            that run entirely on-device. At Next '26, Google announced the launch of Agent Skills: one of the first
+            applications to run multi-step, autonomous agentic workflows entirely on-device. Powered by Gemma 4, Agent
+            Skills can augment the knowledge base, enabling Gemma 4 to access information beyond its initial training
+            data using skills.</p>
+
+        <p>The Gemma 4 edge variants (E2B and E4B) run under 1.5GB of RAM on mid-range to flagship devices. The
+            LiteRT-LM runtime processes 4,000 tokens across two Agent Skills in under three seconds. The model decides
+            autonomously which of its available tools to invoke, in which sequence, and composes the response entirely
+            on-device.</p>
+
+        <p>The critical detail here is the format. The skill powering the Gallery is not a proprietary Google file, it
+            is the SKILL.md format from <a href="https://agentskills.io" target="_blank"
+                rel="noopener noreferrer">agentskills.io</a>.</p>
+
+        <p>This creates a massive architectural implication for the enterprise. You can build a custom skill on a phone,
+            test it offline, and deploy the exact same file to a cloud-hosted Gemini 3.1 instance on Vertex AI. The
+            Skill has become the portable container for cognition: <strong>"Docker for Prompts."</strong> No
+            other stack offers that path right now.</p>
+
+        <figure class="article-image">
+            <img src="../../img/skills_docker_for_prompts.png" alt="Skills: Docker for Prompts">
+            <figcaption>Skills: Docker for Prompts</figcaption>
+        </figure>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Convergence: This Is Not Coincidence</h3>
+
+        <p>Three surfaces. Three implementations of the same abstraction. And the underlying format is converging on
+            something that started at Anthropic. When you see the same abstraction ship across a web app, a CLI tool,
+            and a mobile runtime simultaneously, it is no longer a "feature." It is a protocol.</p>
+
+        <p>The Day 2 developer keynote demo built a planning agent using ADK, MCP servers, and Agent Runtime, and
+            described what the agent needed in three words: <strong>Instructions, Skills, and Tools</strong>.</p>
+
+        <p><a href="https://docs.cloud.google.com/agent-registry/overview" target="_blank"
+                rel="noopener noreferrer">Agent Registry</a> reinforces this. Agent Registry maintains a central library
+            of approved tools, indexing every
+            internal agent, tool, and skill. That is governance infrastructure, not just a catalogue. When skills are
+            indexed by Agent Registry, the "which skill was loaded?" accountability question I raised earlier has a
+            concrete answer at the platform level.</p>
+
+        <p>It also helps to see where Skills sit relative to the other layers of the 2026 agent stack:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Layer</th>
+                    <th>Capability</th>
+                    <th>Analogy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tools / MCP</td>
+                    <td>API access to systems (Slack, BigQuery)</td>
+                    <td>The agent's hands</td>
+                </tr>
+                <tr>
+                    <td>RAG</td>
+                    <td>Knowledge retrieval from data/docs</td>
+                    <td>The agent's library</td>
+                </tr>
+                <tr>
+                    <td>Skills</td>
+                    <td>Workflow logic and "how-to" expertise</td>
+                    <td>The agent's training</td>
+                </tr>
+                <tr>
+                    <td>A2A</td>
+                    <td>Handoffs between specialized agents</td>
+                    <td>The agent's team</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Each layer solves a different problem. The mistake most enterprise teams make is trying to solve the Skills
+            (logic and process) problem with more RAG (more data). Google’s implementation across these three surfaces
+            forces a much-needed discipline: keep your tools mechanical, your data accessible, and your expertise
+            modular.</p>
+
+        <p>This is what protocol convergence looks like before the formal standard exists. The ecosystem finds the right
+            shape. Then the spec follows. MCP went through this in 2024. A2A went through this in 2025. Skills are going
+            through it now.</p>
+
+        <p>The practical takeaway: invest in the abstraction regardless of which vendor surface you build on first. The
+            format will stabilise. The Skills catalogue you build this year will not be obsolete when the spec lands.
+        </p>
+
+        <p>I wrote about the governance side of this challenge before Google named it, in <a
+                href="https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" target="_blank"
+                rel="noopener noreferrer">"The Skills Explosion Is Here. Enterprise Governance Isn't."</a> The moment I
+            described there, where a developer drops a GitHub link to 100+ community skills and forty reaction emojis
+            appear in Slack, arrives faster when three surfaces of Google's stack ship Skills simultaneously.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>The Enterprise Reality</h3>
+
+        <p>For the past year, our core challenge hasn’t been selecting models or frameworks. It has been:
+            <strong>How do we make individual experimentation compatible with organizational standards?</strong>
+        </p>
+
+        <p>The tension is genuine. A developer working on a client campaign in Berlin has domain context that a platform
+            team in London cannot anticipate. If skills are locked down centrally, that contextual expertise cannot
+            reach the agent. If skills are entirely uncontrolled, you cannot audit what your agents are doing or ensure
+            quality across client deliverables.</p>
+
+        <p>Google’s architecture addresses this through a Layered Composition Model:</p>
+
+        <ul>
+            <li><b>Organization Level</b>: Global standards, brand voice, and compliance rules (managed via Gemini
+                Enterprise).</li>
+            <li><b>Project Level</b>: Client-specific conventions and workflow patterns (managed via Agent Registry).
+            </li>
+            <li><b>Personal Level</b>: Individual experimentation and localized hacks (managed via Agents CLI).</li>
+        </ul>
+
+        <p>This stack allows these layers to compose, but it doesn't yet solve the governance challenge sitting above
+            the architecture. We still have to answer: Which skills are deprecated? Who owns the versioning when the
+            underlying model changes? How do we evaluate a skill's reliability before it reaches a production agent?</p>
+
+        <p>The infrastructure is here. Now, the governance tooling must catch up to the adoption rate.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>Three Open Questions for the Post-Launch Reality</h3>
+
+        <p><strong>Skills vs. MCP tools: when is each right?</strong></p>
+
+        <p>Tools are mechanical; Skills are cognitive.</p>
+
+        <ol>
+            <li>Tools are stateless and specific: "Call this API, return this schema."</li>
+            <li>Skills carry instructions, conventions, and internal logic.</li>
+        </ol>
+        <p><strong>The Heuristic:</strong> If it’s a single function call, it’s a tool. If it requires the agent to
+            reason about sequencing, error handling, or escalation, it’s a skill. In agentic commerce, an API call to
+            update a product attribute is a tool. Knowing when an attribute is missing, how to verify its quality, and
+            when to escalate to a human is a <strong>skill</strong>.</p>
+
+        <p><strong>How do you version a skill when the underlying model changes?</strong></p>
+
+        <p>A skill written for Gemini 2.0 may behave differently under Gemini 3.1. The instructions are identical; the
+            model's interpretation is not. This is the least-solved governance problem in the ecosystem. Treat model
+            upgrades as potential regressions. Use the <code>google-agents-cli-eval</code> skill to run benchmarks
+            against your catalogue before promoting a new model to production. I expect <strong>"Pinned
+                Skills"</strong>—expertise locked to a validated model version—to become a standard enterprise
+            requirement.</p>
+
+        <p><strong>Who owns the skill library in your organisation?</strong></p>
+
+        <p>The tempting answer is "the platform team," but that doesn't scale. Ownership should follow the domain:</p>
+
+        <ol>
+            <li><b>Foundational Skills:</b> (Formatting, code patterns) belong to the Platform Team.</li>
+            <li><b>Workflow Skills:</b> (Jira conventions, onboarding) belong to Domain Owners.</li>
+            <li><b>Personal Skills:</b> Belong to the Individual until they are contributed upstream.</li>
+        </ol>
+        <p>Ownership is accountability. When an agent fails, "Which skill was loaded?" needs a traceable answer. Agent
+            Registry (announced at Next '26) provides the platform-level index, but you must build owner attribution
+            into the skill definition itself.</p>
+
+        <p><strong>The "Hidden" Problem: Skill Collision</strong>: As skill catalogues exceed 50+ skills, descriptions
+            will inevitably overlap. The agent’s router will pick the wrong one, leading to subtle, high-stakes errors.
+            Forward-looking teams are already building Skill Leaderboards to track success rates across model
+            iterations and catch these collisions before they reach the client.</p>
+
+        <figure class="article-image">
+            <img src="../../img/skills_collision_governance.png" alt="Skills: Collision Governance">
+            <figcaption>Skills: Collision Governance</figcaption>
+        </figure>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h3>What to Do This Week</h3>
+
+        <p>The Skills abstraction is now shipped, named, and available across three Google surfaces. The infrastructure
+            question is largely settled. What remains is the governance question.</p>
+
+        <p><strong>If your team has agents in production:</strong> Audit the knowledge your agents currently load. If
+            expertise is buried in 4,000-word system prompts with no clear ownership, use Skills to decompose that
+            monolith into maintainable, versioned units. Move from "Prompt Engineering" to "Skill Architecture."</p>
+
+        <p><strong>If your team is building new agents now:</strong> Start with the Agents CLI. Use uvx
+            <code>google-agents-cli</code> setup to bootstrap your first ADK agent and explore the bundled workflow
+            skills. Then,
+            install product-specific expertise from the official Agent Skills repository:
+            <code>npx skills install github.com/google/skills</code>
+            Learn the pattern with these "training wheels" before you are tasked with maintaining a production fleet of
+            40+ custom skills.
+        </p>
+
+        <p><strong>If you are thinking about the enterprise governance layer:</strong> Review my earlier analysis on <a
+                href="https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" target="_blank"
+                rel="noopener noreferrer">the security and governance challenge</a>. covers the vulnerability data from
+            January 2026 (one in four public skills contains at least one vulnerability), the three-tier classification
+            model for external skills (Green/Amber/Red), and the progressive disclosure pattern that prevents context
+            from drowning your agents.</p>
+        <p>Google’s launch of Agent Registry makes these challenges visible, but it doesn't solve them for you. The
+            registry provides the index, but your team must provide the policy.</p>
+
+        <p>The governance conversation starts now. Your skills catalogue, and the rigor with which you govern it, will
+            define the quality floor of every agent your team ships.</p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <p><em>Sonika Janagill is a Google Developer Expert in Cloud AI & Google Cloud, Lead Backend Engineer at VML,
+                and Data/MLOps Engineer at WPP Media. She writes about agentic systems, MLOps, and enterprise AI at <a
+                    href="https://sonikajanagill.com">sonikajanagill.com</a>.</em></p>
+
+        <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+        <h4>References and further reading</h4>
+
+        <ul>
+            <li><a href="https://cloud.google.com/blog/topics/developers-practitioners/level-up-your-agents-announcing-googles-official-skills-repository"
+                    target="_blank" rel="noopener noreferrer">Level Up Your Agents: Announcing Google's Official Skills
+                    Repository</a> — Google Cloud Blog, Megan O'Keefe, 22 April 2026</li>
+            <li><a href="https://github.com/google/skills" target="_blank"
+                    rel="noopener noreferrer">github.com/google/skills</a> — Official Google Agent Skills repository (13
+                skills at launch)</li>
+            <li><a href="https://developers.googleblog.com/developers-guide-to-building-adk-agents-with-skills/"
+                    target="_blank" rel="noopener noreferrer">Developers guide to building ADK agents with skills</a> —
+                Google Developers Blog, April 2026</li>
+            <li><a href="https://github.com/google/agents-cli" target="_blank" rel="noopener noreferrer">Agents CLI</a>
+                — ADK workflow skills for coding assistants</li>
+            <li><a href="https://sonikajanagill.com/articles/enterprise-agent-skills-governance/" target="_blank"
+                    rel="noopener noreferrer">The Skills Explosion Is Here. Enterprise Governance Isn't.</a> — Sonika
+                Janagill, March 2026</li>
+            <li><a href="https://developers.googleblog.com/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4/"
+                    target="_blank" rel="noopener noreferrer">Google AI Edge Gallery — Gemma 4 Agent Skills</a> — Google
+                Developers Blog, April 2026</li>
+        </ul>
+
+        <!-- Share Section -->
+        <div class="article-share">
+            <p class="share-title">Share this article:</p>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/google-agent-skills-stack/"
+                    class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/x-icon.png" alt="X">
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/google-agent-skills-stack/"
+                    class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/google-agent-skills-stack/"
+                    class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="../article-utils.js"></script>
+</body>
+
+</html>
