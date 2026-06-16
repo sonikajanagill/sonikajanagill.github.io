@@ -2,11 +2,7 @@
    Reusable Article Utilities
    =========================== */
 
-// Initialize theme immediately (before page renders)
-(function() {
-    const theme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-})();
+// Theme is initialised by /scripts/nav.js (loaded before this file)
 
 /**
  * Auto-populate tooltips from alt text for blog images
@@ -111,27 +107,7 @@ function copyShareLink(button) {
     });
 }
 
-/**
- * Initialize theme toggle functionality
- */
-function initializeThemeToggle() {
-    // Check for saved theme preference or default to dark mode
-    const theme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-
-    const themeToggle = document.getElementById('theme-toggle');
-    
-    if (themeToggle) {
-        // Toggle theme
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    }
-}
+// Hamburger menu + theme toggle are handled by /scripts/nav.js
 
 /**
  * Copy code block to clipboard
@@ -191,7 +167,6 @@ function injectArticleHashtags() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    initializeThemeToggle();
     initializeImageTooltips();
     initializeImageLightbox();
     // injectArticleHashtags();
