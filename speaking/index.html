@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking - Sonika Janagill | Google Developer Expert</title>
+    <meta name="description" content="Public speaking sessions, conference talks, and presentations by Google Developer Expert Sonika Janagill on AI, Cloud, and enterprise transformation.">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../img/Sonika_Salmon.jpeg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../speaking-styles.css">
+
+    <!-- Shared Speaking Data -->
+    <script src="../speaking-data.js"></script>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <script src="/scripts/nav.js"></script>
+
+    <!-- Speaking Header -->
+    <header class="page-hero">
+        <h1>Speaking</h1>
+        <p>Conference talks, workshops, and community sessions</p>
+    </header>
+
+    <main id="main-content">
+
+    <!-- Speaking Grid -->
+    <section class="speaking-section">
+        <div class="container">
+            <div class="speaking-grid" id="speakingGrid">
+                <!-- Sessions will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    </main>
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Speaking Rendering Script -->
+    <script>
+        function renderSessions(sessions) {
+            const grid = document.getElementById('speakingGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            if (sessions.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-secondary);">No sessions found.</p>';
+                return;
+            }
+
+            sessions.forEach(session => {
+                const card = document.createElement('div');
+                card.className = 'speaking-card';
+
+                const tagsHTML = session.tags.map(tag => `<span class="speaking-tag">#${tag}</span>`).join('');
+
+                // Build action links
+                let actionsHTML = '';
+
+                if (session.slidesUrl) {
+                    const slidesLabel = session.slidesType === 'pdf' ? 'PDF Slides' : 'View Slides';
+                    actionsHTML += `<a href="${session.slidesUrl}" class="speaking-action" target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        ${slidesLabel}
+                    </a>`;
+                }
+
+                if (session.youtubeUrl) {
+                    actionsHTML += `<a href="${session.youtubeUrl}" class="speaking-action speaking-action-youtube" target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Watch Recording
+                    </a>`;
+                }
+
+                if (session.eventUrl) {
+                    actionsHTML += `<a href="${session.eventUrl}" class="speaking-action speaking-action-event" target="_blank" rel="noopener noreferrer">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Event Page
+                    </a>`;
+                }
+
+                card.innerHTML = `
+                    ${session.image ? `<div class="speaking-image"><img src="../${session.image}" alt="${session.title}"></div>` : ''}
+                    <div class="speaking-content">
+                        <div class="speaking-event-info">
+                            <span class="speaking-date">${session.date}</span>
+                            <span class="speaking-event-name">${session.event}</span>
+                        </div>
+                        <h2 class="speaking-title">${session.title}</h2>
+                        ${session.subtitle ? `<p class="speaking-subtitle">${session.subtitle}</p>` : ''}
+                        <p class="speaking-description">${session.description}</p>
+                        <div class="speaking-tags">${tagsHTML}</div>
+                        <div class="speaking-actions">${actionsHTML}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Render on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSessions(speakingData);
+        });
+    </script>
+</body>
+</html>
