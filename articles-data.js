@@ -1,6 +1,18 @@
 // Shared articles data - single source of truth
 const articlesData = [
     {
+        id: 14,
+        title: 'Models Are Commodities. Harnesses Are Moats.',
+        date: 'May 2026',
+        tags: ['AI Agents', 'MLOps', 'Software Architecture', 'Enterprise AI', 'Harness Engineering'],
+        readTime: '9 min read',
+        description: 'Every engineering team has access to the same frontier models. The teams winning in production are not building better models — they are building better harnesses. Agent = Model + Harness. The model is available to everyone. The harness is your moat.',
+        url: 'articles/harness-engineering-general/',
+        image: 'img/harness_engineering_hero.png',
+        category: 'Harness Engineering',
+        subtitle: 'Agent = Model + Harness. The model is available to everyone. The harness is what your competitors cannot copy.'
+    },
+    {
         id: 13,
         title: 'Instructions. Skills. Tools. How Google Embedded Skills Into Every Layer of Its Agent Stack',
         date: 'April 2026',
