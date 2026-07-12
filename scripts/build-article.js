@@ -72,6 +72,10 @@ function markdownToHtml(md) {
     // Inline code
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
     
+    // Blockquotes: > text  →  <blockquote class="pull-quote">text</blockquote>
+    // Must run before paragraph wrapping
+    html = html.replace(/^> (.+)$/gm, '<blockquote class="pull-quote">$1</blockquote>');
+    
     // Headers (page breaks handled by --- in markdown)
     html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
     html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
@@ -131,6 +135,12 @@ function markdownToHtml(md) {
         if (line.includes('</ul>')) inList = false;
         if (line.includes('<table>')) inTable = true;
         if (line.includes('</table>')) inTable = false;
+        
+        // Skip blockquotes from paragraph wrapping
+        if (line.trim().startsWith('<blockquote')) {
+            processedLines.push(line);
+            continue;
+        }
         
         if (!inPre && !inList && !inTable &&
             line.trim() && 
@@ -350,20 +360,74 @@ ${bodyHtml}
 </html>`;
 }
 
+/**
+ * Strip draft-only preamble lines that are editorial conventions, not body content.
+ *
+ * Image convention:
+ *   <!-- FIGURE: filename.png | alt text -->   →  generates <figure class="article-image">
+ *   <!-- FIGURE: filename.png | alt text | caption -->  →  with custom caption
+ *   All other <!-- ... --> comments are stripped (IMAGE N:, Prompt:, Generate with:, etc.)
+ *
+ * Also removes:
+ *   - H1 title line (# ...) — already in article header from articles-data.js
+ *   - Italic subtitle opener (*...*)
+ *   - **Author:** / **Read time:** / **Tags:** metadata lines
+ *   - Pairs of --- that were only wrapping image comment blocks
+ */
+function stripDraftPreamble(body) {
+    // Step 1: Convert <!-- FIGURE: filename | alt [| caption] --> into figure HTML
+    // Must run BEFORE stripping all other comments
+    let processed = body.replace(
+        /^<!--\s*FIGURE:\s*([^|\n]+?)\s*\|\s*([^|\n]+?)(?:\s*\|\s*([^\n]+?))?\s*-->$/gm,
+        (match, filename, alt, caption) => {
+            const src = `../../img/${filename.trim()}`;
+            const altText = alt.trim();
+            const captionText = (caption || alt).trim();
+            return `<figure class="article-image">\n    <img src="${src}" alt="${altText}">\n    <figcaption>${captionText}</figcaption>\n</figure>`;
+        }
+    );
+
+    // Step 2: strip draft metadata lines and all remaining HTML comment lines
+    const stripped = processed
+        .split('\n')
+        .filter(line => {
+            const t = line.trim();
+            if (t.startsWith('# '))                          return false; // H1 title
+            if (/^\*[^*].*[^*]\*$/.test(t))                 return false; // italic subtitle (*...*)
+            if (/^\*\*Author:\*\*/i.test(t))                 return false;
+            if (/^\*\*Read time:\*\*/i.test(t))              return false;
+            if (/^\*\*Tags:\*\*/i.test(t))                   return false;
+            if (/^<!--[\s\S]*?-->$/.test(t))                 return false; // editorial comment placeholder
+            return true;
+        })
+        .join('\n');
+
+    // Step 3: collapse consecutive --- lines that are only separated by blank lines
+    // e.g. the --- wrapping an image block becomes ---\n\n--- after comments are removed
+    return stripped.replace(/^---\n(\n+)---$/gm, '');
+}
+
 // Main
 function main() {
     const slug = process.argv[2];
     
     if (!slug) {
         console.log('Usage: node scripts/build-article.js <slug>');
-        console.log('Example: node scripts/build-article.js adkbot-personal-ai-agent-adk-cloud-run');
+        console.log('  Slug can be a flat name:      adkbot-personal-ai-agent-adk-cloud-run');
+        console.log('  Or a subdirectory path:       engineering/draft-harness-engineering-general');
         process.exit(1);
     }
     
-    // Read markdown source
+    // Support subdirectory drafts: slug may be e.g. "engineering/draft-harness-engineering-general"
+    // The leaf name (last segment) is used to match against articles-data.js
+    const slugLeaf = path.basename(slug);
+    
+    // Read markdown source — supports flat or subdirectory paths
     const mdPath = path.join(__dirname, '..', 'article-drafts', `${slug}.md`);
     if (!fs.existsSync(mdPath)) {
         console.error(`Error: ${mdPath} not found`);
+        console.error('Tip: pass the path relative to article-drafts/, without the .md extension.');
+        console.error('     e.g. engineering/draft-harness-engineering-general');
         process.exit(1);
     }
     
@@ -381,25 +445,41 @@ function main() {
     }
     
     const articlesData = eval(match[1]);
-    const article = articlesData.find(a => a.url.includes(slug));
+    // Strip 'draft-' prefix from the leaf for matching (draft files often have this prefix)
+    const slugLeafClean = slugLeaf.replace(/^draft-/, '');
+    // Match against the full slug, the leaf, the clean leaf, or the article's url segment
+    const article = articlesData.find(a =>
+        a.url.includes(slug) ||
+        a.url.includes(slugLeaf) ||
+        a.url.includes(slugLeafClean)
+    );
     
     if (!article) {
         console.error(`Error: Article "${slug}" not found in articles-data.js`);
-        console.log('Add the article to articles-data.js first.');
+        console.log('Add the article to articles-data.js first, then re-run.');
         process.exit(1);
     }
     
     // Merge frontmatter with articles-data
     const mergedArticle = { ...article, ...frontmatter };
     
+    // Strip editorial preamble (title, subtitle, Author/Read time/Tags lines)
+    // — these come from articles-data.js and the article header, not the body
+    const cleanBody = stripDraftPreamble(body);
+    
     // Convert markdown body to HTML
-    const bodyHtml = markdownToHtml(body);
+    const bodyHtml = markdownToHtml(cleanBody);
     
     // Generate full HTML
     const html = generateHtml(mergedArticle, bodyHtml);
     
+    // Derive output dir from the article's url field (most reliable)
+    // e.g. "articles/harness-engineering-general/" → "harness-engineering-general"
+    const urlSegments = article.url.replace(/\/$/, '').split('/');
+    const outputSlug = urlSegments[urlSegments.length - 1];
+    
     // Create output directory
-    const outputDir = path.join(__dirname, '..', 'articles', slug);
+    const outputDir = path.join(__dirname, '..', 'articles', outputSlug);
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
@@ -408,7 +488,7 @@ function main() {
     const outputPath = path.join(outputDir, 'index.html');
     fs.writeFileSync(outputPath, html);
     
-    console.log(`✓ Built articles/${slug}/index.html`);
+    console.log(`✓ Built articles/${outputSlug}/index.html`);
     console.log(`  Title: ${article.title}`);
     console.log(`  Tags: ${article.tags.join(', ')}`);
 }

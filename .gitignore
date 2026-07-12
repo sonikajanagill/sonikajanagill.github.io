@@ -14,7 +14,7 @@ article-drafts/*
 
 # AI IDs
 .kiro/*
-.windsurf/*
+.devin/*
 .claude/*
 .agents/*
 CLAUDE.md

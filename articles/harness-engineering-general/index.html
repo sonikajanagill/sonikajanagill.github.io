@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Models Are Commodities. Harnesses Are Moats. - Sonika Janagill</title>
+    <meta name="description" content="Every engineering team has access to the same frontier models. The teams winning in production are not building better models — they are building better harnesses. Agent = Model + Harness. The model is available to everyone. The harness is your moat.">
+    <meta name="author" content="Sonika Janagill">
+    <meta name="keywords" content="AI Agents, MLOps, Software Architecture, Enterprise AI, Harness Engineering">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Models Are Commodities. Harnesses Are Moats.">
+    <meta property="og:description" content="Every engineering team has access to the same frontier models. The teams winning in production are not building better models — they are building better harnesses. Agent = Model + Harness. The model is available to everyone. The harness is your moat.">
+    <meta property="og:url" content="https://sonikajanagill.com/articles/harness-engineering-general/">
+    <meta property="og:image" content="https://sonikajanagill.com/img/harness_engineering_hero.png">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://sonikajanagill.com/articles/harness-engineering-general/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../img/Sonika_Salmon.jpeg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../article-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="nav-placeholder"></div>
+    <script src="/scripts/nav.js"></script>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="blog-header-left">
+                <div class="blog-header-tags">
+                    <a href="/articles/?tag=AI Agents" class="blog-header-tag">#AI Agents</a>
+                    <a href="/articles/?tag=MLOps" class="blog-header-tag">#MLOps</a>
+                    <a href="/articles/?tag=Software Architecture" class="blog-header-tag">#Software Architecture</a>
+                    <a href="/articles/?tag=Enterprise AI" class="blog-header-tag">#Enterprise AI</a>
+                    <a href="/articles/?tag=Harness Engineering" class="blog-header-tag">#Harness Engineering</a>
+                </div>
+                <h2>Harness Engineering</h2>
+                <p class="blog-subtitle">Models Are Commodities. Harnesses Are Moats.</p>
+                <p><i>Agent = Model + Harness. The model is available to everyone. The harness is what your competitors cannot copy.</i></p>
+
+            <div class="blog-header-right">
+                <div class="blog-meta">
+                    <div class="blog-meta-item">
+                        <span>May 2026</span>
+                    </div>
+                    <div class="blog-meta-item">
+                        <span>9 min read</span>
+                    </div>
+                </div>
+                <div class="blog-share-buttons">
+                    <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/harness-engineering-general/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/x-icon.png" alt="X">
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/harness-engineering-general/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                    </a>
+                    <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/harness-engineering-general/" class="blog-share-btn" title="Share via Email">
+                        <img src="../../img/email-icon.png" alt="Email">
+                    </a>
+                    <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                        <img src="../../img/copy-icon.png" alt="Copy">
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-header-image">
+        <img src="../../img/harness_engineering_hero.png" alt="Models Are Commodities. Harnesses Are Moats.">
+        <p>Image generated using <a href="https://gemini.google.com/">Gemini</a></p>
+    </div>
+
+    <!-- Blog Content -->
+    <main class="blog-content">
+        <a href="../" class="back-link">← Back to Articles</a>
+
+
+
+<h2>The Model Is the Easy Part</h2>
+
+<p class="drop-cap">Most AI agent failures are diagnosed as model problems. Wrong model, wrong temperature, wrong prompt. The fix attempted is usually the same: a longer system prompt, a different model version, more few-shot examples.</p>
+
+<p>The agent fails again. Differently this time, but it fails.</p>
+
+<p>The actual problem is rarely the model. Every serious engineering team in 2026 is running on the same frontier infrastructure: GPT-5.5, Gemini 3.5 Pro, Claude Sonnet 5. The performance gap between them, in most production tasks, is smaller than the gap between how well different teams <em>build around</em> them. A Stanford and Tsinghua University study found that the same underlying model can produce performance gaps of up to 6x depending on how the agent wrapper is designed. The model is a commodity input. What separates a reliable production agent from a fragile demo is the system surrounding it.</p>
+
+<p>That system has a name: the harness. And most teams are not building one. They are building prompts and calling it engineering.</p>
+
+<p>Even in traditional enterprise platforms, the platform is rarely the failure point. Configuration drift, missing integration guards, and absent audit trails are. The harness is the AI equivalent of that discipline, and the teams applying it deliberately are compounding an advantage that prompt-fixers cannot close.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h2>What Is Harness Engineering?</h2>
+
+<p>Harness engineering is the discipline of designing the systems, constraints, and feedback loops that surround an AI agent to make it reliable in production.</p>
+
+<p>The simplest formulation, coined by Mitchell Hashimoto in February 2026 and built on real production experience at companies like OpenAI and Stripe, is this:</p>
+
+<blockquote class="pull-quote"><strong>Agent = Model + Harness</strong></blockquote>
+
+<p>The model is the reasoning engine. The harness is everything else. Think of it as the chassis, controls, and safety systems that turn a powerful engine into something you can actually drive at speed.</p>
+
+<p>To make it concrete, the harness covers:</p>
+
+<ul>
+<li><strong>System prompts and agent instruction files:</strong> what the agent knows about itself and its constraints</li>
+<li><strong>Tools and MCP servers:</strong> what the agent can act on in the world</li>
+<li><strong>Sandbox and execution environment:</strong> where the agent runs, safely and reproducibly</li>
+<li><strong>State and memory:</strong> what persists across sessions and long-running tasks</li>
+<li><strong>Validation and eval loops:</strong> how the agent catches, or is caught making, mistakes</li>
+<li><strong>Observability:</strong> logs, traces, cost monitoring, reasoning chain capture</li>
+</ul>
+
+<p>None of these are new engineering problems. Every one of them has an equivalent in traditional software. What is new is that agents introduce <em>probabilistic</em> behaviour into systems where engineers have historically expected deterministic outputs. The harness is how you manage that gap.</p>
+
+<strong>The engineering discipline has evolved in three stages:</strong>
+
+<p>Prompt engineering (2023) told the model what to do. Context engineering (2025) controlled what the model could see. Harness engineering (2026) defines the entire execution environment the model operates within. Each stage is a layer above the last, not a replacement for it.</p>
+
+<p>By May 2026, the conversation has moved fast. Martin Fowler has published on harness engineering. OpenAI released their own engineering guide on the topic. There is a dedicated community site, an awesome-list on GitHub, and dozens of explainers from every angle. The concept is no longer niche. What remains scarce is experience applying it at enterprise scale, which is where this article focuses.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h2>The Competitive Gap: What 250 Engineers Taught Us</h2>
+
+
+<p>Everybody is writing about the gap between demo agents and production agents right now. What fewer people are writing about is what that gap looks like when you are not Stripe or OpenAI, but an enterprise engineering team trying to deploy shared agents across multiple countries, codebases, and client engagements.</p>
+
+<p>In the VML AI Guild, every shared agent deployment follows the same arc. Week one: enthusiasm, the agent does impressive things in a demo. Week two: the agent is deployed to a second team. Week three: the incident reports start. Not because the model broke, but because the system around it was never built.</p>
+
+<p>The failure modes are consistent across every deployment I have seen:</p>
+
+<strong>No deterministic validation.</strong> The agent gives different answers to the same question depending on the state of its context window. A rule in the prompt says one thing. The agent interprets it differently when the context is full. In one Guild project, an agent that correctly followed pricing rules in a 3-turn conversation started hallucinating discounts by turn 12, because the pricing constraints had scrolled out of the active context.
+
+<strong>No fallback logic.</strong> When a tool call fails, the agent improvises rather than escalating. It guesses an answer it should not have been generating at all. We caught this pattern in a content review agent that, when its search tool timed out, began fabricating citations rather than reporting the failure.
+
+<strong>Context rot.</strong> Across a long agentic task, coherence degrades. The agent forgets its constraints mid-task, not because the constraints were removed but because the context window filled up and the important parts were pushed out.
+
+<strong>No audit trail.</strong> Something went wrong. Nobody can answer "what did the agent actually decide, and why?" because the logs only capture inputs and outputs, not the reasoning chain. In an enterprise setting with compliance requirements, this is not just inconvenient. It is a blocker.
+
+
+<p>The gap between an individual developer building an agent for their own use and a team deploying one for a department is not the model. It is the harness. And that gap widens with every additional team, country, and client engagement you add.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h2>The Six Layers of a Production Harness</h2>
+
+<p>A production harness is not a single component. It is a stack of six layers, each solving a distinct failure mode. Here they are, in order of dependency.</p>
+
+<figure class="article-image">
+    <img src="../../img/harness_engineering_layers.png" alt="The 6 layers of a production harness">
+    <figcaption>The 6 layers of a production harness</figcaption>
+</figure>
+
+<table>
+<thead>
+<tr><th>Layer</th><th>What it provides</th><th>The enterprise question it answers</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>1. Identity, Rules, and Skills</strong></td><td>Versioned <code>AGENT.md</code> (persona, constraints) and <code>SKILL.md</code> (reusable task knowledge) files</td><td>Can we standardise how 250 engineers configure agents across six countries?</td></tr>
+<tr><td><strong>2. Tools and MCP Servers</strong></td><td>Structured access to APIs, databases, and external services via MCP</td><td>Can the agent act on our systems without bespoke integration code per service?</td></tr>
+<tr><td><strong>3. Execution Environment</strong></td><td>Isolated sandbox with pinned dependencies, no production credentials</td><td>Can we guarantee the agent runs identically in London and New York?</td></tr>
+<tr><td><strong>4. State and Memory</strong></td><td>Persistent context across sessions via vector stores, graph DBs, and MCP</td><td>Does the agent remember what it decided yesterday without context rot?</td></tr>
+<tr><td><strong>5. Validation and Eval Loops</strong></td><td>Deterministic checks (regex, JSON Schema, business rule assertions) on every output</td><td>Can we guarantee zero uncaught mistakes reach the user, regardless of model behaviour?</td></tr>
+<tr><td><strong>6. Observability</strong></td><td>Reasoning chain capture, cost monitoring, latency tracking</td><td>When something goes wrong at 2am, can we answer "what did the agent decide, and why?"</td></tr>
+</tbody>
+</table>
+<p>Two distinctions are worth calling out because they trip up most teams.</p>
+
+<strong>Identity vs Skills.</strong> Teams routinely conflate these. Identity and rules define what the agent <em>is</em> and what it must refuse. Skills define <em>how to perform a class of task well</em>. Identity changes infrequently (your agent's persona is stable). Skills evolve constantly (your team's understanding of a task improves with every run). Versioning them separately lets you improve a skill without touching the agent's identity, and share skills across multiple agents that have different identities. In the VML AI Guild, building a shared library of versioned <code>SKILL.md</code> files, reviewed like code, loadable by any agent in any country, is one of the highest-leverage infrastructure investments a team can make.
+
+<strong>Tools vs Skills.</strong> A tool is <code>search_web(query)</code>. A skill is "here is how to conduct research for a technical article." The tool executes an action. The skill guides the reasoning. The instinct is to give the agent as many tools as possible. The harness principle is the opposite: give it a small number of general-purpose tools and let it reason about how to compose them.
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h2>Harness Engineering Is Not Governance or Security</h2>
+
+<p>These three concepts get conflated constantly. They are related but distinct, and conflating them means none of them get properly solved.</p>
+
+<table>
+<thead>
+<tr><th>Layer</th><th>What it covers</th><th>The question it answers</th></tr>
+</thead>
+<tbody>
+<tr><td>Harness</td><td>Operational scaffolding for reliable agent behaviour</td><td>Does the agent do what I built it to do?</td></tr>
+<tr><td>Governance</td><td>Policy, accountability, and oversight for AI use</td><td>Are we using AI responsibly as an organisation?</td></tr>
+<tr><td>Security</td><td>Protection from misuse, attack, and data leakage</td><td>Can this system be exploited?</td></tr>
+</tbody>
+</table>
+<p>The harness <em>enables</em> governance: because you have observability and audit trails, the governance team has evidence to work with. The harness <em>supports</em> security: because you have a sandbox and a permissions boundary, the blast radius of a failure is contained.</p>
+
+<p>But governance is a leadership and policy problem. Security is a platform and threat-modelling problem. The harness is an engineering problem. In the VML AI Guild, I have learned to assign these conversations to the right rooms. Conflating them produces meetings where nobody makes decisions, because nobody owns the full problem.</p>
+
+<p>This distinction is not academic. In enterprise settings with compliance requirements, the harness is what <em>makes</em> governance possible. You cannot audit what you cannot observe. You cannot enforce policy on an agent whose behaviour is not deterministically constrained. The harness is the prerequisite infrastructure, not a competing concern.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h2>The Philosophical Shift</h2>
+
+<p>The tooling matters. The mindset matters more.</p>
+
+<p>The old model: build a prompt, test it in a chat, ship it. When something breaks, update the prompt.</p>
+
+<p>The new model: start with the desired agent behaviour. Work backwards to what the harness needs to provide to guarantee that behaviour, not most of the time, but deterministically.</p>
+
+<p>Three principles follow from that shift:</p>
+
+<p><strong>Prefer deterministic constraints over probabilistic instructions.</strong> A linter that blocks a bad pull request is more reliable than a prompt that says "follow our coding standards." The same principle applies to agents. Where you can enforce a constraint in the harness layer, do not rely on the model to self-enforce it in the prompt layer.</p>
+
+<p><strong>Failures are engineering problems, not prompt problems.</strong> When an agent makes a mistake, the diagnostic question is not "what should I have told the model?" It is "which harness layer was missing or insufficient?" That reframe changes where the engineering effort goes, and it compounds: each harness improvement reduces an entire class of failures, not just the specific instance that surfaced it.</p>
+
+<p><strong>The harness compounds.</strong> What you build today becomes the default for the next agent you deploy. A team that invests in shared harness infrastructure, standardised skill files, shared eval frameworks, reusable sandbox configurations, builds faster and more reliably with every agent they ship. A team that rebuilds from scratch each time never gets past the demo problem.</p>
+
+<p>Nineteen years of enterprise systems teaches you one thing above all: the code that survives production for three years is never the most clever code. It is the code with the best guards around it. The same applies here.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h2>Three Things You Can Do Today</h2>
+
+<p>These are not architectural overhauls. They are the minimum viable harness, three decisions that cost an hour each and reduce the most common failure modes immediately.</p>
+
+<p><strong>1. Version your agent instruction files.</strong></p>
+
+<p>If your system prompts live in a chat interface or a hardcoded string in your codebase, that is the first thing to fix. Create an <code>AGENT.md</code> or <code>SKILL.md</code> file. Commit it to Git. Review changes via pull request. Add a changelog entry when the behaviour changes. This costs almost nothing and gives you audit trail, rollback capability, and team-level visibility into how your agent is configured.</p>
+
+<p><strong>2. Add one validator before you add the next tool.</strong></p>
+
+<p>Every time you give your agent a new capability, build the check that catches misuse of that capability before you move on. Not after. Not when the incident happens. Before. This is the harness discipline applied at the pace of development rather than as a retrofit.</p>
+
+<p><strong>3. Log reasoning chains, not just outputs.</strong></p>
+
+<p>Extend your logging to capture not just what the agent returned but what it reasoned through before returning it. This is the difference between knowing what went wrong and knowing why. For most frameworks, this means enabling verbose tracing or connecting to an observability tool that captures intermediate steps. It adds cost in storage and processing. It saves multiples of that cost in debugging time when something breaks in production.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h2>The Model Is Rented. The Harness Is Yours.</h2>
+
+<p>The gap between frontier models is narrowing, and narrowing fast. GPT-5.5, Gemini 3.5 Pro, Claude Sonnet 5: in most production tasks, the performance difference between them is smaller than the difference in how well they are wrapped and deployed.</p>
+
+<p>The evidence is in the production numbers. The teams shipping reliable agents at scale are not doing it because they have access to a better model. They are doing it because their harness catches failures, escalates correctly, and produces an audit trail. The model is rented from a provider. The harness is built in-house, over months, and compounds with every improvement.</p>
+
+<p>In the VML AI Guild, the teams that invested in shared harness infrastructure early, standardised skill files, shared eval frameworks, reusable sandbox configurations, are now deploying new agents in days rather than weeks. The teams that rebuilt from scratch each time are still stuck at the demo stage. The compounding effect is real and measurable.</p>
+
+<blockquote class="pull-quote"><strong>The model is a commodity. The harness is the moat.</strong></blockquote>
+
+<p>The next time your agent makes a mistake, resist the instinct to fix it in the chat. Ask instead: which harness component was missing? What deterministic guard would prevent this class of mistake from recurring, permanently?</p>
+
+<p>That shift in question is the beginning of harness engineering. And it is where the competitive gap between enterprise AI teams is actually opening up.</p>
+
+<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
+
+<h2>Further Reading</h2>
+
+<ul>
+<li><strong>Mitchell Hashimoto, "Agent = Model + Harness"</strong> (February 2026): The post that named the discipline. Hashimoto's formulation is the cleanest statement of the core principle.</li>
+<li><strong>Martin Fowler, "Harness Engineering"</strong> (April 2026): Fowler's treatment of the topic, grounded in coding agent patterns, with his characteristic clarity on architectural trade-offs. <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener noreferrer">martinfowler.com/articles/harness-engineering.html</a></li>
+<li><strong>OpenAI, "Harness Engineering: Leveraging Codex in an Agent-First World"</strong> (2026): OpenAI's own engineering guide on building harnesses around Codex. <a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener noreferrer">openai.com/index/harness-engineering/</a></li>
+<li><strong>Ryan Lopopolo, "Harness Engineering: How to Build Software When Humans Steer, Agents Execute"</strong> (OpenAI, 2026): The talk that seeded the discipline. Covers lints as just-in-time prompts, Reviewer Agent stacks, and the Zero-Interaction Benchmark. <a href="https://www.youtube.com/watch?v=am_oeAoUhew" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=am_oeAoUhew</a></li>
+<li><strong>Nishi Ajmera, "Introduction to Harness Engineering"</strong> (Machine Learning Lagos, April 2026): Accessible talk covering harness components and the distinction from prompt and context engineering.</li>
+<li><strong>awesome-harness-engineering</strong> (GitHub): Community-curated list of tools, patterns, evals, memory, MCP, and orchestration resources. <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener noreferrer">github.com/ai-boost/awesome-harness-engineering</a></li>
+<li><strong>ADK documentation, Google Cloud</strong>: The Agent Development Kit is the practical starting point for skills, tool integration, and multi-agent orchestration on Google Cloud. <a href="https://google.github.io/adk-docs" target="_blank" rel="noopener noreferrer">google.github.io/adk-docs</a></li>
+</ul>
+
+        <!-- Share Section -->
+        <div class="article-share">
+            <p class="share-title">Share this article:</p>
+            <div class="share-buttons">
+                <a href="https://x.com/intent/tweet?url=https://sonikajanagill.com/articles/harness-engineering-general/" class="blog-share-btn" title="Share on X" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/x-icon.png" alt="X">
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://sonikajanagill.com/articles/harness-engineering-general/" class="blog-share-btn" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <img src="../../img/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="mailto:?subject=Check out this article&body=https://sonikajanagill.com/articles/harness-engineering-general/" class="blog-share-btn" title="Share via Email">
+                    <img src="../../img/email-icon.png" alt="Email">
+                </a>
+                <button onclick="copyShareLink(this)" class="blog-share-btn" title="Copy link">
+                    <img src="../../img/copy-icon.png" alt="Copy">
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="image-modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="../article-utils.js"></script>
+</body>
+</html>
