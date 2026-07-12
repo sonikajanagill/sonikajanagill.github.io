@@ -33,26 +33,8 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="nav-logo">
-                <img src="../../img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
-                <img src="../../img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
-                <span class="nav-home-text">Home</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/articles/">Articles</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li>
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <img src="../../img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
-                        <img src="../../img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div id="nav-placeholder"></div>
+    <script src="/scripts/nav.js"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -108,21 +90,17 @@
 
 
 
-<strong>Series:</strong> Part 1 of 3. Part 2: <a href="https://sonikajanagill.com/articles/ai-sdlc-harness-ladder/" target="_blank" rel="noopener noreferrer">Every Time You Type "Continue", Your Harness Failed</a> | Part 3: <a href="https://sonikajanagill.com/articles/antigravity-harness/" target="_blank" rel="noopener noreferrer">Antigravity 2.0 Is a Harness, Not Just an IDE</a>
-
-
-
 <h2>The Model Is the Easy Part</h2>
 
 <p class="drop-cap">Most AI agent failures are diagnosed as model problems. Wrong model, wrong temperature, wrong prompt. The fix attempted is usually the same: a longer system prompt, a different model version, more few-shot examples.</p>
 
 <p>The agent fails again. Differently this time, but it fails.</p>
 
-<p>The actual problem is rarely the model. Every serious engineering team in 2026 is running on the same frontier infrastructure: GPT-4.1, Gemini 2.5, Claude Sonnet 4. The performance gap between them, in most production tasks, is smaller than the gap between how well different teams <em>build around</em> them. A Stanford and Tsinghua University study found that the same underlying model can produce performance gaps of up to 6x depending on how the agent wrapper is designed. The model is a commodity input. What separates a reliable production agent from a fragile demo is the system surrounding it.</p>
+<p>The actual problem is rarely the model. Every serious engineering team in 2026 is running on the same frontier infrastructure: GPT-5.5, Gemini 3.5 Pro, Claude Sonnet 5. The performance gap between them, in most production tasks, is smaller than the gap between how well different teams <em>build around</em> them. A Stanford and Tsinghua University study found that the same underlying model can produce performance gaps of up to 6x depending on how the agent wrapper is designed. The model is a commodity input. What separates a reliable production agent from a fragile demo is the system surrounding it.</p>
 
 <p>That system has a name: the harness. And most teams are not building one. They are building prompts and calling it engineering.</p>
 
-<p>I have spent nineteen years in enterprise software, fourteen of them in WebSphere Commerce before moving into GCP, AI, and MLOps. I now run the AI Guild at VML, a knowledge-sharing and innovation programme across 250+ engineers in six countries, where we deploy shared agent systems at enterprise scale. The pattern is consistent across both worlds: the platform is rarely the failure point. Configuration drift, missing integration guards, and absent audit trails are. The harness is the AI equivalent of that discipline, and the teams applying it deliberately are compounding an advantage that prompt-fixers cannot close.</p>
+<p>Even in traditional enterprise platforms, the platform is rarely the failure point. Configuration drift, missing integration guards, and absent audit trails are. The harness is the AI equivalent of that discipline, and the teams applying it deliberately are compounding an advantage that prompt-fixers cannot close.</p>
 
 <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
@@ -207,8 +185,6 @@
 
 <strong>Tools vs Skills.</strong> A tool is <code>search_web(query)</code>. A skill is "here is how to conduct research for a technical article." The tool executes an action. The skill guides the reasoning. The instinct is to give the agent as many tools as possible. The harness principle is the opposite: give it a small number of general-purpose tools and let it reason about how to compose them.
 
-<blockquote class="pull-quote">For a deep dive into how these layers map to your development lifecycle (from AI IDE autocomplete to zero-interaction agents), see Part 2: <a href="https://sonikajanagill.com/articles/ai-sdlc-harness-ladder/" target="_blank" rel="noopener noreferrer">Every Time You Type "Continue", Your Harness Failed</a>. For how Google's Antigravity 2.0 implements these layers as a platform, see Part 3: <a href="https://sonikajanagill.com/articles/antigravity-harness/" target="_blank" rel="noopener noreferrer">Antigravity 2.0 Is a Harness, Not Just an IDE</a>.</blockquote>
-
 <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
 <h2>Harness Engineering Is Not Governance or Security</h2>
@@ -243,15 +219,13 @@
 
 <p>Three principles follow from that shift:</p>
 
-<strong>Prefer deterministic constraints over probabilistic instructions.</strong> A linter that blocks a bad pull request is more reliable than a prompt that says "follow our coding standards." The same principle applies to agents. Where you can enforce a constraint in the harness layer, do not rely on the model to self-enforce it in the prompt layer.
+<p><strong>Prefer deterministic constraints over probabilistic instructions.</strong> A linter that blocks a bad pull request is more reliable than a prompt that says "follow our coding standards." The same principle applies to agents. Where you can enforce a constraint in the harness layer, do not rely on the model to self-enforce it in the prompt layer.</p>
 
-<strong>Failures are engineering problems, not prompt problems.</strong> When an agent makes a mistake, the diagnostic question is not "what should I have told the model?" It is "which harness layer was missing or insufficient?" That reframe changes where the engineering effort goes, and it compounds: each harness improvement reduces an entire class of failures, not just the specific instance that surfaced it.
+<p><strong>Failures are engineering problems, not prompt problems.</strong> When an agent makes a mistake, the diagnostic question is not "what should I have told the model?" It is "which harness layer was missing or insufficient?" That reframe changes where the engineering effort goes, and it compounds: each harness improvement reduces an entire class of failures, not just the specific instance that surfaced it.</p>
 
-<strong>The harness compounds.</strong> What you build today becomes the default for the next agent you deploy. A team that invests in shared harness infrastructure, standardised skill files, shared eval frameworks, reusable sandbox configurations, builds faster and more reliably with every agent they ship. A team that rebuilds from scratch each time never gets past the demo problem.
+<p><strong>The harness compounds.</strong> What you build today becomes the default for the next agent you deploy. A team that invests in shared harness infrastructure, standardised skill files, shared eval frameworks, reusable sandbox configurations, builds faster and more reliably with every agent they ship. A team that rebuilds from scratch each time never gets past the demo problem.</p>
 
 <p>Nineteen years of enterprise systems teaches you one thing above all: the code that survives production for three years is never the most clever code. It is the code with the best guards around it. The same applies here.</p>
-
-<blockquote class="pull-quote">In Part 2, I break down how this philosophical shift translates into a concrete five-level progression for your AI SDLC, from basic autocomplete to zero-interaction agent systems, with a one-week action plan for each level.</blockquote>
 
 <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
@@ -259,15 +233,15 @@
 
 <p>These are not architectural overhauls. They are the minimum viable harness, three decisions that cost an hour each and reduce the most common failure modes immediately.</p>
 
-<strong>1. Version your agent instruction files.</strong>
+<p><strong>1. Version your agent instruction files.</strong></p>
 
 <p>If your system prompts live in a chat interface or a hardcoded string in your codebase, that is the first thing to fix. Create an <code>AGENT.md</code> or <code>SKILL.md</code> file. Commit it to Git. Review changes via pull request. Add a changelog entry when the behaviour changes. This costs almost nothing and gives you audit trail, rollback capability, and team-level visibility into how your agent is configured.</p>
 
-<strong>2. Add one validator before you add the next tool.</strong>
+<p><strong>2. Add one validator before you add the next tool.</strong></p>
 
 <p>Every time you give your agent a new capability, build the check that catches misuse of that capability before you move on. Not after. Not when the incident happens. Before. This is the harness discipline applied at the pace of development rather than as a retrofit.</p>
 
-<strong>3. Log reasoning chains, not just outputs.</strong>
+<p><strong>3. Log reasoning chains, not just outputs.</strong></p>
 
 <p>Extend your logging to capture not just what the agent returned but what it reasoned through before returning it. This is the difference between knowing what went wrong and knowing why. For most frameworks, this means enabling verbose tracing or connecting to an observability tool that captures intermediate steps. It adds cost in storage and processing. It saves multiples of that cost in debugging time when something breaks in production.</p>
 
@@ -275,7 +249,7 @@
 
 <h2>The Model Is Rented. The Harness Is Yours.</h2>
 
-<p>The gap between frontier models is narrowing, and narrowing fast. GPT-4.1, Gemini 2.5, Claude Sonnet 4: in most production tasks, the performance difference between them is smaller than the difference in how well they are wrapped and deployed.</p>
+<p>The gap between frontier models is narrowing, and narrowing fast. GPT-5.5, Gemini 3.5 Pro, Claude Sonnet 5: in most production tasks, the performance difference between them is smaller than the difference in how well they are wrapped and deployed.</p>
 
 <p>The evidence is in the production numbers. The teams shipping reliable agents at scale are not doing it because they have access to a better model. They are doing it because their harness catches failures, escalates correctly, and produces an audit trail. The model is rented from a provider. The harness is built in-house, over months, and compounds with every improvement.</p>
 
@@ -300,12 +274,6 @@
 <li><strong>awesome-harness-engineering</strong> (GitHub): Community-curated list of tools, patterns, evals, memory, MCP, and orchestration resources. <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener noreferrer">github.com/ai-boost/awesome-harness-engineering</a></li>
 <li><strong>ADK documentation, Google Cloud</strong>: The Agent Development Kit is the practical starting point for skills, tool integration, and multi-agent orchestration on Google Cloud. <a href="https://google.github.io/adk-docs" target="_blank" rel="noopener noreferrer">google.github.io/adk-docs</a></li>
 </ul>
-
-<strong>This series:</strong>
-<ul>
-<li>Part 2: <a href="https://sonikajanagill.com/articles/ai-sdlc-harness-ladder/" target="_blank" rel="noopener noreferrer">Every Time You Type "Continue", Your Harness Failed</a> — The five-level AI SDLC ladder, from IDE autocomplete to zero-interaction agent systems.</li>
-<li>Part 3: <a href="https://sonikajanagill.com/articles/antigravity-harness/" target="_blank" rel="noopener noreferrer">Antigravity 2.0 Is a Harness, Not Just an IDE</a> — How Google shipped a production harness platform, and what that means for enterprise teams.</li></ul>
-
 
         <!-- Share Section -->
         <div class="article-share">
