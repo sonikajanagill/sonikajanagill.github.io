@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoring - Sonika Janagill | Google Developer Expert</title>
+    <meta name="description" content="Mentoring with Sonika Janagill: career transitions into AI/ML, cloud certifications, and support for women in tech.">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <script src="/scripts/nav.js"></script>
+
+    <!-- Mentoring Header -->
+    <header class="page-hero">
+        <h1>Mentoring</h1>
+        <p>Honest, practical guidance from someone who made the leap from enterprise Java to production AI.</p>
+    </header>
+
+    <main id="main-content">
+    <div class="container">
+        <!-- Who it's for -->
+        <section id="who" class="section reveal" aria-labelledby="who-heading">
+            <h2 class="section-title" id="who-heading">Who it's for</h2>
+            <p class="section-subtitle">
+                Engineers moving into AI/ML from traditional backend roles, developers preparing for Google Cloud
+                certifications, and women in tech looking for support at any stage of their career. You don't need
+                to be starting from scratch — mid-career pivots are my speciality, because I've made one myself.
+            </p>
+        </section>
+
+        <!-- What I help with -->
+        <section id="what" class="section reveal" aria-labelledby="what-heading">
+            <h2 class="section-title" id="what-heading">What I help with</h2>
+            <div class="achievements reveal-stagger">
+                <div class="achievement-card">
+                    <h3>Career transitions into AI/ML</h3>
+                    <p>Mapping your existing engineering experience onto AI/ML roles, building a realistic learning plan, and choosing projects that prove production skills — not just tutorial completion.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Cloud certifications</h3>
+                    <p>Study strategy for Google Cloud Professional Cloud Architect and Professional ML Engineer, based on passing (and renewing) them while working full time.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Women in tech</h3>
+                    <p>Support through the Women Coding Community, where I co-instruct the AI Learning Series — guiding 100+ developers from "never touched AI" to building production RAG systems.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Speaking &amp; visibility</h3>
+                    <p>Getting your first conference talk accepted, writing technical articles that get read, and building a public portfolio of your work.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to request -->
+        <section id="how" class="section reveal" aria-labelledby="how-heading">
+            <h2 class="section-title" id="how-heading">How to request mentoring</h2>
+            <p class="section-subtitle">
+                Send me a short note about where you are now and what you're working towards. I take on a small
+                number of mentees at a time so I can give each one real attention — if I'm at capacity, I'll point
+                you at the Women Coding Community programmes instead.
+            </p>
+            <div class="sj-hero-cta" style="justify-content: flex-start;">
+                <a href="/contact.html?subject=mentoring" class="sj-cta-button">Request mentoring</a>
+            </div>
+        </section>
+    </div>
+
+    </main>
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Sonika Janagill. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>

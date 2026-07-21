@@ -13,7 +13,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="img/Sonika_Salmon.jpeg">
+    <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -153,22 +153,23 @@
         <!-- Primary Contact Methods - Prominent Grid -->
         <section id="contact-methods" class="section reveal" aria-labelledby="methods-heading">
             <div class="contact-links-grid">
-                <a href="mailto:hello@sonika.janagill.com" class="contact-link-card" aria-label="Email">
-                    <img src="../img/email-icon.png" alt="Email" class="contact-link-image">
+                <a href="mailto:hello@sonika.janagill.com" id="emailContactLink" class="contact-link-card" aria-label="Email">
+                    <img src="img/email-icon.png" alt="Email" class="contact-link-image">
                 </a>
 
                 <a href="https://linkedin.com/in/sonikaj" target="_blank" rel="noopener noreferrer" class="contact-link-card" aria-label="LinkedIn">
-                    <img src="../img/linkedin-icon.png" alt="LinkedIn" class="contact-link-image">
+                    <img src="img/linkedin-icon.png" alt="LinkedIn" class="contact-link-image">
                 </a>
 
                 <a href="https://github.com/sonikajanagill" target="_blank" rel="noopener noreferrer" class="contact-link-card" aria-label="GitHub">
-                    <img src="../img/github-icon.png" alt="GitHub" class="contact-link-image">
+                    <img src="img/github-icon.png" alt="GitHub" class="contact-link-image">
                 </a>
 
                 <a href="https://medium.sonikajanagill.com" target="_blank" rel="noopener noreferrer" class="contact-link-card" aria-label="Medium">
-                    <img src="../img/medium-icon.png" alt="Medium" class="contact-link-image">
+                    <img src="img/medium-icon.png" alt="Medium" class="contact-link-image">
                 </a>
             </div>
+            <p id="contactIntent" class="section-subtitle" style="text-align: center; max-width: 100%; display: none;"></p>
         </section>
 
         <!-- Collaboration Areas -->
@@ -238,6 +239,20 @@
     </footer>
 
     <script>
+        // Preset the email subject when arriving from a CTA (?subject=speaking|mentoring)
+        (function () {
+            const presets = {
+                speaking: { subject: 'Speaking enquiry', note: 'Inviting me to speak? Use the email link below — the subject line is already set.' },
+                mentoring: { subject: 'Mentoring request', note: 'Requesting mentoring? Use the email link below — the subject line is already set.' }
+            };
+            const preset = presets[new URLSearchParams(window.location.search).get('subject')];
+            if (!preset) return;
+            const emailLink = document.getElementById('emailContactLink');
+            if (emailLink) emailLink.href += '?subject=' + encodeURIComponent(preset.subject);
+            const intent = document.getElementById('contactIntent');
+            if (intent) { intent.textContent = preset.note; intent.style.display = 'block'; }
+        })();
+
         // Scroll reveal
         const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
         const revealObserver = new IntersectionObserver((entries) => {
