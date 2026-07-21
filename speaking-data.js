@@ -1,6 +1,21 @@
 // Shared speaking sessions data - single source of truth
 const speakingData = [
     {
+        id: 5,
+        title: 'Build Your Own Agent Skill',
+        subtitle: 'AI Learning Series - Session 1: The Agent Harness',
+        event: 'Women Coding Community - AI Learning Series',
+        organiser: 'Women Coding Community',
+        date: '21 July 2026',
+        eventUrl: 'https://www.meetup.com/women-coding-community/events/315585716/',
+        slidesType: 'html',
+        slidesUrl: 'WCC-Harness-Series-Session-1.html',
+        youtubeUrl: null,
+        tags: ['AI', 'Agents', 'LLM', 'AIEngineering', 'WomenCodingCommunity'],
+        description: 'Session 1 of a six-part hands-on series building an agent harness from the ground up: the skills, tools, and guardrails that turn a capable model into an agent that does your work. Covers AGENTS.md and portable Agent Skills across Antigravity, Claude Code, and Google ADK.',
+        image: null
+    },
+    {
         id: 1,
         title: 'Stop Prompting. Start Delegating.',
         subtitle: 'Sub-Agents, Scheduled Tasks and Voice in Antigravity 2.0',
