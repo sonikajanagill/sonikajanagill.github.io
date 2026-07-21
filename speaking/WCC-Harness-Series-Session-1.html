@@ -931,6 +931,39 @@
     .code-panel .cv { color: var(--navy); }
     .code-panel .ch { color: var(--navy); font-weight: 800; }
 
+    .decision-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    .decision-table th {
+      text-align: left;
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      padding: 0 16px 10px;
+      border-bottom: 2px solid rgba(22, 72, 99, 0.25);
+    }
+
+    .decision-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(22, 72, 99, 0.12);
+      line-height: 1.4;
+    }
+
+    .decision-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .decision-table td.build-col {
+      font-weight: 800;
+      color: var(--orange);
+      white-space: nowrap;
+    }
+
     .pd-wrap {
       max-width: 620px;
       width: 100%;
@@ -1584,6 +1617,54 @@ fixes first.</pre>
         </section>
 
         <!-- 24 -->
+        <section class="slide bg-white">
+          <div class="eyebrow">Decision guide</div>
+          <h1 class="title" style="font-size:32px;">Which one do I build?</h1>
+          <table class="decision-table">
+            <thead>
+              <tr>
+                <th>I want to&hellip;</th>
+                <th>Build a&hellip;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bundle a few tools together as one thing people install</td>
+                <td class="build-col">Plugin</td>
+              </tr>
+              <tr>
+                <td>Build a chat assistant with its own personality</td>
+                <td class="build-col">Agent</td>
+              </tr>
+              <tr>
+                <td>Run the same steps, in the same order, every time</td>
+                <td class="build-col">Workflow (as a Skill)</td>
+              </tr>
+              <tr>
+                <td>Give it one specific thing it's good at</td>
+                <td class="build-col">Skill</td>
+              </tr>
+              <tr>
+                <td>Set a standing rule for how it should always behave</td>
+                <td class="build-col">Instruction</td>
+              </tr>
+              <tr>
+                <td>Add more to something you've already built</td>
+                <td class="build-col">Extend the existing Plugin</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout" style="font-size:12.5px;max-width:none;margin-top:14px;">
+            <b>Agent</b> decides what to do next &middot;
+            <b>Skill</b> one thing it knows how to do, loaded only when needed &middot;
+            <b>Workflow</b> fixed steps in a fixed order, usually built as a Skill &middot;
+            <b>Plugin</b> the install package, bundles a few skills or tools together &middot;
+            <b>Instruction</b> a standing rule that's always on, like AGENTS.md.
+          </div>
+          <div class="logo-badge"></div>
+        </section>
+
+        <!-- 25 -->
         <section class="slide bg-navy">
           <div class="eyebrow">Wrap</div>
           <h1 class="title">You now own one portable Skill, working in more than one tool.</h1>
@@ -1613,7 +1694,7 @@ fixes first.</pre>
           <div class="logo-badge"></div>
         </section>
 
-        <!-- 25 -->
+        <!-- 26 -->
         <section class="slide bg-orange" style="align-items:center;justify-content:center;text-align:center;">
           <div class="logo-hero" style="width:150px;height:150px;margin-bottom:18px;"></div>
           <h1 class="title" style="margin-bottom:10px;">Thank you!</h1>
