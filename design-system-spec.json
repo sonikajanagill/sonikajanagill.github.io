@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "systemName": "Emerald Dawn",
+  "description": "Sonika Janagill's personal brand design system: futuristic-but-sustainable, solarpunk-inspired. See docs/WEBSITE-OVERHAUL.md for full rationale.",
+  "repositoryUrl": "https://github.com/sonikajanagill/sonikajanagill.github.io",
+  "paths": {
+    "tokens": "/design/tokens/design-tokens.json",
+    "components": "/design/components/",
+    "assets": "/img/brand/"
+  },
+  "componentManifest": "/design/components/manifest.json",
+  "framework": "html",
+  "brandRules": [
+    "No yellow, gold, lime, mustard or sand tones anywhere",
+    "No photorealism; flat vector / thin line illustration only",
+    "Sentence case headings, never all-caps except tiny labels",
+    "British English in all copy"
+  ]
+}
