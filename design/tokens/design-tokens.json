@@ -1,0 +1,83 @@
+{
+  "name": "Emerald Dawn",
+  "color": {
+    "light": {
+      "primary": { "value": "#0F8A6D", "description": "Emerald - primary actions, interactive states" },
+      "primaryHover": { "value": "#0C7157" },
+      "secondary": { "value": "#16808F", "description": "Horizon teal - hyperlinks, illustration lines" },
+      "accent": { "value": "#F2A05F", "description": "Sunrise apricot - highlights, tags. Never body text" },
+      "accent2": { "value": "#C9B8E8", "description": "Pastel lavender - secondary highlights. Never body text" },
+      "bgMain": { "value": "#F4F7F3", "description": "Mint mist - page background" },
+      "bgSecondary": { "value": "#EAF0EA" },
+      "bgCard": { "value": "#FFFFFF" },
+      "textPrimary": { "value": "#17251E", "description": "Evergreen ink" },
+      "textSecondary": { "value": "#4E6459" },
+      "textTertiary": { "value": "#7E9186" },
+      "pastel1": { "value": "#DDE9E1", "description": "Pale sage - section tints" },
+      "pastel2": { "value": "#FAE0C8", "description": "Peach - soft chips" },
+      "pastel3": { "value": "#E2DAF2", "description": "Lilac - soft chips" },
+      "pastel4": { "value": "#BFDDE4", "description": "Sky wash - soft chips" },
+      "primarySoft": { "value": "rgba(15, 138, 109, 0.08)" },
+      "glow": { "value": "rgba(15, 138, 109, 0.12)" }
+    },
+    "dark": {
+      "primary": { "value": "#4FC3A1" },
+      "primaryHover": { "value": "#6BD1B3" },
+      "secondary": { "value": "#5FB7C4" },
+      "accent": { "value": "#F2A05F" },
+      "accent2": { "value": "#C9B8E8" },
+      "bgMain": { "value": "#0E1713" },
+      "bgSecondary": { "value": "#14211B" },
+      "bgCard": { "value": "#1A2A22" },
+      "textPrimary": { "value": "#E4EEE8" },
+      "textSecondary": { "value": "#9AB0A4" },
+      "textTertiary": { "value": "#6E8377" },
+      "primarySoft": { "value": "rgba(79, 195, 161, 0.1)" },
+      "glow": { "value": "rgba(79, 195, 161, 0.15)" }
+    },
+    "forbidden": {
+      "description": "Hard brand rule - never use these hues, in any shade",
+      "value": ["yellow", "gold", "lime", "mustard", "sand"]
+    }
+  },
+  "typography": {
+    "heading": {
+      "fontFamily": "Fraunces",
+      "weights": [400, 500],
+      "opticalSize": "variable",
+      "usage": "h1, h2, article titles - the organic-futuristic serif"
+    },
+    "uiLabel": {
+      "fontFamily": "Space Grotesk",
+      "weights": [500],
+      "usage": "nav links, buttons, small UI labels"
+    },
+    "body": {
+      "fontFamily": "Inter",
+      "weights": [400, 500],
+      "usage": "body copy"
+    },
+    "code": {
+      "fontFamily": "JetBrains Mono",
+      "usage": "code blocks, technical snippets"
+    },
+    "scale": {
+      "hero": "3.2rem (clamp to 2.2rem mobile)",
+      "h2": "2rem",
+      "h3": "1.4rem",
+      "body": "1.05rem / 1.7 line-height"
+    },
+    "case": "sentence case for headings; avoid all-caps except tiny labels"
+  },
+  "shape": {
+    "radiusCard": "1rem",
+    "radiusChip": "999px",
+    "borderCard": "hairline, 1px",
+    "shadowCard": "small, lifts 2px on hover"
+  },
+  "illustration": {
+    "style": "flat vector, thin line (1.5px), pastel fills, no photorealism",
+    "motifs": ["sun disc", "leaf", "wind turbine", "circuit trace ending in a leaf", "horizon line"],
+    "backdrop": "gentle dawn horizon: rolling green hills, 2-3 wind turbines, canopy/leaf-circuit lines, peach-to-sky-wash morning sky, never yellow"
+  }
+}

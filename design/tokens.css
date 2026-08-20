@@ -1,0 +1,47 @@
+/* Emerald Dawn design tokens - single source of truth.
+   Mirrors design/tokens/design-tokens.json exactly. Change values here,
+   keep both files in sync, then re-run the Claude Design import. */
+
+:root {
+    --primary: #0F8A6D;
+    --primary-hover: #0C7157;
+    --secondary: #16808F;
+    --accent: #F2A05F;
+    --accent-2: #C9B8E8;
+    --bg-main: #F4F7F3;
+    --bg-secondary: #EAF0EA;
+    --bg-card: #FFFFFF;
+    --text-primary: #17251E;
+    --text-secondary: #4E6459;
+    --text-tertiary: #7E9186;
+    --pastel-1: #DDE9E1;
+    --pastel-2: #FAE0C8;
+    --pastel-3: #E2DAF2;
+    --pastel-4: #BFDDE4;
+    --primary-soft: rgba(15, 138, 109, 0.08);
+    --glow: rgba(15, 138, 109, 0.12);
+
+    --font-heading: 'Fraunces', Georgia, serif;
+    --font-label: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    --radius-card: 1rem;
+    --radius-chip: 999px;
+}
+
+[data-theme="dark"] {
+    --primary: #4FC3A1;
+    --primary-hover: #6BD1B3;
+    --secondary: #5FB7C4;
+    --accent: #F2A05F;
+    --accent-2: #C9B8E8;
+    --bg-main: #0E1713;
+    --bg-secondary: #14211B;
+    --bg-card: #1A2A22;
+    --text-primary: #E4EEE8;
+    --text-secondary: #9AB0A4;
+    --text-tertiary: #6E8377;
+    --primary-soft: rgba(79, 195, 161, 0.1);
+    --glow: rgba(79, 195, 161, 0.15);
+}

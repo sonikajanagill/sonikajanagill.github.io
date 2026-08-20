@@ -1,0 +1,9 @@
+{
+  "components": [
+    { "name": "Button - primary", "file": "button.html", "selector": ".btn.btn-primary" },
+    { "name": "Button - secondary", "file": "button.html", "selector": ".btn.btn-secondary" },
+    { "name": "Nav bar", "file": "nav.html", "selector": ".nav-container" },
+    { "name": "Article card", "file": "card.html", "selector": ".article-card" },
+    { "name": "Tag chip", "file": "chip.html", "selector": ".chip" }
+  ]
+}
