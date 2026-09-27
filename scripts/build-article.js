@@ -240,7 +240,7 @@ function generateHtml(article, bodyHtml) {
 
     <!-- Styles -->
     <link rel="stylesheet" href="../../styles.css?v=20260927">
-    <link rel="stylesheet" href="../article-styles.css">
+    <link rel="stylesheet" href="../article-styles.css?v=20260927">
 </head>
 <body>
     <!-- Navigation (shared with every page, see /scripts/nav.js) -->
