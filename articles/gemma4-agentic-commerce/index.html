@@ -28,12 +28,12 @@
     <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260927">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -406,7 +406,7 @@ warehouse within 14 days. Assess whether this is feasible and
 
 <p>The practical pattern:</p>
 
-<p>> <strong>MoE for protocol handshakes, Dense for commitment decisions.</strong> In building the multi-protocol server (UCP/ACP/MCP), I found that the 31B Dense can be <em>too slow</em> for certain UCP protocol handshakes — the timeout expires before the model responds. This isn't a model weakness, it's a latency constraint that makes a multi-model strategy architecturally necessary rather than optional. No model card will tell you this. It comes from running the protocol.</p>
+<p>> <strong>MoE for protocol handshakes, Dense for commitment decisions.</strong> In building the multi-protocol server (UCP/ACP/MCP), I found that the 31B Dense can be <em>too slow</em> for certain UCP protocol handshakes: the timeout expires before the model responds. This isn't a model weakness, it's a latency constraint that makes a multi-model strategy architecturally necessary rather than optional. No model card will tell you this. It comes from running the protocol.</p>
 
 <p>This is the kind of production nuance that rarely appears in model announcement blogs. If you're designing a commerce agent pipeline, plan for model selection at the workflow step level, not the system level.</p>
 

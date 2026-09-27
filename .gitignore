@@ -18,6 +18,7 @@ article-drafts/*
 .claude/*
 .agents/*
 CLAUDE.md
+AGENTS.md
 CLAUDE.md.tmp
 
 .DS_Store

@@ -27,12 +27,12 @@
     <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260927">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -449,10 +449,10 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/path/to/credential-config.json'
         <p>All patient data stayed in Azure Blob Storage in their compliant region. Only anonymised features crossed the cloud boundary.</p>
 
         <h3>2. Network Isolation</h3>
-        <p>We used Cloud Interconnect + VPC Service Controls to ensure data never touched public internet. In retrospect, this was the most complex part of the implementation—it took 2 days to get the routing right.</p>
+        <p>We used Cloud Interconnect + VPC Service Controls to ensure data never touched public internet. In retrospect, this was the most complex part of the implementation: it took 2 days to get the routing right.</p>
 
         <h3>3. Cryptographic Trail</h3>
-        <p>Every data access had to be auditable. WIF gave us this automatically—each token exchange generated an audit log we could present to regulators.</p>
+        <p>Every data access had to be auditable. WIF gave us this automatically, each token exchange generated an audit log we could present to regulators.</p>
 
         <h3>The Azure Difference</h3>
 
@@ -664,7 +664,7 @@ aws ec2 modify-instance-metadata-options --http-put-response-hop-limit 2 --insta
 
         <h2>What's Next: From Security to Economics</h2>
 
-        <p>You now have the security foundation in place—zero static credentials, cryptographic trust, and automated compliance. Your multi-cloud MLOps pipeline is secure.</p>
+        <p>You now have the security foundation in place: zero static credentials, cryptographic trust, and automated compliance. Your multi-cloud MLOps pipeline is secure.</p>
 
         <p>But security is just one dimension of production readiness. The other critical question: <strong>What does this infrastructure actually cost?</strong></p>
 

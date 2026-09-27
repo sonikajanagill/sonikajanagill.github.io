@@ -1,6 +1,6 @@
 # sonikajanagill.github.io
 
-Personal website and blog for Sonika Janagill — AI/ML Engineer & Cloud Architect.
+Personal website and blog for Sonika Janagill: AI/ML Engineer & Cloud Architect.
 
 **Live site:** [sonikajanagill.com](https://sonikajanagill.com)
 

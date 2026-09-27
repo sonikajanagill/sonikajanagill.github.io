@@ -29,12 +29,12 @@
     <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260927">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -112,7 +112,7 @@
 
         <p>That vision is right. The governance infrastructure to support it at an enterprise scale largely does not exist yet.</p>
 
-        <p style="text-align: center; font-style: italic; color: var(--text-secondary); margin: 1.5rem 0;">Don't Build Agents, Build Skills Instead — Barry Zhang & Mahesh Murag, Anthropic</p>
+        <p style="text-align: center; font-style: italic; color: var(--text-secondary); margin: 1.5rem 0;">Don't Build Agents, Build Skills Instead: Barry Zhang & Mahesh Murag, Anthropic</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
@@ -120,9 +120,9 @@
 
         <p>Before discussing governance patterns, the current state of the public skills ecosystem needs to be stated plainly.</p>
 
-        <p>A January 2026 study — the first large-scale empirical security analysis of public skill marketplaces — scanned 31,132 skills from two major registries. One in four contained at least one vulnerability. Data exfiltration patterns appeared in 13.3% of skills. Privilege escalation attempts in 11.8%. Patterns consistent with deliberate malicious intent in 5.2%. Skills bundling executable scripts were 2.12 times more likely to contain vulnerabilities than instruction-only skills.</p>
+        <p>A January 2026 study, the first large-scale empirical security analysis of public skill marketplaces, scanned 31,132 skills from two major registries. One in four contained at least one vulnerability. Data exfiltration patterns appeared in 13.3% of skills. Privilege escalation attempts in 11.8%. Patterns consistent with deliberate malicious intent in 5.2%. Skills bundling executable scripts were 2.12 times more likely to contain vulnerabilities than instruction-only skills.</p>
 
-        <p>Separately, Snyk's AgentScan found that 7.1% of publicly listed skills leak API keys through hardcoded credentials. In February 2026, 341 malicious skills were distributed through ClawHub — some containing obfuscated download-and-execute payloads hidden in HTML comments within Markdown files, invisible when rendered in a browser but faithfully read by every agent that loaded the skill. At the time of discovery, at least one of those skills was the most downloaded in its category.</p>
+        <p>Separately, Snyk's AgentScan found that 7.1% of publicly listed skills leak API keys through hardcoded credentials. In February 2026, 341 malicious skills were distributed through ClawHub: some containing obfuscated download-and-execute payloads hidden in HTML comments within Markdown files, invisible when rendered in a browser but faithfully read by every agent that loaded the skill. At the time of discovery, at least one of those skills was the most downloaded in its category.</p>
 
         <p>These are not edge cases. They are the baseline state of the public skills ecosystem in 2026.</p>
 
@@ -154,7 +154,7 @@
 
         <p><strong>Supply chain substitution.</strong> A legitimate skill gains trust and downloads, then a malicious update is pushed. Without integrity verification at install time, your developers may be running a different skill than the one they originally reviewed.</p>
 
-        <p>The practical recommendation is to treat skill installation with the same rigour as installing third-party software on a production system — because that is functionally what it is.</p>
+        <p>The practical recommendation is to treat skill installation with the same rigour as installing third-party software on a production system, because that is functionally what it is.</p>
 
         <h4>Where to Source External Skills: Three-Tier Classification</h4>
 
@@ -180,11 +180,11 @@
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h3>Challenge 2: Layering Skills — Organisation, Project, Personal</h3>
+        <h3>Challenge 2: Layering Skills: Organisation, Project, Personal</h3>
 
         <p>Once you establish a security policy for external skills, the second problem is architectural: how do you layer your own?</p>
 
-        <p>The pattern that works at enterprise scale — and that Anthropic's enterprise documentation endorses — is a three-layer hierarchy:</p>
+        <p>The pattern that works at enterprise scale, and that Anthropic's enterprise documentation endorses, is a three-layer hierarchy:</p>
 
         <figure class="article-image">
             <img src="../../img/agent_skill_hierarchy.png" alt="Agent skill hierarchy diagram showing organisation, project, and personal skill layers.">
@@ -197,15 +197,15 @@
 
         <p>Foundational skills add capabilities the agent does not have natively, document creation, PDF processing, code review patterns, spreadsheet generation. These are good candidates to source from vendor-published repositories via skills.sh Official, audit, and import. Anthropic, Microsoft, and others publish and maintain these. You do not need to build them from scratch.</p>
 
-        <p>Workflow skills encode your organisation's specific processes — your Jira conventions, your compliance checklist, your deployment runbook, your brand voice guidelines. These you build internally. No registry has them, because they are uniquely yours. This is where your institutional knowledge lives in a form agents can actively apply.</p>
+        <p>Workflow skills encode your organisation's specific processes: your Jira conventions, your compliance checklist, your deployment runbook, your brand voice guidelines. These you build internally. No registry has them, because they are uniquely yours. This is where your institutional knowledge lives in a form agents can actively apply.</p>
 
         <p>The distinction matters for governance: foundational skills need security review and compatibility testing; workflow skills need domain review, owner assignment, and ongoing maintenance as your processes evolve.</p>
 
         <h4>Progressive Disclosure: Avoiding Context Drowning</h4>
 
-        <p>The architectural challenge with layering is context window management when all three layers are active simultaneously. Anthropic's own creators use the term "context drowning" for what happens when too much is loaded at once; the model is so occupied processing instructions that it has little capacity left for the actual task. The failure mode is common: one practitioner's account of building 100+ skills in production describes a marketing content auditor that loaded 15,000 tokens on every invocation—brand voice guidelines, SEO checklists, competitor templates, platform formatting rules, all in a single SKILL.md file. The skill worked, but consumed so much context that there was barely room for the content being audited. Output quality dropped.</p>
+        <p>The architectural challenge with layering is context window management when all three layers are active simultaneously. Anthropic's own creators use the term "context drowning" for what happens when too much is loaded at once; the model is so occupied processing instructions that it has little capacity left for the actual task. The failure mode is common: one practitioner's account of building 100+ skills in production describes a marketing content auditor that loaded 15,000 tokens on every invocation: brand voice guidelines, SEO checklists, competitor templates, platform formatting rules, all in a single SKILL.md file. The skill worked, but consumed so much context that there was barely room for the content being audited. Output quality dropped.</p>
 
-        <p>The solution is progressive disclosure: the SKILL.md file contains only core instructions and a list of reference files. The agent loads reference files only when the specific task requires them. The base load dropped from 15,000 tokens to roughly 650. The full 15,000 remained accessible when needed. The pattern—small core, on-demand references, 200 to 500 lines per skill—should be the standard for every organisational skill.</p>
+        <p>The solution is progressive disclosure: the SKILL.md file contains only core instructions and a list of reference files. The agent loads reference files only when the specific task requires them. The base load dropped from 15,000 tokens to roughly 650. The full 15,000 remained accessible when needed. The pattern, small core, on-demand references, 200 to 500 lines per skill, should be the standard for every organisational skill.</p>
 
         <p>For project-level skills specifically, resist the temptation to duplicate documentation into SKILL.md. Instead, point to existing project documentation: ADRs, README files, CONTRIBUTING guides. The skill becomes a routing layer that tells the agent which project documentation to consult. One source of truth; the skill just knows where to find it.</p>
 
@@ -221,7 +221,7 @@
 
         <p><strong>Automated Slack notifications on merge.</strong> A GitHub Action that posts a summary of changes to your team channel on every merge to main handles passive notification without requiring engineers to monitor the repository actively.</p>
 
-        <p><strong>Skills Bill of Materials (SBoM) per project.</strong> Just as software projects track dependency versions in a package-lock.json, each project should maintain a Skills Bill of Materials—a record of which skills it uses, at which version, when each was last audited, and who approved it. When a security incident involves a skill, you know exactly which projects are affected and can remediate in minutes rather than days. The SBoM is the audit trail your security team will ask for; build it before they ask.</p>
+        <p><strong>Skills Bill of Materials (SBoM) per project.</strong> Just as software projects track dependency versions in a package-lock.json, each project should maintain a Skills Bill of Materials: a record of which skills it uses, at which version, when each was last audited, and who approved it. When a security incident involves a skill, you know exactly which projects are affected and can remediate in minutes rather than days. The SBoM is the audit trail your security team will ask for; build it before they ask.</p>
 
         <p><strong>Explicit update policy by change type.</strong> Security-related updates trigger mandatory migration with a defined deadline. Feature updates are optional until the next quarterly skills refresh cycle. Making this explicit prevents the assumption that all updates are equivalent.</p>
 
@@ -235,13 +235,13 @@
 
         <h4>Define the Taxonomy First</h4>
 
-        <p>The intervention is straightforward: define your domain taxonomy before writing skills, not after. Establish structured domain folders—Engineering, Product, Finance, Legal, Marketing, Operations—and explicitly document the context each domain assumes. Engineering skills assume codebase access. Finance skills assume access to metrics data. Marketing skills assume brand guidelines are available. Documenting these assumptions in each domain's README means engineers understand what a skill needs before they try to run it.</p>
+        <p>The intervention is straightforward: define your domain taxonomy before writing skills, not after. Establish structured domain folders, Engineering, Product, Finance, Legal, Marketing, Operations, and explicitly document the context each domain assumes. Engineering skills assume codebase access. Finance skills assume access to metrics data. Marketing skills assume brand guidelines are available. Documenting these assumptions in each domain's README means engineers understand what a skill needs before they try to run it.</p>
 
         <h4>Add a Routing Layer at Scale</h4>
 
-        <p>A well-defined taxonomy solves discovery for humans browsing the catalogue. It does not solve it for the agent when the library reaches 500+ skills. At that point, even a well-organised registry creates a different version of context drowning—too many candidate skills, no clear signal about which to load.</p>
+        <p>A well-defined taxonomy solves discovery for humans browsing the catalogue. It does not solve it for the agent when the library reaches 500+ skills. At that point, even a well-organised registry creates a different version of context drowning: too many candidate skills, no clear signal about which to load.</p>
 
-        <p>The solution is a lightweight routing layer: a dedicated orchestration skill that acts as a switchboard. It reads user intent, identifies which domain skills are relevant to the current task, and loads them in sequence rather than dumping everything into context at once. The same practitioner implemented exactly this in his 170-skill repository—a keyword-based routing protocol that coordinates cross-domain tasks without requiring the engineer to manually invoke five skills in sequence.</p>
+        <p>The solution is a lightweight routing layer: a dedicated orchestration skill that acts as a switchboard. It reads user intent, identifies which domain skills are relevant to the current task, and loads them in sequence rather than dumping everything into context at once. The same practitioner implemented exactly this in his 170-skill repository: a keyword-based routing protocol that coordinates cross-domain tasks without requiring the engineer to manually invoke five skills in sequence.</p>
 
         <p>For enterprise teams, this routing layer is worth building deliberately as a first-class skill, not discovering accidentally when the agent starts ignoring half the library.</p>
 
@@ -263,7 +263,7 @@
             <tr style="border-bottom: 1px solid var(--border);">
                 <td style="padding: 0.75rem;">Named approver</td>
                 <td style="padding: 0.75rem;">Not shown</td>
-                <td style="padding: 0.75rem;">Required — with date</td>
+                <td style="padding: 0.75rem;">Required, with date</td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border);">
                 <td style="padding: 0.75rem;">Tool compatibility</td>
@@ -283,7 +283,7 @@
             <tr style="border-bottom: 1px solid var(--border);">
                 <td style="padding: 0.75rem;">Named owner</td>
                 <td style="padding: 0.75rem;">Not shown</td>
-                <td style="padding: 0.75rem;">Required — accountable for updates</td>
+                <td style="padding: 0.75rem;">Required: accountable for updates</td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border);">
                 <td style="padding: 0.75rem;">Deprecation date</td>
@@ -311,7 +311,7 @@
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 
-        <h3>Challenge 5: E-Commerce Knowledge — Skills or RAG?</h3>
+        <h3>Challenge 5: E-Commerce Knowledge: Skills or RAG?</h3>
 
         <p>This question comes up frequently when organisations consider converting years of accumulated institutional knowledge into something AI agents can use. An e-commerce services company with 20 years of wiki and Jira history is a good test case: is it better to build skills, or to convert all of that into a RAG or KAG system?</p>
 
@@ -320,7 +320,7 @@
         <p><strong>RAG and KAG are the right answer when:</strong></p>
         <ul>
             <li>Knowledge is dense, unstructured, and spans thousands of documents</li>
-            <li>Queries are exploratory — "what did we decide about the checkout flow in 2019?"</li>
+            <li>Queries are exploratory: "what did we decide about the checkout flow in 2019?"</li>
             <li>The answer requires synthesising across multiple sources</li>
         </ul>
 
@@ -331,9 +331,9 @@
             <li>The context is bounded and can be expressed in a few hundred lines</li>
         </ul>
 
-        <p>For a 20-year e-commerce knowledge base, the answer is almost certainly both — with a clear separation of concerns. RAG handles institutional memory retrieval. Skills handle workflow encoding. The skill that handles a customer return query does not need to contain your full returns policy documentation — it needs to know how to query your KAG for the relevant policy, then apply the procedural steps your team has agreed on.</p>
+        <p>For a 20-year e-commerce knowledge base, the answer is almost certainly both, with a clear separation of concerns. RAG handles institutional memory retrieval. Skills handle workflow encoding. The skill that handles a customer return query does not need to contain your full returns policy documentation: it needs to know how to query your KAG for the relevant policy, then apply the procedural steps your team has agreed on.</p>
 
-        <p>The failure mode to avoid is trying to encode 20 years of unstructured knowledge directly into SKILL.md files. The procedural knowledge — how to handle checkout edge cases, how to assess fraud risk, how to escalate a supplier dispute — translates well into skills. The factual knowledge — what the policy says, what the historical decision was — belongs in a retrieval layer. Skills that try to do both become too large to maintain and too heavy to load efficiently.</p>
+        <p>The failure mode to avoid is trying to encode 20 years of unstructured knowledge directly into SKILL.md files. The procedural knowledge, how to handle checkout edge cases, how to assess fraud risk, how to escalate a supplier dispute, translates well into skills. The factual knowledge, what the policy says, what the historical decision was, belongs in a retrieval layer. Skills that try to do both become too large to maintain and too heavy to load efficiently.</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 

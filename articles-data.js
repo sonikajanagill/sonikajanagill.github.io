@@ -7,7 +7,7 @@ const articlesData = [
         date: 'May 2026',
         tags: ['AI Agents', 'MLOps', 'Software Architecture', 'Enterprise AI', 'Harness Engineering'],
         readTime: '9 min read',
-        description: 'Every engineering team has access to the same frontier models. The teams winning in production are not building better models — they are building better harnesses. Agent = Model + Harness. The model is available to everyone. The harness is your moat.',
+        description: 'Every engineering team has access to the same frontier models. The teams winning in production are not building better models: they are building better harnesses. Agent = Model + Harness. The model is available to everyone. The harness is your moat.',
         url: 'articles/harness-engineering-general/',
         image: 'img/harness_engineering_hero.png',
         category: 'Harness Engineering',
@@ -81,7 +81,7 @@ const articlesData = [
         date: 'December 2025',
         tags: ['AI', 'AI Agents', 'Architecture', 'Strategy'],
         readTime: '25 min read',
-        description: 'How AGNTCY, open protocols, and MACH Alliance are building interoperable AI agent systems—and why enterprise architects must act now to avoid lock-in.',
+        description: 'How AGNTCY, open protocols, and MACH Alliance are building interoperable AI agent systems, and why enterprise architects must act now to avoid lock-in.',
         url: 'articles/architecting-internet-of-agents/',
         image: 'img/architecting_internet_of_agents.png'
     },
@@ -121,7 +121,7 @@ const articlesData = [
         date: 'November 2025',
         tags: ['AI', 'Innovation', 'Leadership', 'Career'],
         readTime: '5 min read',
-        description: 'AI didn\'t just make learning easier — it changed who gets to innovate. Explore how democratised knowledge is creating a divide between optimisation and innovation, and why diverse voices are the key to solving tomorrow\'s problems.',
+        description: 'AI didn\'t just make learning easier: it changed who gets to innovate. Explore how democratised knowledge is creating a divide between optimisation and innovation, and why diverse voices are the key to solving tomorrow\'s problems.',
         url: 'articles/the-creator-divide/',
         image: 'img/the_creator_divide.png'
     },

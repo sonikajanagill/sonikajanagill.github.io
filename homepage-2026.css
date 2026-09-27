@@ -1,5 +1,5 @@
 /* ============================================================
-   Emerald Dawn — Homepage 2026 (editorial masthead, type-led)
+   Emerald Dawn: Homepage 2026 (editorial masthead, type-led)
    Scope: homepage only. All selectors namespaced .ed-*
    Load AFTER styles.css. Nav, footer and theme toggle are
    untouched and still come from styles.css + scripts/nav.js.
@@ -7,7 +7,7 @@
 
 /* --- Dawn backdrop tokens -----------------------------------
    These already exist in styles.css for the old .sj-hero. The
-   values below are identical — safe to delete this block once
+   values below are identical: safe to delete this block once
    you've confirmed styles.css declares all eight.
    ------------------------------------------------------------ */
 :root {
@@ -163,7 +163,7 @@
     50%      { opacity: .5; transform: scale(1.25); }
 }
 
-/* The masthead headline. Not the name — the promise. */
+/* The masthead headline. Not the name: the promise. */
 .ed-h1 {
     font-family: var(--font-heading);
     font-size: clamp(2.75rem, 5.6vw, 5.25rem);
@@ -196,7 +196,7 @@
 }
 .ed-hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-/* Pill CTAs — same shape as .sj-cta-button, restated so the
+/* Pill CTAs: same shape as .sj-cta-button, restated so the
    homepage does not depend on that rule's padding. */
 .ed-btn {
     display: inline-flex;

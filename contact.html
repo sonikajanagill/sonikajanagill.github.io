@@ -16,7 +16,7 @@
     <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260927">
     <style>
         /* Contact page specific styles */
         /* Contact hero uses shared .page-hero styles from styles.css */
@@ -139,7 +139,7 @@
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Hero Section -->
     <header class="page-hero">
@@ -242,8 +242,8 @@
         // Preset the email subject when arriving from a CTA (?subject=speaking|mentoring)
         (function () {
             const presets = {
-                speaking: { subject: 'Speaking enquiry', note: 'Inviting me to speak? Use the email link below — the subject line is already set.' },
-                mentoring: { subject: 'Mentoring request', note: 'Requesting mentoring? Use the email link below — the subject line is already set.' }
+                speaking: { subject: 'Speaking enquiry', note: 'Inviting me to speak? Use the email link below: the subject line is already set.' },
+                mentoring: { subject: 'Mentoring request', note: 'Requesting mentoring? Use the email link below: the subject line is already set.' }
             };
             const preset = presets[new URLSearchParams(window.location.search).get('subject')];
             if (!preset) return;

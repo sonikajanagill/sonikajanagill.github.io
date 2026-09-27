@@ -27,12 +27,12 @@
     <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260927">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -86,7 +86,7 @@
 
         <!--<p><em>Series: Enterprise MLOps on GCP (Part 2A)</em></p>-->
 
-        <p class="drop-cap">Recently, a computer science student accidentally committed their Google Cloud service account key to a public GitHub repository. Within hours, malicious bots—constantly scanning for exactly this kind of mistake—discovered it and spun up cryptocurrency mining operations. The bill: <strong>$55,000</strong> before the student even woke up (<a href="https://www.reddit.com/r/googlecloud/comments/1noctxi/student_hit_with_a_5544478_google_cloud_bill/">Ref</a>). This is the reality of MLOps security when cloud credentials and cloud secrets are managed through static service account keys instead of modern multi-cloud authentication solutions like Workload Identity Federation.</p>
+        <p class="drop-cap">Recently, a computer science student accidentally committed their Google Cloud service account key to a public GitHub repository. Within hours, malicious bots, constantly scanning for exactly this kind of mistake, discovered it and spun up cryptocurrency mining operations. The bill: <strong>$55,000</strong> before the student even woke up (<a href="https://www.reddit.com/r/googlecloud/comments/1noctxi/student_hit_with_a_5544478_google_cloud_bill/">Ref</a>). This is the reality of MLOps security when cloud credentials and cloud secrets are managed through static service account keys instead of modern multi-cloud authentication solutions like Workload Identity Federation.</p>
 
         <p>But the bill wasn't even the worst part.</p>
 
@@ -96,7 +96,7 @@
 
         <p>The problem is widespread:</p>
         <ul>
-            <li>Developers exposed <strong>23.8 million secrets</strong> on public GitHub repositories in 2024 alone—a significant 25% year-over-year increase from the previous year's figures. (<a href="https://blog.gitguardian.com/the-state-of-secrets-sprawl-2025/">GitGuardian</a>)</li>
+            <li>Developers exposed <strong>23.8 million secrets</strong> on public GitHub repositories in 2024 alone: a significant 25% year-over-year increase from the previous year's figures. (<a href="https://blog.gitguardian.com/the-state-of-secrets-sprawl-2025/">GitGuardian</a>)</li>
             <li><strong>65% of Forbes AI 50 companies</strong> had leaked verified secrets on GitHub (<a href="https://www.wiz.io/blog/forbes-ai-50-leaking-secrets">Wiz Exposure Report 2025</a>)</li>
             <li>Average cost per data breach: <strong>$4.44 million</strong> (<a href="https://uk.newsroom.ibm.com/2025-cost-of-data-breach-UK">IBM Security Report 2025</a>)</li>
         </ul>
@@ -134,7 +134,7 @@
 
         <p>When faced with this multi-cloud reality, most teams reach for the tool they know: <strong>The Service Account Key.</strong></p>
 
-        <p>I call this the "Download and Pray" pattern. In my WebSphere days, we did something similar with database credentials—storing them in WebSphere variables and property files. It was painful then with 20 passwords across an enterprise platform.</p>
+        <p>I call this the "Download and Pray" pattern. In my WebSphere days, we did something similar with database credentials: storing them in WebSphere variables and property files. It was painful then with 20 passwords across an enterprise platform.</p>
 
         <p>In cloud-native ML? I've watched this pattern multiply by 50.</p>
 
@@ -148,7 +148,7 @@
 7. ✓ Pray nobody commits the key to GitHub
 8. ✓ Repeat for Azure, GitHub Actions, on-prem...</code></pre>
 
-        <p>This approach isn't just common—it's nearly universal. I've yet to meet an engineering team that hasn't started here. The question is how quickly they realise it doesn't scale.</p>
+        <p>This approach isn't just common: it's nearly universal. I've yet to meet an engineering team that hasn't started here. The question is how quickly they realise it doesn't scale.</p>
 
         <h3>1. The Financial Cost</h3>
 
@@ -168,7 +168,7 @@
             <li><strong>Total management overhead:</strong> ~60 hours/year per project</li>
         </ul>
 
-        <p>At a $150/hour engineering rate, that's <strong>$9,000/year in management overhead alone</strong>—33x the storage cost.</p>
+        <p>At a $150/hour engineering rate, that's <strong>$9,000/year in management overhead alone</strong>: 33x the storage cost.</p>
 
         <p>And this was a <em>well-run</em> project. I've seen much worse.</p>
 
@@ -188,7 +188,7 @@
 
         <h3>3. The Security Liability</h3>
 
-        <p>This is the most critical vulnerability. A static key remains valid until explicitly revoked. If it leaks, it grants access to anyone, anywhere, forever—and discovering a leak often takes days or weeks. In an era of automated scrapers and AI-driven cyberattacks, relying on a static file is like leaving your front door key under the mat—and posting your address on the internet.</p>
+        <p>This is the most critical vulnerability. A static key remains valid until explicitly revoked. If it leaks, it grants access to anyone, anywhere, forever, and discovering a leak often takes days or weeks. In an era of automated scrapers and AI-driven cyberattacks, relying on a static file is like leaving your front door key under the mat, and posting your address on the internet.</p>
 
         <h4>Where Keys Hide (And Leak):</h4>
         <ul>
@@ -209,7 +209,7 @@
 
         <p><strong>Stop using them.</strong></p>
 
-        <p>This is where <strong>Workload Identity Federation (WIF)</strong> changes the game. WIF allows you to eliminate static credentials entirely. Instead of saying, "Here is my password" (the key), your workload says, <strong>"I am who AWS says I am—verify it yourself."</strong></p>
+        <p>This is where <strong>Workload Identity Federation (WIF)</strong> changes the game. WIF allows you to eliminate static credentials entirely. Instead of saying, "Here is my password" (the key), your workload says, <strong>"I am who AWS says I am: verify it yourself."</strong></p>
 
         <h3>Understanding the Shift: A Simple Metaphor</h3>
 
@@ -258,7 +258,7 @@ Vertex AI, BigQuery, Storage</code></pre>
 
         <ol>
             <li><strong>The Request:</strong> Your application running on AWS (using an IAM Role) asks Google Cloud for access.</li>
-            <li><strong>The Proof:</strong> It presents a temporary token signed by AWS—cryptographic proof of its identity.</li>
+            <li><strong>The Proof:</strong> It presents a temporary token signed by AWS: cryptographic proof of its identity.</li>
             <li><strong>The Verification:</strong> Google Cloud's Security Token Service checks this token against a trust policy you defined.</li>
             <li><strong>The Access:</strong> If the trust validates, Google issues a <strong>short-lived access token</strong> (valid for 1 hour) to your application.</li>
         </ol>
@@ -290,7 +290,7 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
         </div>
         <h3>See It In Action</h3>
 
-        <p>If you're more of a visual learner, the Google Cloud team has an excellent 6-minute walkthrough that demonstrates this exact flow. Watch how seamlessly the token exchange happens—no secrets, no manual rotation, just secure authentication.</p>
+        <p>If you're more of a visual learner, the Google Cloud team has an excellent 6-minute walkthrough that demonstrates this exact flow. Watch how seamlessly the token exchange happens: no secrets, no manual rotation, just secure authentication.</p>
 
         <div class="youtube-embed">
             <iframe 
@@ -379,7 +379,7 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
 
         <h2>The Business Case: Why This Matters Now</h2>
 
-        <p>Adopting WIF isn't just "good security hygiene"—it's a business imperative.</p>
+        <p>Adopting WIF isn't just "good security hygiene": it's a business imperative.</p>
 
         <h3>Regulatory Pressure is Mounting</h3>
 
@@ -393,7 +393,7 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
 
         <p>Organisations that adopt WIF ship faster. They don't have "key rotation days." They don't have security review bottlenecks for new secrets. They just have automated, secure, invisible authentication that works.</p>
 
-        <p>In my implementations, the teams that adopted WIF freed up an average of <strong>60 hours per quarter</strong> previously spent on credential management. That's 240 hours per year—6 full engineering weeks—that can be redirected to building features instead of fighting infrastructure.</p>
+        <p>In my implementations, the teams that adopted WIF freed up an average of <strong>60 hours per quarter</strong> previously spent on credential management. That's 240 hours per year, 6 full engineering weeks, that can be redirected to building features instead of fighting infrastructure.</p>
 
         <h2>When WIF Isn't the Answer</h2>
 
@@ -440,7 +440,7 @@ Vertex AI, BigQuery, Cloud Storage</code></pre>
             <li><strong>Static service account keys are a security liability</strong> that costs you money, time, and sleep</li>
             <li><strong>Workload Identity Federation eliminates secrets entirely</strong> through cryptographic trust</li>
             <li><strong>The transformation takes 30 minutes to set up</strong> and saves 60+ hours per quarter</li>
-            <li><strong>This is Google's recommended pattern</strong> for multi-cloud workloads—not an experimental feature</li>
+            <li><strong>This is Google's recommended pattern</strong> for multi-cloud workloads, not an experimental feature</li>
             <li><strong>The implementation details are coming</strong> in Part 2B with complete working code</li>
         </ol>
 

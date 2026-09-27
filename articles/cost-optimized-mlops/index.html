@@ -33,13 +33,13 @@
     <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260927">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
 
 <body>
     <div id="nav-placeholder"></div>
-    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -688,7 +688,7 @@ def create_warmup_schedule(endpoint_id):
         <h3>Strategy 4: Feature Store Caching (40% Compute Reduction)</h3>
 
         <p><strong>The problem:</strong> 50K products needing embeddings across multiple models (search,
-            recommendations, similar items) results in recomputing the same embeddings repeatedly—40% of compute wasted
+            recommendations, similar items) results in recomputing the same embeddings repeatedly: 40% of compute wasted
             on redundant work. <strong>The solution:</strong> Use Vertex AI Feature Store as an embeddings cache (novel
             use case beyond typical tabular features).</p>
 
@@ -885,7 +885,7 @@ def cost_optimized_pipeline(aws_bucket):
 
         <p><strong>When to apply these patterns:</strong> Optimize when you have stable production workloads (3+
             months), monthly spend exceeds $500, baseline metrics available, and team buy-in secured. Skip optimisation
-            during MVP/prototype phases or if major architecture changes are planned—focus on product-market fit first,
+            during MVP/prototype phases or if major architecture changes are planned: focus on product-market fit first,
             cost efficiency second.</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">

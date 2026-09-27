@@ -29,12 +29,12 @@
     <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260927">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -86,7 +86,7 @@
     <main class="blog-content">
         <a href="../" class="back-link">← Back to Articles</a>
 
-        <p class="drop-cap">OpenClaw has had its moment in the spotlight, and a security wake-up call to go with it. The self-hosted personal AI assistant — the one Fortune called "the latest craze transforming China's AI sector" — saw its creator hired away by OpenAI, connected to 24+ messaging channels, and inspired thousands of "lobster on a Mac Mini" setups. It also, somewhat inevitably, had a supply-chain incident: malicious "skills" uploaded to ClawHub quietly targeting users' crypto wallets and credentials.</p>
+        <p class="drop-cap">OpenClaw has had its moment in the spotlight, and a security wake-up call to go with it. The self-hosted personal AI assistant, the one Fortune called "the latest craze transforming China's AI sector", saw its creator hired away by OpenAI, connected to 24+ messaging channels, and inspired thousands of "lobster on a Mac Mini" setups. It also, somewhat inevitably, had a supply-chain incident: malicious "skills" uploaded to ClawHub quietly targeting users' crypto wallets and credentials.</p>
 
         <p>While working with Google ADK, I thought: <strong>what would OpenClaw look like if it were born cloud-native, built with enterprise security from day one, and lived entirely on GCP?</strong></p>
 
@@ -100,7 +100,7 @@
 
         <p>OpenClaw is the idea that your AI assistant should live with you, not in someone else's cloud. Your context, your memory, your skills: all local. It runs on macOS, Linux, or Windows (WSL2), wakes up to a voice command, handles your Gmail, connects to 24+ messaging channels, and automates tasks via cron jobs and webhooks. No vendor lock-in. No monthly SaaS bill.</p>
 
-        <p>It's genuinely brilliant, and the community around it is electric. The "raise a lobster" meme — a nod to OpenClaw's logo where users place a plastic lobster on their Mac Mini as a badge of honour — is absurd and I love it.</p>
+        <p>It's genuinely brilliant, and the community around it is electric. The "raise a lobster" meme, a nod to OpenClaw's logo where users place a plastic lobster on their Mac Mini as a badge of honour, is absurd and I love it.</p>
 
         <p><strong>But security is an afterthought, not a foundation.</strong> OpenClaw does have some baseline protections: DM pairing requires approval codes from unknown senders, and non-core sessions run in Docker sandboxes. But there's no DLP layer, no managed secret store, no IAM scoping. And, as we now know, a supply-chain attack vector that required zero effort to exploit.</p>
 
@@ -112,7 +112,7 @@
 
         <h3>So What Is AdkBot?</h3>
 
-        <p>AdkBot is a Telegram-connected AI assistant built on Google ADK 1.0 — the same multi-agent framework Google uses internally for Agentspace and Customer Engagement Suite. It delegates tasks to four specialised subagents (Gmail, Calendar, Drive, Web Search), runs on Cloud Run, and is secure by default with six layers of protection baked in at the infrastructure level.</p>
+        <p>AdkBot is a Telegram-connected AI assistant built on Google ADK 1.0: the same multi-agent framework Google uses internally for Agentspace and Customer Engagement Suite. It delegates tasks to four specialised subagents (Gmail, Calendar, Drive, Web Search), runs on Cloud Run, and is secure by default with six layers of protection baked in at the infrastructure level.</p>
 
         <p><strong>Think of it as OpenClaw's cloud-native, security-first cousin.</strong></p>
 
@@ -218,7 +218,7 @@ Vertex AI Memory Bank (memory) + Cloud Trace (observability)
      ▼
 Telegram Response</code></pre>
 
-        <p><strong>Memory</strong> is handled by Vertex AI Memory Bank — Google's managed vector store for agents — rather than a hand-rolled Firestore schema. Conversations persist across sessions, context survives restarts, and retrieval is semantic rather than exact-match string lookup.</p>
+        <p><strong>Memory</strong> is handled by Vertex AI Memory Bank, Google's managed vector store for agents, rather than a hand-rolled Firestore schema. Conversations persist across sessions, context survives restarts, and retrieval is semantic rather than exact-match string lookup.</p>
 
         <p>Everything is provisioned with <strong>Terraform</strong>. Deployment is keyless via <strong>Workload Identity Federation</strong>. No service account keys ever touch GitHub Actions.</p>
 
@@ -245,7 +245,7 @@ Telegram Response</code></pre>
         <p>The agent can't hurt itself. The Cloud Run service account has exactly the permissions it needs and nothing more. It cannot modify IAM, cannot access Secret Manager beyond its own secrets, cannot touch the Terraform state.</p>
 
         <h4>4. Human-in-the-Loop</h4>
-        <p>Nothing destructive runs without your tap. When you ask AdkBot to create a calendar event, execution pauses. Telegram sends you a message with two inline buttons: <strong>✅ Approve</strong> and <strong>❌ Reject</strong>. The agent waits. Only after you tap Approve does it proceed — at which point ADK resumes the paused execution from exactly where it left off.</p>
+        <p>Nothing destructive runs without your tap. When you ask AdkBot to create a calendar event, execution pauses. Telegram sends you a message with two inline buttons: <strong>✅ Approve</strong> and <strong>❌ Reject</strong>. The agent waits. Only after you tap Approve does it proceed, at which point ADK resumes the paused execution from exactly where it left off.</p>
 
         <p>This is a <strong>first-class callback in ADK's orchestration model</strong>, not a polling loop bolted on after the fact.</p>
 
@@ -261,7 +261,7 @@ Telegram Response</code></pre>
 
         <h3>Why ADK 1.0 Changes the Game</h3>
 
-        <p>ADK launched at Google Cloud NEXT 2025, and it's genuinely different from LangChain or AutoGen. It's the framework Google built for themselves to power Agentspace — with the same orchestration logic and multi-agent patterns — now open-source under Apache 2.0.</p>
+        <p>ADK launched at Google Cloud NEXT 2025, and it's genuinely different from LangChain or AutoGen. It's the framework Google built for themselves to power Agentspace, with the same orchestration logic and multi-agent patterns, now open-source under Apache 2.0.</p>
 
         <div class="callout-box">
             <p><strong>The key difference from a LangChain Router:</strong></p>
@@ -299,7 +299,7 @@ Telegram Response</code></pre>
             <li><strong>A companion article</strong> going deep on the DLP + Human-in-the-Loop implementation</li>
         </ul>
 
-        <p>⭐ <a href="https://github.com/sonikajanagill/AdkBot" target="_blank" rel="noopener noreferrer">Star the repo on GitHub</a> — the Terraform modules, Cloud Run config, and DLP pipeline are all there now. If you're an infrastructure person, the IaC is often the most instructive part. Live Workspace integrations are landing next; starring is the best way to follow along. Issues and PRs welcome.</p>
+        <p>⭐ <a href="https://github.com/sonikajanagill/AdkBot" target="_blank" rel="noopener noreferrer">Star the repo on GitHub</a>: the Terraform modules, Cloud Run config, and DLP pipeline are all there now. If you're an infrastructure person, the IaC is often the most instructive part. Live Workspace integrations are landing next; starring is the best way to follow along. Issues and PRs welcome.</p>
 
         <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--border);">
 

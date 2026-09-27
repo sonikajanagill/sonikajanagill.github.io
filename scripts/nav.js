@@ -1,7 +1,7 @@
 /* ===========================
    Shared Navigation Component
    Single source of truth for site-wide nav.
-   Include via <script src="/scripts/nav.js"></script>
+   Include via <script src="/scripts/nav.js?v=20260927"></script>
    and add <div id="nav-placeholder"></div> in <body>.
    =========================== */
 
@@ -17,7 +17,7 @@
     <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="/img/brand/sj-monogram.svg" alt="Sonika Janagill" class="logo-monogram">
+                <img src="/img/brand/sj-monogram.svg?v=20260927" alt="Sonika Janagill" class="logo-monogram">
                 <span class="nav-home-text">Sonika Janagill</span>
             </a>
             <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu">

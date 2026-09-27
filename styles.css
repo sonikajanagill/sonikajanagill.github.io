@@ -9,7 +9,7 @@
    =========================== */
 
 :root {
-    /* Light Mode Colours — "Emerald Dawn" (locked 12 Jul 2026, no yellow/yellow-green tones) */
+    /* Light Mode Colours: "Emerald Dawn" (locked 12 Jul 2026, no yellow/yellow-green tones) */
     --primary: #0F8A6D;        /* emerald - primary actions */
     --primary-hover: #0C7157;
     --primary-soft: rgba(15, 138, 109, 0.08);
@@ -252,7 +252,7 @@ nav {
     border-radius: 6px;
 }
 
-/* SJ monogram tile — mint background keeps contrast in both themes */
+/* SJ monogram tile: mint background keeps contrast in both themes */
 .nav-logo .logo-monogram {
     background: #F4F7F3;
     padding: 2px;

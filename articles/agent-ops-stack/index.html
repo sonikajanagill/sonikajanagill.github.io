@@ -32,13 +32,13 @@
     <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260927">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
 
 <body>
     <div id="nav-placeholder"></div>
-    <script src="/scripts/nav.js"></script>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -109,7 +109,7 @@
             hard questions are now upstream and downstream of it.</p>
 
         <p>A year ago, the conversation in every enterprise AI session was "how do we run an agent?" Today, Thomas
-            Kurian opened the Next '26 keynote by declaring the agentic enterprise <i>"real — and deployed at a scale the
+            Kurian opened the Next '26 keynote by declaring the agentic enterprise <i>"real, and deployed at a scale the
             world has never before seen,"</i> and announcing a platform designed to answer an entirely different question:
             how do we govern a fleet of thousands of them?</p>
 
@@ -177,7 +177,7 @@
             agent takes an action, you know which agent, under which policy, at what time. This is not prompt
             engineering; it is IAM for non-human principals.</p>
 
-        <p><strong>Agent Registry</strong> is a central catalogue of every agent and approved tool across your organisation — the
+        <p><strong>Agent Registry</strong> is a central catalogue of every agent and approved tool across your organisation: the
             equivalent of a container registry, but for agents. Whether the agent was built internally on ADK or sourced
             from the partner marketplace (Atlassian, Box, Salesforce, ServiceNow, Workday all launched agents at Next),
             it has one identity and one index.</p>
@@ -193,7 +193,7 @@
             and OTel-compliant Agent Observability: automatic tracing, Agent Topology visualisation (a live map of how
             your agents interact with one another and with tools), and turn-key dashboards that surface the full
             reasoning chain behind every agent decision. If an agent chose the wrong tool or misread a user's intent,
-            you can see exactly which step in the chain caused it — not just that something went wrong, but why. These
+            you can see exactly which step in the chain caused it, not just that something went wrong, but why. These
             are the SRE tools for agent fleets.</p>
 
         <p>Taken together, this is not a developer stack. It is an ops stack.</p>
@@ -261,12 +261,12 @@
         </blockquote>
 
         <p>The architectural mental model shift is significant: stop thinking about agents as wrappers around LLM APIs
-            and start thinking about them as microservices — discrete, composable, independently deployable, and
+            and start thinking about them as microservices: discrete, composable, independently deployable, and
             governed by the same infrastructure controls as the rest of your stack. ADK is the framework that makes that
             model practical.</p>
 
         <p>For engineering leads, the Agent Registry changes the conversation about shadow AI. If every agent your
-            organisation uses — internal or sourced from a partner marketplace — needs to be registered and assigned an
+            organisation uses, internal or sourced from a partner marketplace, needs to be registered and assigned an
             identity, you have a forcing function for agent governance that does not depend on policy documentation or
             developer discipline. The infrastructure enforces it.</p>
 
@@ -288,7 +288,7 @@
 
         <p>The pattern across all three is the same: agents handling not just product discovery but multi-step,
             stateful, transactional workflows. An agent that can remember what you bought last month, understand your
-            current budget, recommend products, and initiate a UCP checkout — that requires identity, memory, a governed
+            current budget, recommend products, and initiate a UCP checkout: that requires identity, memory, a governed
             tool set, and a payment layer that can verify authorisation cryptographically.</p>
 
         <p>The Gemini Enterprise Agent Platform, announced today, provides the first three. AP2, which Google announced

@@ -195,9 +195,7 @@ const SITE_CONFIG = {
     author: 'Sonika Janagill',
     siteUrl: 'https://sonikajanagill.com',
     favicon: '../../img/Sonika_Salmon.jpeg',
-    copyrightYear: '2026',
-    logoLight: '../../img/Sonika-Logo-Light.jpeg',
-    logoDark: '../../img/Sonika-Logo-Dark.jpeg'
+    copyrightYear: '2026'
 };
 
 // HTML template
@@ -241,31 +239,13 @@ function generateHtml(article, bodyHtml) {
     <link rel="icon" type="image/png" href="${SITE_CONFIG.favicon}">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles.css?v=20260927">
     <link rel="stylesheet" href="../article-styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="nav-logo">
-                <img src="${SITE_CONFIG.logoLight}" alt="${SITE_CONFIG.author}" class="logo-light">
-                <img src="${SITE_CONFIG.logoDark}" alt="${SITE_CONFIG.author}" class="logo-dark">
-                <span class="nav-home-text">Home</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/articles/">Articles</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li>
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <svg class="theme-icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-                        <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Navigation (shared with every page, see /scripts/nav.js) -->
+    <div id="nav-placeholder"></div>
+    <script src="/scripts/nav.js?v=20260927"></script>
 
     <!-- Blog Header -->
     <header class="blog-header">
@@ -369,7 +349,7 @@ ${bodyHtml}
  *   All other <!-- ... --> comments are stripped (IMAGE N:, Prompt:, Generate with:, etc.)
  *
  * Also removes:
- *   - H1 title line (# ...) — already in article header from articles-data.js
+ *   - H1 title line (# ...): already in article header from articles-data.js
  *   - Italic subtitle opener (*...*)
  *   - **Author:** / **Read time:** / **Tags:** metadata lines
  *   - Pairs of --- that were only wrapping image comment blocks
@@ -422,7 +402,7 @@ function main() {
     // The leaf name (last segment) is used to match against articles-data.js
     const slugLeaf = path.basename(slug);
     
-    // Read markdown source — supports flat or subdirectory paths
+    // Read markdown source: supports flat or subdirectory paths
     const mdPath = path.join(__dirname, '..', 'article-drafts', `${slug}.md`);
     if (!fs.existsSync(mdPath)) {
         console.error(`Error: ${mdPath} not found`);
@@ -464,7 +444,7 @@ function main() {
     const mergedArticle = { ...article, ...frontmatter };
     
     // Strip editorial preamble (title, subtitle, Author/Read time/Tags lines)
-    // — these come from articles-data.js and the article header, not the body
+    //: these come from articles-data.js and the article header, not the body
     const cleanBody = stripDraftPreamble(body);
     
     // Convert markdown body to HTML

@@ -27,7 +27,7 @@ const speakingData = [
         slidesUrl: 'stop-prompting-start-delegating.html',
         youtubeUrl: null,
         tags: ['AI', 'Antigravity', 'GoogleIO', 'Agents'],
-        description: 'The limitation of AI is no longer the intelligence of the model — it is that we spend our days micro-managing chatbots. This session explores how Antigravity 2.0 breaks that cycle with sub-agents, scheduled tasks, and voice delegation.',
+        description: 'The limitation of AI is no longer the intelligence of the model: it is that we spend our days micro-managing chatbots. This session explores how Antigravity 2.0 breaks that cycle with sub-agents, scheduled tasks, and voice delegation.',
         image: null
     },
     {
