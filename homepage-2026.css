@@ -1,0 +1,464 @@
+/* ============================================================
+   Emerald Dawn — Homepage 2026 (editorial masthead, type-led)
+   Scope: homepage only. All selectors namespaced .ed-*
+   Load AFTER styles.css. Nav, footer and theme toggle are
+   untouched and still come from styles.css + scripts/nav.js.
+   ============================================================ */
+
+/* --- Dawn backdrop tokens -----------------------------------
+   These already exist in styles.css for the old .sj-hero. The
+   values below are identical — safe to delete this block once
+   you've confirmed styles.css declares all eight.
+   ------------------------------------------------------------ */
+:root {
+    --hero-sky-top: #FAE0C8;
+    --hero-sky-bottom: #BFDDE4;
+    --hero-sun: #F2A05F;
+    --hero-hill-far: #DDE9E1;
+    --hero-hill-mid: #C8DCCC;
+    --hero-hill-near: #AFCEB7;
+    --hero-line: #16808F;
+    --hero-sun-core: #E27D3A;  /* deeper apricot for the solid sun disc */
+    --border: #DCE6DF;
+    --border-subtle: #E8EFE9;
+}
+[data-theme="dark"] {
+    --hero-sky-top: #2C2838;
+    --hero-sky-bottom: #1F323A;
+    --hero-hill-far: #16221C;
+    --hero-hill-mid: #121C17;
+    --hero-hill-near: #0F1813;
+    --hero-line: #5FB7C4;
+    --border: #22352B;
+    --border-subtle: #1B2A22;
+}
+
+/* --- Shared -------------------------------------------------- */
+.ed-wrap { max-width: 1160px; margin: 0 auto; padding: 0 3rem; }
+
+.ed-eyebrow {
+    font-family: var(--font-label);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+/* Section head: display title + hairline rule + right-side link */
+.ed-section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    border-bottom: 2px solid var(--text-primary);
+    padding-bottom: 1rem;
+}
+.ed-section-head h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--text-primary);
+}
+.ed-section-head a {
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary);
+    text-decoration: none;
+    white-space: nowrap;
+    padding-bottom: 0.3rem;
+}
+
+/* --- 1. Hero (type-led) -------------------------------------- */
+.ed-hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        var(--hero-sky-top) 0%,
+        color-mix(in srgb, var(--hero-sky-bottom) 62%, var(--bg-main)) 74%,
+        var(--bg-main) 100%
+    );
+}
+.ed-hero-backdrop {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 240px;
+    pointer-events: none;
+}
+.ed-hero-backdrop svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+/* Figures layer never stretches, so the sun stays round and the tree keeps its shape */
+.ed-hero-figures { overflow: visible; }
+
+/* Backdrop motion: turbines turn, pulses flow roots -> circuit canopy, nodes breathe, leaves drift.
+   Named ed-flow (not ed-pulse) to avoid clashing with the status-dot keyframe below. */
+@keyframes ed-spin  { to { transform: rotate(360deg); } }
+@keyframes ed-halo  { 0%, 100% { transform: scale(1); opacity: .55; } 50% { transform: scale(1.12); opacity: .15; } }
+@keyframes ed-flow  { from { stroke-dashoffset: 10; } to { stroke-dashoffset: -400; } }
+@keyframes ed-node  { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+@keyframes ed-drift { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-6px, 5px); } }
+
+/* The two leaf-circuit traces draw themselves in on load */
+.ed-hero-trace {
+    stroke-dasharray: 420;
+    animation: ed-draw 2.4s cubic-bezier(.4, 0, .2, 1) both;
+}
+@keyframes ed-draw { from { stroke-dashoffset: 420; } to { stroke-dashoffset: 0; } }
+
+.ed-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1160px;
+    margin: 0 auto;
+    /* 16rem bottom padding clears the 240px hill band */
+    padding: 4rem 3rem 16rem;
+    animation: ed-rise .7s cubic-bezier(.4, 0, .2, 1) both;
+}
+@keyframes ed-rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.ed-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, .55);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glow);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    margin-bottom: 1.75rem;
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+[data-theme="dark"] .ed-status { background: rgba(26, 42, 34, .55); }
+.ed-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--primary);
+    animation: ed-pulse 2s ease-in-out infinite;
+}
+@keyframes ed-pulse {
+    0%, 100% { opacity: 1;  transform: scale(1); }
+    50%      { opacity: .5; transform: scale(1.25); }
+}
+
+/* The masthead headline. Not the name — the promise. */
+.ed-h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.75rem, 5.6vw, 5.25rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin: 0 0 1.75rem;
+    max-width: 24ch;
+    color: var(--text-primary);
+    text-wrap: pretty;
+}
+
+.ed-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3.5rem;
+    align-items: end;
+}
+.ed-lede {
+    font-size: 1.1875rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+}
+.ed-hero-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+.ed-hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+/* Pill CTAs — same shape as .sj-cta-button, restated so the
+   homepage does not depend on that rule's padding. */
+.ed-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.75rem;
+    border-radius: 999px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    border: 2px solid var(--primary);
+    transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+.ed-btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    box-shadow: 0 6px 20px var(--glow);
+}
+.ed-btn-primary:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: #fff;
+    transform: translateY(-2px);
+}
+.ed-btn-secondary { color: var(--primary); background: transparent; }
+.ed-btn-secondary:hover { background: var(--primary-soft); transform: translateY(-2px); }
+
+/* Portrait is a credit line, not the hero image */
+.ed-byline { display: flex; align-items: center; gap: 0.75rem; }
+.ed-byline img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 52% 20%;
+    border: 1px solid var(--border);
+}
+.ed-byline span {
+    font-family: var(--font-label);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+/* --- 2. Venue marquee ---------------------------------------- */
+.ed-marquee {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary);
+    overflow: hidden;
+    padding: 0.8rem 0;
+}
+.ed-marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 2.5rem;
+    white-space: nowrap;
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    animation: ed-marquee 34s linear infinite;
+}
+.ed-marquee-track .sep { color: var(--primary); }
+@keyframes ed-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* --- 3. Credential numerals ---------------------------------- */
+.ed-numerals { border-bottom: 1px solid var(--border); background: var(--bg-main); }
+.ed-numerals-grid {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.ed-numeral { padding: 1.75rem 1.5rem; border-left: 1px solid var(--border); }
+.ed-numeral:first-child { padding-left: 0; border-left: 0; }
+.ed-numeral:last-child { padding-right: 0; }
+.ed-numeral b {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--primary);
+}
+.ed-numeral span {
+    display: block;
+    font-family: var(--font-label);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-top: 0.4rem;
+}
+
+/* --- 4. Numbered article index ------------------------------- */
+/* Replaces the 350px card grid on the homepage only. The cards
+   still render on /articles/ from articles-styles.css. */
+.ed-index { padding: 4rem 3rem 1rem; }
+.ed-row {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr 132px 7rem;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem 0.75rem 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    border-radius: 0.5rem;
+    transition: background 0.3s cubic-bezier(.4, 0, .2, 1),
+                padding 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+.ed-row:hover { background: var(--pastel-1); padding-left: 0.75rem; }
+[data-theme="dark"] .ed-row:hover { background: var(--bg-secondary); }
+.ed-row-num {
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+}
+.ed-row-title {
+    font-family: var(--font-heading);
+    font-size: 1.6875rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.4rem;
+    color: var(--text-primary);
+}
+.ed-row-standfirst {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 62ch;
+}
+.ed-row-thumb {
+    width: 132px;
+    height: 78px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+}
+.ed-row-meta { text-align: right; }
+.ed-row-tag {
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+.ed-row-date {
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-top: 0.2rem;
+}
+
+/* --- 5. Speaking band ---------------------------------------- */
+.ed-speaking {
+    background: var(--pastel-1);
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-subtle);
+}
+[data-theme="dark"] .ed-speaking { background: var(--bg-secondary); }
+.ed-speaking-grid {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 3.5rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+.ed-speaking-grid h2 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0.75rem 0;
+    color: var(--text-primary);
+}
+.ed-speaking-grid p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem;
+}
+.ed-agenda-row {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 1.25rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-label);
+}
+.ed-agenda-row:last-child { border-bottom: 0; }
+.ed-agenda-row .when { font-size: 0.8125rem; font-weight: 600; color: var(--text-tertiary); }
+.ed-agenda-row .what { font-size: 0.9375rem; color: var(--text-primary); }
+
+/* --- 6. Connect rows ----------------------------------------- */
+.ed-connect { padding: 3.5rem 3rem 4rem; }
+.ed-connect-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+.ed-connect-head h2 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: var(--text-primary);
+}
+.ed-connect-head span { font-family: var(--font-label); font-size: 0.875rem; color: var(--text-secondary); }
+.ed-connect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 2.5rem; }
+.ed-connect-grid a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-label);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+}
+.ed-connect-grid a:nth-child(n + 4) { border-bottom: 1px solid var(--border); }
+.ed-connect-grid a:hover { color: var(--primary); padding-left: 0.5rem; }
+.ed-connect-grid .arrow { font-size: 1.25rem; }
+
+/* --- Responsive ---------------------------------------------- */
+@media (max-width: 900px) {
+    .ed-wrap, .ed-hero-inner, .ed-numerals-grid, .ed-speaking-grid { padding-left: 2rem; padding-right: 2rem; }
+    .ed-index, .ed-connect { padding-left: 2rem; padding-right: 2rem; }
+    .ed-hero-grid, .ed-speaking-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .ed-numerals-grid { grid-template-columns: repeat(2, 1fr); }
+    .ed-numeral, .ed-numeral:first-child { padding: 1.5rem 1.25rem; border-left: 1px solid var(--border); }
+    .ed-numeral:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .ed-row { grid-template-columns: 2.5rem 1fr; }
+    .ed-row-thumb { display: none; }
+    .ed-row-meta { grid-column: 2; text-align: left; }
+    .ed-row-meta > div { display: inline; margin-right: 0.5rem; }
+    .ed-connect-grid { grid-template-columns: repeat(2, 1fr); gap: 0 1.5rem; }
+    .ed-connect-grid a:nth-child(n + 3) { border-bottom: 1px solid var(--border); }
+}
+@media (max-width: 600px) {
+    .ed-hero-inner { padding: 2.5rem 1.25rem 12rem; }
+    .ed-hero-backdrop, .ed-hero-backdrop svg { height: 170px; }
+    .ed-section-head h2 { font-size: 2rem; }
+    .ed-connect-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ed-marquee-track,
+    .ed-hero-inner,
+    .ed-hero-trace,
+    .ed-status-dot,
+    .ed-hero-hills *,
+    .ed-hero-figures * { animation: none !important; }
+}
