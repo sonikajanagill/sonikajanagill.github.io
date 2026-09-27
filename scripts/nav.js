@@ -17,9 +17,8 @@
     <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="/img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
-                <img src="/img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
-                <span class="nav-home-text">Home</span>
+                <img src="/img/brand/sj-monogram.svg" alt="Sonika Janagill" class="logo-monogram">
+                <span class="nav-home-text">Sonika Janagill</span>
             </a>
             <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu">
                 <span></span>
@@ -28,9 +27,11 @@
             </button>
             <div class="nav-overlay" id="nav-overlay"></div>
             <ul class="nav-links" id="nav-links">
-                <li><a href="/about.html">About</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/articles/">Articles</a></li>
                 <li><a href="/speaking/">Speaking</a></li>
+                <li><a href="/mentoring.html">Mentoring</a></li>
+                <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">

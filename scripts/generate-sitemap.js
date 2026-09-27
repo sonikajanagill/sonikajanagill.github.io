@@ -26,7 +26,9 @@ const staticPages = [
     { loc: 'https://sonikajanagill.com/', priority: '1.0', changefreq: 'weekly' },
     { loc: 'https://sonikajanagill.com/about.html', priority: '0.9', changefreq: 'monthly' },
     { loc: 'https://sonikajanagill.com/contact.html', priority: '0.8', changefreq: 'monthly' },
+    { loc: 'https://sonikajanagill.com/mentoring.html', priority: '0.7', changefreq: 'monthly' },
     { loc: 'https://sonikajanagill.com/articles/', priority: '0.9', changefreq: 'weekly' },
+    { loc: 'https://sonikajanagill.com/speaking/', priority: '0.7', changefreq: 'monthly' },
 ];
 
 // Convert article date to ISO format (approximate)

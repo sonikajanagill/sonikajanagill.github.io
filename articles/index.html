@@ -13,7 +13,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../img/Sonika_Salmon.jpeg">
+    <link rel="icon" type="image/svg+xml" href="/img/brand/favicon.svg">
 
     <!-- Styles -->
     <link rel="stylesheet" href="../styles.css">
@@ -36,14 +36,9 @@
     <!-- Hashtag Filter -->
     <section class="articles-filter-section">
         <div class="container">
-            <div class="hashtag-filter">
-                <button class="hashtag-btn active" data-tag="all">All Articles</button>
-                <button class="hashtag-btn" data-tag="AI">#AI</button>
-                <button class="hashtag-btn" data-tag="MLOps">#MLOps</button>
-                <button class="hashtag-btn" data-tag="Cloud">#Cloud</button>
-                <button class="hashtag-btn" data-tag="Security">#Security</button>
-                <button class="hashtag-btn" data-tag="Strategy">#Strategy</button>
-                <button class="hashtag-btn" data-tag="Leadership">#Leadership</button>
+            <div class="hashtag-filter" id="hashtagFilter">
+                <button class="hashtag-btn active" data-tag="all">All articles</button>
+                <!-- Tag chips populated from articles-data.js -->
             </div>
         </div>
     </section>
@@ -112,6 +107,18 @@
             });
         }
 
+        // Build tag chips from the data: preferred brand tags first, only if an article carries them
+        const preferredTags = ['AI Agents', 'RAG', 'MLOps', 'GCP', 'AWS', 'Quantum', 'Career', 'Security', 'Leadership'];
+        const allTags = new Set(articles.flatMap(a => Array.isArray(a.tags) ? a.tags : [a.tag]));
+        const filterContainer = document.getElementById('hashtagFilter');
+        preferredTags.filter(t => allTags.has(t)).forEach(tag => {
+            const btn = document.createElement('button');
+            btn.className = 'hashtag-btn';
+            btn.dataset.tag = tag;
+            btn.textContent = '#' + tag;
+            filterContainer.appendChild(btn);
+        });
+
         // Filter functionality
         const filterButtons = document.querySelectorAll('.hashtag-btn');
         filterButtons.forEach(btn => {
@@ -122,13 +129,13 @@
 
                 // Filter articles
                 const tag = btn.dataset.tag;
-                const filtered = tag === 'all' 
-                    ? articles 
+                const filtered = tag === 'all'
+                    ? articles
                     : articles.filter(a => {
                         const tags = Array.isArray(a.tags) ? a.tags : [a.tag];
                         return tags.includes(tag);
                     });
-                
+
                 renderArticles(filtered);
             });
         });
