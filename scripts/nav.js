@@ -17,9 +17,8 @@
     <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="/img/Sonika-Logo-Light.jpeg" alt="Sonika Janagill" class="logo-light">
-                <img src="/img/Sonika-Logo-Dark.jpeg" alt="Sonika Janagill" class="logo-dark">
-                <span class="nav-home-text">Home</span>
+                <img src="/img/brand/sj-monogram.svg" alt="Sonika Janagill" class="logo-monogram">
+                <span class="nav-home-text">Sonika Janagill</span>
             </a>
             <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu">
                 <span></span>
@@ -28,14 +27,16 @@
             </button>
             <div class="nav-overlay" id="nav-overlay"></div>
             <ul class="nav-links" id="nav-links">
-                <li><a href="/about.html">About</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/articles/">Articles</a></li>
                 <li><a href="/speaking/">Speaking</a></li>
+                <li><a href="/mentoring.html">Mentoring</a></li>
+                <li><a href="/about.html">About</a></li>
                 <li><a href="/contact.html">Contact</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <img src="/img/Sun.png" alt="Light mode" class="theme-icon theme-icon-light">
-                        <img src="/img/Moon.png" alt="Dark mode" class="theme-icon theme-icon-dark">
+                        <svg class="theme-icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                        <svg class="theme-icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                     </button>
                 </li>
             </ul>
